@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://jka0qv2xjykg"]
+
+[ext_resource type="PackedScene" uid="uid://q7xw4c2ix7lw" path="res://Resources/Scenes/SkillOrb.tscn" id="1_uih2l"]
+
+[node name="SkillOrbGridTemplate" type="GridContainer" unique_id=2033729730]
+offset_right = 384.0
+offset_bottom = 320.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="SkillOrb" parent="." unique_id=1455121458 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb2" parent="." unique_id=1134848099 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb3" parent="." unique_id=857787782 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb4" parent="." unique_id=2120895642 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb5" parent="." unique_id=1913769214 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb6" parent="." unique_id=585336799 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb7" parent="." unique_id=555285683 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb8" parent="." unique_id=1654753636 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb9" parent="." unique_id=274024649 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb10" parent="." unique_id=1422149939 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb11" parent="." unique_id=1275429016 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb12" parent="." unique_id=1942507415 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb13" parent="." unique_id=175889001 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb14" parent="." unique_id=67725271 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb15" parent="." unique_id=801890504 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb16" parent="." unique_id=1846008568 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb17" parent="." unique_id=1661341314 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb18" parent="." unique_id=1467721249 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb19" parent="." unique_id=1039385944 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb20" parent="." unique_id=568646810 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb21" parent="." unique_id=1270692441 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb22" parent="." unique_id=328054843 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb23" parent="." unique_id=629638789 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb24" parent="." unique_id=921032770 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb25" parent="." unique_id=462202396 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb26" parent="." unique_id=1348995969 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb27" parent="." unique_id=831836654 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb28" parent="." unique_id=335431546 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb29" parent="." unique_id=1724274694 instance=ExtResource("1_uih2l")]
+layout_mode = 2
+
+[node name="SkillOrb30" parent="." unique_id=1244712012 instance=ExtResource("1_uih2l")]
+layout_mode = 2

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cf1ip2c3kpvih"]
+
+[ext_resource type="Script" uid="uid://dxvii4n6aop8c" path="res://Resources/Scripts/SkillOrbGrid.cs" id="1_8env7"]
+
+[node name="SkillOrbGrid" type="Control" unique_id=102320514]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = 50.0
+offset_right = -190.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8env7")
+_columns = 6
+_rows = 5

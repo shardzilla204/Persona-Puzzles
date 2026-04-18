@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ojbiqd2cianf"]
+
+[ext_resource type="Script" uid="uid://t5ge5vacyfm4" path="res://Resources/Scripts/VelvetTrial.cs" id="1_eaox5"]
+[ext_resource type="PackedScene" uid="uid://cf1ip2c3kpvih" path="res://Resources/Scenes/SkillOrbGrid.tscn" id="2_w11kf"]
+[ext_resource type="PackedScene" uid="uid://jka0qv2xjykg" path="res://Resources/Scenes/SkillOrbGridTemplate.tscn" id="3_5cqey"]
+[ext_resource type="PackedScene" uid="uid://bax74nfykglud" path="res://Resources/Scenes/Debug.tscn" id="3_6tvh8"]
+
+[node name="VelvetTrial" type="Control" unique_id=691434485]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_eaox5")
+
+[node name="SkillOrbBoard" parent="." unique_id=1359677514 instance=ExtResource("2_w11kf")]
+layout_mode = 1
+
+[node name="SkillOrbGridTemplate" parent="." unique_id=2033729730 instance=ExtResource("3_5cqey")]
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 450.0
+offset_right = 464.0
+offset_bottom = 786.0
+
+[node name="Debug" parent="." unique_id=645808427 instance=ExtResource("3_6tvh8")]
+layout_mode = 1

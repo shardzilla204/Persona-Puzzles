@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c6g5gvhd0csxb"]
+
+[ext_resource type="Script" uid="uid://ydxdlppjqgw2" path="res://Resources/Scripts/PersonaAndPuzzles.cs" id="1_tmg12"]
+[ext_resource type="Script" uid="uid://d3ysd4w4u1tge" path="res://Resources/Scripts/SkillOrbManager.cs" id="2_6rlup"]
+[ext_resource type="Script" uid="uid://siwdf84uupjr" path="res://Resources/Scripts/PackedScenes.cs" id="3_5ylad"]
+
+[node name="PersonaAndPuzzles" type="Node" unique_id=111975351]
+script = ExtResource("1_tmg12")
+
+[node name="SkillOrbManager" type="Node" parent="." unique_id=1685875457]
+script = ExtResource("2_6rlup")
+
+[node name="PackedScenes" type="Node" parent="." unique_id=701911171]
+script = ExtResource("3_5ylad")
