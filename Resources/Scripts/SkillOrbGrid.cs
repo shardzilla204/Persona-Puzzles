@@ -17,8 +17,7 @@ public partial class SkillOrbGrid : Control
 
     private Vector2 _firstTouch = new Vector2();
     private Vector2 _finalTouch = new Vector2();
-    private bool _isControlling = false;
-    private SkillOrb _currentSkillOrb;
+    private bool _isDragging = false;
 
     private List<List<SkillOrb>> _skillOrbs = new List<List<SkillOrb>>();
 
@@ -28,7 +27,7 @@ public partial class SkillOrbGrid : Control
     {
         SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
         _offset = (Vector2I) skillOrb.Size;
-        _swapMargin = skillOrb.Size.X;
+        _swapMargin = skillOrb.Size.X / 2;
         SpawnSkillOrbs();
     }
 
@@ -62,11 +61,9 @@ public partial class SkillOrbGrid : Control
         }
     }
 
-    private SkillOrb GetSkillOrb(int columnIndex, int rowIndex)
+    private SkillOrb GetSkillOrb(Vector2I coordinate)
     {
-        List<SkillOrb> row = _skillOrbs[columnIndex];
-        SkillOrb skillOrb = row[rowIndex];
-        return skillOrb;
+        return _skillOrbs[coordinate.X][coordinate.Y];
     }
 
     private bool IsInGrid(float pixelX, float pixelY)
@@ -77,12 +74,12 @@ public partial class SkillOrbGrid : Control
             pixelY < _rows;
     }
 
-    private Vector2 GridToPixel(int column, int row)
+    private Vector2I GridToPixel(int column, int row)
     {
         int newX = (int) (_offset.X * column);
         int newY = (int) (_offset.Y * row);
 
-        Vector2 newPosition = new Vector2(newX, newY);
+        Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
     }
 
@@ -100,144 +97,78 @@ public partial class SkillOrbGrid : Control
         if (Input.IsActionJustPressed("Touch"))
         {
             _firstTouch = GetLocalMousePosition();
-            Vector2 gridPosition = PixelToGrid(_firstTouch.X, _firstTouch.Y);
-            bool isInGrid = IsInGrid(gridPosition.X, gridPosition.Y);
-            if (isInGrid) 
-            {
-                _isControlling = true;
-                _currentSkillOrb = GetSkillOrb((int) gridPosition.X, (int) gridPosition.Y);
-            }
+            Vector2I currentPos = PixelToGrid(_firstTouch.X, _firstTouch.Y);
+
+            bool isInGrid = IsInGrid(currentPos.X, currentPos.Y);
+            if (!isInGrid) return;
+            
+            _isDragging = true;
         }
         else if (Input.IsActionJustReleased("Touch"))
         {
             _finalTouch = GetLocalMousePosition();
-            Vector2 gridPosition = PixelToGrid(_finalTouch.X, _finalTouch.Y);
-            if (_isControlling)
-            {
-                _isControlling = false;
-                GD.Print("Done");
-                GD.Print($"Final Position: {gridPosition}");
-                _currentSkillOrb = null;
-            }
+
+            if (!_isDragging) return;
+            
+            _isDragging = false;
         }
     }
 
     private void SwapInput()
     {
-        Vector2 mousePosition = GetLocalMousePosition();
-        Vector2 mouseGridPosition = PixelToGrid(mousePosition.X, mousePosition.Y);
-        bool isMouseInGrid = IsInGrid(mouseGridPosition.X, mouseGridPosition.Y);
+        if (!_isDragging) return;
 
-        Vector2 mouseDirection = GetMouseDirection();
-        if (mouseDirection == Vector2.Zero || !isMouseInGrid) return;
-        
-        Vector2 gridPosition = PixelToGrid(_firstTouch.X, _firstTouch.Y);
+        Vector2 mousePos = GetLocalMousePosition();
+        Vector2 mouseGridPos = PixelToGrid(mousePos.X, mousePos.Y);
+        bool isMouseInGrid = IsInGrid(mouseGridPos.X, mouseGridPos.Y);
 
-        Vector2 targetPosition = Vector2.Zero;
-        SkillOrb targetSkillOrb = null;
-
-        if (mouseDirection == Vector2.Up)
+        if (!isMouseInGrid) 
         {
-            targetPosition = gridPosition + Vector2.Up;
-            targetSkillOrb = GetSkillOrb((int) targetPosition.X, (int) targetPosition.Y);
-
-            SwapOrbs(gridPosition, _currentSkillOrb, targetPosition, targetSkillOrb);
-
-            GD.Print("Moving Up");
-        }
-        else if (mouseDirection == Vector2.Down)
-        {
-            targetPosition = gridPosition + Vector2.Down;
-            targetSkillOrb = GetSkillOrb((int) targetPosition.X, (int) targetPosition.Y);
-
-            SwapOrbs(gridPosition, _currentSkillOrb, targetPosition, targetSkillOrb);
-
-            GD.Print("Moving Down");
-        }
-        else if (mouseDirection == Vector2.Left)
-        {
-            targetPosition = gridPosition + Vector2.Left;
-            targetSkillOrb = GetSkillOrb((int) targetPosition.X, (int) targetPosition.Y);
-
-            SwapOrbs(gridPosition, _currentSkillOrb, targetPosition, targetSkillOrb);
-
-            GD.Print("Moving Left");
-        }
-        else if (mouseDirection == Vector2.Right)
-        {
-            targetPosition = gridPosition + Vector2.Right;
-            targetSkillOrb = GetSkillOrb((int) targetPosition.X, (int) targetPosition.Y);
-
-            SwapOrbs(gridPosition, _currentSkillOrb, targetPosition, targetSkillOrb);
-
-            GD.Print("Moving Right");
+            GetViewport().GuiCancelDrag();
+            _finalTouch = GetLocalMousePosition();
+            _isDragging = false;
+            return;
         }
 
-        // _firstTouch = GetLocalMousePosition();
+        Vector2I currentPos = PixelToGrid(_firstTouch.X, _firstTouch.Y);
+        Vector2I targetPos = PixelToGrid(mousePos.X, mousePos.Y);
 
-        gridPosition = GridToPixel((int) gridPosition.X, (int) gridPosition.Y);
-        targetPosition = GridToPixel((int) targetPosition.X, (int) targetPosition.Y);
-        TweenSwap(gridPosition, _currentSkillOrb, targetPosition, targetSkillOrb);
+        if (currentPos == targetPos) return;
 
-        GD.Print($"Current Position: {gridPosition} - {_currentSkillOrb.SkillType}");
-        GD.Print($"Target Position: {targetPosition} - {targetSkillOrb.SkillType}");
+        SwapOrbs(currentPos, targetPos);
+        TweenSwap(currentPos, targetPos);
+
+        _firstTouch = GetLocalMousePosition();
     }
 
-    private void SwapOrbs(Vector2 currentPosition, SkillOrb currentSkillOrb, Vector2 targetPosition, SkillOrb targetSkillOrb)
+    private void SwapOrbs(Vector2I currentPos, Vector2I targetPos)
     {
-        List<SkillOrb> currentRow = _skillOrbs[(int) currentPosition.X];
-        int currentIndex = currentRow.IndexOf(currentSkillOrb);
-        currentRow.RemoveAt(currentIndex);
-        currentRow.Insert(currentIndex, targetSkillOrb);
+        SkillOrb currentOrb = GetSkillOrb(currentPos);
+        SkillOrb targetOrb = GetSkillOrb(targetPos);
 
-        List<SkillOrb> targetRow = _skillOrbs[(int) targetPosition.X];
-        int targetIndex = targetRow.IndexOf(targetSkillOrb);
-        targetRow.RemoveAt(targetIndex);
-        targetRow.Insert(targetIndex, currentSkillOrb);
+        _skillOrbs[targetPos.X][targetPos.Y] = currentOrb;
+        _skillOrbs[currentPos.X][currentPos.Y] = targetOrb;
+
+        PrintRich.Print($"Swapped {currentOrb.SkillType} ({currentPos}) with {targetOrb.SkillType} ({targetPos})", TextColor.Yellow);
     }
 
-    private void PrintGrid()
+    private void TweenSwap(Vector2I currentPos, Vector2I targetPos)
     {
-        for (int i = 0; i < _columns; i++)
-        {
-            List<SkillOrb> row = _skillOrbs[i];
-            for (int j = 0; j < _rows; j++)
-            {
-                SkillOrb skillOrb = row[j];
-                PrintSkillOrbPosition(skillOrb, i, j);
-            }
-        }
-    }
+        SkillOrb currentOrb = GetSkillOrb(currentPos);
+        SkillOrb targetOrb = GetSkillOrb(targetPos);
 
-    private void PrintSkillOrbPosition(SkillOrb skillOrb, int positionX, int positionY)
-    {
-        GD.Print($"Skill Orb: {skillOrb.SkillType} | [{positionX}, {positionY}]");
-    }
-
-    private void TweenSwap(Vector2 currentPosition, SkillOrb currentSkillOrb, Vector2 targetPosition, SkillOrb targetSkillOrb)
-    {
-        // GD.Print($"Current: {currentPosition}");
-        // GD.Print($"Target: {targetPosition}");
+        Vector2 currentPixelPos = GridToPixel(currentPos.X, currentPos.Y);
+        Vector2 targetPixelPos = GridToPixel(targetPos.X, targetPos.Y);
 
         float duration = 0.25f;
         Tween tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(currentSkillOrb, "position", targetPosition, duration);
-        tween.TweenProperty(targetSkillOrb, "position", currentPosition, duration);
+        tween.TweenProperty(currentOrb, "position", currentPixelPos, duration);
+        tween.TweenProperty(targetOrb, "position", targetPixelPos, duration);
     }
 
-    private Vector2 GetMouseDirection()
+    private void SwapPositions(Vector2I currentPos, Vector2I currentPixelPos, Vector2I targetPos, Vector2I targetPixelPos)
     {
-        if (_isControlling)
-        {
-            Vector2 mousePosition = GetLocalMousePosition();
-            Vector2 direction = _firstTouch.DirectionTo(mousePosition).Round();
-            GD.Print($"[{direction.X}, {direction.Y}]");
-            float distance = _firstTouch.DistanceTo(mousePosition);
-
-            return _swapMargin <= distance ? direction : Vector2.Zero;
-            // return direction;
-        }
-
-        return Vector2.Zero;
+        _skillOrbs[targetPos.X][targetPos.Y].Position = targetPixelPos;
+        _skillOrbs[currentPos.X][currentPos.Y].Position = currentPixelPos;
     }
 }
