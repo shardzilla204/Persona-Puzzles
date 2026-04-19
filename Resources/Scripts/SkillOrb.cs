@@ -26,6 +26,8 @@ public partial class SkillOrb : TextureRect
     [Export]
     public SkillType SkillType;
 
+    public bool IsMatched = false;
+
     private bool _isDragging = false;
 
     public override void _Ready()
@@ -62,5 +64,18 @@ public partial class SkillOrb : TextureRect
         _isDragging = true;
 
         return this;
+    }
+
+    public void SetMatch(bool isMatched)
+    {
+        IsMatched = isMatched;
+        SetAlpha();
+    }
+
+    private void SetAlpha()
+    {
+        Color translucent = Colors.White;
+        translucent.A = 0.5f;
+        Modulate = IsMatched ? translucent : Colors.White;
     }
 }

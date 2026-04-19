@@ -12,6 +12,15 @@ public partial class SkillOrbGrid : Control
     [Export]
     private int _rows;
 
+    [Export]
+    private Timer _destroyTimer;
+
+    [Export]
+    private Timer _collapseTimer;
+
+    [Export]
+    private Timer _refillTimer;
+
     private Vector2 _offset;
     private float _swapMargin;
 
@@ -25,10 +34,15 @@ public partial class SkillOrbGrid : Control
 
     public override void _Ready()
     {
+        _destroyTimer.Timeout += DestroyTimerTimeout;
+        _collapseTimer.Timeout += CollapseTimerTimeout;
+        _refillTimer.Timeout += RefillTimerTimeout;
+
         SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
         _offset = (Vector2I) skillOrb.Size;
         _swapMargin = skillOrb.Size.X / 2;
-        SpawnSkillOrbs();
+
+        CreateGrid();
     }
 
     public override void _Process(double delta)
@@ -45,20 +59,63 @@ public partial class SkillOrbGrid : Control
         }
     }
 
-    private void SpawnSkillOrbs()
+    private void CreateGrid()
     {
         for (int i = 0; i < _columns; i++)
         {
             List<SkillOrb> row = new List<SkillOrb>();
             for (int j = 0; j < _rows; j++)
             {
-                SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
-                AddChild(skillOrb);
+                SkillOrb skillOrb = null;
                 row.Add(skillOrb);
-                skillOrb.Position = GridToPixel(i, j);
             }
             _skillOrbs.Add(row);
         }
+
+        FillGrid();
+    }
+
+    private void FillGrid()
+    {
+        for (int i = 0; i < _columns; i++)
+        {
+            for (int j = 0; j < _rows; j++)
+            {
+                SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                int loops = 0;
+                while (HasMatch(i, j, skillOrb.SkillType) && loops < 100)
+                {
+                    loops++;
+                    skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                }
+
+                AddChild(skillOrb);
+                _skillOrbs[i][j] = skillOrb;
+                skillOrb.Position = GridToPixel(i, j);
+            }
+        }
+    }
+
+    private bool HasMatch(int x, int y, SkillType skillType)
+    {
+        SkillOrb secondOrb = null;
+        SkillOrb thirdOrb = null;
+        if (x > 1)
+        {
+            secondOrb = _skillOrbs[x - 1][y];
+            thirdOrb = _skillOrbs[x - 2][y];
+        } 
+        
+        if (y > 1)
+        {
+            secondOrb = _skillOrbs[x][y - 1];
+            thirdOrb = _skillOrbs[x][y - 2];
+        }
+
+        if (secondOrb == null || thirdOrb == null) return false;
+        if (secondOrb.SkillType != skillType || thirdOrb.SkillType != skillType) return false;
+
+        return true;
     }
 
     private SkillOrb GetSkillOrb(Vector2I coordinate)
@@ -111,6 +168,8 @@ public partial class SkillOrbGrid : Control
             if (!_isDragging) return;
             
             _isDragging = false;
+
+            FindMatches();
         }
     }
 
@@ -146,6 +205,8 @@ public partial class SkillOrbGrid : Control
         SkillOrb currentOrb = GetSkillOrb(currentPos);
         SkillOrb targetOrb = GetSkillOrb(targetPos);
 
+        if (currentOrb == null || targetOrb == null) return;
+
         _skillOrbs[targetPos.X][targetPos.Y] = currentOrb;
         _skillOrbs[currentPos.X][currentPos.Y] = targetOrb;
 
@@ -157,18 +218,156 @@ public partial class SkillOrbGrid : Control
         SkillOrb currentOrb = GetSkillOrb(currentPos);
         SkillOrb targetOrb = GetSkillOrb(targetPos);
 
-        Vector2 currentPixelPos = GridToPixel(currentPos.X, currentPos.Y);
-        Vector2 targetPixelPos = GridToPixel(targetPos.X, targetPos.Y);
+        if (currentOrb == null || targetOrb == null) return;
 
-        float duration = 0.25f;
+        Vector2I currentPixelPos = GridToPixel(currentPos.X, currentPos.Y);
+        Vector2I targetPixelPos = GridToPixel(targetPos.X, targetPos.Y);
+
+        TweenPosition(currentOrb, currentPixelPos);
+        TweenPosition(targetOrb, targetPixelPos);
+    }
+
+    private void TweenPosition(SkillOrb orb, Vector2 targetPos)
+    {
+        float duration = 0.35f;
         Tween tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(currentOrb, "position", currentPixelPos, duration);
-        tween.TweenProperty(targetOrb, "position", targetPixelPos, duration);
+        tween.TweenProperty(orb, "position", targetPos, duration);
     }
 
     private void SwapPositions(Vector2I currentPos, Vector2I currentPixelPos, Vector2I targetPos, Vector2I targetPixelPos)
     {
         _skillOrbs[targetPos.X][targetPos.Y].Position = targetPixelPos;
         _skillOrbs[currentPos.X][currentPos.Y].Position = currentPixelPos;
+    }
+
+    private void FindMatches()
+    {
+        for (int i = 0; i < _columns; i++)
+        {
+            for (int j = 0; j < _rows; j++)
+            {
+                SkillOrb currentOrb = _skillOrbs[i][j];
+                if (currentOrb == null) continue;
+                
+                if (i > 0 && i < _columns - 1)
+                {
+                    SkillOrb previousOrb = _skillOrbs[i - 1][j];
+                    SkillOrb nextOrb = _skillOrbs[i + 1][j];
+
+                    if (previousOrb != null && nextOrb != null && 
+                        previousOrb.SkillType == currentOrb.SkillType && nextOrb.SkillType == currentOrb.SkillType)
+                    {
+                        previousOrb.SetMatch(true);
+                        currentOrb.SetMatch(true);
+                        nextOrb.SetMatch(true);   
+                    }
+                }
+                
+                if (j > 0 && j < _rows - 1)
+                {
+                    SkillOrb previousOrb = _skillOrbs[i][j - 1];
+                    SkillOrb nextOrb = _skillOrbs[i][j + 1];
+
+                    if (previousOrb != null && nextOrb != null && 
+                        previousOrb.SkillType == currentOrb.SkillType && nextOrb.SkillType == currentOrb.SkillType)
+                    {
+                        previousOrb.SetMatch(true);
+                        currentOrb.SetMatch(true);
+                        nextOrb.SetMatch(true);   
+                    }
+                }
+            }
+        }
+
+        _destroyTimer.Start();
+    }
+
+    private void DestroyMatched()
+    {
+        for (int i = 0; i < _columns; i++)
+        {
+            for (int j = 0; j < _rows; j++)
+            {
+                SkillOrb skillOrb = _skillOrbs[i][j];
+                if (_skillOrbs[i][j] == null || !skillOrb.IsMatched) continue;
+
+                skillOrb.QueueFree();
+                _skillOrbs[i][j] = null;
+            }
+        }
+
+        PrintRich.Print("Destroyed Matches", TextColor.Yellow);
+
+        _collapseTimer.Start();
+    }
+
+    private void CollapseColumns()
+    {
+        for (int i = _columns - 1; i >= 0; i--)
+        {
+            for (int j = _rows - 1; j >= 0; j--)
+            {
+                SkillOrb skillOrb = _skillOrbs[i][j];
+                if (skillOrb != null) continue;
+
+                for (int k = j - 1; k >= 0; k--)
+                {
+                    SkillOrb aboveSkillOrb = _skillOrbs[i][k];
+                    if (aboveSkillOrb == null) continue;
+                    
+                    Vector2I targetPos = GridToPixel(i, j);
+                    TweenPosition(aboveSkillOrb, targetPos);
+
+                    _skillOrbs[i][j] = aboveSkillOrb;
+                    _skillOrbs[i][k] = null;
+                    break;
+                }
+            }
+        }
+        
+        PrintRich.Print("Columns Collapsed", TextColor.Yellow);
+
+        _refillTimer.Start();
+    }
+
+    private void RefillColumns()
+    {
+        for (int i = 0; i < _columns; i++)
+        {
+            for (int j = 0; j < _rows; j++)
+            {
+                SkillOrb skillOrb = _skillOrbs[i][j];
+                if (skillOrb != null) continue;
+                
+                SkillOrb randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                int loops = 0;
+                while (HasMatch(i, j, randomSkillOrb.SkillType) && loops < 100)
+                {
+                    loops++;
+                    randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                }
+
+                AddChild(randomSkillOrb);
+                _skillOrbs[i][j] = randomSkillOrb;
+                randomSkillOrb.Position = GridToPixel(i, j);
+            }
+        }
+
+        PrintRich.Print("Columns Refilled", TextColor.Yellow);
+    }
+
+    private void DestroyTimerTimeout()
+    {
+        DestroyMatched();
+    }
+
+    private void CollapseTimerTimeout()
+    {
+        CollapseColumns();
+    }
+
+    private void RefillTimerTimeout()
+    {
+        RefillColumns();
     }
 }

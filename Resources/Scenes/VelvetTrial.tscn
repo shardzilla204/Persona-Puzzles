@@ -15,7 +15,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_eaox5")
 
-[node name="SkillOrbBoard" parent="." unique_id=1359677514 instance=ExtResource("2_w11kf")]
+[node name="SkillOrbGrid" parent="." unique_id=1359677514 instance=ExtResource("2_w11kf")]
 layout_mode = 1
 
 [node name="SkillOrbGridTemplate" parent="." unique_id=2033729730 instance=ExtResource("3_5cqey")]
