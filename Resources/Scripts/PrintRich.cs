@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace PersonaAndPuzzles;
@@ -87,5 +88,18 @@ public partial class PrintRich : Node
         result = string.IsNullOrEmpty(result) ? "" : $"| {result}";
         string errorMessage = $"{className}.cs | {memberName} (Line {lineNumber}) | {message} {result}";
         GD.PrintErr(errorMessage);
+    }
+
+    public static void PrintOrbs(string text, List<SkillOrb> skillOrbs, TextColor textColor = TextColor.Yellow)
+    {
+        string skillOrbText = "[";
+        foreach (SkillOrb skillOrb in skillOrbs)
+        {
+            skillOrbText += $"{skillOrb.SkillType} ";
+        }
+        skillOrbText = skillOrbText.TrimEnd();
+        skillOrbText += "]";
+
+        Print(text + skillOrbText, textColor);
     }
 }
