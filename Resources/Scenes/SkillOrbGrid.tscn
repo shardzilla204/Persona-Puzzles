@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxvii4n6aop8c" path="res://Resources/Scripts/SkillOrbGrid.cs" id="1_8env7"]
 
-[node name="SkillOrbGrid" type="Control" unique_id=102320514 node_paths=PackedStringArray("_destroyTimer", "_collapseTimer", "_refillTimer")]
+[node name="SkillOrbGrid" type="Control" unique_id=102320514 node_paths=PackedStringArray("_comboLabelContainer", "_refillTimer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -11,25 +11,21 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -190.0
 offset_top = 50.0
-offset_right = -190.0
-offset_bottom = 50.0
+offset_right = 194.0
+offset_bottom = 370.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_8env7")
 _columns = 6
 _rows = 5
-_destroyTimer = NodePath("DestroyTimer")
-_collapseTimer = NodePath("CollapseTimer")
+_comboLabelContainer = NodePath("ComboLabelContainer")
 _refillTimer = NodePath("RefillTimer")
 
-[node name="DestroyTimer" type="Timer" parent="." unique_id=446940105]
-wait_time = 0.5
-one_shot = true
-
-[node name="CollapseTimer" type="Timer" parent="." unique_id=181050760]
-wait_time = 0.5
-one_shot = true
+[node name="ComboLabelContainer" type="Control" parent="." unique_id=1331336448]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="RefillTimer" type="Timer" parent="." unique_id=286237663]
 wait_time = 0.5

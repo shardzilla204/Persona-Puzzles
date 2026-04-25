@@ -5,6 +5,7 @@ namespace PersonaAndPuzzles;
 
 public enum SkillType
 {
+    None = -1,
     Physical,
     Pierce,
     Fire,
@@ -24,7 +25,7 @@ public partial class SkillOrb : TextureRect
     private TextureRect _skillIcon;
 
     [Export]
-    public SkillType SkillType;
+    public SkillType SkillType = SkillType.None;
 
     public bool IsMatched = false;
 
@@ -33,7 +34,6 @@ public partial class SkillOrb : TextureRect
     public override void _Ready()
     {
         _skillIcon.Texture = SkillOrbManager.GetSkillTypeTexture(SkillType);
-        // GD.Print($"Skill Type: {SkillType}");
     }
 
     public override void _Notification(int what)

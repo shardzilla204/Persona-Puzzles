@@ -1,6 +1,8 @@
 using Godot;
-using System;
+using GC = Godot.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PersonaAndPuzzles;
 
@@ -13,34 +15,35 @@ public partial class SkillOrbGrid : Control
     private int _rows;
 
     [Export]
-    private Timer _destroyTimer;
+    private int _refillYOffset = 1;
 
     [Export]
-    private Timer _collapseTimer;
+    private Control _comboLabelContainer;
 
     [Export]
     private Timer _refillTimer;
 
-    private Vector2 _offset;
-    private float _swapMargin;
+    private const int _Offset = 64;
+    private const float _ComboIncrement = 0.1f;
 
     private Vector2 _firstTouch = new Vector2();
     private Vector2 _finalTouch = new Vector2();
     private bool _isDragging = false;
 
     private List<List<SkillOrb>> _skillOrbs = new List<List<SkillOrb>>();
+    private List<ComboLabel> _comboLabels = new List<ComboLabel>();
 
     private Container _skillOrbContainer;
 
+    // Keys
+    private string _indexesKey = "Indexes";
+    private string _typeKey = "Type";
+    private string _positionKey = "Position";
+    private string _countKey = "Count";
+
     public override void _Ready()
     {
-        _destroyTimer.Timeout += DestroyTimerTimeout;
-        _collapseTimer.Timeout += CollapseTimerTimeout;
         _refillTimer.Timeout += RefillTimerTimeout;
-
-        SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
-        _offset = (Vector2I) skillOrb.Size;
-        _swapMargin = skillOrb.Size.X / 2;
 
         CreateGrid();
     }
@@ -133,8 +136,8 @@ public partial class SkillOrbGrid : Control
 
     private Vector2I GridToPixel(int column, int row)
     {
-        int newX = (int) (_offset.X * column);
-        int newY = (int) (_offset.Y * row);
+        int newX = _Offset * column;
+        int newY = _Offset * row;
 
         Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
@@ -142,8 +145,8 @@ public partial class SkillOrbGrid : Control
 
     private Vector2I PixelToGrid(float pixelX, float pixelY)
     {
-        int newX = Mathf.FloorToInt(pixelX / _offset.X);
-        int newY = Mathf.FloorToInt(pixelY / _offset.Y);
+        int newX = Mathf.RoundToInt(Mathf.FloorToInt(pixelX / _Offset));
+        int newY = Mathf.RoundToInt(Mathf.FloorToInt(pixelY / _Offset));
 
         Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
@@ -154,132 +157,392 @@ public partial class SkillOrbGrid : Control
         if (Input.IsActionJustPressed("Touch"))
         {
             _firstTouch = GetLocalMousePosition();
-            Vector2I currentPos = PixelToGrid(_firstTouch.X, _firstTouch.Y);
+            Vector2I position = PixelToGrid(_firstTouch.X, _firstTouch.Y);
 
-            bool isInGrid = IsInGrid(currentPos.X, currentPos.Y);
+            bool isInGrid = IsInGrid(position.X, position.Y);
             if (!isInGrid) return;
             
             _isDragging = true;
         }
         else if (Input.IsActionJustReleased("Touch"))
         {
-            _finalTouch = GetLocalMousePosition();
-
-            if (!_isDragging) return;
-            
-            _isDragging = false;
-
-            FindMatches();
+            ReleasedTouch();
         }
+    }
+
+    private void ReleasedTouch()
+    {
+        _finalTouch = GetLocalMousePosition();
+
+        if (!_isDragging) return;
+        
+        _isDragging = false;
+
+        FindMatches();
     }
 
     private void SwapInput()
     {
         if (!_isDragging) return;
 
-        Vector2 mousePos = GetLocalMousePosition();
-        Vector2 mouseGridPos = PixelToGrid(mousePos.X, mousePos.Y);
-        bool isMouseInGrid = IsInGrid(mouseGridPos.X, mouseGridPos.Y);
+        Vector2 mousePosition = GetLocalMousePosition();
+        Vector2 mouseGridPosition = PixelToGrid(mousePosition.X, mousePosition.Y);
+        bool isMouseInGrid = IsInGrid(mouseGridPosition.X, mouseGridPosition.Y);
 
         if (!isMouseInGrid) 
         {
             GetViewport().GuiCancelDrag();
-            _finalTouch = GetLocalMousePosition();
-            _isDragging = false;
+            ReleasedTouch();
             return;
         }
 
-        Vector2I currentPos = PixelToGrid(_firstTouch.X, _firstTouch.Y);
-        Vector2I targetPos = PixelToGrid(mousePos.X, mousePos.Y);
+        Vector2I position = PixelToGrid(_firstTouch.X, _firstTouch.Y);
+        Vector2I targetPosition = PixelToGrid(mousePosition.X, mousePosition.Y);
 
-        if (currentPos == targetPos) return;
+        if (position == targetPosition) return;
 
-        SwapOrbs(currentPos, targetPos);
-        TweenSwap(currentPos, targetPos);
+        SwapOrbs(position, targetPosition);
+        TweenSwap(position, targetPosition);
 
         _firstTouch = GetLocalMousePosition();
     }
 
-    private void SwapOrbs(Vector2I currentPos, Vector2I targetPos)
+    private void SwapOrbs(Vector2I position, Vector2I targetPosition)
     {
-        SkillOrb currentOrb = GetSkillOrb(currentPos);
-        SkillOrb targetOrb = GetSkillOrb(targetPos);
+        SkillOrb orb = GetSkillOrb(position);
+        SkillOrb targetOrb = GetSkillOrb(targetPosition);
 
-        if (currentOrb == null || targetOrb == null) return;
+        if (orb == null || targetOrb == null) return;
 
-        _skillOrbs[targetPos.X][targetPos.Y] = currentOrb;
-        _skillOrbs[currentPos.X][currentPos.Y] = targetOrb;
-
-        PrintRich.Print($"Swapped {currentOrb.SkillType} ({currentPos}) with {targetOrb.SkillType} ({targetPos})", TextColor.Yellow);
+        _skillOrbs[position.X][position.Y] = targetOrb;
+        _skillOrbs[targetPosition.X][targetPosition.Y] = orb;
     }
 
-    private void TweenSwap(Vector2I currentPos, Vector2I targetPos)
+    private void TweenSwap(Vector2I position, Vector2I targetPosition)
     {
-        SkillOrb currentOrb = GetSkillOrb(currentPos);
-        SkillOrb targetOrb = GetSkillOrb(targetPos);
+        SkillOrb orb = GetSkillOrb(position);
+        SkillOrb targetOrb = GetSkillOrb(targetPosition);
 
-        if (currentOrb == null || targetOrb == null) return;
+        if (orb == null || targetOrb == null) return;
 
-        Vector2I currentPixelPos = GridToPixel(currentPos.X, currentPos.Y);
-        Vector2I targetPixelPos = GridToPixel(targetPos.X, targetPos.Y);
+        Vector2I pixelPosition = GridToPixel(position.X, position.Y);
+        Vector2I targetPixelPosition = GridToPixel(targetPosition.X, targetPosition.Y);
 
-        TweenPosition(currentOrb, currentPixelPos);
-        TweenPosition(targetOrb, targetPixelPos);
+        TweenPosition(orb, pixelPosition);
+        TweenPosition(targetOrb, targetPixelPosition);
     }
 
-    private void TweenPosition(SkillOrb orb, Vector2 targetPos)
+    private void TweenPosition(SkillOrb orb, Vector2 targetPosition)
     {
         float duration = 0.35f;
         Tween tween = CreateTween().SetParallel().SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(orb, "position", targetPos, duration);
+        tween.TweenProperty(orb, "position", targetPosition, duration);
     }
 
-    private void SwapPositions(Vector2I currentPos, Vector2I currentPixelPos, Vector2I targetPos, Vector2I targetPixelPos)
+    private void SwapPositions(Vector2I position, Vector2I pixelPosition, Vector2I targetPosition, Vector2I targetPixelPosition)
     {
-        _skillOrbs[targetPos.X][targetPos.Y].Position = targetPixelPos;
-        _skillOrbs[currentPos.X][currentPos.Y].Position = currentPixelPos;
+        _skillOrbs[position.X][position.Y].Position = pixelPosition;
+        _skillOrbs[targetPosition.X][targetPosition.Y].Position = targetPixelPosition;
+    }
+    
+    private async void FindMatches()
+    {
+        List<GC.Dictionary<string, Variant>> verticalMatches = FindVerticalMatches();
+        List<GC.Dictionary<string, Variant>> horizontalMatches = FindHorizontalMatches();
+        List<GC.Dictionary<string, Variant>> orbSets = CreateOrbSets(verticalMatches, horizontalMatches);
+
+        if (orbSets.Count <= 0) 
+        {
+            float multiplier = 1;
+            foreach (ComboLabel comboLabel in _comboLabels)
+            {
+                comboLabel.TweenExit();
+                multiplier += _ComboIncrement;
+
+                await ToSignal(comboLabel, Node.SignalName.TreeExited);
+            }
+            _comboLabels.Clear();
+            return;
+        }
+
+        List<GC.Dictionary<string, Variant>> combos = MergeOrbSets(orbSets);
+        combos.OrderBy(combo => combo[_indexesKey].As<GC.Array<Vector2I>>());
+
+        await RunCombosAsync(combos);
+
+        CollapseColumns();
     }
 
-    private void FindMatches()
+    private async Task RunCombosAsync(List<GC.Dictionary<string, Variant>> combos)
     {
+        for (int i = 0; i < combos.Count; i++)
+        {
+            GC.Array<Vector2I> indexes = combos[i][_indexesKey].As<GC.Array<Vector2I>>();
+            ComboLabel comboLabel = await TweenOrbSetAsync(_comboLabels.Count + 1, indexes);
+            _comboLabels.Add(comboLabel);
+
+            DestroyMatched();
+        }
+    }
+
+    private async Task<ComboLabel> TweenOrbSetAsync(int comboCount, GC.Array<Vector2I> indexes)
+    {
+        float duration = 0.5f;
+        foreach (Vector2I index in indexes)
+        {
+            SkillOrb skillOrb = GetSkillOrb(index);
+            skillOrb.IsMatched = true;
+
+            Color targetModulate = Colors.White;
+            targetModulate.A = 0;
+
+            Tween tween = CreateTween();
+            tween.TweenProperty(skillOrb, "modulate", targetModulate, duration);
+        }
+
+        // Use the "center" the pattern
+        Vector2I labelPosition = indexes[1];
+        ComboLabel comboLabel = GetComboLabel(comboCount, labelPosition.X, labelPosition.Y);
+        _comboLabelContainer.AddChild(comboLabel);
+
+        await ToSignal(GetTree().CreateTimer(duration), SceneTreeTimer.SignalName.Timeout);
+
+        return comboLabel;
+    }
+
+    // Creates match indexes from match sets
+    private List<GC.Dictionary<string, Variant>> CreateOrbSets(List<GC.Dictionary<string, Variant>> verticalMatches, List<GC.Dictionary<string, Variant>> horizontalMatches)
+    {
+        List<GC.Dictionary<string, Variant>> matchSets = new List<GC.Dictionary<string, Variant>>();
+
+        // Create vertical match indexes
+        // Uses Y as the starting position. Y = Row position
+        foreach (GC.Dictionary<string, Variant> match in verticalMatches)
+        {
+            SkillType matchType = (SkillType) match[_typeKey].As<int>();
+            Vector2I matchPosition = match[_positionKey].As<Vector2I>();
+            int matchCount = match[_countKey].As<int>();
+
+            GC.Array<Vector2I> matchIndexes = new GC.Array<Vector2I>();
+            for (int i = matchPosition.Y; i < matchCount + matchPosition.Y; i++)
+            {
+                Vector2I matchIndex = new Vector2I(matchPosition.X, i);
+                matchIndexes.Add(matchIndex);
+            }
+
+            GC.Dictionary<string, Variant> matchSet = new GC.Dictionary<string, Variant>
+            {
+                { _typeKey, (int) matchType },
+                { _indexesKey, matchIndexes }
+            };
+
+            matchSets.Add(matchSet);
+        }
+        
+        // Create horizontal match indexes
+        // Uses X for the starting position. X = Column position
+        foreach (GC.Dictionary<string, Variant> match in horizontalMatches)
+        {
+            SkillType matchType = (SkillType) match[_typeKey].As<int>();
+            Vector2I matchPosition = match[_positionKey].As<Vector2I>();
+            int matchCount = match[_countKey].As<int>();
+
+            GC.Array<Vector2I> matchIndexes = new GC.Array<Vector2I>();
+            for (int i = matchPosition.X; i < matchCount + matchPosition.X; i++)
+            {
+                Vector2I matchIndex = new Vector2I(i, matchPosition.Y);
+                matchIndexes.Add(matchIndex);
+            }
+
+            GC.Dictionary<string, Variant> matchSet = new GC.Dictionary<string, Variant>
+            {
+                { _typeKey, (int) matchType },
+                { _indexesKey, matchIndexes }
+            };
+
+            matchSets.Add(matchSet);
+        }
+
+        return matchSets;
+    }
+
+    private List<SkillOrb> GetColumn(int columnIndex)
+    {
+        List<SkillOrb> column = _skillOrbs[columnIndex];
+        PrintRich.PrintOrbs($"Column ({columnIndex}) Index: ", column);
+        return column;
+    }
+
+    private List<SkillOrb> GetRow(int rowIndex)
+    {
+        List<SkillOrb> row = new List<SkillOrb>();
         for (int i = 0; i < _columns; i++)
         {
-            for (int j = 0; j < _rows; j++)
+            SkillOrb orb = _skillOrbs[i][rowIndex];
+            row.Add(orb);
+        }
+        PrintRich.PrintOrbs($"Row ({rowIndex}) Index: ", row);
+        return row;
+    }
+
+    // Goes through each column in the grid and find matches of 3+
+    private List<GC.Dictionary<string, Variant>> FindVerticalMatches()
+    {
+        List<GC.Dictionary<string, Variant>> matches = new List<GC.Dictionary<string, Variant>>();
+        int count = 1;
+
+        for (int i = 0; i < _columns; i++)
+        {
+            SkillOrb previousSkillOrb = new SkillOrb();
+            List<SkillOrb> skillOrbs = GetColumn(i);
+
+            // ! DO NOT REMOVE
+            // Acts as the end to the loop
+            skillOrbs.Add(new SkillOrb());
+
+            foreach (SkillOrb skillOrb in skillOrbs)
             {
-                SkillOrb currentOrb = _skillOrbs[i][j];
-                if (currentOrb == null) continue;
-                
-                if (i > 0 && i < _columns - 1)
+                if (skillOrb.SkillType != previousSkillOrb.SkillType)
                 {
-                    SkillOrb previousOrb = _skillOrbs[i - 1][j];
-                    SkillOrb nextOrb = _skillOrbs[i + 1][j];
-
-                    if (previousOrb != null && nextOrb != null && 
-                        previousOrb.SkillType == currentOrb.SkillType && nextOrb.SkillType == currentOrb.SkillType)
+                    if (count >= 3)
                     {
-                        previousOrb.SetMatch(true);
-                        currentOrb.SetMatch(true);
-                        nextOrb.SetMatch(true);   
+                        GC.Dictionary<string, Variant> match = GetMatchInformation(previousSkillOrb, count);
+                        matches.Add(match);
                     }
+                    previousSkillOrb = skillOrb;
+                    count = 1;
                 }
-                
-                if (j > 0 && j < _rows - 1)
+                else if (skillOrb.SkillType != SkillType.None)
                 {
-                    SkillOrb previousOrb = _skillOrbs[i][j - 1];
-                    SkillOrb nextOrb = _skillOrbs[i][j + 1];
-
-                    if (previousOrb != null && nextOrb != null && 
-                        previousOrb.SkillType == currentOrb.SkillType && nextOrb.SkillType == currentOrb.SkillType)
-                    {
-                        previousOrb.SetMatch(true);
-                        currentOrb.SetMatch(true);
-                        nextOrb.SetMatch(true);   
-                    }
+                    count++;
                 }
             }
         }
+        return matches;
+    }
 
-        _destroyTimer.Start();
+    // Goes through each row in the grid and find matches of 3+
+    private List<GC.Dictionary<string, Variant>> FindHorizontalMatches()
+    {
+        List<GC.Dictionary<string, Variant>> matches = new List<GC.Dictionary<string, Variant>>();
+        int count = 1;
+
+        for (int i = 0; i < _rows; i++)
+        {
+            SkillOrb previousSkillOrb = new SkillOrb();
+            List<SkillOrb> skillOrbs = GetRow(i);
+
+            // ! DO NOT REMOVE
+            // Acts as the end to the loop
+            skillOrbs.Add(new SkillOrb());
+
+            foreach (SkillOrb skillOrb in skillOrbs)
+            {
+                if (skillOrb.SkillType != previousSkillOrb.SkillType)
+                {
+                    if (count >= 3)
+                    {
+                        GC.Dictionary<string, Variant> match = GetMatchInformation(previousSkillOrb, count);
+                        matches.Add(match);
+                    }
+                    previousSkillOrb = skillOrb;
+                    count = 1;
+                }
+                else if (skillOrb.SkillType != SkillType.None)
+                {
+                    count++;
+                }
+            }
+        }
+        return matches;
+    }
+
+    private GC.Dictionary<string, Variant> GetMatchInformation(SkillOrb skillOrb, int count)
+    {
+        Vector2I gridPosition = PixelToGrid(skillOrb.Position.X, skillOrb.Position.Y);
+        GC.Dictionary<string, Variant> match = new GC.Dictionary<string, Variant>
+        {
+            { _typeKey, (int) skillOrb.SkillType },
+            { _positionKey, gridPosition },
+            { _countKey, count }
+        };
+        return match;
+    }
+
+    private List<GC.Dictionary<string, Variant>> MergeOrbSets(List<GC.Dictionary<string, Variant>> orbSets)
+    {
+        List<GC.Dictionary<string, Variant>> mergedOrbSets = new List<GC.Dictionary<string, Variant>>();
+
+        GC.Dictionary<string, Variant> currentOrbSet;
+        while (orbSets.Count > 0)
+        {
+            currentOrbSet = orbSets.First();
+            orbSets.Remove(currentOrbSet);
+            (GC.Dictionary<string, Variant> MergedOrbSet, List<GC.Dictionary<string, Variant>> OrbSets) result = FindSameTypeOrbSet(currentOrbSet, orbSets);
+            mergedOrbSets.Add(result.MergedOrbSet);
+            orbSets = result.OrbSets;
+        }
+
+        return mergedOrbSets;
+    }
+
+    private (GC.Dictionary<string, Variant>, List<GC.Dictionary<string, Variant>>) FindSameTypeOrbSet(GC.Dictionary<string, Variant> currentOrbSet, List<GC.Dictionary<string, Variant>> orbSets)
+    {
+        List<GC.Dictionary<string, Variant>> newOrbSets = new List<GC.Dictionary<string, Variant>>();
+        foreach (GC.Dictionary<string, Variant> orbSet in orbSets)
+        {
+            bool areNeigboringSameTypeBallSets = AreNeigboringSameTypeOrbSets(currentOrbSet, orbSet);
+            if (areNeigboringSameTypeBallSets)
+            {
+                GC.Array<Vector2I> currentOrbSetIndexes = currentOrbSet[_indexesKey].As<GC.Array<Vector2I>>();
+                GC.Array<Vector2I> orbSetIndexes = orbSet[_indexesKey].As<GC.Array<Vector2I>>();
+                foreach (Vector2I index in orbSetIndexes)
+                {
+                    if (!currentOrbSetIndexes.Contains(index)) currentOrbSetIndexes.Add(index);
+                }
+            }
+            else
+            {
+                newOrbSets.Add(orbSet);
+            }
+        }
+
+        return (currentOrbSet, newOrbSets);
+    }
+    
+    private bool AreNeigboringSameTypeOrbSets(GC.Dictionary<string, Variant> orbSetA, GC.Dictionary<string, Variant> orbSetB)
+    {
+        SkillType orbSetTypeA = (SkillType) orbSetA[_typeKey].As<int>();
+        SkillType orbSetTypeB = (SkillType) orbSetB[_typeKey].As<int>();
+
+        if (orbSetTypeA != orbSetTypeB) return false;
+
+        GC.Array<Vector2I> orbSetAIndexes = orbSetA[_indexesKey].As<GC.Array<Vector2I>>();
+        GC.Array<Vector2I> orbSetBIndexes = orbSetB[_indexesKey].As<GC.Array<Vector2I>>();
+
+        for (int i = 0; i < orbSetAIndexes.Count; i++)
+        {
+            for (int j = 0; j < orbSetBIndexes.Count; j++)
+            {
+                Vector2I orbSetAIndex = orbSetAIndexes[i];
+                Vector2I orbSetBIndex = orbSetBIndexes[j];
+
+                float distance = orbSetAIndex.DistanceTo(orbSetBIndex);
+                if (distance <= 1) return true;
+            }
+        }
+        return false;
+    }
+
+    private void SetMatches(SkillOrb orb, SkillOrb previousOrb, SkillOrb nextOrb)
+    {
+        if (previousOrb != null && nextOrb != null && 
+            previousOrb.SkillType == orb.SkillType && nextOrb.SkillType == orb.SkillType)
+        {
+            orb.SetMatch(true);
+            previousOrb.SetMatch(true);
+            nextOrb.SetMatch(true);
+        }
     }
 
     private void DestroyMatched()
@@ -297,10 +560,9 @@ public partial class SkillOrbGrid : Control
         }
 
         PrintRich.Print("Destroyed Matches", TextColor.Yellow);
-
-        _collapseTimer.Start();
     }
 
+    // Grid is created from top to bottom, left to right. Starting from the top left corner.
     private void CollapseColumns()
     {
         for (int i = _columns - 1; i >= 0; i--)
@@ -320,6 +582,7 @@ public partial class SkillOrbGrid : Control
 
                     _skillOrbs[i][j] = aboveSkillOrb;
                     _skillOrbs[i][k] = null;
+ 
                     break;
                 }
             }
@@ -348,22 +611,27 @@ public partial class SkillOrbGrid : Control
                 }
 
                 AddChild(randomSkillOrb);
+                randomSkillOrb.Position = GridToPixel(i, j - _refillYOffset);
+                
+                _comboLabelContainer.MoveToFront();
+
                 _skillOrbs[i][j] = randomSkillOrb;
-                randomSkillOrb.Position = GridToPixel(i, j);
+                Vector2I targetPosition = GridToPixel(i, j);
+                TweenPosition(randomSkillOrb, targetPosition);
+
             }
         }
 
         PrintRich.Print("Columns Refilled", TextColor.Yellow);
+
+        FindMatches();
     }
 
-    private void DestroyTimerTimeout()
+    private ComboLabel GetComboLabel(int comboCount, int x, int y)
     {
-        DestroyMatched();
-    }
-
-    private void CollapseTimerTimeout()
-    {
-        CollapseColumns();
+        ComboLabel comboLabel = PersonaAndPuzzles.PackedScenes.GetComboLabel(comboCount);
+        comboLabel.Position = GridToPixel(x, y);
+        return comboLabel;
     }
 
     private void RefillTimerTimeout()

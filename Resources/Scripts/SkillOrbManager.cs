@@ -2,6 +2,7 @@ using Godot;
 using GC = Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PersonaAndPuzzles;
 
@@ -25,8 +26,8 @@ public partial class SkillOrbManager : Node
     public static SkillOrb GetRandomSkillOrb()
     {
         RandomNumberGenerator RNG = new RandomNumberGenerator();
-        SkillType skillType = (SkillType) RNG.RandiRange(0, Enum.GetNames(typeof(SkillType)).Length - 1);
-        // GD.Print($"Type: {skillType}");
+        SkillType skillType = (SkillType) RNG.RandiRange(0, 3);
+        // SkillType skillType = (SkillType) RNG.RandiRange(0, _skillIconTextures.Count() - 1);
         SkillOrb skillOrb = PersonaAndPuzzles.PackedScenes.GetSkillOrb(skillType);
         return skillOrb;
     }
@@ -35,15 +36,11 @@ public partial class SkillOrbManager : Node
     {
         try
         {
-            // GD.Print($"Type: {skillType}");
             string skillTypeTextureUID = _skillIconTextures[skillType];
-            // GD.Print($"Type UID: {skillTypeTextureUID}");
             return GD.Load<Texture2D>(skillTypeTextureUID);  
         }
         catch (KeyNotFoundException)
         {
-            GD.Print(skillType);
-            GD.Print(Enum.GetName(typeof(SkillType), skillType));
             return null;
         }
 
