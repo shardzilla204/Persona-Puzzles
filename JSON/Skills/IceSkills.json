@@ -1,0 +1,41 @@
+{
+    "IceSkills":
+    [
+        {
+            "Name": "Bufu",
+            "Effect": "Deals light Ice damage to 1 foe.",
+            "Power": 40,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Mabufu",
+            "Effect": "Deals light Ice damage to all foes",
+            "Power": 40,
+            "Accuracy": 95
+        },
+        {
+            "Name": "Bufula",
+            "Effect": "Deals medium Ice damage to 1 foe.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Mabufula",
+            "Effect": "Deals medium Ice damage to all foes.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Bufudyne",
+            "Effect": "Deals heavy Ice damage to 1 foe.",
+            "Power": 160,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Mabufudyne",
+            "Effect": "Deals heavy Ice damage to all foes.",
+            "Power": 160,
+            "Accuracy": 95
+        }
+    ]
+}

@@ -1,0 +1,1027 @@
+{
+    "Persona":
+    [
+        {
+            "Name": "Obariyon",
+            "Arcana": "Fool",
+            "SkillType": "Physical",
+            "Level": 13,
+            "Image": "uid://b2qods3ogbj6r"
+        },
+        {
+            "Name": "Moloch",
+            "Arcana": "Hanged",
+            "SkillType": "Fire",
+            "Level": 60,
+            "Image": "uid://bunn4od22mbih"
+        },
+        {
+            "Name": "Ose",
+            "Arcana": "Fool",
+            "SkillType": "Physical",
+            "Level": 31,
+            "Image": "uid://bwj6fqqloiugf"
+        },
+        {
+            "Name": "Black Frost",
+            "Arcana": "Fool",
+            "SkillType": "Ice",
+            "Level": 38,
+            "Image": "uid://cxudeeh8dvin0"
+        },
+        {
+            "Name": "Black Ooze",
+            "Arcana": "Moon",
+            "SkillType": "Curse",
+            "Level": 18,
+            "Image": "uid://1dtx4wvug8tm"
+        },
+        {
+            "Name": "Black Rider",
+            "Arcana": "Tower",
+            "SkillType": "Curse",
+            "Level": 59,
+            "Image": "uid://d0eoeo8ec42yr"
+        },
+        {
+            "Name": "Decarabia",
+            "Arcana": "Fool",
+            "SkillType": "Fire",
+            "Level": 46,
+            "Image": "uid://c2hbiyplowlni"
+        },
+        {
+            "Name": "Shiki-Ouji",
+            "Arcana": "Fool",
+            "SkillType": "Physical",
+            "Level": 56,
+            "Image": "uid://omhwicp8o8cy"
+        },
+        {
+            "Name": "Jikokuten",
+            "Arcana": "Temperance",
+            "SkillType": "Physical",
+            "Level": 22,
+            "Image": "uid://dsmvymfl5pxkg"
+        },
+        {
+            "Name": "Pixie",
+            "Arcana": "Magician",
+            "SkillType": "Electric",
+            "Level": 2,
+            "Image": "uid://b0wm0re1u5d4s"
+        },
+        {
+            "Name": "Orobas",
+            "Arcana": "Magician",
+            "SkillType": "Fire",
+            "Level": 8,
+            "Image": "uid://ejg4bcp3vv01"
+        },
+        {
+            "Name": "Jack Frost",
+            "Arcana": "Magician",
+            "SkillType": "Ice",
+            "Level": 16,
+            "Image": "uid://c7h0jkl761ywg"
+        },
+        {
+            "Name": "Hua Po",
+            "Arcana": "Magician",
+            "SkillType": "Fire",
+            "Level": 25,
+            "Image": "uid://gcllvcwyfeh1"
+        },
+        {
+            "Name": "Pyro Jack",
+            "Arcana": "Magician",
+            "SkillType": "Fire",
+            "Level": 32,
+            "Image": "uid://67uwujgmbb74"
+        },
+        {
+            "Name": "Rangda",
+            "Arcana": "Magician",
+            "SkillType": "Curse",
+            "Level": 47,
+            "Image": "uid://b178wif1mtkpg"
+        },
+        {
+            "Name": "Surt",
+            "Arcana": "Magician",
+            "SkillType": "Fire",
+            "Level": 69,
+            "Image": "uid://b7ojdfpsbcpd1"
+        },
+        {
+            "Name": "Saki Mitama",
+            "Arcana": "Priestess",
+            "SkillType": "Ice",
+            "Level": 11,
+            "Image": "uid://ducsvj3k36k66"
+        },
+        {
+            "Name": "Sarasvati",
+            "Arcana": "Priestess",
+            "SkillType": "Bless",
+            "Level": 17,
+            "Image": "uid://cdnsud1k6mg3a"
+        },
+        {
+            "Name": "High Pixie",
+            "Arcana": "Priestess",
+            "SkillType": "Wind",
+            "Level": 22,
+            "Image": "uid://beaa1kprh8biw"
+        },
+        {
+            "Name": "Parvati",
+            "Arcana": "Priestess",
+            "SkillType": "Electric",
+            "Level": 37,
+            "Image": "uid://da0pcvi7k6c3l"
+        },
+        {
+            "Name": "Kikuri-Hime",
+            "Arcana": "Priestess",
+            "SkillType": "Ice",
+            "Level": 48,
+            "Image": "uid://bl2y6d0e8qv57"
+        },
+        {
+            "Name": "Hariti",
+            "Arcana": "Priestess",
+            "SkillType": "Electric",
+            "Level": 59,
+            "Image": "uid://dtn24p6fftoj3"
+        },
+        {
+            "Name": "Agathion",
+            "Arcana": "Chariot",
+            "SkillType": "Electric",
+            "Level": 3,
+            "Image": "uid://hun327nbn3fg"
+        },
+        {
+            "Name": "Bicorn",
+            "Arcana": "Hermit",
+            "SkillType": "Wind",
+            "Level": 4,
+            "Image": "uid://bynyqa020a1hl"
+        },
+        {
+            "Name": "Mithras",
+            "Arcana": "Sun",
+            "SkillType": "Fire",
+            "Level": 39,
+            "Image": "uid://v0rtmqcpw4gn"
+        },
+        {
+            "Name": "Scathach",
+            "Arcana": "Priestess",
+            "SkillType": "Wind",
+            "Level": 79,
+            "Image": "uid://f6y2266nyee5"
+        },
+        {
+            "Name": "Yaksini",
+            "Arcana": "Empress",
+            "SkillType": "Ice",
+            "Level": 18,
+            "Image": "uid://6ol6migd43l"
+        },
+        {
+            "Name": "Titania",
+            "Arcana": "Empress",
+            "SkillType": "Wind",
+            "Level": 26,
+            "Image": "uid://b4ilc6ms8hiae"
+        },
+        {
+            "Name": "Skadi",
+            "Arcana": "Empress",
+            "SkillType": "Ice",
+            "Level": 52,
+            "Image": "uid://g4wc21pk0tdv"
+        },
+        {
+            "Name": "Dionysus",
+            "Arcana": "Moon",
+            "SkillType": "Electric",
+            "Level": 48,
+            "Image": "uid://n4ohj8oo6amv"
+        },
+        {
+            "Name": "Isis",
+            "Arcana": "Empress",
+            "SkillType": "Electric",
+            "Level": 79,
+            "Image": "uid://b5lmtpb1ei0jl"
+        },
+        {
+            "Name": "Oberon",
+            "Arcana": "Emperor",
+            "SkillType": "Electric",
+            "Level": 12,
+            "Image": "uid://bsdfhsxeomahk"
+        },
+        {
+            "Name": "King Frost",
+            "Arcana": "Emperor",
+            "SkillType": "Ice",
+            "Level": 22,
+            "Image": "uid://osywkblp405g"
+        },
+        {
+            "Name": "Okuninushi",
+            "Arcana": "Emperor",
+            "SkillType": "Electric",
+            "Level": 41,
+            "Image": "uid://se0dnm3bqkdw"
+        },
+        {
+            "Name": "Thoth",
+            "Arcana": "Emperor",
+            "SkillType": "Electric",
+            "Level": 45,
+            "Image": "uid://c1e8kkxqkehi5"
+        },
+        {
+            "Name": "Barong",
+            "Arcana": "Emperor",
+            "SkillType": "Electric",
+            "Level": 65,
+            "Image": "uid://dyrnq5rigpys1"
+        },
+        {
+            "Name": "Anzu",
+            "Arcana": "Hierophant",
+            "SkillType": "Wind",
+            "Level": 15,
+            "Image": "uid://c0nrteve0jbex"
+        },
+        {
+            "Name": "Shiisaa",
+            "Arcana": "Hierophant",
+            "SkillType": "Electric",
+            "Level": 21,
+            "Image": "uid://bj0obbj35e5k7"
+        },
+        {
+            "Name": "Unicorn",
+            "Arcana": "Hierophant",
+            "SkillType": "Bless",
+            "Level": 29,
+            "Image": "uid://ciyfajqjglt6n"
+        },
+        {
+            "Name": "Flauros",
+            "Arcana": "Hierophant",
+            "SkillType": "Physical",
+            "Level": 36,
+            "Image": "uid://du7awmv48qni3"
+        },
+        {
+            "Name": "Cerberus",
+            "Arcana": "Hierophant",
+            "SkillType": "Fire",
+            "Level": 52,
+            "Image": "uid://d2uv4duwgcmqj"
+        },
+        {
+            "Name": "Daisoujou",
+            "Arcana": "Hierophant",
+            "SkillType": "Bless",
+            "Level": 60,
+            "Image": "uid://biexuecswa2p7"
+        },
+        {
+            "Name": "Kohryu",
+            "Arcana": "Hierophant",
+            "SkillType": "Electric",
+            "Level": 76,
+            "Image": "uid://5p7ueyshpd1k"
+        },
+        {
+            "Name": "Queen Mab",
+            "Arcana": "Lovers",
+            "SkillType": "Fire",
+            "Level": 25,
+            "Image": "uid://bbpg0pxl5xaqg"
+        },
+        {
+            "Name": "Leanan Sidhe",
+            "Arcana": "Lovers",
+            "SkillType": "Ice",
+            "Level": 42,
+            "Image": "uid://cwlhyu5rv42l1"
+        },
+        {
+            "Name": "Slime",
+            "Arcana": "Chariot",
+            "SkillType": "Curse",
+            "Level": 2,
+            "Image": "uid://ca30mw1yt3oll"
+        },
+        {
+            "Name": "Eligor",
+            "Arcana": "Chariot",
+            "SkillType": "Physical",
+            "Level": 12,
+            "Image": "uid://c71gadsmlvt4v"
+        },
+        {
+            "Name": "Ara Mitama",
+            "Arcana": "Chariot",
+            "SkillType": "Fire",
+            "Level": 18,
+            "Image": "uid://be11rkx2hogq"
+        },
+        {
+            "Name": "Kin-ki",
+            "Arcana": "Chariot",
+            "SkillType": "Physical",
+            "Level": 54,
+            "Image": "uid://bvgq6lhsgfuv0"
+        },
+        {
+            "Name": "Thor",
+            "Arcana": "Chariot",
+            "SkillType": "Electric",
+            "Level": 65,
+            "Image": "uid://coxccq80fo480"
+        },
+        {
+            "Name": "Angel",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 4,
+            "Image": "uid://blfy538wnkk4k"
+        },
+        {
+            "Name": "Archangel",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 11,
+            "Image": "uid://cjtls0n8maokq"
+        },
+        {
+            "Name": "Principality",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 19,
+            "Image": "uid://gren8yl5xboc"
+        },
+        {
+            "Name": "Power",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 27,
+            "Image": "uid://bqitcibvesqq1"
+        },
+        {
+            "Name": "Dominion",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 38,
+            "Image": "uid://n4ohj8oo6amv"
+        },
+        {
+            "Name": "Throne",
+            "Arcana": "Justice",
+            "SkillType": "Fire",
+            "Level": 49,
+            "Image": "uid://dm1qbllynoipd"
+        },
+        {
+            "Name": "Melchizedek",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 66,
+            "Image": "uid://woeqtjkfinui"
+        },
+        {
+            "Name": "Sraosha",
+            "Arcana": "Justice",
+            "SkillType": "Bless",
+            "Level": 74,
+            "Image": "No Image"
+        },
+        {
+            "Name": "Hecatoncheires",
+            "Arcana": "Hanged",
+            "SkillType": "Physical",
+            "Level": 42,
+            "Image": "uid://v6525sqnaxcj"
+        },
+        {
+            "Name": "Ippon-Datara",
+            "Arcana": "Hermit",
+            "SkillType": "Physical",
+            "Level": 17,
+            "Image": "uid://becsk0m17vevp"
+        },
+        {
+            "Name": "Lamia",
+            "Arcana": "Hermit",
+            "SkillType": "Fire",
+            "Level": 26,
+            "Image": "uid://b23ab2hq8at1b"
+        },
+        {
+            "Name": "Mothman",
+            "Arcana": "Hermit",
+            "SkillType": "Electric",
+            "Level": 33,
+            "Image": "uid://fv1ritb0na4h"
+        },
+        {
+            "Name": "Koumokuten",
+            "Arcana": "Hermit",
+            "SkillType": "Physical",
+            "Level": 49,
+            "Image": "uid://f0ptf28sa3s0"
+        },
+        {
+            "Name": "Nebiros",
+            "Arcana": "Hermit",
+            "SkillType": "Curse",
+            "Level": 63,
+            "Image": "uid://c8etye2f0ehq"
+        },
+        {
+            "Name": "Arahabaki",
+            "Arcana": "Hermit",
+            "SkillType": "Physical",
+            "Level": 73,
+            "Image": "uid://dj0fc5gmq55dg"
+        },
+        {
+            "Name": "Clotho",
+            "Arcana": "Fortune",
+            "SkillType": "Bless",
+            "Level": 44,
+            "Image": "uid://be7jwmhqmenqg"
+        },
+        {
+            "Name": "Lachesis",
+            "Arcana": "Fortune",
+            "SkillType": "Ice",
+            "Level": 51,
+            "Image": "uid://b63au3igp171"
+        },
+        {
+            "Name": "Atropos",
+            "Arcana": "Fortune",
+            "SkillType": "Electric",
+            "Level": 65,
+            "Image": "uid://c70mabhh0i8nu"
+        },
+        {
+            "Name": "Norn",
+            "Arcana": "Fortune",
+            "SkillType": "Wind",
+            "Level": 72,
+            "Image": "uid://cy6ep2klaeo3w"
+        },
+        {
+            "Name": "Sandman",
+            "Arcana": "Strength",
+            "SkillType": "Wind",
+            "Level": 5,
+            "Image": "uid://bp7aeyfibif2l"
+        },
+        {
+            "Name": "Valkyrie",
+            "Arcana": "Strength",
+            "SkillType": "Physical",
+            "Level": 8,
+            "Image": "uid://tmoybhjspl2u"
+        },
+        {
+            "Name": "Rakshasa",
+            "Arcana": "Strength",
+            "SkillType": "Physical",
+            "Level": 23,
+            "Image": "uid://dy0c1slragh32"
+        },
+        {
+            "Name": "Kushi Mitama",
+            "Arcana": "Strength",
+            "SkillType": "Ice",
+            "Level": 28,
+            "Image": "uid://i6yxliwrdhur"
+        },
+        {
+            "Name": "Oni",
+            "Arcana": "Strength",
+            "SkillType": "Physical",
+            "Level": 30,
+            "Image": "uid://dj31t44n0qv33"
+        },
+        {
+            "Name": "Siegfried",
+            "Arcana": "Strength",
+            "SkillType": "Physical",
+            "Level": 63,
+            "Image": "No Image"
+        },
+        {
+            "Name": "Berith",
+            "Arcana": "Hanged",
+            "SkillType": "Physical",
+            "Level": 15,
+            "Image": "uid://cpffkrbk1ubd5"
+        },
+        {
+            "Name": "Makami",
+            "Arcana": "Hanged",
+            "SkillType": "Fire",
+            "Level": 27,
+            "Image": "uid://bqnmby8d5qsw0"
+        },
+        {
+            "Name": "Koppa Tengu",
+            "Arcana": "Temperance",
+            "SkillType": "Wind",
+            "Level": 11,
+            "Image": "uid://dxyapkcwsmx2k"
+        },
+        {
+            "Name": "Orthrus",
+            "Arcana": "Hanged",
+            "SkillType": "Fire",
+            "Level": 39,
+            "Image": "uid://2vwewpoqq3mp"
+        },
+        {
+            "Name": "Hell Biker",
+            "Arcana": "Hanged",
+            "SkillType": "Fire",
+            "Level": 66,
+            "Image": "uid://bx0g6icy82ghs"
+        },
+        {
+            "Name": "Mokoi",
+            "Arcana": "Death",
+            "SkillType": "Physical",
+            "Level": 14,
+            "Image": "uid://csax2yhg5xv7t"
+        },
+        {
+            "Name": "Matador",
+            "Arcana": "Death",
+            "SkillType": "Curse",
+            "Level": 24,
+            "Image": "uid://cgl7s4lp3h7dx"
+        },
+        {
+            "Name": "White Rider",
+            "Arcana": "Death",
+            "SkillType": "Curse",
+            "Level": 58,
+            "Image": "No Image"
+        },
+        {
+            "Name": "Alice",
+            "Arcana": "Death",
+            "SkillType": "Curse",
+            "Level": 72,
+            "Image": "uid://bcig151ilmh0x"
+        },
+        {
+            "Name": "Apsaras",
+            "Arcana": "Temperance",
+            "SkillType": "Ice",
+            "Level": 4,
+            "Image": "uid://bu70ddvdhuf1m"
+        },
+        {
+            "Name": "Nigi Mitama",
+            "Arcana": "Temperance",
+            "SkillType": "Bless",
+            "Level": 23,
+            "Image": "uid://dsuxypnv1ktsv"
+        },
+        {
+            "Name": "Mitra",
+            "Arcana": "Temperance",
+            "SkillType": "Bless",
+            "Level": 31,
+            "Image": "uid://cc3euqe4sbwgb"
+        },
+        {
+            "Name": "Genbu",
+            "Arcana": "Temperance",
+            "SkillType": "Ice",
+            "Level": 40,
+            "Image": "uid://b56knr6datd2m"
+        },
+        {
+            "Name": "Bugs",
+            "Arcana": "Fool",
+            "SkillType": "Curse",
+            "Level": 49,
+            "Image": "uid://co3iy6fhneo0b"
+        },
+        {
+            "Name": "Seiryu",
+            "Arcana": "Temperance",
+            "SkillType": "Ice",
+            "Level": 47,
+            "Image": "uid://bivrmvirntmjp"
+        },
+        {
+            "Name": "Sudama",
+            "Arcana": "Hermit",
+            "SkillType": "Wind",
+            "Level": 17,
+            "Image": "uid://eo5p6gblyfhy"
+        },
+        {
+            "Name": "Dakini",
+            "Arcana": "Empress",
+            "SkillType": "Physical",
+            "Level": 50,
+            "Image": "uid://b8n401je7usay"
+        },
+        {
+            "Name": "Suzaku",
+            "Arcana": "Temperance",
+            "SkillType": "Fire",
+            "Level": 54,
+            "Image": "uid://bqnhp357t2g2v"
+        },
+        {
+            "Name": "Inugami",
+            "Arcana": "Hanged",
+            "SkillType": "Physical",
+            "Level": 14,
+            "Image": "uid://dnh4anlw0wldr"
+        },
+        {
+            "Name": "Nue",
+            "Arcana": "Death",
+            "SkillType": "Curse",
+            "Level": 20,
+            "Image": "uid://dolqasatfut43"
+        },
+        {
+            "Name": "Byakko",
+            "Arcana": "Temperance",
+            "SkillType": "Physical",
+            "Level": 62,
+            "Image": "uid://c6tq7svnhflvo"
+        },
+        {
+            "Name": "Yurlungur",
+            "Arcana": "Temperance",
+            "SkillType": "Electric",
+            "Level": 69,
+            "Image": "uid://dwsxs1rc2w5tw"
+        },
+        {
+            "Name": "Vishnu",
+            "Arcana": "Temperance",
+            "SkillType": "Wind",
+            "Level": 73,
+            "Image": "uid://b0l1oay364uhg"
+        },
+        {
+            "Name": "Lilim",
+            "Arcana": "Devil",
+            "SkillType": "Ice",
+            "Level": 10,
+            "Image": "uid://crglho7dgvynh"
+        },
+        {
+            "Name": "Incubus",
+            "Arcana": "Devil",
+            "SkillType": "Curse",
+            "Level": 28,
+            "Image": "uid://t857f8cq8n5d"
+        },
+        {
+            "Name": "Pazuzu",
+            "Arcana": "Devil",
+            "SkillType": "Curse",
+            "Level": 37,
+            "Image": "uid://b376lwdhulgxo"
+        },
+        {
+            "Name": "Succubus",
+            "Arcana": "Devil",
+            "SkillType": "Curse",
+            "Level": 44,
+            "Image": "uid://bka3yvxxlhb0n"
+        },
+        {
+            "Name": "Lilith",
+            "Arcana": "Devil",
+            "SkillType": "Electric",
+            "Level": 53,
+            "Image": "uid://jnnixjou7eeo"
+        },
+        {
+            "Name": "Belphegor",
+            "Arcana": "Devil",
+            "SkillType": "Ice",
+            "Level": 61,
+            "Image": "uid://jx4wy6bom84n"
+        },
+        {
+            "Name": "Belial",
+            "Arcana": "Devil",
+            "SkillType": "Curse",
+            "Level": 68,
+            "Image": "uid://cfhp5vewxwxf8"
+        },
+        {
+            "Name": "Bishamonten",
+            "Arcana": "Hierophant",
+            "SkillType": "Fire",
+            "Level": 67,
+            "Image": "uid://5xnphyfwycxf"
+        },
+        {
+            "Name": "Cu Chulainn",
+            "Arcana": "Tower",
+            "SkillType": "Physical",
+            "Level": 46,
+            "Image": "uid://cu13vnhi4g7i4"
+        },
+        {
+            "Name": "Onmoraki",
+            "Arcana": "Moon",
+            "SkillType": "Curse",
+            "Level": 12,
+            "Image": "uid://b5jd3s6gbtf5w"
+        },
+        {
+            "Name": "Yoshitsune",
+            "Arcana": "Tower",
+            "SkillType": "Physical",
+            "Level": 75,
+            "Image": "uid://dquaeoeee6sd5"
+        },
+        {
+            "Name": "Shiva",
+            "Arcana": "Tower",
+            "SkillType": "Electric",
+            "Level": 80,
+            "Image": "No Image"
+        },
+        {
+            "Name": "Kaiwan",
+            "Arcana": "Star",
+            "SkillType": "Curse",
+            "Level": 24,
+            "Image": "uid://xndfhyqkjj1g"
+        },
+        {
+            "Name": "Neko Shogun",
+            "Arcana": "Star",
+            "SkillType": "Electric",
+            "Level": 32,
+            "Image": "uid://dek65405owa27"
+        },
+        {
+            "Name": "Nekomata",
+            "Arcana": "Magician",
+            "SkillType": "Wind",
+            "Level": 17,
+            "Image": "uid://8kblxs0uvq2k"
+        },
+        {
+            "Name": "Kodama",
+            "Arcana": "Star",
+            "SkillType": "Wind",
+            "Level": 11,
+            "Image": "uid://btm2tucwqb7vw"
+        },
+        {
+            "Name": "Fuu-ki",
+            "Arcana": "Star",
+            "SkillType": "Wind",
+            "Level": 43,
+            "Image": "uid://c5et27moa0aot"
+        },
+        {
+            "Name": "Ganesha",
+            "Arcana": "Star",
+            "SkillType": "Physical",
+            "Level": 50,
+            "Image": "uid://bx7qgf7vsgmfx"
+        },
+        {
+            "Name": "Garuda",
+            "Arcana": "Star",
+            "SkillType": "Wind",
+            "Level": 57,
+            "Image": "uid://b5vxcll3j6pww"
+        },
+        {
+            "Name": "Andras",
+            "Arcana": "Moon",
+            "SkillType": "Ice",
+            "Level": 20,
+            "Image": "uid://dlgfmlcqkc8wm"
+        },
+        {
+            "Name": "Yamata-no-Orochi",
+            "Arcana": "Moon",
+            "SkillType": "Ice",
+            "Level": 34,
+            "Image": "uid://j2kh844avoss"
+        },
+        {
+            "Name": "Girimehkala",
+            "Arcana": "Moon",
+            "SkillType": "Physical",
+            "Level": 48,
+            "Image": "uid://cly6k4lh23t2j"
+        },
+        {
+            "Name": "Sui-ki",
+            "Arcana": "Moon",
+            "SkillType": "Ice",
+            "Level": 57,
+            "Image": "uid://bkccppyk6yirk"
+        },
+        {
+            "Name": "Seth",
+            "Arcana": "Moon",
+            "SkillType": "Physical",
+            "Level": 68,
+            "Image": "uid://dwtv02xq7wvmj"
+        },
+        {
+            "Name": "Sandalphon",
+            "Arcana": "Moon",
+            "SkillType": "Bless",
+            "Level": 84,
+            "Image": "uid://cadxr0ow3iaa1"
+        },
+        {
+            "Name": "Silky",
+            "Arcana": "Priestess",
+            "SkillType": "Ice",
+            "Level": 6,
+            "Image": "uid://dnwxqxw2h1g6m"
+        },
+        {
+            "Name": "Phoenix",
+            "Arcana": "Sun",
+            "SkillType": "Fire",
+            "Level": 20,
+            "Image": "uid://dgors76irfv85"
+        },
+        {
+            "Name": "Red Rider",
+            "Arcana": "Tower",
+            "SkillType": "Fire",
+            "Level": 41,
+            "Image": "uid://d237rj351wbqi"
+        },
+        {
+            "Name": "Yatagarasu",
+            "Arcana": "Sun",
+            "SkillType": "Fire",
+            "Level": 40,
+            "Image": "uid://je4cj174f62l"
+        },
+        {
+            "Name": "Jatayu",
+            "Arcana": "Sun",
+            "SkillType": "Wind",
+            "Level": 61,
+            "Image": "uid://bri60ktcesa78"
+        },
+        {
+            "Name": "Horus",
+            "Arcana": "Sun",
+            "SkillType": "Bless",
+            "Level": 68,
+            "Image": "uid://8snurh07tj1"
+        },
+        {
+            "Name": "Anubis",
+            "Arcana": "Judgement",
+            "SkillType": "Curse",
+            "Level": 59,
+            "Image": "uid://cnpj1boy4rx8q"
+        },
+        {
+            "Name": "Pale Rider",
+            "Arcana": "Jester",
+            "SkillType": "Curse",
+            "Level": 34,
+            "Image": "uid://nyko04frj626"
+        },
+        {
+            "Name": "Baphomet",
+            "Arcana": "Jester",
+            "SkillType": "Fire",
+            "Level": 47,
+            "Image": "uid://cgl4jsmbcku55"
+        },
+        {
+            "Name": "Kumbhanda",
+            "Arcana": "Jester",
+            "SkillType": "Physical",
+            "Level": 55,
+            "Image": "uid://cdeixlgusf5wb"
+        },
+        {
+            "Name": "Chernobog",
+            "Arcana": "Jester",
+            "SkillType": "Physical",
+            "Level": 62,
+            "Image": "No Image"
+        },
+        {
+            "Name": "Ame-no-Uzume",
+            "Arcana": "Aeon",
+            "SkillType": "Electric",
+            "Level": 18,
+            "Image": "uid://dqhtkx7l770j4"
+        },
+        {
+            "Name": "Zouchouten",
+            "Arcana": "Strength",
+            "SkillType": "Electric",
+            "Level": 31,
+            "Image": "uid://dwsxs1rc2w5tw"
+        },
+        {
+            "Name": "Narcissus",
+            "Arcana": "Aeon",
+            "SkillType": "Wind",
+            "Level": 24,
+            "Image": "uid://cfcmyk0714q5y"
+        },
+        {
+            "Name": "Naga",
+            "Arcana": "Hermit",
+            "SkillType": "Electric",
+            "Level": 24,
+            "Image": "uid://bln5sq5xtdw33"
+        },
+        {
+            "Name": "Raja Naga",
+            "Arcana": "Aeon",
+            "SkillType": "Electric",
+            "Level": 37,
+            "Image": "uid://bnnhpfmtlvaff"
+        },
+        {
+            "Name": "Kushinada",
+            "Arcana": "Aeon",
+            "SkillType": "Ice",
+            "Level": 44,
+            "Image": "uid://da6teofq3q3ae"
+        },
+        {
+            "Name": "Quetzalcoatl",
+            "Arcana": "Aeon",
+            "SkillType": "Wind",
+            "Level": 51,
+            "Image": "uid://cvmlffomur3sr"
+        },
+        {
+            "Name": "Lakshmi",
+            "Arcana": "Aeon",
+            "SkillType": "Ice",
+            "Level": 65,
+            "Image": "uid://dj7jbhqyti3ay"
+        },
+        {
+            "Name": "Mandrake",
+            "Arcana": "Death",
+            "SkillType": "Physical",
+            "Level": 3,
+            "Image": "uid://c2degibtikb3a"
+        },
+        {
+            "Name": "Koropokguru",
+            "Arcana": "Hermit",
+            "SkillType": "Ice",
+            "Level": 9,
+            "Image": "uid://br8fxxm32r110"
+        },
+        {
+            "Name": "Kelpie",
+            "Arcana": "Strength",
+            "SkillType": "Wind",
+            "Level": 6,
+            "Image": "uid://cuvlqxoawxg6m"
+        },
+        {
+            "Name": "Setanta",
+            "Arcana": "Emperor",
+            "SkillType": "Physical",
+            "Level": 25,
+            "Image": "uid://buoipkxt135wh"
+        }
+    ]
+}

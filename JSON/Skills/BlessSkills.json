@@ -1,0 +1,41 @@
+{
+    "BlessSkills":
+    [
+        {
+            "Name": "Kouha",
+            "Effect": "Deals light Bless damage to 1 foe.",
+            "Power": 40,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Makouha",
+            "Effect": "Deals light Bless damage to all foes",
+            "Power": 40,
+            "Accuracy": 95
+        },
+        {
+            "Name": "Kouga",
+            "Effect": "Deals medium Bless damage to 1 foe.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Makouga",
+            "Effect": "Deals medium Bless damage to all foes.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Kougaon",
+            "Effect": "Deals heavy Bless damage to 1 foe.",
+            "Power": 160,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Makougaon",
+            "Effect": "Deals heavy Bless damage to all foes.",
+            "Power": 160,
+            "Accuracy": 95
+        }
+    ]
+}

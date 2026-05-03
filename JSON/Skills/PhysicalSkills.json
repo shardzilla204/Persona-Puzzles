@@ -1,0 +1,244 @@
+{
+    "PhysicalSkills":
+    [
+        {
+            "Name": "Bash",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 60,
+            "Accuracy": 100,
+            "Critical": 20
+        },
+        {
+            "Name": "Cleave",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 65,
+            "Accuracy": 100,
+            "Critical": 20
+        },
+        {
+            "Name": "Skewer",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 70,
+            "Accuracy": 85,
+            "Critical": 20
+        },
+        {
+            "Name": "Sonic Punch",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 75,
+            "Accuracy": 90,
+            "Critical": 25
+        },
+        {
+            "Name": "Double Fangs",
+            "Effect": "Deals light Physical damage to 1 foe 2x.",
+            "Power": 40,
+            "Accuracy": 90,
+            "Critical": 15
+        },
+        {
+            "Name": "Single Shot",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 85,
+            "Accuracy": 90,
+            "Critical": 25
+        },
+        {
+            "Name": "Assault Dive",
+            "Effect": "Deals light Physical damage to 1 foe.",
+            "Power": 100,
+            "Accuracy": 90,
+            "Critical": 20
+        },
+        {
+            "Name": "Twin Shot",
+            "Effect": "Deals light Physical damage to 1 foe 2x.",
+            "Power": 55,
+            "Accuracy": 90,
+            "Critical": 10
+        },
+        {
+            "Name": "Kill Rush",
+            "Effect": "Deals light Physical damage to 1 foe 1x to 3x.",
+            "Power": 50,
+            "Accuracy": 90,
+            "Critical": 10
+        },
+        {
+            "Name": "Power Slash",
+            "Effect": "Deals medium Physical damage to 1 foe.",
+            "Power": 120,
+            "Accuracy": 80,
+            "Critical": 25
+        },
+        {
+            "Name": "Fatal End",
+            "Effect": "Deals medium Physical damage to 1 foe.",
+            "Power": 125,
+            "Accuracy": 90,
+            "Critical": 20
+        },
+        {
+            "Name": "Black Spot",
+            "Effect": "Deals medium Physical damage to 1 foe.",
+            "Power": 130,
+            "Accuracy": 80,
+            "Critical": 35
+        },
+        {
+            "Name": "Mighty Swing",
+            "Effect": "Deals medium Physical damage to 1 foe.",
+            "Power": 135,
+            "Accuracy": 90,
+            "Critical": 30
+        },
+        {
+            "Name": "Torrent Shot",
+            "Effect": "Deals medium Physical damage to 1 foe 2x to 3x.",
+            "Power": 45,
+            "Accuracy": 90,
+            "Critical": 8
+        },
+        {
+            "Name": "Tempest Slash",
+            "Effect": "Deals heavy Physical damage to 1 foe 1x to 2x.",
+            "Power": 90,
+            "Accuracy": 85,
+            "Critical": 10
+        },
+        {
+            "Name": "Gigantic Fist",
+            "Effect": "Deals heavy Physical damage to 1 foe.",
+            "Power": 330,
+            "Accuracy": 90,
+            "Critical": 25
+        },
+        {
+            "Name": "Brave Blade",
+            "Effect": "Deals severe Physical damage to 1 foe.",
+            "Power": 700,
+            "Accuracy": 90,
+            "Critical": 20
+        },
+        {
+            "Name": "God's Hand",
+            "Effect": "Deals severe Physical damage to 1 foe.",
+            "Power": 800,
+            "Accuracy": 90,
+            "Critical": 15
+        },
+        {
+            "Name": "Primal Force",
+            "Effect": "Deals severe Physical damage to 1 foe.",
+            "Power": 1100,
+            "Accuracy": 90,
+            "Critical": 25
+        },
+        {
+            "Name": "Heaven's Blade",
+            "Effect": "Deals heavy Physical damage to 1 foe.",
+            "Power": 230,
+            "Accuracy": 90,
+            "Critical": 30,
+            "IsTransferable": false
+        },
+        {
+            "Name": "Gale Slash",
+            "Effect": "Deals light Physical damage to all foes.",
+            "Power": 80,
+            "Accuracy": 85,
+            "Critical": 5
+        },
+        {
+            "Name": "Rampage",
+            "Effect": "Deals light Physical damage to all foes 1x to 3x.",
+            "Power": 40,
+            "Accuracy": 75,
+            "Critical": 5
+        },
+        {
+            "Name": "Swift Strike",
+            "Effect": "Deals light Physical damage to all foes 1x to 2x.",
+            "Power": 65,
+            "Accuracy": 80,
+            "Critical": 5
+        },
+        {
+            "Name": "Herculean Strike",
+            "Effect": "Deals medium Physical damage to all foes.",
+            "Power": 90,
+            "Accuracy": 80,
+            "Critical": 5
+        },
+        {
+            "Name": "Heat Wave",
+            "Effect": "Deals medium Physical damage to all foes.",
+            "Power": 125,
+            "Accuracy": 75,
+            "Critical": 5
+        },
+        {
+            "Name": "Blade of Fury",
+            "Effect": "Deals medium Physical damage to all foes 2x to 4x.",
+            "Power": 50,
+            "Accuracy": 90,
+            "Critical": 5
+        },
+        {
+            "Name": "Vicious Strike",
+            "Effect": "Deals heavy Physical damage to all foes.",
+            "Power": 140,
+            "Accuracy": 90,
+            "Critical": 5
+        },
+        {
+            "Name": "Deathbound",
+            "Effect": "Deals heavy Physical damage to all foes.",
+            "Power": 145,
+            "Accuracy": 80,
+            "Critical": 5
+        },
+        {
+            "Name": "Arrow Rain",
+            "Effect": "Deals heavy Physical damage to all foes 2x.",
+            "Power": 80,
+            "Accuracy": 75,
+            "Critical": 5
+        },
+        {
+            "Name": "Aeon Rain",
+            "Effect": "Deals medium Physical damage to all foes 1x to 3x.",
+            "Power": 70,
+            "Accuracy": 75,
+            "Critical": 5
+        },
+        {
+            "Name": "Myriad Arrows",
+            "Effect": "Deals heavy Physical damage to all foes 1x to 3x.",
+            "Power": 75,
+            "Accuracy": 85,
+            "Critical": 5
+        },
+        {
+            "Name": "Akasha Arts",
+            "Effect": "Deals heavy Physical damage to all foes 1x to 2x.",
+            "Power": 130,
+            "Accuracy": 80,
+            "Critical": 5
+        },
+        {
+            "Name": "Agneyastra",
+            "Effect": "Deals heavy Physical damage to all foes 1x to 3x.",
+            "Power": 120,
+            "Accuracy": 75,
+            "Critical": 5
+        },
+        {
+            "Name": "Vorpal Blade",
+            "Effect": "Deals heavy Physical damage to all foes.",
+            "Power": 200,
+            "Accuracy": 80,
+            "Critical": 5
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "WindSkills":
+    [
+        {
+            "Name": "Garu",
+            "Effect": "Deals light Wind damage to 1 foe.",
+            "Power": 40,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Magaru",
+            "Effect": "Deals light Wind damage to all foes",
+            "Power": 40,
+            "Accuracy": 95
+        },
+        {
+            "Name": "Garula",
+            "Effect": "Deals medium Wind damage to 1 foe.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Magarula",
+            "Effect": "Deals medium Wind damage to all foes.",
+            "Power": 100,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Garudyne",
+            "Effect": "Deals heavy Wind damage to 1 foe.",
+            "Power": 160,
+            "Accuracy": 98
+        },
+        {
+            "Name": "Magarudyne",
+            "Effect": "Deals heavy Wind damage to all foes.",
+            "Power": 160,
+            "Accuracy": 95
+        }
+    ]
+}

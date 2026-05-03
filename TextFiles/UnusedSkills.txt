@@ -1,0 +1,138 @@
+Single Target Physical Skills:
+{
+    "Name": "Arm Chopper",
+    "Effect": "Deals light Phys damage to 1 foe 2x with a chance of Fear.",
+    "Power": 45,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Hysterical Slap",
+    "Effect": "Deals light Phys damage to 1 foe 2x with a chance of Rage.",
+    "Power": 50,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Poison Skewer",
+    "Effect": "Deals light Phys damage to 1 foe with a chance of Poison.",
+    "Power": 60,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Skull Cracker",
+    "Effect": "Deals light Phys damage to 1 foe with a chance of Confusion.",
+    "Power": 60,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Muzzle Shot",
+    "Effect": "Deals light Phys damage to 1 foe with a chance of Silence.",
+    "Power": 60,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Cell Breaker",
+    "Effect": "Deals light Phys damage to 1 foe with a chance of Enervation.",
+    "Power": 80,
+    "Accuracy": 90,
+    "Critical": 5
+},
+{
+    "Name": "Brain Shake",
+    "Effect": "Deals light Phys damage to 1 foe 1x to 3x with a chance of Exhaustion.",
+    "Power": 80,
+    "Accuracy": 100,
+    "Critical": 5
+},
+{
+    "Name": "Cruel Attack",
+    "Effect": "Deals medium Phys damage to 1 foe.",
+    "Power": 120,
+    "Accuracy": 90,
+    "Critical": 35
+},
+{
+    "Name": "Poison Arrow",
+    "Effect": "Deals medium Phys damage to 1 foe with a chance of Poison.",
+    "Power": 130,
+    "Accuracy": 85,
+    "Critical": 5
+},
+{
+    "Name": "Vile Assault",
+    "Effect": "Deals heavy Phys damage to 1 foe.",
+    "Power": 350,
+    "Accuracy": 95,
+    "Critical": 5
+},
+{
+    "Name": "Rainy Death",
+    "Effect": "Deals heavy Phys damage to 1 foe.",
+    "Power": 175,
+    "Accuracy": 85,
+    "Critical": 35
+},
+
+Multi-Target Physical Skills:
+{
+    "Name": "Mind Slice",
+    "Effect": "Deals medium Physical damage to all foes with a chance of Confusion.",
+    "Power": 90,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Crazy Chain",
+    "Effect": "Deals medium Physical damage to all foes with a chance of Rage.",
+    "Power": 90,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Seal Bomb",
+    "Effect": "Deals medium Physical damage to all foes with a chance of Silence.",
+    "Power": 90,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Atom Smasher",
+    "Effect": "Deals medium Physical damage to all foes 1x to 2x with a chance of Fear.",
+    "Power": 50,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Mustard Bomb",
+    "Effect": "Deals medium Physical damage to all foes with a chance of Enervation.",
+    "Power": 110,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Navas Nebula",
+    "Effect": "Deals medium Physical damage to all foes with a chance of Exhaustion.",
+    "Power": 110,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Virus Wave",
+    "Effect": "Deals heavy Physical damage to all foes with a chance of Poison.",
+    "Power": 90,
+    "Accuracy": 80,
+    "Critical": 5
+},
+{
+    "Name": "Blight",
+    "Effect": "Deals heavy Physical damage to all foes with a chance of Poison.",
+    "Power": 130,
+    "Accuracy": 80,
+    "Critical": 5
+},
+
+# Persona Icons Left On "N"

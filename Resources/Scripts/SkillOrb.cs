@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 namespace PersonaAndPuzzles;
 
@@ -7,23 +6,16 @@ public enum SkillType
 {
     None = -1,
     Physical,
-    Pierce,
     Fire,
     Ice,
     Wind,
-    Thunder,
+    Electric,
     Bless,
     Curse,
-    Nuclear,
-    Psychic,
-    Almighty
 }
 
 public partial class SkillOrb : TextureRect
 {
-    [Export]
-    private TextureRect _skillIcon;
-
     [Export]
     public SkillType SkillType = SkillType.None;
 
@@ -33,7 +25,7 @@ public partial class SkillOrb : TextureRect
 
     public override void _Ready()
     {
-        _skillIcon.Texture = SkillOrbManager.GetSkillTypeTexture(SkillType);
+        Texture = SkillOrbManager.GetSkillTypeTexture(SkillType);
     }
 
     public override void _Notification(int what)
@@ -49,9 +41,11 @@ public partial class SkillOrb : TextureRect
     public override Variant _GetDragData(Vector2 atPosition)
     {
         SkillOrb skillOrb = (SkillOrb) Duplicate();
+
+        float scale = 1.25f;
         Control control = new Control()
         {
-            Scale = new Vector2(1.25f, 1.25f)
+            Scale = new Vector2(scale, scale)
         };
         control.AddChild(skillOrb);
         skillOrb.GlobalPosition = -(skillOrb.Size / 2);

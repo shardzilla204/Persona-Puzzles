@@ -1,0 +1,1074 @@
+{
+    "ArcanaCombos":
+    [
+        {
+            "Source": [ "Fool", "Fool" ],
+            "Result": "Fool"
+        },
+        {
+            "Source": [ "Fool", "Magician" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Fool", "Priestess" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Fool", "Empress" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Fool", "Emperor" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Fool", "Hierophant" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Fool", "Lovers" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Fool", "Chariot" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Fool", "Justice" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Fool", "Hermit" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Fool", "Fortune" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Fool", "Strength" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Fool", "Hanged Man" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Fool", "Death" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Fool", "Temperance" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Fool", "Devil" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Fool", "Tower" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Fool", "Star" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Fool", "Moon" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Fool", "Sun" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Fool", "Judgement" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Fool", "Jester" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Fool", "Aeon" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Magician", "Magician" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Magician", "Priestess" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Magician", "Empress" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Magician", "Emperor" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Magician", "Hierophant" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Magician", "Lovers" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Magician", "Chariot" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Magician", "Justice" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Magician", "Hermit" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Magician", "Fortune" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Magician", "Strength" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Magician", "Hanged Man" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Magician", "Death" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Magician", "Temperance" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Magician", "Devil" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Magician", "Tower" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Magician", "Moon" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Magician", "Sun" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Magician", "Judgement" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Magician", "Jester" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Magician", "Aeon" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Priestess", "Priestess" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Priestess", "Empress" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Priestess", "Emperor" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Priestess", "Hierophant" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Priestess", "Lovers" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Priestess", "Chariot" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Priestess", "Justice" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Priestess", "Hermit" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Priestess", "Fortune" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Priestess", "Strength" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Priestess", "Hanged Man" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Priestess", "Death" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Priestess", "Temperance" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Priestess", "Devil" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Priestess", "Tower" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Priestess", "Star" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Priestess", "Moon" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Priestess", "Sun" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Priestess", "Judgement" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Priestess", "Jester" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Priestess", "Aeon" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Empress", "Empress" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Empress", "Emperor" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Empress", "Hierophant" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Empress", "Lovers" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Empress", "Chariot" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Empress", "Justice" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Empress", "Hermit" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Empress", "Fortune" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Empress", "Strength" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Empress", "Hanged Man" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Empress", "Death" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Empress", "Temperance" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Empress", "Devil" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Empress", "Tower" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Empress", "Star" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Empress", "Moon" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Empress", "Sun" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Empress", "Judgement" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Empress", "Jester" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Empress", "Aeon" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Emperor", "Emperor" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Emperor", "Hierophant" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Emperor", "Lovers" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Emperor", "Chariot" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Emperor", "Justice" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Emperor", "Hermit" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Emperor", "Fortune" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Emperor", "Strength" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Emperor", "Hanged Man" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Emperor", "Death" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Emperor", "Temperance" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Emperor", "Devil" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Emperor", "Tower" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Emperor", "Star" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Emperor", "Moon" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Emperor", "Sun" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Emperor", "Judgement" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Emperor", "Jester" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Emperor", "Aeon" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Hierophant", "Hierophant" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Hierophant", "Lovers" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Hierophant", "Chariot" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Hierophant", "Justice" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Hierophant", "Hermit" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Hierophant", "Fortune" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Hierophant", "Strength" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Hierophant", "Hanged Man" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Hierophant", "Death" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Hierophant", "Temperance" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Hierophant", "Devil" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Hierophant", "Tower" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Hierophant", "Star" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Hierophant", "Moon" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Hierophant", "Sun" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Hierophant", "Judgement" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Hierophant", "Jester" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Hierophant", "Aeon" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Lovers", "Lovers" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Lovers", "Chariot" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Lovers", "Justice" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Lovers", "Hermit" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Lovers", "Fortune" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Lovers", "Strength" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Lovers", "Hanged Man" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Lovers", "Death" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Lovers", "Temperance" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Lovers", "Devil" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Lovers", "Tower" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Lovers", "Star" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Lovers", "Moon" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Lovers", "Sun" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Lovers", "Judgement" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Lovers", "Jester" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Lovers", "Aeon" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Chariot", "Chariot" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Chariot", "Justice" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Chariot", "Hermit" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Chariot", "Fortune" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Chariot", "Strength" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Chariot", "Hanged Man" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Chariot", "Death" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Chariot", "Temperance" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Chariot", "Devil" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Chariot", "Tower" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Chariot", "Star" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Chariot", "Moon" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Chariot", "Sun" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Chariot", "Judgement" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Chariot", "Jester" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Chariot", "Aeon" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Justice", "Justice" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Justice", "Hermit" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Justice", "Fortune" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Justice", "Strength" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Justice", "Hanged Man" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Justice", "Death" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Justice", "Temperance" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Justice", "Devil" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Justice", "Tower" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Justice", "Star" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Justice", "Moon" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Justice", "Sun" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Justice", "Judgement" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Justice", "Jester" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Justice", "Aeon" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Hermit", "Hermit" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Hermit", "Fortune" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Hermit", "Strength" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Hermit", "Hanged Man" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Hermit", "Death" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Hermit", "Temperance" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Hermit", "Devil" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Hermit", "Tower" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Hermit", "Star" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Hermit", "Moon" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Hermit", "Sun" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Hermit", "Judgement" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Hermit", "Jester" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Hermit", "Aeon" ],
+            "Result": "Magician"
+        },
+
+        {
+            "Source": [ "Fortune", "Fortune" ],
+            "Result": "Fortune"
+        },
+        {
+            "Source": [ "Fortune", "Strength" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Fortune", "Hanged Man" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Fortune", "Death" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Fortune", "Temperance" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Fortune", "Devil" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Fortune", "Tower" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Fortune", "Star" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Fortune", "Moon" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Fortune", "Sun" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Fortune", "Judgement" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Fortune", "Jester" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Fortune", "Aeon" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Strength", "Strength" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Strength", "Hanged Man" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Strength", "Death" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Strength", "Temperance" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Strength", "Devil" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Strength", "Tower" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Strength", "Star" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Strength", "Moon" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Strength", "Sun" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Strength", "Jester" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Strength", "Aeon" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Hanged Man", "Hanged Man" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Hanged Man", "Death" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Hanged Man", "Temperance" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Hanged Man", "Devil" ],
+            "Result": "Justice"
+        },
+        {
+            "Source": [ "Hanged Man", "Tower" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Hanged Man", "Star" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Hanged Man", "Moon" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Hanged Man", "Sun" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Hanged Man", "Judgement" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Hanged Man", "Jester" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Hanged Man", "Aeon" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Death", "Death" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Death", "Temperance" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Death", "Devil" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Death", "Tower" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Death", "Star" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Death", "Moon" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Death", "Sun" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Death", "Jester" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Death", "Aeon" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Temperance", "Temperance" ],
+            "Result": "Temperance"
+        },
+        {
+            "Source": [ "Temperance", "Devil" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Temperance", "Tower" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Temperance", "Star" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Temperance", "Moon" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Temperance", "Sun" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Temperance", "Jester" ],
+            "Result": "Death"
+        },
+        {
+            "Source": [ "Temperance", "Aeon" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Devil", "Devil" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Devil", "Tower" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Devil", "Star" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Devil", "Moon" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Devil", "Sun" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Devil", "Jester" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Devil", "Aeon" ],
+            "Result": "Magician"
+        },
+        {
+            "Source": [ "Tower", "Tower" ],
+            "Result": "Tower"
+        },
+        {
+            "Source": [ "Tower", "Star" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Tower", "Moon" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Tower", "Sun" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Tower", "Jester" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Tower", "Aeon" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Star", "Star" ],
+            "Result": "Star"
+        },
+        {
+            "Source": [ "Star", "Moon" ],
+            "Result": "Emperor"
+        },
+        {
+            "Source": [ "Star", "Sun" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Star", "Jester" ],
+            "Result": "Empress"
+        },
+        {
+            "Source": [ "Star", "Aeon" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Moon", "Moon" ],
+            "Result": "Moon"
+        },
+        {
+            "Source": [ "Moon", "Sun" ],
+            "Result": "Strength"
+        },
+        {
+            "Source": [ "Moon", "Jester" ],
+            "Result": "Hermit"
+        },
+        {
+            "Source": [ "Moon", "Aeon" ],
+            "Result": "Hierophant"
+        },
+        {
+            "Source": [ "Sun", "Sun" ],
+            "Result": "Sun"
+        },
+        {
+            "Source": [ "Sun", "Jester" ],
+            "Result": "Lovers"
+        },
+        {
+            "Source": [ "Sun", "Aeon" ],
+            "Result": "Priestess"
+        },
+        {
+            "Source": [ "Judgement", "Judgement" ],
+            "Result": "Judgement"
+        },
+        {
+            "Source": [ "Judgement", "Jester" ],
+            "Result": "Chariot"
+        },
+        {
+            "Source": [ "Judgement", "Aeon" ],
+            "Result": "Hanged Man"
+        },
+        {
+            "Source": [ "Jester", "Jester" ],
+            "Result": "Jester"
+        },
+        {
+            "Source": [ "Jester", "Aeon" ],
+            "Result": "Devil"
+        },
+        {
+            "Source": [ "Aeon", "Aeon" ],
+            "Result": "Aeon"
+        }
+    ]
+}
