@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://djjy1hqpufkop"]
+
+[ext_resource type="Texture2D" uid="uid://clsaig4l6dkad" path="res://Assets/Images/PersonaSlot.png" id="1_k10r3"]
+[ext_resource type="Script" uid="uid://cd0ba47dpgctd" path="res://Resources/Scripts/PersonaSlot.cs" id="2_02sx5"]
+[ext_resource type="Texture2D" uid="uid://bthw017adsdtb" path="res://Assets/Images/PersonaSlotMask.png" id="3_02sx5"]
+[ext_resource type="Texture2D" uid="uid://67uwujgmbb74" path="res://Assets/Images/Personas/Pyro_Jack.png" id="3_k10r3"]
+[ext_resource type="Texture2D" uid="uid://cawvxxk61k81b" path="res://Assets/Images/SkillIcons/FireIcon.png" id="4_x2el6"]
+
+[node name="PersonaSlot" type="TextureRect" unique_id=1599700467 node_paths=PackedStringArray("_personaIcon", "_skillTypeIcon")]
+self_modulate = Color(0.8, 0.18039216, 0.09411765, 1)
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_k10r3")
+expand_mode = 1
+script = ExtResource("2_02sx5")
+_personaIcon = NodePath("ClipMask/MarginContainer/PersonaIcon")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+
+[node name="ClipMask" type="TextureRect" parent="." unique_id=1211952866]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_02sx5")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ClipMask" unique_id=1832400693]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PersonaIcon" type="TextureRect" parent="ClipMask/MarginContainer" unique_id=353258747]
+layout_mode = 2
+texture = ExtResource("3_k10r3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=2030142114]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 13.0
+texture = ExtResource("4_x2el6")
+expand_mode = 1
+stretch_mode = 5

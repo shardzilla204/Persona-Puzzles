@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cf1ip2c3kpvih" path="res://Resources/Scenes/SkillOrbGrid.tscn" id="2_w11kf"]
 [ext_resource type="PackedScene" uid="uid://jka0qv2xjykg" path="res://Resources/Scenes/SkillOrbGridTemplate.tscn" id="3_5cqey"]
 [ext_resource type="PackedScene" uid="uid://bax74nfykglud" path="res://Resources/Scenes/Debug.tscn" id="3_6tvh8"]
+[ext_resource type="PackedScene" uid="uid://djjy1hqpufkop" path="res://Resources/Scenes/PersonaSlot.tscn" id="5_iwp7a"]
 
 [node name="VelvetTrial" type="Control" unique_id=691434485]
 layout_mode = 3
@@ -17,14 +18,45 @@ script = ExtResource("1_eaox5")
 
 [node name="SkillOrbGrid" parent="." unique_id=1359677514 instance=ExtResource("2_w11kf")]
 layout_mode = 1
+offset_left = -200.0
+offset_top = 15.0
+offset_right = 209.0
+offset_bottom = 355.0
 
 [node name="SkillOrbGridTemplate" parent="." unique_id=2033729730 instance=ExtResource("3_5cqey")]
 visible = false
 layout_mode = 0
-offset_left = 60.0
-offset_top = 450.0
-offset_right = 444.0
-offset_bottom = 770.0
+offset_left = 50.0
+offset_top = 415.0
+offset_right = 459.0
+offset_bottom = 755.0
 
 [node name="Debug" parent="." unique_id=645808427 instance=ExtResource("3_6tvh8")]
 layout_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=308169778]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 340.0
+offset_right = 459.0
+offset_bottom = 404.0
+theme_override_constants/separation = 5
+metadata/_edit_group_ = true
+
+[node name="PersonaSlot" parent="HBoxContainer" unique_id=1599700467 instance=ExtResource("5_iwp7a")]
+layout_mode = 2
+
+[node name="PersonaSlot2" parent="HBoxContainer" unique_id=50014439 instance=ExtResource("5_iwp7a")]
+layout_mode = 2
+
+[node name="PersonaSlot3" parent="HBoxContainer" unique_id=1234284948 instance=ExtResource("5_iwp7a")]
+layout_mode = 2
+
+[node name="PersonaSlot4" parent="HBoxContainer" unique_id=1477397240 instance=ExtResource("5_iwp7a")]
+layout_mode = 2
+
+[node name="PersonaSlot5" parent="HBoxContainer" unique_id=2009488440 instance=ExtResource("5_iwp7a")]
+layout_mode = 2
+
+[node name="PersonaSlot6" parent="HBoxContainer" unique_id=2009308670 instance=ExtResource("5_iwp7a")]
+layout_mode = 2

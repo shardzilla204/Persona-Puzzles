@@ -20,11 +20,12 @@ public partial class SkillOrbGrid : Control
     [Export]
     private Control _comboLabelContainer;
 
-    [Export]
-    private Timer _refillTimer;
-
     private const int _Offset = 64;
     private const float _ComboIncrement = 0.1f;
+    private const int _HSeparation = 5;
+    private const int _VSeparation = 5;
+    private const int _MatchCount = 3;
+    private const int _MaxLoops = 100;
 
     private Vector2 _firstTouch = new Vector2();
     private Vector2 _finalTouch = new Vector2();
@@ -36,15 +37,13 @@ public partial class SkillOrbGrid : Control
     private Container _skillOrbContainer;
 
     // Keys
-    private string _indexesKey = "Indexes";
-    private string _typeKey = "Type";
-    private string _positionKey = "Position";
-    private string _countKey = "Count";
+    private const string _IndexesKey = "Indexes";
+    private const string _TypeKey = "Type";
+    private const string _PositionKey = "Position";
+    private const string _CountKey = "Count";
 
     public override void _Ready()
     {
-        _refillTimer.Timeout += RefillTimerTimeout;
-
         CreateGrid();
     }
 
@@ -86,7 +85,8 @@ public partial class SkillOrbGrid : Control
             {
                 SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
                 int loops = 0;
-                while (HasMatch(i, j, skillOrb.SkillType) && loops < 100)
+                bool hasMatch = HasMatch(i, j, skillOrb.SkillType);
+                while (hasMatch && loops < _MaxLoops)
                 {
                     loops++;
                     skillOrb = SkillOrbManager.GetRandomSkillOrb();
@@ -115,8 +115,10 @@ public partial class SkillOrbGrid : Control
             thirdOrb = _skillOrbs[x][y - 2];
         }
 
-        if (secondOrb == null || thirdOrb == null) return false;
-        if (secondOrb.SkillType != skillType || thirdOrb.SkillType != skillType) return false;
+        if (secondOrb == null || 
+            thirdOrb == null ||
+            secondOrb.SkillType != skillType || 
+            thirdOrb.SkillType != skillType) return false;
 
         return true;
     }
@@ -136,8 +138,8 @@ public partial class SkillOrbGrid : Control
 
     private Vector2I GridToPixel(int column, int row)
     {
-        int newX = _Offset * column;
-        int newY = _Offset * row;
+        int newX = (_Offset + _HSeparation) * column;
+        int newY = (_Offset + _VSeparation) * row;
 
         Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
@@ -145,8 +147,8 @@ public partial class SkillOrbGrid : Control
 
     private Vector2I PixelToGrid(float pixelX, float pixelY)
     {
-        int newX = Mathf.RoundToInt(Mathf.FloorToInt(pixelX / _Offset));
-        int newY = Mathf.RoundToInt(Mathf.FloorToInt(pixelY / _Offset));
+        int newX = Mathf.RoundToInt(Mathf.FloorToInt(pixelX / (_Offset + _HSeparation)));
+        int newY = Mathf.RoundToInt(Mathf.FloorToInt(pixelY / (_Offset + _VSeparation)));
 
         Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
@@ -154,7 +156,8 @@ public partial class SkillOrbGrid : Control
 
     private void TouchInput()
     {
-        if (Input.IsActionJustPressed("Touch"))
+        const string _TouchAction = "Touch";
+        if (Input.IsActionJustPressed(_TouchAction))
         {
             _firstTouch = GetLocalMousePosition();
             Vector2I position = PixelToGrid(_firstTouch.X, _firstTouch.Y);
@@ -164,7 +167,7 @@ public partial class SkillOrbGrid : Control
             
             _isDragging = true;
         }
-        else if (Input.IsActionJustReleased("Touch"))
+        else if (Input.IsActionJustReleased(_TouchAction))
         {
             ReleasedTouch();
         }
@@ -266,18 +269,18 @@ public partial class SkillOrbGrid : Control
         }
 
         List<GC.Dictionary<string, Variant>> combos = MergeOrbSets(orbSets);
-        combos.OrderBy(combo => combo[_indexesKey].As<GC.Array<Vector2I>>());
+        combos.OrderBy(combo => combo[_IndexesKey].As<GC.Array<Vector2I>>());
 
         await RunCombosAsync(combos);
 
-        CollapseColumns();
+        CollapseColumnsAsyc();
     }
 
     private async Task RunCombosAsync(List<GC.Dictionary<string, Variant>> combos)
     {
         for (int i = 0; i < combos.Count; i++)
         {
-            GC.Array<Vector2I> indexes = combos[i][_indexesKey].As<GC.Array<Vector2I>>();
+            GC.Array<Vector2I> indexes = combos[i][_IndexesKey].As<GC.Array<Vector2I>>();
             ComboLabel comboLabel = await TweenOrbSetAsync(_comboLabels.Count + 1, indexes);
             _comboLabels.Add(comboLabel);
 
@@ -319,9 +322,9 @@ public partial class SkillOrbGrid : Control
         // Uses Y as the starting position. Y = Row position
         foreach (GC.Dictionary<string, Variant> match in verticalMatches)
         {
-            SkillType matchType = (SkillType) match[_typeKey].As<int>();
-            Vector2I matchPosition = match[_positionKey].As<Vector2I>();
-            int matchCount = match[_countKey].As<int>();
+            SkillType matchType = (SkillType) match[_TypeKey].As<int>();
+            Vector2I matchPosition = match[_PositionKey].As<Vector2I>();
+            int matchCount = match[_CountKey].As<int>();
 
             GC.Array<Vector2I> matchIndexes = new GC.Array<Vector2I>();
             for (int i = matchPosition.Y; i < matchCount + matchPosition.Y; i++)
@@ -332,8 +335,8 @@ public partial class SkillOrbGrid : Control
 
             GC.Dictionary<string, Variant> matchSet = new GC.Dictionary<string, Variant>
             {
-                { _typeKey, (int) matchType },
-                { _indexesKey, matchIndexes }
+                { _TypeKey, (int) matchType },
+                { _IndexesKey, matchIndexes }
             };
 
             matchSets.Add(matchSet);
@@ -343,9 +346,9 @@ public partial class SkillOrbGrid : Control
         // Uses X for the starting position. X = Column position
         foreach (GC.Dictionary<string, Variant> match in horizontalMatches)
         {
-            SkillType matchType = (SkillType) match[_typeKey].As<int>();
-            Vector2I matchPosition = match[_positionKey].As<Vector2I>();
-            int matchCount = match[_countKey].As<int>();
+            SkillType matchType = (SkillType) match[_TypeKey].As<int>();
+            Vector2I matchPosition = match[_PositionKey].As<Vector2I>();
+            int matchCount = match[_CountKey].As<int>();
 
             GC.Array<Vector2I> matchIndexes = new GC.Array<Vector2I>();
             for (int i = matchPosition.X; i < matchCount + matchPosition.X; i++)
@@ -356,8 +359,8 @@ public partial class SkillOrbGrid : Control
 
             GC.Dictionary<string, Variant> matchSet = new GC.Dictionary<string, Variant>
             {
-                { _typeKey, (int) matchType },
-                { _indexesKey, matchIndexes }
+                { _TypeKey, (int) matchType },
+                { _IndexesKey, matchIndexes }
             };
 
             matchSets.Add(matchSet);
@@ -404,7 +407,7 @@ public partial class SkillOrbGrid : Control
             {
                 if (skillOrb.SkillType != previousSkillOrb.SkillType)
                 {
-                    if (count >= 3)
+                    if (count >= _MatchCount)
                     {
                         GC.Dictionary<string, Variant> match = GetMatchInformation(previousSkillOrb, count);
                         matches.Add(match);
@@ -440,7 +443,7 @@ public partial class SkillOrbGrid : Control
             {
                 if (skillOrb.SkillType != previousSkillOrb.SkillType)
                 {
-                    if (count >= 3)
+                    if (count >= _MatchCount)
                     {
                         GC.Dictionary<string, Variant> match = GetMatchInformation(previousSkillOrb, count);
                         matches.Add(match);
@@ -462,9 +465,9 @@ public partial class SkillOrbGrid : Control
         Vector2I gridPosition = PixelToGrid(skillOrb.Position.X, skillOrb.Position.Y);
         GC.Dictionary<string, Variant> match = new GC.Dictionary<string, Variant>
         {
-            { _typeKey, (int) skillOrb.SkillType },
-            { _positionKey, gridPosition },
-            { _countKey, count }
+            { _TypeKey, (int) skillOrb.SkillType },
+            { _PositionKey, gridPosition },
+            { _CountKey, count }
         };
         return match;
     }
@@ -494,8 +497,8 @@ public partial class SkillOrbGrid : Control
             bool areNeigboringSameTypeBallSets = AreNeigboringSameTypeOrbSets(currentOrbSet, orbSet);
             if (areNeigboringSameTypeBallSets)
             {
-                GC.Array<Vector2I> currentOrbSetIndexes = currentOrbSet[_indexesKey].As<GC.Array<Vector2I>>();
-                GC.Array<Vector2I> orbSetIndexes = orbSet[_indexesKey].As<GC.Array<Vector2I>>();
+                GC.Array<Vector2I> currentOrbSetIndexes = currentOrbSet[_IndexesKey].As<GC.Array<Vector2I>>();
+                GC.Array<Vector2I> orbSetIndexes = orbSet[_IndexesKey].As<GC.Array<Vector2I>>();
                 foreach (Vector2I index in orbSetIndexes)
                 {
                     if (!currentOrbSetIndexes.Contains(index)) currentOrbSetIndexes.Add(index);
@@ -512,13 +515,13 @@ public partial class SkillOrbGrid : Control
     
     private bool AreNeigboringSameTypeOrbSets(GC.Dictionary<string, Variant> orbSetA, GC.Dictionary<string, Variant> orbSetB)
     {
-        SkillType orbSetTypeA = (SkillType) orbSetA[_typeKey].As<int>();
-        SkillType orbSetTypeB = (SkillType) orbSetB[_typeKey].As<int>();
+        SkillType orbSetTypeA = (SkillType) orbSetA[_TypeKey].As<int>();
+        SkillType orbSetTypeB = (SkillType) orbSetB[_TypeKey].As<int>();
 
         if (orbSetTypeA != orbSetTypeB) return false;
 
-        GC.Array<Vector2I> orbSetAIndexes = orbSetA[_indexesKey].As<GC.Array<Vector2I>>();
-        GC.Array<Vector2I> orbSetBIndexes = orbSetB[_indexesKey].As<GC.Array<Vector2I>>();
+        GC.Array<Vector2I> orbSetAIndexes = orbSetA[_IndexesKey].As<GC.Array<Vector2I>>();
+        GC.Array<Vector2I> orbSetBIndexes = orbSetB[_IndexesKey].As<GC.Array<Vector2I>>();
 
         for (int i = 0; i < orbSetAIndexes.Count; i++)
         {
@@ -532,17 +535,6 @@ public partial class SkillOrbGrid : Control
             }
         }
         return false;
-    }
-
-    private void SetMatches(SkillOrb orb, SkillOrb previousOrb, SkillOrb nextOrb)
-    {
-        if (previousOrb != null && nextOrb != null && 
-            previousOrb.SkillType == orb.SkillType && nextOrb.SkillType == orb.SkillType)
-        {
-            orb.SetMatch(true);
-            previousOrb.SetMatch(true);
-            nextOrb.SetMatch(true);
-        }
     }
 
     private void DestroyMatched()
@@ -563,7 +555,7 @@ public partial class SkillOrbGrid : Control
     }
 
     // Grid is created from top to bottom, left to right. Starting from the top left corner.
-    private void CollapseColumns()
+    private async void CollapseColumnsAsyc()
     {
         for (int i = _columns - 1; i >= 0; i--)
         {
@@ -590,7 +582,10 @@ public partial class SkillOrbGrid : Control
         
         PrintRich.Print("Columns Collapsed", TextColor.Yellow);
 
-        _refillTimer.Start();
+        float timeSeconds = 0.5f;
+        await ToSignal(GetTree().CreateTimer(timeSeconds), SceneTreeTimer.SignalName.Timeout);
+
+        RefillColumns();
     }
 
     private void RefillColumns()
@@ -604,7 +599,8 @@ public partial class SkillOrbGrid : Control
                 
                 SkillOrb randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
                 int loops = 0;
-                while (HasMatch(i, j, randomSkillOrb.SkillType) && loops < 100)
+                bool hasMatch = HasMatch(i, j, randomSkillOrb.SkillType);
+                while (hasMatch && loops < _MaxLoops)
                 {
                     loops++;
                     randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
@@ -618,7 +614,6 @@ public partial class SkillOrbGrid : Control
                 _skillOrbs[i][j] = randomSkillOrb;
                 Vector2I targetPosition = GridToPixel(i, j);
                 TweenPosition(randomSkillOrb, targetPosition);
-
             }
         }
 
@@ -632,10 +627,5 @@ public partial class SkillOrbGrid : Control
         ComboLabel comboLabel = PersonaAndPuzzles.PackedScenes.GetComboLabel(comboCount);
         comboLabel.Position = GridToPixel(x, y);
         return comboLabel;
-    }
-
-    private void RefillTimerTimeout()
-    {
-        RefillColumns();
     }
 }
