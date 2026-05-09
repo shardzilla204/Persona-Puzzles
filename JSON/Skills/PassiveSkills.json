@@ -1,0 +1,333 @@
+{
+    "PassiveSkills":
+    [
+        {
+            "Name": "Counter",
+            "Effect": "10% chance of reflecting Physical attacks."
+        },
+        {
+            "Name": "Counterstrike",
+            "Effect": "15% chance of reflecting Physical attacks."
+        },
+        {
+            "Name": "High Counter",
+            "Effect": "20% chance of reflecting Physical attacks."
+        },
+        {
+            "Name": "Fire Boost",
+            "Effect": "Strengthen Fire attacks by 25%"
+        },
+        {
+            "Name": "Ice Boost",
+            "Effect": "Strengthen Ice attacks by 25%"
+        },
+        {
+            "Name": "Elec Boost",
+            "Effect": "Strengthen Electric attacks by 25%"
+        },
+        {
+            "Name": "Wind Boost",
+            "Effect": "Strengthen Wind attacks by 25%"
+        },
+        {
+            "Name": "Psy Boost",
+            "Effect": "Strengthen Psychic attacks by 25%"
+        },
+        {
+            "Name": "Nuke Boost",
+            "Effect": "Strengthen Nuclear attacks by 25%"
+        },
+        {
+            "Name": "Bless Boost",
+            "Effect": "Strengthen Bless attacks by 25%"
+        },
+        {
+            "Name": "Curse Boost",
+            "Effect": "Strengthen Curse attacks by 25%"
+        },
+        {
+            "Name": "Almighty Boost",
+            "Effect": "Strengthen Almighty attacks by 25%"
+        },
+        {
+            "Name": "Fire Amp",
+            "Effect": "Strengthen Fire attacks by 50%"
+        },
+        {
+            "Name": "Ice Amp",
+            "Effect": "Strengthen Ice attacks by 50%"
+        },
+        {
+            "Name": "Elec Amp",
+            "Effect": "Strengthen Electric attacks by 50%"
+        },
+        {
+            "Name": "Wind Amp",
+            "Effect": "Strengthen Wind attacks by 50%"
+        },
+        {
+            "Name": "Psy Amp",
+            "Effect": "Strengthen Psychic attacks by 50%"
+        },
+        {
+            "Name": "Nuke Amp",
+            "Effect": "Strengthen Nuclear attacks by 50%"
+        },
+        {
+            "Name": "Bless Amp",
+            "Effect": "Strengthen Bless attacks by 50%"
+        },
+        {
+            "Name": "Curse Amp",
+            "Effect": "Strengthen Curse attacks by 50%"
+        },
+        {
+            "Name": "Almighty Amp",
+            "Effect": "Strengthen Almighty attacks by 50%"
+        },
+        {
+            "Name": "Apt Pupil",
+            "Effect": "Increases critical rate."
+        },
+        {
+            "Name": "Snipe",
+            "Effect": "Strengthen Gun attacks by 25%"
+        },
+        {
+            "Name": "Cripple",
+            "Effect": "Strengthen Fire attacks by 50%"
+        },
+        {
+            "Name": "Magic Ability",
+            "Effect": "Strengthen all magical attacks by 25%"
+        },
+        {
+            "Name": "Trigger Happy",
+            "Effect": "Increase critical rate of Gun attacks."
+        },
+        {
+            "Name": "Resist Phys",
+            "Effect": "Reduce damage from Physical attacks."
+        },
+        {
+            "Name": "Resist Fire",
+            "Effect": "Reduce damage from Fire attacks."
+        },
+        {
+            "Name": "Resist Ice",
+            "Effect": "Reduce damage from Ice attacks."
+        },
+        {
+            "Name": "Resist Elec",
+            "Effect": "Reduce damage from Elec attacks."
+        },
+        {
+            "Name": "Resist Wind",
+            "Effect": "Reduce damage from Wind attacks."
+        },
+        {
+            "Name": "Resist Psy",
+            "Effect": "Reduce damage from Psy attacks."
+        },
+        {
+            "Name": "Resist Nuke",
+            "Effect": "Reduce damage from Nuke attacks."
+        },
+        {
+            "Name": "Resist Bless",
+            "Effect": "Reduce damage from Bless attacks."
+        },
+        {
+            "Name": "Resist Curse",
+            "Effect": "Reduce damage from Curse attacks."
+        },
+        {
+            "Name": "Null Phys",
+            "Effect": "Impart immunity against Physical attacks."
+        },
+        {
+            "Name": "Null Fire",
+            "Effect": "Impart immunity against Fire attacks."
+        },
+        {
+            "Name": "Null Ice",
+            "Effect": "Impart immunity against Ice attacks."
+        },
+        {
+            "Name": "Null Elec",
+            "Effect": "Impart immunity against Electric attacks."
+        },
+        {
+            "Name": "Null Wind",
+            "Effect": "Impart immunity against Wind attacks."
+        },
+        {
+            "Name": "Null Psy",
+            "Effect": "Impart immunity against Psychic attacks."
+        },
+        {
+            "Name": "Null Nuke",
+            "Effect": "Impart immunity against Nuke attacks."
+        },
+        {
+            "Name": "Null Bless",
+            "Effect": "Impart immunity against Bless attacks."
+        },
+        {
+            "Name": "Null Curse",
+            "Effect": "Impart immunity against Curse attacks."
+        },
+        {
+            "Name": "Repel Phys",
+            "Effect": "Repel Physical attacks."
+        },
+        {
+            "Name": "Repel Fire",
+            "Effect": "Repel Fire attacks."
+        },
+        {
+            "Name": "Repel Ice",
+            "Effect": "Repel Ice attacks."
+        },
+        {
+            "Name": "Repel Elec",
+            "Effect": "Repel Electric attacks."
+        },
+        {
+            "Name": "Repel Wind",
+            "Effect": "Repel Wind attacks."
+        },
+        {
+            "Name": "Repel Psy",
+            "Effect": "Repel Psychic attacks."
+        },
+        {
+            "Name": "Repel Nuke",
+            "Effect": "Repel Nuke attacks."
+        },
+        {
+            "Name": "Repel Bless",
+            "Effect": "Repel Bless attacks."
+        },
+        {
+            "Name": "Repel Curse",
+            "Effect": "Repel Curse attacks."
+        },
+        {
+            "Name": "Drain Phys",
+            "Effect": "Absorb Physical attacks."
+        },
+        {
+            "Name": "Drain Fire",
+            "Effect": "Absorb Fire attacks."
+        },
+        {
+            "Name": "Drain Ice",
+            "Effect": "Absorb Ice attacks."
+        },
+        {
+            "Name": "Drain Elec",
+            "Effect": "Absorb Electric attacks."
+        },
+        {
+            "Name": "Drain Wind",
+            "Effect": "Absorb Wind attacks."
+        },
+        {
+            "Name": "Drain Psy",
+            "Effect": "Absorb Psychic attacks."
+        },
+        {
+            "Name": "Drain Nuke",
+            "Effect": "Absorb Nuke attacks."
+        },
+        {
+            "Name": "Drain Bless",
+            "Effect": "Absorb Bless attacks."
+        },
+        {
+            "Name": "Drain Curse",
+            "Effect": "Absorb Curse attacks."
+        },
+        {
+            "Name": "Sharp Student",
+            "Effect": "Lower odds of receiving critical hit."
+        },
+        {
+            "Name": "Dodge Phys",
+            "Effect": "Double evasion rate against Physical attacks."
+        },
+        {
+            "Name": "Dodge Fire",
+            "Effect": "Double evasion rate against Fire attacks."
+        },
+        {
+            "Name": "Dodge Ice",
+            "Effect": "Double evasion rate against Ice attacks."
+        },
+        {
+            "Name": "Dodge Elec",
+            "Effect": "Double evasion rate against Electric attacks."
+        },
+        {
+            "Name": "Dodge Wind",
+            "Effect": "Double evasion rate against Wind attacks."
+        },
+        {
+            "Name": "Dodge Psy",
+            "Effect": "Double evasion rate against Psychic attacks."
+        },
+        {
+            "Name": "Dodge Nuke",
+            "Effect": "Double evasion rate against Nuke attacks."
+        },
+        {
+            "Name": "Dodge Bless",
+            "Effect": "Double evasion rate against Bless attacks."
+        },
+        {
+            "Name": "Dodge Curse",
+            "Effect": "Double evasion rate against Curse attacks."
+        },
+        {
+            "Name": "Evade Phys",
+            "Effect": "Triple evasion rate against Physical attacks."
+        },
+        {
+            "Name": "Evade Fire",
+            "Effect": "Triple evasion rate against Fire attacks."
+        },
+        {
+            "Name": "Evade Ice",
+            "Effect": "Triple evasion rate against Ice attacks."
+        },
+        {
+            "Name": "Evade Elec",
+            "Effect": "Triple evasion rate against Electric attacks."
+        },
+        {
+            "Name": "Evade Wind",
+            "Effect": "Triple evasion rate against Wind attacks."
+        },
+        {
+            "Name": "Evade Psy",
+            "Effect": "Triple evasion rate against Psychic attacks."
+        },
+        {
+            "Name": "Evade Nuke",
+            "Effect": "Triple evasion rate against Nuke attacks."
+        },
+        {
+            "Name": "Evade Bless",
+            "Effect": "Triple evasion rate against Bless attacks."
+        },
+        {
+            "Name": "Evade Curse",
+            "Effect": "Triple evasion rate against Curse attacks."
+        },
+        {
+            "Name": "Angelic Grace",
+            "Effect": "Double evasion rate against all magical attacks."
+        }
+    ]
+}

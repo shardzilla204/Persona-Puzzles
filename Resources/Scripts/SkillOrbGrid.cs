@@ -3,11 +3,21 @@ using GC = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace PersonaAndPuzzles;
 
 public partial class SkillOrbGrid : Control
 {
+    [Signal]
+    public delegate void SkillTypeIncreasedBySkillOrbsEventHandler(SkillType skillType, int skillOrbCount);
+
+    [Signal]
+    public delegate void SkillTypeIncreasedByComboEventHandler();
+
+    [Signal]
+    public delegate void FinishedCombosEventHandler();
+    
     [Export]
     private int _columns;
 
@@ -41,6 +51,8 @@ public partial class SkillOrbGrid : Control
     private const string _TypeKey = "Type";
     private const string _PositionKey = "Position";
     private const string _CountKey = "Count";
+
+    public GC.Dictionary<SkillType, int> SkillPower = new GC.Dictionary<SkillType, int>();
 
     public override void _Ready()
     {
@@ -262,9 +274,15 @@ public partial class SkillOrbGrid : Control
                 comboLabel.TweenExit();
                 multiplier += _ComboIncrement;
 
+                EmitSignal(SignalName.SkillTypeIncreasedByCombo);
+
                 await ToSignal(comboLabel, Node.SignalName.TreeExited);
+
+                await ToSignal(GetTree().CreateTimer(ComboLabel.TweenDuration / 2), SceneTreeTimer.SignalName.Timeout);
             }
             _comboLabels.Clear();
+            
+            EmitSignal(SignalName.FinishedCombos);
             return;
         }
 
@@ -278,11 +296,15 @@ public partial class SkillOrbGrid : Control
 
     private async Task RunCombosAsync(List<GC.Dictionary<string, Variant>> combos)
     {
-        for (int i = 0; i < combos.Count; i++)
+        foreach (GC.Dictionary<string, Variant> combo in combos)
         {
-            GC.Array<Vector2I> indexes = combos[i][_IndexesKey].As<GC.Array<Vector2I>>();
+            GC.Array<Vector2I> indexes = combo[_IndexesKey].As<GC.Array<Vector2I>>();
             ComboLabel comboLabel = await TweenOrbSetAsync(_comboLabels.Count + 1, indexes);
             _comboLabels.Add(comboLabel);
+
+            int comboSkillType = combo[_TypeKey].As<int>();
+            int comboSkillOrbCount = indexes.Count;
+            EmitSignal(SignalName.SkillTypeIncreasedBySkillOrbs, comboSkillType, comboSkillOrbCount);
 
             DestroyMatched();
         }

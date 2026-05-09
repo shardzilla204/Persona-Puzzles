@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g25nt0c76mqs"
-path="res://.godot/imported/ThunderIcon.png-bf4cff842f59626c41eac6eb04245b00.ctex"
+uid="uid://biykvkgohicy1"
+path="res://.godot/imported/PsychicIcon.png-ca2c049a3e7502befefd2167e8c126ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SkillIcons/ThunderIcon.png"
-dest_files=["res://.godot/imported/ThunderIcon.png-bf4cff842f59626c41eac6eb04245b00.ctex"]
+source_file="res://Assets/Images/SkillIcons/PsychicIcon.png"
+dest_files=["res://.godot/imported/PsychicIcon.png-ca2c049a3e7502befefd2167e8c126ef.ctex"]
 
 [params]
 

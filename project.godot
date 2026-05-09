@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Persona&Puzzles"
-config/version="0.0.4"
+config/version="0.0.5"
 config/tags=PackedStringArray("2d", "c#", "puzzle")
 run/main_scene="uid://ojbiqd2cianf"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
@@ -30,6 +30,8 @@ PersonaAndPuzzles="*uid://c6g5gvhd0csxb"
 window/size/viewport_width=500
 window/size/viewport_height=800
 window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 

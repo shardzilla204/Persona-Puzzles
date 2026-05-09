@@ -5,6 +5,7 @@ namespace PersonaAndPuzzles;
 public partial class ComboLabel : Label
 {
     private float _offsetY = 25;
+    public const float TweenDuration = 0.4f;
 
     public override void _Ready()
     {
@@ -23,10 +24,9 @@ public partial class ComboLabel : Label
         Vector2 targetPosition = Position + new Vector2(0, -_offsetY);
         Color targetModulate = Colors.White;
 
-        float duration = 0.5f;
         Tween tween = CreateTween().SetParallel(true).SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(this, "position", targetPosition, duration);
-        tween.TweenProperty(this, "modulate", targetModulate, duration);
+        tween.TweenProperty(this, "position", targetPosition, TweenDuration);
+        tween.TweenProperty(this, "modulate", targetModulate, TweenDuration);
     }
 
     public async void TweenExit()
@@ -38,11 +38,10 @@ public partial class ComboLabel : Label
 
         float targetScale = 1.1f;
 
-        float duration = 0.5f;
         Tween tween = CreateTween().SetParallel(true).SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(this, "position", targetPosition, duration);
-        tween.TweenProperty(this, "modulate", targetModulate, duration);
-        tween.TweenProperty(this, "scale", new Vector2(targetScale, targetScale), duration);
+        tween.TweenProperty(this, "position", targetPosition, TweenDuration);
+        tween.TweenProperty(this, "modulate", targetModulate, TweenDuration);
+        tween.TweenProperty(this, "scale", new Vector2(targetScale, targetScale), TweenDuration);
         tween.Finished += QueueFree;
     }
 }

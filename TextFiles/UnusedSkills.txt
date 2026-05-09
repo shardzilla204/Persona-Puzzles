@@ -134,5 +134,3 @@ Multi-Target Physical Skills:
     "Accuracy": 80,
     "Critical": 5
 },
-
-# Persona Icons Left On "N"

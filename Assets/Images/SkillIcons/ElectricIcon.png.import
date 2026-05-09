@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc3euqe4sbwgb"
-path="res://.godot/imported/Mitra.png-5bcbb5db62ed580500c9f45ccdb4e718.ctex"
+uid="uid://g25nt0c76mqs"
+path="res://.godot/imported/ElectricIcon.png-9122b9306999c90b9c2fc3edae6a738b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Personas/Mitra.png"
-dest_files=["res://.godot/imported/Mitra.png-5bcbb5db62ed580500c9f45ccdb4e718.ctex"]
+source_file="res://Assets/Images/SkillIcons/ElectricIcon.png"
+dest_files=["res://.godot/imported/ElectricIcon.png-9122b9306999c90b9c2fc3edae6a738b.ctex"]
 
 [params]
 

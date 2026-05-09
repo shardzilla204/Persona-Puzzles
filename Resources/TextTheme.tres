@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://bjrc5vlajre5y"]
+
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="1_g3420"]
+
+[resource]
+Label/constants/outline_size = 3
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_g3420")

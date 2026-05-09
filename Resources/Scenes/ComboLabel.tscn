@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg41dcug83ks"]
 
-[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="1_kjpsw"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="1_kjpsw"]
 [ext_resource type="Script" uid="uid://qf0xf6pg0vxh" path="res://Resources/Scripts/ComboLabel.cs" id="1_r4wlx"]
 
 [node name="ComboLabel" type="Label" unique_id=720985614]
@@ -8,9 +8,7 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 23.0
 pivot_offset = Vector2(32, 32)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("1_kjpsw")
-theme_override_font_sizes/font_size = 12
+theme = ExtResource("1_kjpsw")
 text = "Combo #"
 horizontal_alignment = 1
 vertical_alignment = 1

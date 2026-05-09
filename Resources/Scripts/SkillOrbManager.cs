@@ -11,23 +11,31 @@ public partial class SkillOrbManager : Node
     private static GC.Dictionary<SkillType, string> _skillIconTextures = new GC.Dictionary<SkillType, string>()
     {
         { SkillType.Physical, "uid://cqni26flnijsp" },
+        { SkillType.Pierce, "uid://cqni26flnijsp" },
         { SkillType.Fire, "uid://cawvxxk61k81b" },
         { SkillType.Ice, "uid://b0hjqsi5kt557" },
         { SkillType.Wind, "uid://7xdb76ljgitr" },
         { SkillType.Electric, "uid://g25nt0c76mqs" },
+        { SkillType.Psychic, "uid://biykvkgohicy1" },
+        { SkillType.Nuclear, "uid://dkfkxabl8uujs" },
         { SkillType.Bless, "uid://ifejkslor7c5" },
-        { SkillType.Curse, "uid://dpl1xkw7tpvj2" }
+        { SkillType.Curse, "uid://dpl1xkw7tpvj2" },
+        { SkillType.Almighty, "uid://c12n424vwjulu" }
     };
 
     private static GC.Dictionary<SkillType, string> _skillTypeHexColors = new GC.Dictionary<SkillType, string>()
     {
         { SkillType.Physical, "#cc7e00" },
+        { SkillType.Pierce, "#cc7e00" },
         { SkillType.Fire, "#cc2e18" },
         { SkillType.Ice, "#008bcc" },
         { SkillType.Wind, "#6ec527" },
         { SkillType.Electric, "#cccc2b" },
+        { SkillType.Psychic, "#cc4ecc" },
+        { SkillType.Nuclear, "#0acbce" },
         { SkillType.Bless, "#cccc92" },
-        { SkillType.Curse, "#cc002b" }
+        { SkillType.Curse, "#cc002b" },
+        { SkillType.Almighty, "#b9b9b9" }
     };
 
     public static SkillOrb GetRandomSkillOrb()

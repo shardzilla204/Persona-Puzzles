@@ -6,12 +6,16 @@ public enum SkillType
 {
     None = -1,
     Physical,
+    Pierce,
     Fire,
     Ice,
     Wind,
     Electric,
+    Psychic,
+    Nuclear,
     Bless,
     Curse,
+    Almighty
 }
 
 public partial class SkillOrb : TextureRect

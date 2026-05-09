@@ -3,1024 +3,2692 @@
     [
         {
             "Name": "Obariyon",
-            "Arcana": "Fool",
-            "SkillType": "Physical",
-            "Level": 13,
+            "Race": "Fool",
+            "SkillType": "Pierce",
+            "Level": 8,
+            "Strength": 7,
+            "Magic": 3,
+            "Endurance": 9,
+            "Agility": 8,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Electric": "Weak"
+            },
             "Image": "uid://b2qods3ogbj6r"
         },
         {
             "Name": "Moloch",
-            "Arcana": "Hanged",
+            "Race": "Hanged",
             "SkillType": "Fire",
             "Level": 60,
+            "Strength": 32,
+            "Magic": 45,
+            "Endurance": 42,
+            "Agility": 31,
+            "Luck": 37,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Electric": "Resist",
+                "Wind": "Resist",
+                "Psychic": "Absorb", 
+                "Curse": "Null"
+            },
             "Image": "uid://bunn4od22mbih"
         },
         {
             "Name": "Ose",
-            "Arcana": "Fool",
+            "Race": "Fool",
             "SkillType": "Physical",
-            "Level": 31,
+            "Level": 42,
+            "Strength": 32,
+            "Magic": 24,
+            "Endurance": 25,
+            "Agility": 31,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Fire": "Absorb",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://bwj6fqqloiugf"
         },
         {
             "Name": "Black Frost",
-            "Arcana": "Fool",
+            "Race": "Fool",
             "SkillType": "Ice",
-            "Level": 38,
+            "Level": 67,
+            "Strength": 44,
+            "Magic": 46,
+            "Endurance": 41,
+            "Agility": 42,
+            "Luck": 35,
+            "Resistances":
+            {
+                "Fire": "Repel",
+                "Ice": "Absorb",
+                "Nuclear": "Null",
+                "Curse": "Repel"
+            },
             "Image": "uid://cxudeeh8dvin0"
         },
         {
             "Name": "Black Ooze",
-            "Arcana": "Moon",
+            "Race": "Moon",
             "SkillType": "Curse",
             "Level": 18,
+            "Strength": 15,
+            "Magic": 7,
+            "Endurance": 16,
+            "Agility": 8,
+            "Luck": 15,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Ice": "Resist",
+                "Electric": "Weak",
+                "Psychic": "Weak",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://1dtx4wvug8tm"
         },
         {
             "Name": "Black Rider",
-            "Arcana": "Tower",
+            "Race": "Tower",
             "SkillType": "Curse",
             "Level": 59,
+            "Strength": 36,
+            "Magic": 42,
+            "Endurance": 34,
+            "Agility": 42,
+            "Luck": 30,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Absorb",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://d0eoeo8ec42yr"
         },
         {
             "Name": "Decarabia",
-            "Arcana": "Fool",
+            "Race": "Councillor",
             "SkillType": "Fire",
-            "Level": 46,
+            "Level": 32,
+            "Strength": 21,
+            "Magic": 23,
+            "Endurance": 19,
+            "Agility": 22,
+            "Luck": 18,
+            "Resistances":
+            {
+                "Physical": "Weak",
+                "Fire": "Repel",
+                "Nuclear": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://c2hbiyplowlni"
         },
         {
             "Name": "Shiki-Ouji",
-            "Arcana": "Fool",
-            "SkillType": "Physical",
-            "Level": 56,
+            "Race": "Chariot",
+            "SkillType": "Pierce",
+            "Level": 18,
+            "Strength": 16,
+            "Magic": 14,
+            "Endurance": 12,
+            "Agility": 9,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Physical": "Null",
+                "Nuclear": "Weak",
+                "Bless": "Null",
+                "Curse": "Null"
+            },
             "Image": "uid://omhwicp8o8cy"
         },
         {
             "Name": "Jikokuten",
-            "Arcana": "Temperance",
+            "Race": "Temperance",
             "SkillType": "Physical",
             "Level": 22,
+            "Strength": 18,
+            "Magic": 11,
+            "Endurance": 16,
+            "Agility": 15,
+            "Luck": 13,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Bless": "Resist",
+                "Curse": "Weak"
+            },
             "Image": "uid://dsmvymfl5pxkg"
         },
         {
             "Name": "Pixie",
-            "Arcana": "Magician",
+            "Race": "Lovers",
             "SkillType": "Electric",
             "Level": 2,
+            "Strength": 1,
+            "Magic": 3,
+            "Endurance": 3,
+            "Agility": 4,
+            "Luck": 2,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Ice": "Weak",
+                "Electric": "Resist",
+                "Bless": "Resist",
+                "Curse": "Weak"
+            },
             "Image": "uid://b0wm0re1u5d4s"
         },
         {
             "Name": "Orobas",
-            "Arcana": "Magician",
+            "Race": "Hierophant",
             "SkillType": "Fire",
-            "Level": 8,
+            "Level": 17,
+            "Strength": 11,
+            "Magic": 14,
+            "Endurance": 15,
+            "Agility": 12,
+            "Luck": 6,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Wind": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://ejg4bcp3vv01"
         },
         {
             "Name": "Jack Frost",
-            "Arcana": "Magician",
+            "Race": "Magician",
             "SkillType": "Ice",
-            "Level": 16,
+            "Level": 11,
+            "Strength": 8,
+            "Magic": 9,
+            "Endurance": 7,
+            "Agility": 9,
+            "Luck": 7,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Null"
+            },
             "Image": "uid://c7h0jkl761ywg"
         },
         {
             "Name": "Hua Po",
-            "Arcana": "Magician",
+            "Race": "Hanged",
             "SkillType": "Fire",
-            "Level": 25,
+            "Level": 9,
+            "Strength": 4,
+            "Magic": 10,
+            "Endurance": 4,
+            "Agility": 8,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Fire": "Repel",
+                "Ice": "Weak"
+            },
             "Image": "uid://gcllvcwyfeh1"
         },
         {
             "Name": "Pyro Jack",
-            "Arcana": "Magician",
+            "Race": "Magician",
             "SkillType": "Fire",
-            "Level": 32,
+            "Level": 2,
+            "Strength": 2,
+            "Magic": 3,
+            "Endurance": 3,
+            "Agility": 3,
+            "Luck": 2,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Wind": "Weak"
+            },
             "Image": "uid://67uwujgmbb74"
         },
         {
             "Name": "Rangda",
-            "Arcana": "Magician",
+            "Race": "Magician",
             "SkillType": "Curse",
-            "Level": 47,
+            "Level": 48,
+            "Strength": 28,
+            "Magic": 24,
+            "Endurance": 30,
+            "Agility": 33,
+            "Luck": 26,
+            "Resistances":
+            {
+                "Physical": "Repel",
+                "Pierce": "Repel",
+                "Fire": "Null",
+                "Electric": "Weak",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://b178wif1mtkpg"
         },
         {
             "Name": "Surt",
-            "Arcana": "Magician",
+            "Race": "Magician",
             "SkillType": "Fire",
-            "Level": 69,
+            "Level": 83,
+            "Strength": 55,
+            "Magic": 54,
+            "Endurance": 51,
+            "Agility": 50,
+            "Luck": 46,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Electric": "Null",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://b7ojdfpsbcpd1"
         },
         {
             "Name": "Saki Mitama",
-            "Arcana": "Priestess",
-            "SkillType": "Ice",
-            "Level": 11,
+            "Race": "Lovers",
+            "SkillType": "Electric",
+            "Level": 6,
+            "Strength": 4,
+            "Magic": 6,
+            "Endurance": 5,
+            "Agility": 6,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Wind": "Weak"
+            },
             "Image": "uid://ducsvj3k36k66"
         },
         {
             "Name": "Sarasvati",
-            "Arcana": "Priestess",
+            "Race": "Priestess",
             "SkillType": "Bless",
-            "Level": 17,
+            "Level": 50,
+            "Strength": 30,
+            "Magic": 35,
+            "Endurance": 32,
+            "Agility": 33,
+            "Luck": 27,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Resist",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://cdnsud1k6mg3a"
         },
         {
             "Name": "High Pixie",
-            "Arcana": "Priestess",
+            "Race": "Fool",
             "SkillType": "Wind",
-            "Level": 22,
+            "Level": 16,
+            "Strength": 8,
+            "Magic": 14,
+            "Endurance": 10,
+            "Agility": 13,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Electric": "Resist",
+                "Wind": "Resist",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://beaa1kprh8biw"
         },
         {
             "Name": "Parvati",
-            "Arcana": "Priestess",
-            "SkillType": "Electric",
-            "Level": 37,
+            "Race": "Lovers",
+            "SkillType": "Psychic",
+            "Level": 56,
+            "Strength": 33,
+            "Magic": 39,
+            "Endurance": 33,
+            "Agility": 39,
+            "Luck": 31,
+            "Resistances":
+            {
+                "Ice": "Repel",
+                "Psychic": "Resist",
+                "Bless": "Resist",
+                "Curse": "Weak"
+            },
             "Image": "uid://da0pcvi7k6c3l"
         },
         {
             "Name": "Kikuri-Hime",
-            "Arcana": "Priestess",
+            "Race": "Priestess",
             "SkillType": "Ice",
-            "Level": 48,
+            "Level": 40,
+            "Strength": 22,
+            "Magic": 31,
+            "Endurance": 24,
+            "Agility": 28,
+            "Luck": 22,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Wind": "Null",
+                "Bless": "Resist"
+            },
             "Image": "uid://bl2y6d0e8qv57"
         },
         {
             "Name": "Hariti",
-            "Arcana": "Priestess",
+            "Race": "Empress",
             "SkillType": "Electric",
-            "Level": 59,
+            "Level": 40,
+            "Strength": 21,
+            "Magic": 32,
+            "Endurance": 24,
+            "Agility": 23,
+            "Luck": 27,
+            "Resistances":
+            {
+                "Wind": "Weak",
+                "Psychic": "Resist",
+                "Bless": "Resist"
+            },
             "Image": "uid://dtn24p6fftoj3"
         },
         {
             "Name": "Agathion",
-            "Arcana": "Chariot",
+            "Race": "Chariot",
             "SkillType": "Electric",
             "Level": 3,
+            "Strength": 3,
+            "Magic": 4,
+            "Endurance": 5,
+            "Agility": 7,
+            "Luck": 3,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Electric": "Resist",
+                "Wind": "Weak"
+            },
             "Image": "uid://hun327nbn3fg"
         },
         {
             "Name": "Bicorn",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Wind",
             "Level": 4,
+            "Strength": 5,
+            "Magic": 3,
+            "Endurance": 3,
+            "Agility": 5,
+            "Luck": 3,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://bynyqa020a1hl"
         },
         {
             "Name": "Mithras",
-            "Arcana": "Sun",
-            "SkillType": "Fire",
+            "Race": "Sun",
+            "SkillType": "Nuclear",
             "Level": 39,
+            "Strength": 27,
+            "Magic": 25,
+            "Endurance": 27,
+            "Agility": 25,
+            "Luck": 20,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist",
+                "Fire": "Absorb",
+                "Psychic": "Weak",
+                "Nuclear": "Null"
+            },
             "Image": "uid://v0rtmqcpw4gn"
         },
         {
             "Name": "Scathach",
-            "Arcana": "Priestess",
+            "Race": "Priestess",
             "SkillType": "Wind",
-            "Level": 79,
+            "Level": 77,
+            "Strength": 48,
+            "Magic": 52,
+            "Endurance": 46,
+            "Agility": 48,
+            "Luck": 44,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Repel",
+                "Curse": "Null"
+            },
             "Image": "uid://f6y2266nyee5"
         },
         {
             "Name": "Yaksini",
-            "Arcana": "Empress",
+            "Race": "Empress",
             "SkillType": "Ice",
-            "Level": 18,
+            "Level": 20,
+            "Strength": 14,
+            "Magic": 11,
+            "Endurance": 13,
+            "Agility": 16,
+            "Luck": 13,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Ice": "Resist",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://6ol6migd43l"
         },
         {
             "Name": "Titania",
-            "Arcana": "Empress",
-            "SkillType": "Wind",
-            "Level": 26,
+            "Race": "Empress",
+            "SkillType": "Nuclear",
+            "Level": 56,
+            "Strength": 32,
+            "Magic": 40,
+            "Endurance": 35,
+            "Agility": 38,
+            "Luck": 30,
+            "Resistances":
+            {
+                "Psychic": "Weak",
+                "Nuclear": "Resist",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://b4ilc6ms8hiae"
         },
         {
             "Name": "Skadi",
-            "Arcana": "Empress",
+            "Race": "Priestess",
             "SkillType": "Ice",
-            "Level": 52,
+            "Level": 53,
+            "Strength": 33,
+            "Magic": 39,
+            "Endurance": 32,
+            "Agility": 34,
+            "Luck": 28,
+            "Resistances":
+            {
+                "Ice": "Repel",
+                "Curse": "Null"
+            },
             "Image": "uid://g4wc21pk0tdv"
         },
         {
             "Name": "Dionysus",
-            "Arcana": "Moon",
-            "SkillType": "Electric",
-            "Level": 48,
+            "Race": "Councillor",
+            "SkillType": "Psychic",
+            "Level": 71,
+            "Strength": 42,
+            "Magic": 48,
+            "Endurance": 44,
+            "Agility": 42,
+            "Luck": 44,
+            "Resistances":
+            {
+                "Electric": "Repel",
+                "Bless": "Null",
+                "Curse": "Null"
+            },
             "Image": "uid://n4ohj8oo6amv"
         },
         {
             "Name": "Isis",
-            "Arcana": "Empress",
+            "Race": "Priestess",
             "SkillType": "Electric",
-            "Level": 79,
+            "Level": 26,
+            "Strength": 14,
+            "Magic": 20,
+            "Endurance": 17,
+            "Agility": 18,
+            "Luck": 16,
+            "Resistances":
+            {
+                "Psychic": "Weak",
+                "Bless": "Null"
+            },
             "Image": "uid://b5lmtpb1ei0jl"
         },
         {
             "Name": "Oberon",
-            "Arcana": "Emperor",
+            "Race": "Emperor",
             "SkillType": "Electric",
-            "Level": 12,
+            "Level": 66,
+            "Strength": 40,
+            "Magic": 45,
+            "Endurance": 42,
+            "Agility": 43,
+            "Luck": 35,
+            "Resistances":
+            {
+                "Electric": "Resist",
+                "Psychic": "Null",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://bsdfhsxeomahk"
         },
         {
             "Name": "King Frost",
-            "Arcana": "Emperor",
+            "Race": "Emperor",
             "SkillType": "Ice",
-            "Level": 22,
+            "Level": 61,
+            "Strength": 40,
+            "Magic": 44,
+            "Endurance": 43,
+            "Agility": 29,
+            "Luck": 34,
+            "Resistances":
+            {
+                "Ice": "Absorb",
+                "Bless": "Null"
+            },
             "Image": "uid://osywkblp405g"
         },
         {
             "Name": "Okuninushi",
-            "Arcana": "Emperor",
-            "SkillType": "Electric",
-            "Level": 41,
+            "Race": "Faith",
+            "SkillType": "Psychic",
+            "Level": 54,
+            "Strength": 39,
+            "Magic": 35,
+            "Endurance": 33,
+            "Agility": 32,
+            "Luck": 30,
+            "Resistances":
+            {
+                "Electric": "Repel",
+                "Wind": "Weak",
+                "Psychic": "Null",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://se0dnm3bqkdw"
         },
         {
             "Name": "Thoth",
-            "Arcana": "Emperor",
-            "SkillType": "Electric",
-            "Level": 45,
+            "Race": "Emperor",
+            "SkillType": "Nuclear",
+            "Level": 36,
+            "Strength": 21,
+            "Magic": 28,
+            "Endurance": 21,
+            "Agility": 24,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Psychic": "Weak",
+                "Nuclear": "Null",
+                "Bless": "Null",
+                "Curse": "Resist"
+            },
             "Image": "uid://c1e8kkxqkehi5"
         },
         {
             "Name": "Barong",
-            "Arcana": "Emperor",
+            "Race": "Emperor",
             "SkillType": "Electric",
-            "Level": 65,
+            "Level": 52,
+            "Strength": 33,
+            "Magic": 35,
+            "Endurance": 33,
+            "Agility": 37,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Electric": "Resist",
+                "Wind": "Weak",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://dyrnq5rigpys1"
         },
         {
             "Name": "Anzu",
-            "Arcana": "Hierophant",
+            "Race": "Hierophant",
             "SkillType": "Wind",
-            "Level": 15,
+            "Level": 25,
+            "Strength": 14,
+            "Magic": 18,
+            "Endurance": 15,
+            "Agility": 21,
+            "Luck": 14,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Electric": "Resist",
+                "Wind": "Repel",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://c0nrteve0jbex"
         },
         {
             "Name": "Shiisaa",
-            "Arcana": "Hierophant",
+            "Race": "Strength",
             "SkillType": "Electric",
-            "Level": 21,
+            "Level": 15,
+            "Strength": 10,
+            "Magic": 11,
+            "Endurance": 11,
+            "Agility": 11,
+            "Luck": 9,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Psychic": "Weak",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://bj0obbj35e5k7"
         },
         {
             "Name": "Unicorn",
-            "Arcana": "Hierophant",
+            "Race": "Faith",
             "SkillType": "Bless",
-            "Level": 29,
+            "Level": 39,
+            "Strength": 20,
+            "Magic": 27,
+            "Endurance": 25,
+            "Agility": 28,
+            "Luck": 24,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Psychic": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://ciyfajqjglt6n"
         },
         {
             "Name": "Flauros",
-            "Arcana": "Hierophant",
+            "Race": "Devil",
             "SkillType": "Physical",
-            "Level": 36,
+            "Level": 19,
+            "Strength": 15,
+            "Magic": 11,
+            "Endurance": 13,
+            "Agility": 14,
+            "Luck": 11,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Ice": "Weak",
+                "Wind": "Resist",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://du7awmv48qni3"
         },
         {
             "Name": "Cerberus",
-            "Arcana": "Hierophant",
+            "Race": "Chariot",
             "SkillType": "Fire",
-            "Level": 52,
+            "Level": 55,
+            "Strength": 39,
+            "Magic": 35,
+            "Endurance": 32,
+            "Agility": 39,
+            "Luck": 27,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://d2uv4duwgcmqj"
         },
         {
             "Name": "Daisoujou",
-            "Arcana": "Hierophant",
+            "Race": "Hierophant",
             "SkillType": "Bless",
-            "Level": 60,
+            "Level": 40,
+            "Strength": 21,
+            "Magic": 33,
+            "Endurance": 24,
+            "Agility": 24,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://biexuecswa2p7"
         },
         {
             "Name": "Kohryu",
-            "Arcana": "Hierophant",
-            "SkillType": "Electric",
+            "Race": "Hierophant",
+            "SkillType": "Psychic",
             "Level": 76,
+            "Strength": 43,
+            "Magic": 51,
+            "Endurance": 50,
+            "Agility": 53,
+            "Luck": 38,
+            "Resistances":
+            {
+                "Electric": "Repel",
+                "Psychic": "Null",
+                "Nuclear": "Weak",
+                "Bless": "Null"
+            },
             "Image": "uid://5p7ueyshpd1k"
         },
         {
             "Name": "Queen Mab",
-            "Arcana": "Lovers",
+            "Race": "Magician",
             "SkillType": "Fire",
-            "Level": 25,
+            "Level": 43,
+            "Strength": 23,
+            "Magic": 35,
+            "Endurance": 26,
+            "Agility": 30,
+            "Luck": 22,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Electric": "Resist",
+                "Wind": "Weak"
+            },
             "Image": "uid://bbpg0pxl5xaqg"
         },
         {
             "Name": "Leanan Sidhe",
-            "Arcana": "Lovers",
-            "SkillType": "Ice",
-            "Level": 42,
+            "Race": "Lovers",
+            "SkillType": "Psychic",
+            "Level": 19,
+            "Strength": 9,
+            "Magic": 17,
+            "Endurance": 12,
+            "Agility": 16,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Wind": "Resist",
+                "Psychic": "Resist"
+            },
             "Image": "uid://cwlhyu5rv42l1"
         },
         {
             "Name": "Slime",
-            "Arcana": "Chariot",
+            "Race": "Chariot",
             "SkillType": "Curse",
-            "Level": 2,
+            "Level": 10,
+            "Strength": 9,
+            "Magic": 6,
+            "Endurance": 11,
+            "Agility": 6,
+            "Luck": 5,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist",
+                "Fire": "Weak",
+                "Wind": "Weak"
+            },
             "Image": "uid://ca30mw1yt3oll"
         },
         {
             "Name": "Eligor",
-            "Arcana": "Chariot",
+            "Race": "Emperor",
             "SkillType": "Physical",
-            "Level": 12,
+            "Level": 16,
+            "Strength": 12,
+            "Magic": 10,
+            "Endurance": 13,
+            "Agility": 10,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Fire": "Resist",
+                "Electric": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://c71gadsmlvt4v"
         },
         {
             "Name": "Ara Mitama",
-            "Arcana": "Chariot",
-            "SkillType": "Fire",
-            "Level": 18,
+            "Race": "Chariot",
+            "SkillType": "Nuclear",
+            "Level": 30,
+            "Strength": 20,
+            "Magic": 18,
+            "Endurance": 20,
+            "Agility": 20,
+            "Luck": 19,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Ice": "Weak"
+            },
             "Image": "uid://be11rkx2hogq"
         },
         {
             "Name": "Kin-ki",
-            "Arcana": "Chariot",
+            "Race": "Chariot",
             "SkillType": "Physical",
-            "Level": 54,
+            "Level": 25,
+            "Strength": 21,
+            "Magic": 13,
+            "Endurance": 21,
+            "Agility": 15,
+            "Luck": 12,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Repel"
+            },
             "Image": "uid://bvgq6lhsgfuv0"
         },
         {
             "Name": "Thor",
-            "Arcana": "Chariot",
+            "Race": "Chariot",
             "SkillType": "Electric",
-            "Level": 65,
+            "Level": 64,
+            "Strength": 44,
+            "Magic": 39,
+            "Endurance": 43,
+            "Agility": 38,
+            "Luck": 35,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Electric": "Null",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://coxccq80fo480"
         },
         {
             "Name": "Angel",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 4,
+            "Level": 9,
+            "Strength": 6,
+            "Magic": 9,
+            "Endurance": 5,
+            "Agility": 9,
+            "Luck": 5,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Electric": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://blfy538wnkk4k"
         },
         {
             "Name": "Archangel",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 11,
+            "Level": 14,
+            "Strength": 11,
+            "Magic": 9,
+            "Endurance": 10,
+            "Agility": 12,
+            "Luck": 7,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://cjtls0n8maokq"
         },
         {
             "Name": "Principality",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 19,
+            "Level": 29,
+            "Strength": 17,
+            "Magic": 19,
+            "Endurance": 18,
+            "Agility": 21,
+            "Luck": 19,
+            "Resistances":
+            {
+                "Fire": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://gren8yl5xboc"
         },
         {
             "Name": "Power",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 27,
+            "Level": 41,
+            "Strength": 30,
+            "Magic": 26,
+            "Endurance": 28,
+            "Agility": 25,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Wind": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://bqitcibvesqq1"
         },
         {
             "Name": "Dominion",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 38,
+            "Level": 68,
+            "Strength": 42,
+            "Magic": 45,
+            "Endurance": 43,
+            "Agility": 44,
+            "Luck": 37,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Nuclear": "Repel",
+                "Bless": "Null",
+                "Curse": "Resist"
+            },
             "Image": "uid://n4ohj8oo6amv"
         },
         {
             "Name": "Throne",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Fire",
-            "Level": 49,
+            "Level": 72,
+            "Strength": 42,
+            "Magic": 49,
+            "Endurance": 43,
+            "Agility": 46,
+            "Luck": 43,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Wind": "Null",
+                "Nuclear": "Weak",
+                "Bless": "Repel"
+            },
             "Image": "uid://dm1qbllynoipd"
         },
         {
             "Name": "Melchizedek",
-            "Arcana": "Justice",
+            "Race": "Justice",
             "SkillType": "Bless",
-            "Level": 66,
+            "Level": 58,
+            "Strength": 37,
+            "Magic": 32,
+            "Endurance": 40,
+            "Agility": 39,
+            "Luck": 33,
+            "Resistances":
+            {
+                "Wind": "Weak",
+                "Psychic": "Resist",
+                "Bless": "Absorb",
+                "Curse": "Null"
+            },
             "Image": "uid://woeqtjkfinui"
         },
         {
             "Name": "Sraosha",
-            "Arcana": "Justice",
+            "Race": "Star",
             "SkillType": "Bless",
-            "Level": 74,
+            "Level": 80,
+            "Strength": 47,
+            "Magic": 56,
+            "Endurance": 45,
+            "Agility": 56,
+            "Luck": 43,
+            "Resistances":
+            {
+                "Electric": "Absorb",
+                "Bless": "Repel",
+                "Curse": "Weak"
+            },
             "Image": "No Image"
         },
         {
             "Name": "Hecatoncheires",
-            "Arcana": "Hanged",
-            "SkillType": "Physical",
+            "Race": "Hanged",
+            "SkillType": "Psychic",
             "Level": 42,
+            "Strength": 35,
+            "Magic": 22,
+            "Endurance": 27,
+            "Agility": 23,
+            "Luck": 26,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://v6525sqnaxcj"
         },
         {
             "Name": "Ippon-Datara",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Physical",
-            "Level": 17,
+            "Level": 13,
+            "Strength": 11,
+            "Magic": 7,
+            "Endurance": 14,
+            "Agility": 6,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Fire": "Resist",
+                "Ice": "Weak",
+                "Wind": "Repel",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://becsk0m17vevp"
         },
         {
             "Name": "Lamia",
-            "Arcana": "Hermit",
+            "Race": "Empress",
             "SkillType": "Fire",
             "Level": 26,
+            "Strength": 21,
+            "Magic": 15,
+            "Endurance": 18,
+            "Agility": 19,
+            "Luck": 12,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Electric": "Resist",
+                "Nuclear": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://b23ab2hq8at1b"
         },
         {
             "Name": "Mothman",
-            "Arcana": "Hermit",
+            "Race": "Moon",
             "SkillType": "Electric",
             "Level": 33,
+            "Strength": 21,
+            "Magic": 24,
+            "Endurance": 16,
+            "Agility": 24,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Pierce": "Weak",
+                "Electric": "Null",
+                "Psychic": "Resist"
+            },
             "Image": "uid://fv1ritb0na4h"
         },
         {
             "Name": "Koumokuten",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Physical",
             "Level": 49,
+            "Strength": 37,
+            "Magic": 29,
+            "Endurance": 34,
+            "Agility": 29,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Ice": "Weak",
+                "Bless": "Resist"
+            },
             "Image": "uid://f0ptf28sa3s0"
         },
         {
             "Name": "Nebiros",
-            "Arcana": "Hermit",
+            "Race": "Devil",
             "SkillType": "Curse",
-            "Level": 63,
+            "Level": 74,
+            "Strength": 45,
+            "Magic": 52,
+            "Endurance": 44,
+            "Agility": 46,
+            "Luck": 42,
+            "Resistances":
+            {
+                "Psychic": "Null",
+                "Bless": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://c8etye2f0ehq"
         },
         {
             "Name": "Arahabaki",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Physical",
-            "Level": 73,
+            "Level": 35,
+            "Strength": 21,
+            "Magic": 23,
+            "Endurance": 22,
+            "Agility": 24,
+            "Luck": 22,
+            "Resistances":
+            {
+                "Physical": "Repel",
+                "Pierce": "Repel",
+                "Psychic": "Weak",
+                "Nuclear": "Weak",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://dj0fc5gmq55dg"
         },
         {
             "Name": "Clotho",
-            "Arcana": "Fortune",
+            "Race": "Fortune",
             "SkillType": "Bless",
-            "Level": 44,
+            "Level": 27,
+            "Strength": 14,
+            "Magic": 19,
+            "Endurance": 18,
+            "Agility": 20,
+            "Luck": 17,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Wind": "Null",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://be7jwmhqmenqg"
         },
         {
             "Name": "Lachesis",
-            "Arcana": "Fortune",
+            "Race": "Fortune",
             "SkillType": "Ice",
-            "Level": 51,
+            "Level": 35,
+            "Strength": 18,
+            "Magic": 26,
+            "Endurance": 22,
+            "Agility": 25,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Weak",
+                "Wind": "Resist"
+            },
             "Image": "uid://b63au3igp171"
         },
         {
             "Name": "Atropos",
-            "Arcana": "Fortune",
+            "Race": "Fortune",
             "SkillType": "Electric",
-            "Level": 65,
+            "Level": 39,
+            "Strength": 23,
+            "Magic": 30,
+            "Endurance": 22,
+            "Agility": 27,
+            "Luck": 22,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Wind": "Null"
+            },
             "Image": "uid://c70mabhh0i8nu"
         },
         {
             "Name": "Norn",
-            "Arcana": "Fortune",
+            "Race": "Fortune",
             "SkillType": "Wind",
-            "Level": 72,
+            "Level": 52,
+            "Strength": 30,
+            "Magic": 38,
+            "Endurance": 33,
+            "Agility": 34,
+            "Luck": 28,
+            "Resistances":
+            {
+                "Electric": "Repel",
+                "Wind": "Absorb",
+                "Bless": "Resist"
+            },
             "Image": "uid://cy6ep2klaeo3w"
         },
         {
             "Name": "Sandman",
-            "Arcana": "Strength",
+            "Race": "Magician",
             "SkillType": "Wind",
-            "Level": 5,
+            "Level": 23,
+            "Strength": 11,
+            "Magic": 13,
+            "Endurance": 14,
+            "Agility": 17,
+            "Luck": 21,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Electric": "Weak",
+                "Wind": "Resist"
+            },
             "Image": "uid://bp7aeyfibif2l"
         },
         {
             "Name": "Valkyrie",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Physical",
-            "Level": 8,
+            "Level": 44,
+            "Strength": 33,
+            "Magic": 24,
+            "Endurance": 28,
+            "Agility": 29,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Fire": "Weak",
+                "Ice": "Repel",
+                "Bless": "Null"
+            },
             "Image": "uid://tmoybhjspl2u"
         },
         {
             "Name": "Rakshasa",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Physical",
-            "Level": 23,
+            "Level": 24,
+            "Strength": 20,
+            "Magic": 15,
+            "Endurance": 18,
+            "Agility": 17,
+            "Luck": 9,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Null",
+                "Fire": "Resist",
+                "Wind": "Weak",
+                "Bless": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://dy0c1slragh32"
         },
         {
             "Name": "Kushi Mitama",
-            "Arcana": "Strength",
+            "Race": "Councillor",
             "SkillType": "Ice",
-            "Level": 28,
+            "Level": 12,
+            "Strength": 7,
+            "Magic": 11,
+            "Endurance": 9,
+            "Agility": 8,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Wind": "Resist"
+            },
             "Image": "uid://i6yxliwrdhur"
         },
         {
             "Name": "Oni",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Physical",
-            "Level": 30,
+            "Level": 20,
+            "Strength": 19,
+            "Magic": 9,
+            "Endurance": 17,
+            "Agility": 12,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist"
+            },
             "Image": "uid://dj31t44n0qv33"
         },
         {
             "Name": "Siegfried",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Physical",
-            "Level": 63,
+            "Level": 84,
+            "Strength": 61,
+            "Magic": 43,
+            "Endurance": 55,
+            "Agility": 55,
+            "Luck": 45,
+            "Resistances":
+            {
+                "Physical": "Null",
+                "Pierce": "Resist",
+                "Ice": "Resist",
+                "Electric": "Null",
+                "Nuclear": "Weak"
+            },
             "Image": "No Image"
         },
         {
             "Name": "Berith",
-            "Arcana": "Hanged",
+            "Race": "Hierophant",
             "SkillType": "Physical",
-            "Level": 15,
+            "Level": 9,
+            "Strength": 9,
+            "Magic": 6,
+            "Endurance": 8,
+            "Agility": 8,
+            "Luck": 3,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Fire": "Resist",
+                "Ice": "Weak"
+            },
             "Image": "uid://cpffkrbk1ubd5"
         },
         {
             "Name": "Makami",
-            "Arcana": "Hanged",
-            "SkillType": "Fire",
-            "Level": 27,
+            "Race": "Temperance",
+            "SkillType": "Nuclear",
+            "Level": 15,
+            "Strength": 13,
+            "Magic": 12,
+            "Endurance": 8,
+            "Agility": 11,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Electric": "Weak",
+                "Wind": "Resist",
+                "Nuclear": "Resist",
+                "Bless": "Null"
+            },
             "Image": "uid://bqnmby8d5qsw0"
         },
         {
             "Name": "Koppa Tengu",
-            "Arcana": "Temperance",
+            "Race": "Temperance",
             "SkillType": "Wind",
             "Level": 11,
+            "Strength": 7,
+            "Magic": 8,
+            "Endurance": 8,
+            "Agility": 11,
+            "Luck": 6,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Wind": "Resist",
+                "Bless": "Weak"
+            },
             "Image": "uid://dxyapkcwsmx2k"
         },
         {
             "Name": "Orthrus",
-            "Arcana": "Hanged",
+            "Race": "Hanged",
             "SkillType": "Fire",
-            "Level": 39,
+            "Level": 21,
+            "Strength": 16,
+            "Magic": 14,
+            "Endurance": 14,
+            "Agility": 19,
+            "Luck": 7,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://2vwewpoqq3mp"
         },
         {
             "Name": "Hell Biker",
-            "Arcana": "Hanged",
+            "Race": "Death",
             "SkillType": "Fire",
-            "Level": 66,
+            "Level": 37,
+            "Strength": 23,
+            "Magic": 24,
+            "Endurance": 24,
+            "Agility": 30,
+            "Luck": 17,
+            "Resistances":
+            {
+                "Fire": "Repel",
+                "Wind": "Resist",
+                "Bless": "Weak"
+            },
             "Image": "uid://bx0g6icy82ghs"
         },
         {
             "Name": "Mokoi",
-            "Arcana": "Death",
+            "Race": "Death",
             "SkillType": "Physical",
-            "Level": 14,
+            "Level": 9,
+            "Strength": 9,
+            "Magic": 5,
+            "Endurance": 6,
+            "Agility": 10,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Electric": "Resist",
+                "Wind": "Weak"
+            },
             "Image": "uid://csax2yhg5xv7t"
         },
         {
             "Name": "Matador",
-            "Arcana": "Death",
-            "SkillType": "Curse",
-            "Level": 24,
+            "Race": "Death",
+            "SkillType": "Psychic",
+            "Level": 11,
+            "Strength": 13,
+            "Magic": 10,
+            "Endurance": 10,
+            "Agility": 16,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Wind": "Null"
+            },
             "Image": "uid://cgl7s4lp3h7dx"
         },
         {
             "Name": "White Rider",
-            "Arcana": "Death",
+            "Race": "Chariot",
             "SkillType": "Curse",
-            "Level": 58,
+            "Level": 38,
+            "Strength": 22,
+            "Magic": 21,
+            "Endurance": 26,
+            "Agility": 27,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Ice": "Weak",
+                "Bless": "Null",
+                "Curse": "Repel"
+            },
             "Image": "No Image"
         },
         {
             "Name": "Alice",
-            "Arcana": "Death",
+            "Race": "Death",
             "SkillType": "Curse",
-            "Level": 72,
+            "Level": 83,
+            "Strength": 45,
+            "Magic": 61,
+            "Endurance": 49,
+            "Agility": 54,
+            "Luck": 47,
+            "Resistances":
+            {
+                "Psychic": "Resist",
+                "Nuclear": "Resist",
+                "Bless": "Weak",
+                "Curse": "Repel"
+            },
             "Image": "uid://bcig151ilmh0x"
         },
         {
             "Name": "Apsaras",
-            "Arcana": "Temperance",
+            "Race": "Priestess",
             "SkillType": "Ice",
-            "Level": 4,
+            "Level": 11,
+            "Strength": 7,
+            "Magic": 11,
+            "Endurance": 6,
+            "Agility": 10,
+            "Luck": 6,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Electric": "Weak"
+            },
             "Image": "uid://bu70ddvdhuf1m"
         },
         {
             "Name": "Nigi Mitama",
-            "Arcana": "Temperance",
+            "Race": "Councillor",
             "SkillType": "Bless",
-            "Level": 23,
+            "Level": 22,
+            "Strength": 13,
+            "Magic": 15,
+            "Endurance": 15,
+            "Agility": 16,
+            "Luck": 14,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://dsuxypnv1ktsv"
         },
         {
-            "Name": "Mitra",
-            "Arcana": "Temperance",
+            "Name": "Mithra",
+            "Race": "Temperance",
             "SkillType": "Bless",
-            "Level": 31,
+            "Level": 33,
+            "Strength": 19,
+            "Magic": 26,
+            "Endurance": 19,
+            "Agility": 24,
+            "Luck": 18,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Weak",
+                "Bless": "Null"
+            },
             "Image": "uid://cc3euqe4sbwgb"
         },
         {
             "Name": "Genbu",
-            "Arcana": "Temperance",
+            "Race": "Temperance",
             "SkillType": "Ice",
-            "Level": 40,
+            "Level": 7,
+            "Strength": 5,
+            "Magic": 6,
+            "Endurance": 7,
+            "Agility": 6,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Weak",
+                "Psychic": "Resist"
+            },
             "Image": "uid://b56knr6datd2m"
         },
         {
             "Name": "Bugs",
-            "Arcana": "Fool",
-            "SkillType": "Curse",
+            "Race": "Fool",
+            "SkillType": "Pierce",
             "Level": 49,
+            "Strength": 35,
+            "Magic": 33,
+            "Endurance": 30,
+            "Agility": 32,
+            "Luck": 24,
+            "Resistances":
+            {
+                "Psychic": "Resist",
+                "Nuclear": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://co3iy6fhneo0b"
         },
         {
             "Name": "Seiryu",
-            "Arcana": "Temperance",
+            "Race": "Councillor",
             "SkillType": "Ice",
-            "Level": 47,
+            "Level": 62,
+            "Strength": 38,
+            "Magic": 41,
+            "Endurance": 43,
+            "Agility": 37,
+            "Luck": 34,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://bivrmvirntmjp"
         },
         {
             "Name": "Sudama",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Wind",
             "Level": 17,
+            "Strength": 9,
+            "Magic": 14,
+            "Endurance": 12,
+            "Agility": 13,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Wind": "Repel",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://eo5p6gblyfhy"
         },
         {
             "Name": "Dakini",
-            "Arcana": "Empress",
+            "Race": "Empress",
             "SkillType": "Physical",
             "Level": 50,
+            "Strength": 34,
+            "Magic": 32,
+            "Endurance": 34,
+            "Agility": 28,
+            "Luck": 29,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Fire": "Resist"
+            },
             "Image": "uid://b8n401je7usay"
         },
         {
             "Name": "Suzaku",
-            "Arcana": "Temperance",
-            "SkillType": "Fire",
-            "Level": 54,
+            "Race": "Sun",
+            "SkillType": "Nuclear",
+            "Level": 16,
+            "Strength": 9,
+            "Magic": 12,
+            "Endurance": 10,
+            "Agility": 15,
+            "Luck": 9,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://bqnhp357t2g2v"
         },
         {
             "Name": "Inugami",
-            "Arcana": "Hanged",
+            "Race": "Hanged",
             "SkillType": "Physical",
             "Level": 14,
+            "Strength": 11,
+            "Magic": 9,
+            "Endurance": 9,
+            "Agility": 12,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Fire": "Null",
+                "Wind": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://dnh4anlw0wldr"
         },
         {
             "Name": "Nue",
-            "Arcana": "Death",
+            "Race": "Death",
             "SkillType": "Curse",
             "Level": 20,
+            "Strength": 16,
+            "Magic": 10,
+            "Endurance": 17,
+            "Agility": 14,
+            "Luck": 10,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Curse": "Null"
+            },
             "Image": "uid://dolqasatfut43"
         },
         {
             "Name": "Byakko",
-            "Arcana": "Temperance",
+            "Race": "Temperance",
             "SkillType": "Physical",
-            "Level": 62,
+            "Level": 45,
+            "Strength": 35,
+            "Magic": 28,
+            "Endurance": 30,
+            "Agility": 32,
+            "Luck": 17,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Absorb",
+                "Nuclear": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://c6tq7svnhflvo"
         },
         {
             "Name": "Yurlungur",
-            "Arcana": "Temperance",
+            "Race": "Sun",
             "SkillType": "Electric",
-            "Level": 69,
+            "Level": 43,
+            "Strength": 26,
+            "Magic": 29,
+            "Endurance": 30,
+            "Agility": 27,
+            "Luck": 24,
+            "Resistances":
+            {
+                "Electric": "Null",
+                "Psychic": "Weak",
+                "Bless": "Resist"
+            },
             "Image": "uid://dwsxs1rc2w5tw"
         },
         {
             "Name": "Vishnu",
-            "Arcana": "Temperance",
+            "Race": "Fool",
             "SkillType": "Wind",
-            "Level": 73,
+            "Level": 83,
+            "Strength": 56,
+            "Magic": 51,
+            "Endurance": 49,
+            "Agility": 57,
+            "Luck": 43,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Absorb",
+                "Bless": "Null",
+                "Curse": "Null"
+            },
             "Image": "uid://b0l1oay364uhg"
         },
         {
             "Name": "Lilim",
-            "Arcana": "Devil",
+            "Race": "Devil",
             "SkillType": "Ice",
-            "Level": 10,
+            "Level": 32,
+            "Strength": 17,
+            "Magic": 23,
+            "Endurance": 18,
+            "Agility": 25,
+            "Luck": 20,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Wind": "Weak",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://crglho7dgvynh"
         },
         {
             "Name": "Incubus",
-            "Arcana": "Devil",
+            "Race": "Devil",
             "SkillType": "Curse",
-            "Level": 28,
+            "Level": 5,
+            "Strength": 4,
+            "Magic": 6,
+            "Endurance": 4,
+            "Agility": 5,
+            "Luck": 3,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Electric": "Resist",
+                "Bless": "Weak"
+            },
             "Image": "uid://t857f8cq8n5d"
         },
         {
             "Name": "Pazuzu",
-            "Arcana": "Devil",
+            "Race": "Devil",
             "SkillType": "Curse",
-            "Level": 37,
+            "Level": 45,
+            "Strength": 29,
+            "Magic": 33,
+            "Endurance": 27,
+            "Agility": 26,
+            "Luck": 27,
+            "Resistances":
+            {
+                "Wind": "Resist",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://b376lwdhulgxo"
         },
         {
             "Name": "Succubus",
-            "Arcana": "Devil",
+            "Race": "Moon",
             "SkillType": "Curse",
-            "Level": 44,
+            "Level": 7,
+            "Strength": 4,
+            "Magic": 7,
+            "Endurance": 5,
+            "Agility": 8,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Fire": "Resist",
+                "Wind": "Weak",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://bka3yvxxlhb0n"
         },
         {
             "Name": "Lilith",
-            "Arcana": "Devil",
-            "SkillType": "Electric",
-            "Level": 53,
+            "Race": "Moon",
+            "SkillType": "Almighty",
+            "Level": 60,
+            "Strength": 33,
+            "Magic": 43,
+            "Endurance": 37,
+            "Agility": 39,
+            "Luck": 35,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Repel",
+                "Nuclear": "Repel",
+                "Curse": "Null"
+            },
             "Image": "uid://jnnixjou7eeo"
         },
         {
             "Name": "Belphegor",
-            "Arcana": "Devil",
+            "Race": "Tower",
             "SkillType": "Ice",
-            "Level": 61,
+            "Level": 37,
+            "Strength": 25,
+            "Magic": 27,
+            "Endurance": 24,
+            "Agility": 23,
+            "Luck": 19,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Electric": "Resist",
+                "Nuclear": "Resist",
+                "Curse": "Repel"
+            },
             "Image": "uid://jx4wy6bom84n"
         },
         {
             "Name": "Belial",
-            "Arcana": "Devil",
+            "Race": "Devil",
             "SkillType": "Curse",
-            "Level": 68,
+            "Level": 82,
+            "Strength": 52,
+            "Magic": 53,
+            "Endurance": 51,
+            "Agility": 48,
+            "Luck": 49,
+            "Resistances":
+            {
+                "Physical": "Null",
+                "Ice": "Resist",
+                "Curse": "Null"
+            },
             "Image": "uid://cfhp5vewxwxf8"
         },
         {
             "Name": "Bishamonten",
-            "Arcana": "Hierophant",
-            "SkillType": "Fire",
+            "Race": "Hierophant",
+            "SkillType": "Nuclear",
             "Level": 67,
+            "Strength": 51,
+            "Magic": 37,
+            "Endurance": 42,
+            "Agility": 44,
+            "Luck": 34,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Ice": "Weak",
+                "Bless": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://5xnphyfwycxf"
         },
         {
             "Name": "Cu Chulainn",
-            "Arcana": "Tower",
+            "Race": "Faith",
             "SkillType": "Physical",
-            "Level": 46,
+            "Level": 76,
+            "Strength": 55,
+            "Magic": 44,
+            "Endurance": 46,
+            "Agility": 48,
+            "Luck": 42,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist",
+                "Electric": "Weak",
+                "Wind": "Repel",
+                "Bless": "Null"
+            },
             "Image": "uid://cu13vnhi4g7i4"
         },
         {
             "Name": "Onmoraki",
-            "Arcana": "Moon",
+            "Race": "Moon",
             "SkillType": "Curse",
             "Level": 12,
+            "Strength": 9,
+            "Magic": 12,
+            "Endurance": 7,
+            "Agility": 10,
+            "Luck": 5,
+            "Resistances":
+            {
+                "Fire": "Resist",
+                "Ice": "Weak",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://b5jd3s6gbtf5w"
         },
         {
             "Name": "Yoshitsune",
-            "Arcana": "Tower",
+            "Race": "Tower",
             "SkillType": "Physical",
-            "Level": 75,
+            "Level": 87,
+            "Strength": 63,
+            "Magic": 52,
+            "Endurance": 50,
+            "Agility": 54,
+            "Luck": 49,
+            "Resistances":
+            {
+                "Physical": "Null",
+                "Fire": "Resist",
+                "Electric": "Repel",
+                "Bless": "Repel"
+            },
             "Image": "uid://dquaeoeee6sd5"
         },
         {
             "Name": "Shiva",
-            "Arcana": "Tower",
-            "SkillType": "Electric",
-            "Level": 80,
+            "Race": "Judgement",
+            "SkillType": "Psychic",
+            "Level": 82,
+            "Strength": 55,
+            "Magic": 54,
+            "Endurance": 53,
+            "Agility": 53,
+            "Luck": 38,
+            "Resistances":
+            {
+                "Ice": "Null",
+                "Electric": "Repel",
+                "Psychic": "Absorb",
+                "Nuclear": "Weak",
+                "Bless": "Null",
+                "Curse": "Null"
+            },
             "Image": "No Image"
         },
         {
             "Name": "Kaiwan",
-            "Arcana": "Star",
-            "SkillType": "Curse",
-            "Level": 24,
+            "Race": "Star",
+            "SkillType": "Psychic",
+            "Level": 36,
+            "Strength": 23,
+            "Magic": 26,
+            "Endurance": 24,
+            "Agility": 22,
+            "Luck": 20,
+            "Resistances":
+            {
+                "Pierce": "Null",
+                "Psychic": "Null",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://xndfhyqkjj1g"
         },
         {
             "Name": "Neko Shogun",
-            "Arcana": "Star",
-            "SkillType": "Electric",
-            "Level": 32,
+            "Race": "Star",
+            "SkillType": "Psychic",
+            "Level": 30,
+            "Strength": 19,
+            "Magic": 20,
+            "Endurance": 19,
+            "Agility": 21,
+            "Luck": 18,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Electric": "Resist",
+                "Wind": "Weak",
+                "Bless": "Null",
+                "Curse": "Resist"
+            },
             "Image": "uid://dek65405owa27"
         },
         {
             "Name": "Nekomata",
-            "Arcana": "Magician",
+            "Race": "Magician",
             "SkillType": "Wind",
             "Level": 17,
+            "Strength": 13,
+            "Magic": 10,
+            "Endurance": 12,
+            "Agility": 15,
+            "Luck": 8,
+            "Resistances":
+            {
+                "Electric": "Weak",
+                "Psychic": "Resist"
+            },
             "Image": "uid://8kblxs0uvq2k"
         },
         {
             "Name": "Kodama",
-            "Arcana": "Star",
+            "Race": "Star",
             "SkillType": "Wind",
             "Level": 11,
+            "Strength": 7,
+            "Magic": 11,
+            "Endurance": 8,
+            "Agility": 10,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist"
+            },
             "Image": "uid://btm2tucwqb7vw"
         },
         {
             "Name": "Fuu-ki",
-            "Arcana": "Star",
+            "Race": "Star",
             "SkillType": "Wind",
-            "Level": 43,
+            "Level": 23,
+            "Strength": 14,
+            "Magic": 17,
+            "Endurance": 16,
+            "Agility": 15,
+            "Luck": 14,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Electric": "Weak",
+                "Wind": "Absorb"
+            },
             "Image": "uid://c5et27moa0aot"
         },
         {
             "Name": "Ganesha",
-            "Arcana": "Star",
+            "Race": "Sun",
             "SkillType": "Physical",
-            "Level": 50,
+            "Level": 53,
+            "Strength": 39,
+            "Magic": 31,
+            "Endurance": 37,
+            "Agility": 33,
+            "Luck": 26,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist",
+                "Wind": "Absorb",
+                "Psychic": "Weak"
+            },
             "Image": "uid://bx7qgf7vsgmfx"
         },
         {
             "Name": "Garuda",
-            "Arcana": "Star",
+            "Race": "Star",
             "SkillType": "Wind",
-            "Level": 57,
+            "Level": 52,
+            "Strength": 30,
+            "Magic": 36,
+            "Endurance": 29,
+            "Agility": 39,
+            "Luck": 29,
+            "Resistances":
+            {
+                "Wind": "Resist",
+                "Bless": "Repel"
+            },
             "Image": "uid://b5vxcll3j6pww"
         },
         {
             "Name": "Andras",
-            "Arcana": "Moon",
+            "Race": "Devil",
             "SkillType": "Ice",
-            "Level": 20,
+            "Level": 27,
+            "Strength": 15,
+            "Magic": 19,
+            "Endurance": 19,
+            "Agility": 21,
+            "Luck": 14,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Psychic": "Resist",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://dlgfmlcqkc8wm"
         },
         {
             "Name": "Yamata-no-Orochi",
-            "Arcana": "Moon",
+            "Race": "Judgement",
             "SkillType": "Ice",
-            "Level": 34,
+            "Level": 64,
+            "Strength": 44,
+            "Magic": 38,
+            "Endurance": 48,
+            "Agility": 36,
+            "Luck": 33,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Ice": "Absorb",
+                "Wind": "Resist",
+                "Curse": "Resist"
+            },
             "Image": "uid://j2kh844avoss"
         },
         {
             "Name": "Girimehkala",
-            "Arcana": "Moon",
+            "Race": "Moon",
             "SkillType": "Physical",
-            "Level": 48,
+            "Level": 43,
+            "Strength": 32,
+            "Magic": 34,
+            "Endurance": 32,
+            "Agility": 29,
+            "Luck": 19,
+            "Resistances":
+            {
+                "Physical": "Repel",
+                "Pierce": "Repel",
+                "Fire": "Resist",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://cly6k4lh23t2j"
         },
         {
             "Name": "Sui-ki",
-            "Arcana": "Moon",
+            "Race": "Moon",
             "SkillType": "Ice",
-            "Level": 57,
+            "Level": 24,
+            "Strength": 16,
+            "Magic": 15,
+            "Endurance": 15,
+            "Agility": 18,
+            "Luck": 15,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Ice": "Absorb",
+                "Electric": "Resist",
+                "Nuclear": "Weak"
+            },
             "Image": "uid://bkccppyk6yirk"
         },
         {
             "Name": "Seth",
-            "Arcana": "Moon",
-            "SkillType": "Physical",
-            "Level": 68,
+            "Race": "Tower",
+            "SkillType": "Pierce",
+            "Level": 51,
+            "Strength": 32,
+            "Magic": 35,
+            "Endurance": 30,
+            "Agility": 35,
+            "Luck": 28,
+            "Resistances":
+            {
+                "Fire": "Repel",
+                "Wind": "Null",
+                "Bless": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://dwtv02xq7wvmj"
         },
         {
             "Name": "Sandalphon",
-            "Arcana": "Moon",
-            "SkillType": "Bless",
-            "Level": 84,
+            "Race": "Moon",
+            "SkillType": "Almighty",
+            "Level": 75,
+            "Strength": 46,
+            "Magic": 51,
+            "Endurance": 49,
+            "Agility": 48,
+            "Luck": 38,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Pierce": "Resist",
+                "Bless": "Repel",
+                "Curse": "Null"
+            },
             "Image": "uid://cadxr0ow3iaa1"
         },
         {
             "Name": "Silky",
-            "Arcana": "Priestess",
+            "Race": "Priestess",
             "SkillType": "Ice",
             "Level": 6,
+            "Strength": 4,
+            "Magic": 7,
+            "Endurance": 4,
+            "Agility": 5,
+            "Luck": 5,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Electric": "Weak"
+            },
             "Image": "uid://dnwxqxw2h1g6m"
         },
         {
             "Name": "Phoenix",
-            "Arcana": "Sun",
-            "SkillType": "Fire",
-            "Level": 20,
+            "Race": "Faith",
+            "SkillType": "Nuclear",
+            "Level": 21,
+            "Strength": 12,
+            "Magic": 15,
+            "Endurance": 15,
+            "Agility": 17,
+            "Luck": 11,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Electric": "Weak",
+                "Wind": "Null"
+            },
             "Image": "uid://dgors76irfv85"
         },
         {
             "Name": "Red Rider",
-            "Arcana": "Tower",
+            "Race": "Tower",
             "SkillType": "Fire",
             "Level": 41,
+            "Strength": 26,
+            "Magic": 27,
+            "Endurance": 25,
+            "Agility": 29,
+            "Luck": 23,
+            "Resistances":
+            {
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://d237rj351wbqi"
         },
         {
             "Name": "Yatagarasu",
-            "Arcana": "Sun",
+            "Race": "Councillor",
             "SkillType": "Fire",
-            "Level": 40,
+            "Level": 57,
+            "Strength": 35,
+            "Magic": 41,
+            "Endurance": 30,
+            "Agility": 40,
+            "Luck": 32,
+            "Resistances":
+            {
+                "Wind": "Resist",
+                "Bless": "Null",
+                "Curse": "Weak"
+            },
             "Image": "uid://je4cj174f62l"
         },
         {
             "Name": "Jatayu",
-            "Arcana": "Sun",
+            "Race": "Hanged",
             "SkillType": "Wind",
-            "Level": 61,
+            "Level": 51,
+            "Strength": 31,
+            "Magic": 34,
+            "Endurance": 39,
+            "Agility": 36,
+            "Luck": 30,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Wind": "Repel",
+                "Nuclear": "Weak",
+                "Bless": "Resist"
+            },
             "Image": "uid://bri60ktcesa78"
         },
         {
             "Name": "Horus",
-            "Arcana": "Sun",
+            "Race": "Sun",
             "SkillType": "Bless",
-            "Level": 68,
+            "Level": 47,
+            "Strength": 30,
+            "Magic": 32,
+            "Endurance": 29,
+            "Agility": 35,
+            "Luck": 22,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Electric": "Null",
+                "Bless": "Repel"
+            },
             "Image": "uid://8snurh07tj1"
         },
         {
             "Name": "Anubis",
-            "Arcana": "Judgement",
+            "Race": "Judgement",
             "SkillType": "Curse",
-            "Level": 59,
+            "Level": 34,
+            "Strength": 19,
+            "Magic": 24,
+            "Endurance": 22,
+            "Agility": 21,
+            "Luck": 23,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Psychic": "Resist",
+                "Bless": "Null",
+                "Curse": "Null"
+            },
             "Image": "uid://cnpj1boy4rx8q"
         },
         {
             "Name": "Pale Rider",
-            "Arcana": "Jester",
+            "Race": "Death",
             "SkillType": "Curse",
-            "Level": 34,
+            "Level": 54,
+            "Strength": 32,
+            "Magic": 37,
+            "Endurance": 33,
+            "Agility": 40,
+            "Luck": 27,
+            "Resistances":
+            {
+                "Wind": "Resist",
+                "Bless": "Weak",
+                "Curse": "Repel"
+            },
             "Image": "uid://nyko04frj626"
         },
         {
             "Name": "Baphomet",
-            "Arcana": "Jester",
+            "Race": "Devil",
             "SkillType": "Fire",
-            "Level": 47,
+            "Level": 58,
+            "Strength": 34,
+            "Magic": 42,
+            "Endurance": 36,
+            "Agility": 38,
+            "Luck": 31,
+            "Resistances":
+            {
+                "Fire": "Resist",
+                "Bless": "Weak",
+                "Curse": "Null"
+            },
             "Image": "uid://cgl4jsmbcku55"
         },
         {
             "Name": "Kumbhanda",
-            "Arcana": "Jester",
+            "Race": "Hermit",
             "SkillType": "Physical",
-            "Level": 55,
+            "Level": 42,
+            "Strength": 25,
+            "Magic": 30,
+            "Endurance": 25,
+            "Agility": 27,
+            "Luck": 26,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Psychic": "Weak",
+                "Curse": "Resist"
+            },
             "Image": "uid://cdeixlgusf5wb"
         },
         {
             "Name": "Chernobog",
-            "Arcana": "Jester",
+            "Race": "Death",
             "SkillType": "Physical",
             "Level": 62,
+            "Strength": 40,
+            "Magic": 37,
+            "Endurance": 39,
+            "Agility": 38,
+            "Luck": 39,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Fire": "Weak",
+                "Ice": "Absorb",
+                "Electric": "Null",
+                "Bless": "Weak",
+                "Curse": "Absorb"
+            },
             "Image": "No Image"
         },
         {
             "Name": "Ame-no-Uzume",
-            "Arcana": "Aeon",
+            "Race": "Lovers",
             "SkillType": "Electric",
-            "Level": 18,
+            "Level": 13,
+            "Strength": 7,
+            "Magic": 10,
+            "Endurance": 9,
+            "Agility": 11,
+            "Luck": 9,
+            "Resistances":
+            {
+                "Fire": "Absorb",
+                "Psychic": "Weak"
+            },
             "Image": "uid://dqhtkx7l770j4"
         },
         {
             "Name": "Zouchouten",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Electric",
             "Level": 31,
+            "Strength": 22,
+            "Magic": 19,
+            "Endurance": 24,
+            "Agility": 18,
+            "Luck": 17,
+            "Resistances":
+            {
+                "Physical": "Resist",
+                "Wind": "Weak"
+            },
             "Image": "uid://dwsxs1rc2w5tw"
         },
         {
             "Name": "Narcissus",
-            "Arcana": "Aeon",
+            "Race": "Lovers",
             "SkillType": "Wind",
-            "Level": 24,
+            "Level": 48,
+            "Strength": 27,
+            "Magic": 31,
+            "Endurance": 29,
+            "Agility": 33,
+            "Luck": 31,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Electric": "Null",
+                "Wind": "Resist",
+                "Bless": "Resist"
+            },
             "Image": "uid://cfcmyk0714q5y"
         },
         {
             "Name": "Naga",
-            "Arcana": "Hermit",
+            "Race": "Hermit",
             "SkillType": "Electric",
             "Level": 24,
+            "Strength": 15,
+            "Magic": 17,
+            "Endurance": 15,
+            "Agility": 17,
+            "Luck": 15,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Electric": "Null",
+                "Wind": "Weak"
+            },
             "Image": "uid://bln5sq5xtdw33"
         },
         {
             "Name": "Raja Naga",
-            "Arcana": "Aeon",
+            "Race": "Temperance",
             "SkillType": "Electric",
-            "Level": 37,
+            "Level": 55,
+            "Strength": 33,
+            "Magic": 37,
+            "Endurance": 36,
+            "Agility": 35,
+            "Luck": 31,
+            "Resistances":
+            {
+                "Electric": "Null"
+            },
             "Image": "uid://bnnhpfmtlvaff"
         },
         {
             "Name": "Kushinada",
-            "Arcana": "Aeon",
+            "Race": "Lovers",
             "SkillType": "Ice",
-            "Level": 44,
+            "Level": 42,
+            "Strength": 24,
+            "Magic": 30,
+            "Endurance": 26,
+            "Agility": 28,
+            "Luck": 25,
+            "Resistances":
+            {
+                "Ice": "Weak",
+                "Nuclear": "Weak",
+                "Bless": "Repel"
+            },
             "Image": "uid://da6teofq3q3ae"
         },
         {
             "Name": "Quetzalcoatl",
-            "Arcana": "Aeon",
+            "Race": "Sun",
             "SkillType": "Wind",
-            "Level": 51,
+            "Level": 66,
+            "Strength": 41,
+            "Magic": 46,
+            "Endurance": 41,
+            "Agility": 43,
+            "Luck": 34,
+            "Resistances":
+            {
+                "Fire": "Null",
+                "Wind": "Resist",
+                "Psychic": "Weak"
+            },
             "Image": "uid://cvmlffomur3sr"
         },
         {
             "Name": "Lakshmi",
-            "Arcana": "Aeon",
+            "Race": "Fortune",
             "SkillType": "Ice",
-            "Level": 65,
+            "Level": 69,
+            "Strength": 39,
+            "Magic": 49,
+            "Endurance": 41,
+            "Agility": 47,
+            "Luck": 38,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Bless": "Resist"
+            },
             "Image": "uid://dj7jbhqyti3ay"
         },
         {
             "Name": "Mandrake",
-            "Arcana": "Death",
+            "Race": "Death",
             "SkillType": "Physical",
             "Level": 3,
+            "Strength": 2,
+            "Magic": 3,
+            "Endurance": 3,
+            "Agility": 4,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Electric": "Resist"
+            },
             "Image": "uid://c2degibtikb3a"
         },
         {
-            "Name": "Koropokguru",
-            "Arcana": "Hermit",
+            "Name": "Koropokkuru",
+            "Race": "Hermit",
             "SkillType": "Ice",
             "Level": 9,
+            "Strength": 5,
+            "Magic": 8,
+            "Endurance": 6,
+            "Agility": 9,
+            "Luck": 6,
+            "Resistances":
+            {
+                "Fire": "Weak",
+                "Ice": "Resist",
+                "Wind": "Resist"
+            },
             "Image": "uid://br8fxxm32r110"
         },
         {
             "Name": "Kelpie",
-            "Arcana": "Strength",
+            "Race": "Strength",
             "SkillType": "Wind",
             "Level": 6,
+            "Strength": 5,
+            "Magic": 5,
+            "Endurance": 5,
+            "Agility": 6,
+            "Luck": 4,
+            "Resistances":
+            {
+                "Ice": "Resist",
+                "Electric": "Weak"
+            },
             "Image": "uid://cuvlqxoawxg6m"
         },
         {
             "Name": "Setanta",
-            "Arcana": "Emperor",
+            "Race": "Emperor",
             "SkillType": "Physical",
             "Level": 25,
+            "Strength": 19,
+            "Magic": 16,
+            "Endurance": 18,
+            "Agility": 13,
+            "Luck": 16,
+            "Resistances":
+            {
+                "Pierce": "Resist",
+                "Psychic": "Weak",
+                "Nuclear": "Resist"
+            },
             "Image": "uid://buoipkxt135wh"
         }
     ]

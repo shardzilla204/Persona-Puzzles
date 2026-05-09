@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biykvkgohicy1"
-path="res://.godot/imported/PsyIcon.png-1dfdffc2e94e5d185db0b44f6adad59f.ctex"
+uid="uid://cc3euqe4sbwgb"
+path="res://.godot/imported/Mithra.png-41981d806ec1e3b37dad45628148cf42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SkillIcons/PsyIcon.png"
-dest_files=["res://.godot/imported/PsyIcon.png-1dfdffc2e94e5d185db0b44f6adad59f.ctex"]
+source_file="res://Assets/Images/Personas/Mithra.png"
+dest_files=["res://.godot/imported/Mithra.png-41981d806ec1e3b37dad45628148cf42.ctex"]
 
 [params]
 
