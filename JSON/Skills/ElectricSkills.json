@@ -1,41 +1,41 @@
 {
-    "ElectricSkills":
-    [
-        {
-            "Name": "Zio",
-            "Effect": "Deals light Electric damage to 1 foe.",
-            "Power": 40,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Mazio",
-            "Effect": "Deals light Electric damage to all foes",
-            "Power": 40,
-            "Accuracy": 95
-        },
-        {
-            "Name": "Zionga",
-            "Effect": "Deals medium Electric damage to 1 foe.",
-            "Power": 100,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Mazionga",
-            "Effect": "Deals medium Electric damage to all foes.",
-            "Power": 100,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Ziodyne",
-            "Effect": "Deals heavy Electric damage to 1 foe.",
-            "Power": 160,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Maziodyne",
-            "Effect": "Deals heavy Electric damage to all foes.",
-            "Power": 160,
-            "Accuracy": 95
-        }
-    ]
+	"ElectricSkills":
+	[
+		{
+			"Name": "Zio",
+			"Effect": "Deals light Electric damage to 1 foe.",
+			"Power": 40,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Mazio",
+			"Effect": "Deals light Electric damage to all foes",
+			"Power": 40,
+			"Accuracy": 95
+		},
+		{
+			"Name": "Zionga",
+			"Effect": "Deals medium Electric damage to 1 foe.",
+			"Power": 100,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Mazionga",
+			"Effect": "Deals medium Electric damage to all foes.",
+			"Power": 100,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Ziodyne",
+			"Effect": "Deals heavy Electric damage to 1 foe.",
+			"Power": 160,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Maziodyne",
+			"Effect": "Deals heavy Electric damage to all foes.",
+			"Power": 160,
+			"Accuracy": 95
+		}
+	]
 }

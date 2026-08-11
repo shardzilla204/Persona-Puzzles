@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://c7qklaahiqwoy"]
+
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="1_c6tli"]
+[ext_resource type="Script" uid="uid://bjmrkuc1tt12v" path="res://Resources/Scripts/Compendium/CompendiumFilter.cs" id="2_mev35"]
+[ext_resource type="PackedScene" uid="uid://curyjor35tt3y" path="res://Resources/Scenes/SkillTypeFilterContainer.tscn" id="3_c6tli"]
+[ext_resource type="PackedScene" uid="uid://dttgkutib4c7o" path="res://Resources/Scenes/FavoriteFilterContainer.tscn" id="4_mev35"]
+[ext_resource type="PackedScene" uid="uid://c3r7x5wtq5amf" path="res://Resources/Scenes/StatTypeFilterContainer.tscn" id="5_6vq7p"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="6_r7rnc"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="7_kf022"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="8_dcc8n"]
+
+[node name="CompendiumFilter" type="ColorRect" unique_id=1549002621 node_paths=PackedStringArray("_skillTypeFilters", "_favoriteFilters", "_statTypeFilters", "_cancelButton", "_unfilterButton", "_confirmButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_c6tli")
+color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+script = ExtResource("2_mev35")
+_skillTypeFilters = NodePath("MarginContainer/VBoxContainer/VBoxContainer/SkillTypeFilters")
+_favoriteFilters = NodePath("MarginContainer/VBoxContainer/VBoxContainer/FavoriteFilters")
+_statTypeFilters = NodePath("MarginContainer/VBoxContainer/VBoxContainer/StatTypeFilters")
+_cancelButton = NodePath("MarginContainer/VBoxContainer/VBoxContainer2/CancelButton")
+_unfilterButton = NodePath("MarginContainer/VBoxContainer/VBoxContainer2/UnfilterButton")
+_confirmButton = NodePath("MarginContainer/VBoxContainer/VBoxContainer2/ConfirmButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1757518885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1262402468]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1406905486]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Filter by"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1724138522]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SkillTypeFilters" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=872579038 instance=ExtResource("3_c6tli")]
+layout_mode = 2
+
+[node name="FavoriteFilters" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=613522587 instance=ExtResource("4_mev35")]
+layout_mode = 2
+
+[node name="StatTypeFilters" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=595406838 instance=ExtResource("5_6vq7p")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=376177573]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1351342734]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+flat = true
+script = ExtResource("6_r7rnc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/VBoxContainer2/CancelButton" unique_id=1737207490]
+self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_kf022")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/CancelButton/NinePatchRect" unique_id=21785815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/CancelButton/NinePatchRect/MarginContainer" unique_id=459723266]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_dcc8n")
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filler" type="Control" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1429878320]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnfilterButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1071374611]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+flat = true
+script = ExtResource("6_r7rnc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/VBoxContainer2/UnfilterButton" unique_id=376439671]
+self_modulate = Color(0.288518, 0.28851798, 0.28851798, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_kf022")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/UnfilterButton/NinePatchRect" unique_id=1639197090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/UnfilterButton/NinePatchRect/MarginContainer" unique_id=2098591722]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_dcc8n")
+theme_override_font_sizes/font_size = 18
+text = "Unfilter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filler2" type="Control" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=41964129]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1861106462]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+flat = true
+script = ExtResource("6_r7rnc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/VBoxContainer2/ConfirmButton" unique_id=245992032]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_kf022")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/ConfirmButton/NinePatchRect" unique_id=1060426091]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/ConfirmButton/NinePatchRect/MarginContainer" unique_id=1027874333]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_dcc8n")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1

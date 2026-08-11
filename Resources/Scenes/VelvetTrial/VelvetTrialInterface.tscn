@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://ojbiqd2cianf"]
+
+[ext_resource type="Script" uid="uid://t5ge5vacyfm4" path="res://Resources/Scripts/VelvetTrialInterface.cs" id="1_c42a1"]
+[ext_resource type="Script" uid="uid://bo77boc1u7aym" path="res://Resources/Scripts/VelvetTrialSlotContainer.cs" id="2_3udrd"]
+[ext_resource type="PackedScene" uid="uid://djjy1hqpufkop" path="res://Resources/Scenes/VelvetTrial/VelvetTrialSlot.tscn" id="3_oubbd"]
+[ext_resource type="PackedScene" uid="uid://cf1ip2c3kpvih" path="res://Resources/Scenes/SkillOrbGrid.tscn" id="4_tvbij"]
+[ext_resource type="PackedScene" uid="uid://7683e4vgka8n" path="res://Resources/Scenes/HealthBar.tscn" id="6_wysdq"]
+[ext_resource type="PackedScene" uid="uid://mr8t4ljkmwyv" path="res://Resources/Scenes/Persona/PersonaEnemy.tscn" id="7_7bhhi"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="8_fo5ni"]
+[ext_resource type="Texture2D" uid="uid://dyrnq5rigpys1" path="res://Assets/Images/Personas/Barong.png" id="9_j7dfr"]
+[ext_resource type="PackedScene" uid="uid://bax74nfykglud" path="res://Resources/Scenes/Debug.tscn" id="10_qtuq2"]
+
+[node name="VelvetTrialInterface" type="Control" unique_id=691434485 node_paths=PackedStringArray("_skillOrbGrid", "_velvetTrialSlotContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_c42a1")
+_skillOrbGrid = NodePath("SkillOrbGrid")
+_velvetTrialSlotContainer = NodePath("VelvetTrialSlotContainer")
+
+[node name="VelvetTrialSlotContainer" type="HBoxContainer" parent="." unique_id=1138181189]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -70.0
+offset_right = 174.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+script = ExtResource("2_3udrd")
+metadata/_edit_group_ = true
+
+[node name="VelvetTrialSlot" parent="VelvetTrialSlotContainer" unique_id=1599700467 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot2" parent="VelvetTrialSlotContainer" unique_id=50014439 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot3" parent="VelvetTrialSlotContainer" unique_id=1234284948 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot4" parent="VelvetTrialSlotContainer" unique_id=1477397240 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot5" parent="VelvetTrialSlotContainer" unique_id=2009488440 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot6" parent="VelvetTrialSlotContainer" unique_id=2009308670 instance=ExtResource("3_oubbd")]
+layout_mode = 2
+
+[node name="PersonaReserveSlotContainer" type="Control" parent="." unique_id=165004005]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 185.0
+offset_top = -90.0
+offset_right = 249.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="PersonaSlot" parent="PersonaReserveSlotContainer" unique_id=499605412 instance=ExtResource("3_oubbd")]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="PersonaSlot2" parent="PersonaReserveSlotContainer" unique_id=493087075 instance=ExtResource("3_oubbd")]
+layout_mode = 0
+offset_top = 69.0
+offset_right = 64.0
+offset_bottom = 133.0
+
+[node name="PersonaSlot3" parent="PersonaReserveSlotContainer" unique_id=652149300 instance=ExtResource("3_oubbd")]
+layout_mode = 0
+offset_top = 138.0
+offset_right = 64.0
+offset_bottom = 202.0
+
+[node name="SkillOrbGrid" parent="." unique_id=1359677514 instance=ExtResource("4_tvbij")]
+layout_mode = 1
+offset_left = -235.0
+offset_top = 45.0
+offset_right = 174.0
+offset_bottom = 385.0
+
+[node name="HealthBar" parent="." unique_id=120400096 instance=ExtResource("6_wysdq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 15.0
+offset_top = 405.0
+offset_right = 424.0
+offset_bottom = 435.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=113999286]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 132.0
+offset_right = 350.0
+offset_bottom = 252.0
+theme_override_constants/separation = 20
+
+[node name="PersonaEnemy" parent="HBoxContainer" unique_id=1665760837 instance=ExtResource("7_7bhhi")]
+layout_mode = 2
+
+[node name="PersonaEnemy2" parent="HBoxContainer" unique_id=816894346 instance=ExtResource("7_7bhhi")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=584226354]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 357.0
+offset_right = 475.0
+offset_bottom = 392.0
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=1622433821]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_fo5ni")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=607734631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="Button/NinePatchRect/MarginContainer" unique_id=997482108]
+layout_mode = 2
+texture = ExtResource("9_j7dfr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Debug" parent="." unique_id=645808427 instance=ExtResource("10_qtuq2")]
+layout_mode = 1

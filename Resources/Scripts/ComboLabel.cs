@@ -14,8 +14,7 @@ public partial class ComboLabel : Label
 
     public void TweenEnter()
     {
-        Color startModulate = Colors.White;
-        startModulate.A = 0;
+        Color startModulate = new Color(Colors.White, 0);
         Modulate = startModulate;
         
         Vector2 startPosition = Position + new Vector2(0, _offsetY);
@@ -29,13 +28,11 @@ public partial class ComboLabel : Label
         tween.TweenProperty(this, "modulate", targetModulate, TweenDuration);
     }
 
-    public async void TweenExit()
+    public void TweenExit()
     {
         Vector2 targetPosition = Position + new Vector2(0, -_offsetY);
 
-        Color targetModulate = Colors.White;
-        targetModulate.A = 0;
-
+        Color targetModulate = new Color(Colors.White, 0);
         float targetScale = 1.1f;
 
         Tween tween = CreateTween().SetParallel(true).SetTrans(Tween.TransitionType.Quad);

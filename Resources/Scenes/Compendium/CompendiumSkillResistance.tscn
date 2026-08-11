@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ep7cjwts3fmn"]
+
+[ext_resource type="Script" uid="uid://b8s43xfux68yk" path="res://Resources/Scripts/Compendium/CompendiumSkillResistance.cs" id="1_2grl3"]
+[ext_resource type="Texture2D" uid="uid://cqni26flnijsp" path="res://Assets/Images/SkillIcons/PhysicalIcon.png" id="1_78r0d"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="3_h062v"]
+
+[node name="PersonaCompendiumSkillResistance" type="VBoxContainer" unique_id=888498168 node_paths=PackedStringArray("_skillTypeIcon", "_resistanceLabel")]
+alignment = 1
+script = ExtResource("1_2grl3")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+_resistanceLabel = NodePath("ResistanceLabel")
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=2068466965]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_78r0d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ResistanceLabel" type="Label" parent="." unique_id=1861190168]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h062v")
+text = "Str"
+horizontal_alignment = 1
+vertical_alignment = 1

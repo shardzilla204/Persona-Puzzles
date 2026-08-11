@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://7683e4vgka8n"]
+
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="1_xtiwy"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_y1s85"]
+
+[node name="HealthBar" type="TextureProgressBar" unique_id=120400096]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -91.0
+offset_bottom = -770.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("1_xtiwy")
+texture_progress = ExtResource("1_xtiwy")
+tint_under = Color(1, 0.33551362, 0.2695955, 1)
+tint_progress = Color(0.40764788, 0.7604493, 0.33371678, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=892008818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1504181719]
+layout_mode = 2
+theme = ExtResource("2_y1s85")
+theme_override_font_sizes/font_size = 18
+text = "50k/ 100k"
+vertical_alignment = 1

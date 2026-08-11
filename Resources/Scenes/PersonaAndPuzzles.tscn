@@ -6,6 +6,7 @@
 
 [node name="PersonaAndPuzzles" type="Node" unique_id=111975351]
 script = ExtResource("1_tmg12")
+_startingPersonaCount = 20
 
 [node name="SkillOrbManager" type="Node" parent="." unique_id=1685875457]
 script = ExtResource("2_6rlup")

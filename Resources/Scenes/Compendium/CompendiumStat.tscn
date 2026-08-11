@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://8kldhwqxuphj"]
+
+[ext_resource type="Script" uid="uid://bx6h70dspcjjk" path="res://Resources/Scripts/Compendium/CompendiumStat.cs" id="1_htitw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xa1n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al12o"]
+bg_color = Color(0.72, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CompendiumStat" type="HBoxContainer" unique_id=885807991 node_paths=PackedStringArray("_statTypeLabel", "_statValueLabel", "_statProgressBar")]
+script = ExtResource("1_htitw")
+_statTypeLabel = NodePath("StatTypeLabel")
+_statValueLabel = NodePath("StatValueLabel")
+_statProgressBar = NodePath("StatProgressBar")
+
+[node name="StatTypeLabel" type="Label" parent="." unique_id=834342279]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+text = "St"
+
+[node name="StatValueLabel" type="Label" parent="." unique_id=1208766929]
+layout_mode = 2
+text = "50"
+
+[node name="StatProgressBar" type="ProgressBar" parent="." unique_id=803043434]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxEmpty_5xa1n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_al12o")
+max_value = 99.0
+step = 1.0
+value = 50.0
+show_percentage = false

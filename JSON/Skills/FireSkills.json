@@ -1,41 +1,41 @@
 {
-    "FireSkills":
-    [
-        {
-            "Name": "Agi",
-            "Effect": "Deals light Fire damage to 1 foe.",
-            "Power": 40,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Maragi",
-            "Effect": "Deals light Fire damage to all foes",
-            "Power": 40,
-            "Accuracy": 95
-        },
-        {
-            "Name": "Agilao",
-            "Effect": "Deals medium Fire damage to 1 foe.",
-            "Power": 100,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Maragion",
-            "Effect": "Deals medium Fire damage to all foes.",
-            "Power": 100,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Agidyne",
-            "Effect": "Deals heavy Fire damage to 1 foe.",
-            "Power": 160,
-            "Accuracy": 98
-        },
-        {
-            "Name": "Maragidyne",
-            "Effect": "Deals heavy Fire damage to all foes.",
-            "Power": 160,
-            "Accuracy": 95
-        }
-    ]
+	"FireSkills":
+	[
+		{
+			"Name": "Agi",
+			"Effect": "Deals light Fire damage to 1 foe.",
+			"Power": 40,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Maragi",
+			"Effect": "Deals light Fire damage to all foes",
+			"Power": 40,
+			"Accuracy": 95
+		},
+		{
+			"Name": "Agilao",
+			"Effect": "Deals medium Fire damage to 1 foe.",
+			"Power": 100,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Maragion",
+			"Effect": "Deals medium Fire damage to all foes.",
+			"Power": 100,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Agidyne",
+			"Effect": "Deals heavy Fire damage to 1 foe.",
+			"Power": 160,
+			"Accuracy": 98
+		},
+		{
+			"Name": "Maragidyne",
+			"Effect": "Deals heavy Fire damage to all foes.",
+			"Power": 160,
+			"Accuracy": 95
+		}
+	]
 }

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://33kln8bdgqr5"]
+
+[ext_resource type="Script" uid="uid://cldutaqqhp8tw" path="res://Resources/Scripts/Compendium/Compendium.cs" id="1_5au0e"]
+[ext_resource type="PackedScene" uid="uid://cfqltojr7tu13" path="res://Resources/Scenes/Persona/PersonaTeam.tscn" id="3_i8bfj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2ll"]
+content_margin_left = 4.0
+content_margin_top = 25.0
+content_margin_right = 4.0
+content_margin_bottom = 25.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Compendium" type="MarginContainer" unique_id=2006310776 node_paths=PackedStringArray("_personaTeam", "_slotContainer", "_scrollBar")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_5au0e")
+_personaTeam = NodePath("VBoxContainer/MarginContainer/Control/PersonaTeam")
+_slotContainer = NodePath("VBoxContainer/Control/Node/SlotContainer")
+_scrollBar = NodePath("VBoxContainer/Control/VScrollBar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=865094210]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1213917475]
+custom_maximum_size = Vector2(0, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Node" type="Control" parent="VBoxContainer/Control" unique_id=1368566527]
+anchors_preset = 0
+offset_right = 470.0
+offset_bottom = 770.0
+mouse_filter = 2
+
+[node name="SlotContainer" type="GridContainer" parent="VBoxContainer/Control/Node" unique_id=1567971293]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 15
+columns = 6
+
+[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer/Control" unique_id=711707477]
+custom_minimum_size = Vector2(0, 460)
+layout_mode = 0
+offset_left = 462.0
+offset_top = 211.0
+offset_right = 470.0
+offset_bottom = 671.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_styles/grabber = SubResource("StyleBoxFlat_xu2ll")
+max_value = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=359723390]
+layout_mode = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = -15
+theme_override_constants/margin_right = -15
+theme_override_constants/margin_bottom = -15
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer" unique_id=1005078519]
+custom_maximum_size = Vector2(0, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PersonaTeam" parent="VBoxContainer/MarginContainer/Control" unique_id=77672837 instance=ExtResource("3_i8bfj")]
+layout_mode = 0
+offset_top = 71.0
+offset_bottom = 171.0

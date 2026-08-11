@@ -7,12 +7,27 @@ namespace PersonaAndPuzzles;
 
 public partial class PersonaAndPuzzles : Node
 {
-    public static PackedScenes PackedScenes;
+	[Export(PropertyHint.Range, "0,20,1")]
+	private int _startingPersonaCount = 0;
+
+	[Export(PropertyHint.Range, "1,10,1")]
+	private int _extraLoadouts = 0;
+
+	public static int StartingPersonaCount = 0;
+	public static int ExtraLoadouts = 1;
+
     public static Signals Signals = new Signals();
 
     public override void _Ready()
     {
+		StartingPersonaCount = _startingPersonaCount;
+		ExtraLoadouts = _extraLoadouts;
+		
+		PassiveSkillManager.LoadPassiveSkills();
         PersonaManager.LoadPersonas();
+        PersonaManager.GetRandomPersonas();
+		PersonaManager.SetRandomRoster();
+		VelvetTrialManager.LoadVelvetTrials();
     }
 
     public static Variant LoadFile(string fileName, string folderName = "")

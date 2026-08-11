@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bx43agqlgfr80"]
+
+[ext_resource type="Texture2D" uid="uid://clsaig4l6dkad" path="res://Assets/Images/PersonaSlot.png" id="1_65vlg"]
+[ext_resource type="Script" uid="uid://b54jp4ocnrk7" path="res://Resources/Scripts/Compendium/CompendiumSlot.cs" id="2_3j0md"]
+[ext_resource type="Texture2D" uid="uid://bthw017adsdtb" path="res://Assets/Images/PersonaSlotMask.png" id="3_8soqp"]
+[ext_resource type="Texture2D" uid="uid://67uwujgmbb74" path="res://Assets/Images/Personas/Pyro_Jack.png" id="4_irlg8"]
+[ext_resource type="Texture2D" uid="uid://cawvxxk61k81b" path="res://Assets/Images/SkillIcons/FireIcon.png" id="5_2tdun"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_txfqm"]
+[ext_resource type="Texture2D" uid="uid://qmgae4vhvgko" path="res://Assets/Images/Star.png" id="7_3j0md"]
+
+[node name="CompendiumSlot" type="TextureRect" unique_id=575290429 node_paths=PackedStringArray("_personaLevelLabel", "_favoriteTexture", "_personaIcon", "_skillTypeIcon")]
+self_modulate = Color(0.8, 0.18039216, 0.09411765, 1)
+custom_minimum_size = Vector2(64, 64)
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_65vlg")
+expand_mode = 1
+script = ExtResource("2_3j0md")
+_personaLevelLabel = NodePath("PersonaLevel")
+_favoriteTexture = NodePath("MarginContainer/FavoriteTexture")
+_personaIcon = NodePath("ClipMask/MarginContainer/PersonaIcon")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+
+[node name="ClipMask" type="TextureRect" parent="." unique_id=1268722057]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_8soqp")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ClipMask" unique_id=1977580800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PersonaIcon" type="TextureRect" parent="ClipMask/MarginContainer" unique_id=579581845]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_irlg8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=718723199]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("5_2tdun")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersonaLevel" type="Label" parent="." unique_id=1708687535]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_txfqm")
+text = "Lvl. 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=811491161]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="FavoriteTexture" type="TextureRect" parent="MarginContainer" unique_id=1240230025]
+visible = false
+modulate = Color(1, 0.88235295, 0.27450982, 1)
+custom_minimum_size = Vector2(12.5, 12.5)
+custom_maximum_size = Vector2(12.5, 12.5)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("7_3j0md")
+expand_mode = 1
+stretch_mode = 5

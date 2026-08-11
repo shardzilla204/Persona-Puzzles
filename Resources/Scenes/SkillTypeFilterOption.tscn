@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://btfc2qh4b2ttm"]
+
+[ext_resource type="Script" uid="uid://b7rhctqb583e3" path="res://Resources/Scripts/SkillTypeFilterOption.cs" id="1_qp23t"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="2_8bkcf"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_dvlo7"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="3_j6d1a"]
+[ext_resource type="Texture2D" uid="uid://cawvxxk61k81b" path="res://Assets/Images/SkillIcons/FireIcon.png" id="4_4dw3p"]
+
+[node name="SkillTypeFilter" type="VBoxContainer" unique_id=349718412 node_paths=PackedStringArray("_skillTypeIcon", "Button", "_label")]
+theme_override_constants/separation = 5
+script = ExtResource("1_qp23t")
+_skillTypeIcon = NodePath("Button/NinePatchRect/MarginContainer/SkillTypeIcon")
+Button = NodePath("Button")
+_label = NodePath("Label")
+
+[node name="Button" type="Button" parent="." unique_id=906112527]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_8bkcf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=1854022927]
+self_modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dvlo7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=1039935371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="Button/NinePatchRect/MarginContainer" unique_id=1281307481]
+layout_mode = 2
+texture = ExtResource("4_4dw3p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1194293463]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j6d1a")
+theme_override_font_sizes/font_size = 16
+text = "Fire"
+horizontal_alignment = 1
+vertical_alignment = 1

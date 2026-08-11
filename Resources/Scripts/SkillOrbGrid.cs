@@ -3,7 +3,6 @@ using GC = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System;
 
 namespace PersonaAndPuzzles;
 
@@ -30,6 +29,8 @@ public partial class SkillOrbGrid : Control
     [Export]
     private Control _comboLabelContainer;
 
+    public const int MaxSkillTypes = 6;
+
     private const int _Offset = 64;
     private const float _ComboIncrement = 0.1f;
     private const int _HSeparation = 5;
@@ -51,6 +52,8 @@ public partial class SkillOrbGrid : Control
     private const string _TypeKey = "Type";
     private const string _PositionKey = "Position";
     private const string _CountKey = "Count";
+
+    public List<SkillType> SkillTypePool = new List<SkillType>();
 
     public GC.Dictionary<SkillType, int> SkillPower = new GC.Dictionary<SkillType, int>();
 
@@ -89,6 +92,8 @@ public partial class SkillOrbGrid : Control
         FillGrid();
     }
 
+    // Get random skill orb and check if the type is a part of the pool.
+    // If not then get another and so on.
     private void FillGrid()
     {
         for (int i = 0; i < _columns; i++)
@@ -96,6 +101,11 @@ public partial class SkillOrbGrid : Control
             for (int j = 0; j < _rows; j++)
             {
                 SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                while (!SkillTypePool.Contains(skillOrb.SkillType))
+                {
+                    skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                }
+
                 int loops = 0;
                 bool hasMatch = HasMatch(i, j, skillOrb.SkillType);
                 while (hasMatch && loops < _MaxLoops)
@@ -159,8 +169,8 @@ public partial class SkillOrbGrid : Control
 
     private Vector2I PixelToGrid(float pixelX, float pixelY)
     {
-        int newX = Mathf.RoundToInt(Mathf.FloorToInt(pixelX / (_Offset + _HSeparation)));
-        int newY = Mathf.RoundToInt(Mathf.FloorToInt(pixelY / (_Offset + _VSeparation)));
+        int newX = Mathf.RoundToInt(Mathf.Floor(pixelX / (_Offset + _HSeparation)));
+        int newY = Mathf.RoundToInt(Mathf.Floor(pixelY / (_Offset + _VSeparation)));
 
         Vector2I newPosition = new Vector2I(newX, newY);
         return newPosition;
@@ -620,6 +630,11 @@ public partial class SkillOrbGrid : Control
                 if (skillOrb != null) continue;
                 
                 SkillOrb randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                while (!SkillTypePool.Contains(randomSkillOrb.SkillType))
+                {
+                    randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                }
+
                 int loops = 0;
                 bool hasMatch = HasMatch(i, j, randomSkillOrb.SkillType);
                 while (hasMatch && loops < _MaxLoops)
@@ -646,7 +661,7 @@ public partial class SkillOrbGrid : Control
 
     private ComboLabel GetComboLabel(int comboCount, int x, int y)
     {
-        ComboLabel comboLabel = PersonaAndPuzzles.PackedScenes.GetComboLabel(comboCount);
+        ComboLabel comboLabel = PackedScenes.GetComboLabel(comboCount);
         comboLabel.Position = GridToPixel(x, y);
         return comboLabel;
     }

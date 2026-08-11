@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bfox35ygy4i12"]
+
+[ext_resource type="Texture2D" uid="uid://caund7id8660d" path="res://Assets/Images/TeamSlot.png" id="1_ktmjm"]
+[ext_resource type="Script" uid="uid://b318ghgrc4woq" path="res://Resources/Scripts/TeamSlot.cs" id="2_bv0e2"]
+[ext_resource type="Texture2D" uid="uid://cxudeeh8dvin0" path="res://Assets/Images/Personas/Black_Frost.png" id="2_h8wfi"]
+[ext_resource type="Texture2D" uid="uid://dass78keuatws" path="res://Assets/Images/TeamSlotMask.png" id="4_w47cv"]
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="5_fvhrh"]
+[ext_resource type="Texture2D" uid="uid://d4cu5jhy5rd1f" path="res://Assets/Images/Plus.png" id="6_fvhrh"]
+
+[node name="PersonaTeamSlot" type="TextureRect" unique_id=1105541662 node_paths=PackedStringArray("_personaIcon", "_skillTypeIcon", "_emptyIcon")]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+custom_minimum_size = Vector2(75, 50)
+offset_right = 60.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_ktmjm")
+expand_mode = 1
+script = ExtResource("2_bv0e2")
+_personaIcon = NodePath("Mask/PersonaIcon")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+_emptyIcon = NodePath("EmptyIcon")
+
+[node name="Mask" type="TextureRect" parent="." unique_id=1035976823]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_w47cv")
+expand_mode = 1
+
+[node name="PersonaIcon" type="TextureRect" parent="Mask" unique_id=61608618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_h8wfi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=1595883051]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 1.0
+offset_right = 29.0
+offset_bottom = 12.0
+texture = ExtResource("5_fvhrh")
+expand_mode = 1
+
+[node name="EmptyIcon" type="TextureRect" parent="." unique_id=979943306]
+self_modulate = Color(0.49803922, 0.49803922, 0.49803922, 1)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_fvhrh")
+expand_mode = 1
+stretch_mode = 5

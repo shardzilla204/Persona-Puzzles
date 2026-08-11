@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bvxxdui3buniy"]
+
+[ext_resource type="Script" uid="uid://ogpl6frbmli8" path="res://Resources/Scripts/VelvetTrialButton.cs" id="1_2i20e"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="1_6q3bd"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="2_nhmn5"]
+
+[node name="VelvetTrialButton" type="Control" unique_id=326248253 node_paths=PackedStringArray("_button", "_name")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_2i20e")
+_button = NodePath("Button")
+_name = NodePath("Button/NinePatchRect/MarginContainer/Label")
+
+[node name="Button" type="Button" parent="." unique_id=2070596718]
+custom_minimum_size = Vector2(200, 65)
+layout_mode = 0
+offset_top = 4.0000005
+offset_right = 200.0
+offset_bottom = 54.0
+rotation = 0.08726646
+flat = true
+script = ExtResource("2_nhmn5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=407830518]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6q3bd")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=1020553399]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Button/NinePatchRect/MarginContainer" unique_id=1387991345]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Testing"

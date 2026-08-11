@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://cpwy53s0686qe"]
+
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_grj3y"]
+[ext_resource type="Script" uid="uid://dh4oubl86yeye" path="res://Resources/Scripts/MainMenuControls.cs" id="2_0evc1"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_g0jdb"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_0evc1"]
+
+[node name="MainMenuControls" type="TextureRect" unique_id=1703215953 node_paths=PackedStringArray("_velvetTrialsButton", "_personaCompendiumButton", "_personaFusionButton")]
+self_modulate = Color(0.35906908, 0.35906908, 0.35906908, 1)
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("1_grj3y")
+expand_mode = 1
+script = ExtResource("2_0evc1")
+_velvetTrialsButton = NodePath("HBoxContainer/VelvetTrials")
+_personaCompendiumButton = NodePath("HBoxContainer/PersonaCompendium")
+_personaFusionButton = NodePath("HBoxContainer/PersonaFusion")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1226340406]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+mouse_filter = 2
+alignment = 1
+
+[node name="VelvetTrials" type="Button" parent="HBoxContainer" unique_id=206115502]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+flat = true
+script = ExtResource("3_0evc1")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VelvetTrials" unique_id=1457374356]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_g0jdb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VelvetTrials/TextureRect" unique_id=73663407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VelvetTrials/TextureRect/MarginContainer" unique_id=357734533]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+text = "Velvet Trials"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PersonaCompendium" type="Button" parent="HBoxContainer" unique_id=1224430405]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+flat = true
+script = ExtResource("3_0evc1")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PersonaCompendium" unique_id=613586265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_g0jdb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PersonaCompendium/TextureRect" unique_id=188558690]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PersonaCompendium/TextureRect/MarginContainer" unique_id=304500518]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+text = "Personas"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PersonaFusion" type="Button" parent="HBoxContainer" unique_id=1998398256]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+flat = true
+script = ExtResource("3_0evc1")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PersonaFusion" unique_id=322566646]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_g0jdb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PersonaFusion/TextureRect" unique_id=1454198621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PersonaFusion/TextureRect/MarginContainer" unique_id=2075673918]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+text = "Fusion"
+horizontal_alignment = 1
+vertical_alignment = 2

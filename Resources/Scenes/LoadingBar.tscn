@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dp6kow1n3e6ns"]
+
+[ext_resource type="Texture2D" uid="uid://bqc624jkytiam" path="res://Assets/Images/Donut.png" id="1_vanvk"]
+[ext_resource type="Script" uid="uid://dw8iwg6bq6p26" path="res://Resources/Scripts/LoadingBar.cs" id="2_vanvk"]
+
+[node name="LoadingBar" type="TextureProgressBar" unique_id=736629158 node_paths=PackedStringArray("_delayTimer")]
+self_modulate = Color(0.3276, 0.78, 0.35022, 1)
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -460.0
+offset_bottom = -760.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("1_vanvk")
+script = ExtResource("2_vanvk")
+_delayTimer = NodePath("DelayTimer")
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1146961227]
+one_shot = true
+autostart = true

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b85g1ywxf10n"]
+
+[ext_resource type="Script" uid="uid://dtlm6t5kgxrcm" path="res://Resources/Scripts/FilterOption.cs" id="1_1mjyi"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_cpcqk"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="2_di1cf"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="3_di1cf"]
+
+[node name="FilterOption" type="VBoxContainer" unique_id=1545147757 node_paths=PackedStringArray("Button", "_label")]
+theme_override_constants/separation = 5
+script = ExtResource("1_1mjyi")
+Button = NodePath("Button")
+_label = NodePath("Button/NinePatchRect/MarginContainer/Label")
+
+[node name="Button" type="Button" parent="." unique_id=868134949]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_di1cf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=2111303480]
+self_modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cpcqk")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=321425907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Button/NinePatchRect/MarginContainer" unique_id=2014913835]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_di1cf")
+theme_override_font_sizes/font_size = 20
+text = "All"
+horizontal_alignment = 1
+vertical_alignment = 1

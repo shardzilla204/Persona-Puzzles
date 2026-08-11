@@ -11,7 +11,7 @@ public partial class SkillOrbManager : Node
     private static GC.Dictionary<SkillType, string> _skillIconTextures = new GC.Dictionary<SkillType, string>()
     {
         { SkillType.Physical, "uid://cqni26flnijsp" },
-        { SkillType.Pierce, "uid://cqni26flnijsp" },
+        { SkillType.Pierce, "uid://bvu4wxouwdsy2" },
         { SkillType.Fire, "uid://cawvxxk61k81b" },
         { SkillType.Ice, "uid://b0hjqsi5kt557" },
         { SkillType.Wind, "uid://7xdb76ljgitr" },
@@ -41,9 +41,8 @@ public partial class SkillOrbManager : Node
     public static SkillOrb GetRandomSkillOrb()
     {
         RandomNumberGenerator RNG = new RandomNumberGenerator();
-        // SkillType skillType = (SkillType) RNG.RandiRange(0, 3);
         SkillType skillType = (SkillType) RNG.RandiRange(0, _skillIconTextures.Count() - 1);
-        SkillOrb skillOrb = PersonaAndPuzzles.PackedScenes.GetSkillOrb(skillType);
+        SkillOrb skillOrb = PackedScenes.GetSkillOrb(skillType);
         return skillOrb;
     }
 

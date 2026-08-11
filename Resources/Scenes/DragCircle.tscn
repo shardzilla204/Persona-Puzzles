@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cmrji3nqlmrgc"]
+
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="1_4bcxl"]
+
+[node name="DragCircle" type="TextureRect" unique_id=145937320]
+self_modulate = Color(0, 0, 0, 0.5019608)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -460.0
+offset_bottom = -760.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_4bcxl")
+expand_mode = 1
+stretch_mode = 5

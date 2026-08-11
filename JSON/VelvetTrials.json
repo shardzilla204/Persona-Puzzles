@@ -1,0 +1,57 @@
+{
+    "VelvetTrials":
+    [
+        {
+            "ID": 0,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Jack Frost",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Pyro Jack",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "King Frost",
+                        "Level": 25
+                    },
+                    {
+                        "Name": "Lilim",
+                        "Level": 23
+                    }
+                ]
+            ]
+        },
+        {
+            "ID": 1,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ]
+        }
+    ]
+}

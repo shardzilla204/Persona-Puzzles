@@ -4,27 +4,75 @@ namespace PersonaAndPuzzles;
 
 public partial class PackedScenes : Node
 {
-    private const string _SkillOrb = "uid://q7xw4c2ix7lw";
-    private const string _ComboLabel = "uid://dg41dcug83ks";
-
-    public override void _EnterTree()
+    public static SkillOrb GetSkillOrb(SkillType skillType)
     {
-        PersonaAndPuzzles.PackedScenes = this;
-    }
-
-    public SkillOrb GetSkillOrb(SkillType skillType)
-    {
-        PackedScene skillOrbScene = GD.Load<PackedScene>(_SkillOrb);
-        SkillOrb skillOrb = skillOrbScene.Instantiate<SkillOrb>();
+        const string UID = "uid://q7xw4c2ix7lw";
+        SkillOrb skillOrb = GD.Load<PackedScene>(UID).Instantiate<SkillOrb>();
         skillOrb.SkillType = skillType;
+        
         return skillOrb;
     }
 
-    public ComboLabel GetComboLabel(int comboCount)
+    public static ComboLabel GetComboLabel(int comboCount)
     {
-        PackedScene comboLabelScene = GD.Load<PackedScene>(_ComboLabel);
-        ComboLabel comboLabel = comboLabelScene.Instantiate<ComboLabel>();
+        const string UID = "uid://dg41dcug83ks";
+        ComboLabel comboLabel = GD.Load<PackedScene>(UID).Instantiate<ComboLabel>();
         comboLabel.Text = $"Combo {comboCount}";
+
         return comboLabel;
     }
+
+    public static CompendiumSlot GetCompendiumSlot(Persona persona)
+    {
+        const string UID = "uid://bx43agqlgfr80";
+        CompendiumSlot compendiumSlot = GD.Load<PackedScene>(UID).Instantiate<CompendiumSlot>();
+        compendiumSlot.Persona = persona;
+
+        return compendiumSlot;
+    }
+
+    public static TextureRect GetDragCircle()
+    {
+        const string UID = "uid://cmrji3nqlmrgc";
+        TextureRect dragCircle = GD.Load<PackedScene>(UID).Instantiate<TextureRect>();
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumScrollEnded, 
+            Callable.From(dragCircle.QueueFree));
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.LoadingBarFilling, 
+            Callable.From(dragCircle.QueueFree));
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumSlotLoaded, 
+            Callable.From(dragCircle.QueueFree));
+
+        return dragCircle;
+    }
+
+    public static LoadingBar GetLoadingBar()
+    {
+        const string UID = "uid://dp6kow1n3e6ns";
+        LoadingBar loadingBar = GD.Load<PackedScene>(UID).Instantiate<LoadingBar>();
+
+        return loadingBar;
+    }
+
+    public static CompendiumStats GetCompendiumStats(Persona persona)
+    {
+        const string UID = "uid://dos6wimuvhfa7";
+        CompendiumStats compendiumStats = GD.Load<PackedScene>(UID).Instantiate<CompendiumStats>();
+        compendiumStats.Set(persona);
+        
+        return compendiumStats;
+    }
+
+    public static FilterOption GetFilterOption<T>(FilterType filterType) where T : FilterOption
+    {
+        string UID = GetFilterOptionUID(filterType);
+        return GD.Load<PackedScene>(UID).Instantiate<T>();
+    }
+
+    private static string GetFilterOptionUID(FilterType filterType) => filterType switch
+    {
+        FilterType.Default => "uid://b85g1ywxf10n",
+        FilterType.SkillType => "uid://btfc2qh4b2ttm",
+        FilterType.StatType => "uid://dlvljgcqpculv",
+        _ => "uid://b85g1ywxf10n"
+    };
 }

@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bin5dngxfweb7"]
+
+[ext_resource type="Script" uid="uid://of45mjay6qle" path="res://Resources/Scripts/VelvetTrialInfo.cs" id="1_q6f4n"]
+[ext_resource type="Texture2D" uid="uid://cxudeeh8dvin0" path="res://Assets/Images/Personas/Black_Frost.png" id="2_jg6u1"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_cylcy"]
+[ext_resource type="Texture2D" uid="uid://dr2nvnvli6t46" path="res://Assets/Images/LeftArrow.png" id="4_qekdi"]
+[ext_resource type="Texture2D" uid="uid://b4b356n7alrj6" path="res://Assets/Images/RightArrow.png" id="5_m6y3x"]
+
+[node name="VelvetTrialInfo" type="VBoxContainer" unique_id=68461723 node_paths=PackedStringArray("_personaIconContainer", "_previousButton", "_nextButton", "_waveCounterLabel")]
+offset_left = 10.0
+offset_top = 85.0
+offset_right = 490.0
+offset_bottom = 685.0
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("1_q6f4n")
+_personaIconContainer = NodePath("PersonaIconContainer")
+_previousButton = NodePath("WaveInfoControls/PreviousButton")
+_nextButton = NodePath("WaveInfoControls/NextButton")
+_waveCounterLabel = NodePath("WaveInfoControls/WaveCounterLabel")
+
+[node name="PersonaIconContainer" type="HBoxContainer" parent="." unique_id=495221716]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PersonaIconContainer" unique_id=2056105723]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_jg6u1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="PersonaIconContainer" unique_id=1538226812]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_jg6u1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="PersonaIconContainer" unique_id=167976001]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_jg6u1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaveInfoControls" type="HBoxContainer" parent="." unique_id=1273831005]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="PreviousButton" type="Button" parent="WaveInfoControls" unique_id=621212887]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+flat = true
+script = ExtResource("3_cylcy")
+
+[node name="TextureRect" type="TextureRect" parent="WaveInfoControls/PreviousButton" unique_id=1737799486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qekdi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaveCounterLabel" type="Label" parent="WaveInfoControls" unique_id=1070494904]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Wave 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="WaveInfoControls" unique_id=689387265]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+flat = true
+script = ExtResource("3_cylcy")
+
+[node name="TextureRect" type="TextureRect" parent="WaveInfoControls/NextButton" unique_id=2002894102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_m6y3x")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,230 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Godot;
+
+namespace PersonaAndPuzzles;
+
+public partial class Compendium : MarginContainer
+{
+    [Export]
+    private PersonaTeam _personaTeam;
+
+    [Export]
+    private Container _slotContainer;
+
+    [Export]
+    private VScrollBar _scrollBar;
+
+    private bool _isHovered;
+    private bool _isMousePressed;
+    private bool _isScrollBarHovered;
+
+    private Vector2 _mouseStartPosition;
+
+    List<CompendiumSlot> Slots = new List<CompendiumSlot>();
+
+    public override void _Ready()
+    {
+        _scrollBar.ValueChanged += OnScrollBarValueChanged;
+        _scrollBar.MouseEntered += () => _isScrollBarHovered = true;
+        _scrollBar.MouseExited += () => _isScrollBarHovered = false;
+
+        _slotContainer.MouseEntered += () => _isHovered = true;
+        _slotContainer.MouseExited += () => _isHovered = false;
+        
+        Fill(PersonaManager.Personas);
+        CallDeferred("SetScrollBar"); // Starts when the compendium has finished loading
+    }
+
+    // When swiping down = Move container up
+    // When swiping up = Move container down
+    // public override void _Process(double delta)
+    // {
+    //     if (!_isHovered || !_isMousePressed) return;
+
+    //     Vector2 mousePosition = GetLocalMousePosition();
+    //     Vector2 dragDirection = _mouseStartPosition.DirectionTo(mousePosition);
+    //     float dragDistance = _mouseStartPosition.DistanceTo(mousePosition);
+
+    //     if (dragDirection.Y == 0) return;
+
+    //     float dragValue = dragDistance / 50;
+    //     if (dragDirection.Y > 0)
+    //     {
+    //         _scrollBar.Value -= dragValue;
+    //     }
+    //     else if (dragDirection.Y < 0)
+    //     {
+    //         _scrollBar.Value += dragValue;
+    //     }
+
+    //     PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumScrollStarted);
+    // }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is not InputEventMouseButton eventMouseButton) return;
+
+        // InputDrag(eventMouseButton);
+
+        if (!_isHovered) return;
+
+        InputScroll(eventMouseButton);
+    }
+    
+    private void Fill(List<Persona> personas)
+    {
+        foreach (Persona persona in personas)
+        {
+            CompendiumSlot compendiumSlot = PackedScenes.GetCompendiumSlot(persona);
+            if (PersonaManager.Roster.Personas.Contains(persona))
+            {
+                compendiumSlot.ToggleUsage(true);
+            }
+
+            _slotContainer.AddChild(compendiumSlot);
+            Slots.Add(compendiumSlot);
+
+            PrintRich.PrintPersona(persona);
+        }
+    }
+
+    private void Clear()
+    {
+        foreach (Node child in _slotContainer.GetChildren())
+        {
+            child.QueueFree();
+        }
+    }
+
+    private void InputScroll(InputEventMouseButton eventMouseButton)
+    {
+        const int ScrollStep = 15;
+        if (eventMouseButton.ButtonIndex == MouseButton.WheelUp)
+        {
+            _scrollBar.Value -= ScrollStep;
+        }
+        else if (eventMouseButton.ButtonIndex == MouseButton.WheelDown)
+        {
+            _scrollBar.Value += ScrollStep;
+        }
+    }
+
+    // private void InputDrag(InputEventMouseButton eventMouseButton)
+    // {
+    //     if (eventMouseButton.IsPressed() && 
+    //         eventMouseButton.ButtonIndex == MouseButton.Left && 
+    //         !_isMousePressed && 
+    //         !_isScrollBarHovered)
+    //     {
+    //         _isMousePressed = true;
+    //         _mouseStartPosition = GetLocalMousePosition();
+
+    //         TextureRect dragCircle = PackedScenes.GetDragCircle();
+    //         GetTree().Root.AddChild(dragCircle);
+
+    //         dragCircle.Position = GetGlobalMousePosition() - dragCircle.Size / 2;
+    //     }
+    //     else
+    //     {
+    //         _isMousePressed = false;
+
+    //         PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumScrollEnded);
+    //     }
+    // }
+
+    private void SetScrollBar()
+    {
+        _scrollBar.MaxValue = _slotContainer.Size.Y - _scrollBar.Size.Y;
+        _slotContainer.Position = new Vector2(_slotContainer.Position.X, _scrollBar.Position.Y);
+    }
+
+    public void SetSlotUsage(PersonaRoster roster)
+    {
+        List<CompendiumSlot> slotsInUse = Slots.FindAll(slot => slot.IsInUse);
+        foreach (CompendiumSlot slot in slotsInUse)
+        {
+            slot.ToggleUsage(false);
+        }
+
+        foreach (Persona persona in roster.Personas)
+        {
+            if (persona == null) continue;
+            PrintRich.PrintPersona(persona);
+            CompendiumSlot slot = Slots.Find(slot => slot.Persona.ID == persona.ID);
+
+            slot.ToggleUsage(true);
+        }
+    }
+
+    private void OnScrollBarValueChanged(double value)
+    {
+        _slotContainer.Position = new Vector2(_slotContainer.Position.X, (float) -value + _scrollBar.Position.Y);
+    }
+
+    public CompendiumSlot FindCompendiumSlot(Persona persona)
+    {
+        return Slots.Find(slot => slot.Persona.ID == persona.ID);
+    }
+
+    public void OnCompendiumFilterConfirmed(string targetSkillType, string targetFavorite, string targetStatType)
+    {
+        GD.Print("Filtering Compendium");
+        GD.Print($"Skill Type: {targetSkillType}");
+        GD.Print($"Favorite: {targetFavorite}");
+        GD.Print($"Stat Type: {targetStatType}");
+
+        Clear();
+        
+        List<Persona> personas = [..PersonaManager.Personas];
+        if (targetSkillType != "All")
+        {
+            SkillType skillType = Enum.Parse<SkillType>(targetSkillType);
+            List<Persona> skillTypePersonas = personas.FindAll(persona => persona.SkillType == skillType);
+            personas = [..skillTypePersonas];
+        }
+        
+        if (targetFavorite == "Favorite")
+        {
+            List<Persona> favorite = personas.FindAll(persona => persona.IsFavorite == true);
+            personas = [..favorite];
+        }
+        else if (targetFavorite == "Unfavorite")
+        {
+            List<Persona> unfavorite = personas.FindAll(persona => persona.IsFavorite == false);
+            personas = [..unfavorite];
+        }
+        
+        if (targetStatType != "All")
+        {
+            // 0 = Stat Type
+            // 1 = State
+            string[] statTypeStrings = targetStatType.Split("|");
+            StatType statType = Enum.Parse<StatType>(statTypeStrings[0]);
+            bool isAscending = statTypeStrings[1] == StatTypeFilterOption.AscendingState;
+            List<Persona> statTypePersonas = GetPersonasByStatType(statType, personas, isAscending);
+            personas = [..statTypePersonas];
+        }
+
+        GD.Print($"Count From Filters: {personas.Count}");
+
+        Fill(personas);
+    }
+
+    private List<Persona> GetPersonasByStatType(StatType statType, List<Persona> personas, bool isAscending) => (statType, isAscending) switch
+    {
+        (StatType.Strength, true) => personas.OrderBy(persona => persona.Strength).ToList(),
+        (StatType.Magic, true) => personas.OrderBy(persona => persona.Magic).ToList(),
+        (StatType.Endurance, true) => personas.OrderBy(persona => persona.Endurance).ToList(),
+        (StatType.Agility, true) => personas.OrderBy(persona => persona.Agility).ToList(),
+        (StatType.Luck, true) => personas.OrderBy(persona => persona.Luck).ToList(),
+        (StatType.Strength, false) => personas.OrderByDescending(persona => persona.Strength).ToList(),
+        (StatType.Magic, false) => personas.OrderByDescending(persona => persona.Magic).ToList(),
+        (StatType.Endurance, false) => personas.OrderByDescending(persona => persona.Endurance).ToList(),
+        (StatType.Agility, false) => personas.OrderByDescending(persona => persona.Agility).ToList(),
+        (StatType.Luck, false) => personas.OrderByDescending(persona => persona.Luck).ToList(),
+        _ => personas
+    };
+}
+ 

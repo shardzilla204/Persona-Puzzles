@@ -15,11 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Persona&Puzzles"
-config/version="0.0.5"
+config/description="A Puzzles & Dragons type puzzle game themed after Persona."
+config/version="0.0.7"
 config/tags=PackedStringArray("2d", "c#", "puzzle")
-run/main_scene="uid://ojbiqd2cianf"
-config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+run/main_scene="uid://bu33y3ibiqvpj"
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+config/icon="uid://c55pksupxwcp5"
 
 [autoload]
 
@@ -31,11 +32,16 @@ window/size/viewport_width=500
 window/size/viewport_height=800
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_width"
 
 [dotnet]
 
 project/assembly_name="Persona&Puzzles"
+
+[editor]
+
+naming/scene_name_casing=1
+naming/script_name_casing=1
 
 [input]
 

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bu33y3ibiqvpj"]
+
+[ext_resource type="PackedScene" uid="uid://debg2l6hphs1b" path="res://Resources/Scenes/MainMenuOverlay.tscn" id="1_i4ykn"]
+
+[node name="MainMenu" type="Control" unique_id=179463518]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuOverlay" parent="." unique_id=1635594630 instance=ExtResource("1_i4ykn")]
+layout_mode = 1

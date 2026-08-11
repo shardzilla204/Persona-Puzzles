@@ -16,6 +16,7 @@
                 "Physical": "Resist",
                 "Electric": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://b2qods3ogbj6r"
         },
         {
@@ -30,13 +31,14 @@
             "Luck": 37,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Electric": "Resist",
                 "Wind": "Resist",
-                "Psychic": "Absorb", 
+                "Psychic": "Drain", 
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Drain Fire", "Fire Amp" ],
             "Image": "uid://bunn4od22mbih"
         },
         {
@@ -52,10 +54,11 @@
             "Resistances":
             {
                 "Pierce": "Null",
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Counterstrike" ],
             "Image": "uid://bwj6fqqloiugf"
         },
         {
@@ -71,10 +74,11 @@
             "Resistances":
             {
                 "Fire": "Repel",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Nuclear": "Null",
                 "Curse": "Repel"
             },
+            "PassiveSkills": [ "Ice Amp", "Repel Fire" ],
             "Image": "uid://cxudeeh8dvin0"
         },
         {
@@ -96,6 +100,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://1dtx4wvug8tm"
         },
         {
@@ -111,10 +116,11 @@
             "Resistances":
             {
                 "Fire": "Weak",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://d0eoeo8ec42yr"
         },
         {
@@ -134,6 +140,7 @@
                 "Nuclear": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Fire Boost", "Null Fire" ],
             "Image": "uid://c2hbiyplowlni"
         },
         {
@@ -153,6 +160,7 @@
                 "Bless": "Null",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://omhwicp8o8cy"
         },
         {
@@ -171,6 +179,7 @@
                 "Bless": "Resist",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Counter" ],
             "Image": "uid://dsmvymfl5pxkg"
         },
         {
@@ -191,6 +200,7 @@
                 "Bless": "Resist",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://b0wm0re1u5d4s"
         },
         {
@@ -209,6 +219,7 @@
                 "Wind": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://ejg4bcp3vv01"
         },
         {
@@ -226,6 +237,7 @@
                 "Fire": "Weak",
                 "Ice": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://c7h0jkl761ywg"
         },
         {
@@ -244,6 +256,7 @@
                 "Fire": "Repel",
                 "Ice": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://gcllvcwyfeh1"
         },
         {
@@ -258,10 +271,11 @@
             "Luck": 2,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [ "Sharp Student" ],
             "Image": "uid://67uwujgmbb74"
         },
         {
@@ -283,6 +297,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Counterstrike" ],
             "Image": "uid://b178wif1mtkpg"
         },
         {
@@ -298,11 +313,12 @@
             "Resistances":
             {
                 "Pierce": "Resist",
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Electric": "Null",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [ "Evade Ice", "Fire Amp" ],
             "Image": "uid://b7ojdfpsbcpd1"
         },
         {
@@ -320,6 +336,7 @@
                 "Ice": "Resist",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://ducsvj3k36k66"
         },
         {
@@ -338,6 +355,7 @@
                 "Electric": "Resist",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://cdnsud1k6mg3a"
         },
         {
@@ -357,6 +375,7 @@
                 "Wind": "Resist",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://beaa1kprh8biw"
         },
         {
@@ -376,6 +395,7 @@
                 "Bless": "Resist",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Null Ice", "Repel Ice" ],
             "Image": "uid://da0pcvi7k6c3l"
         },
         {
@@ -394,6 +414,7 @@
                 "Wind": "Null",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://bl2y6d0e8qv57"
         },
         {
@@ -412,6 +433,7 @@
                 "Psychic": "Resist",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://dtn24p6fftoj3"
         },
         {
@@ -430,6 +452,7 @@
                 "Electric": "Resist",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [ "Dodge Elec" ],
             "Image": "uid://hun327nbn3fg"
         },
         {
@@ -447,6 +470,7 @@
                 "Electric": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Apt Pupil" ],
             "Image": "uid://bynyqa020a1hl"
         },
         {
@@ -463,10 +487,11 @@
             {
                 "Physical": "Resist",
                 "Pierce": "Resist",
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Psychic": "Weak",
                 "Nuclear": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://v0rtmqcpw4gn"
         },
         {
@@ -485,6 +510,7 @@
                 "Electric": "Repel",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://f6y2266nyee5"
         },
         {
@@ -503,6 +529,7 @@
                 "Ice": "Resist",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Counter" ],
             "Image": "uid://6ol6migd43l"
         },
         {
@@ -522,6 +549,7 @@
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Nuke Amp" ],
             "Image": "uid://b4ilc6ms8hiae"
         },
         {
@@ -539,6 +567,7 @@
                 "Ice": "Repel",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://g4wc21pk0tdv"
         },
         {
@@ -557,6 +586,7 @@
                 "Bless": "Null",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://n4ohj8oo6amv"
         },
         {
@@ -574,6 +604,7 @@
                 "Psychic": "Weak",
                 "Bless": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://b5lmtpb1ei0jl"
         },
         {
@@ -592,6 +623,7 @@
                 "Psychic": "Null",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Evade Nuke", "Elec Amp" ],
             "Image": "uid://bsdfhsxeomahk"
         },
         {
@@ -606,9 +638,10 @@
             "Luck": 34,
             "Resistances":
             {
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Ice Amp" ],
             "Image": "uid://osywkblp405g"
         },
         {
@@ -628,6 +661,7 @@
                 "Psychic": "Null",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Psy Boost" ],
             "Image": "uid://se0dnm3bqkdw"
         },
         {
@@ -647,6 +681,7 @@
                 "Bless": "Null",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://c1e8kkxqkehi5"
         },
         {
@@ -667,6 +702,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Null Elec" ],
             "Image": "uid://dyrnq5rigpys1"
         },
         {
@@ -686,6 +722,7 @@
                 "Wind": "Repel",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://c0nrteve0jbex"
         },
         {
@@ -705,6 +742,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Dodge Elec", "Dodge Curse" ],
             "Image": "uid://bj0obbj35e5k7"
         },
         {
@@ -724,6 +762,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://ciyfajqjglt6n"
         },
         {
@@ -743,6 +782,7 @@
                 "Wind": "Resist",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [ "Dodge Phys" ],
             "Image": "uid://du7awmv48qni3"
         },
         {
@@ -757,10 +797,11 @@
             "Luck": 27,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [ "High Counter" ],
             "Image": "uid://d2uv4duwgcmqj"
         },
         {
@@ -779,6 +820,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Bless Boost" ],
             "Image": "uid://biexuecswa2p7"
         },
         {
@@ -798,6 +840,7 @@
                 "Nuclear": "Weak",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Psy Amp" ],
             "Image": "uid://5p7ueyshpd1k"
         },
         {
@@ -816,6 +859,7 @@
                 "Electric": "Resist",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://bbpg0pxl5xaqg"
         },
         {
@@ -834,6 +878,7 @@
                 "Wind": "Resist",
                 "Psychic": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://cwlhyu5rv42l1"
         },
         {
@@ -853,6 +898,7 @@
                 "Fire": "Weak",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://ca30mw1yt3oll"
         },
         {
@@ -871,6 +917,7 @@
                 "Electric": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Sharp Student" ],
             "Image": "uid://c71gadsmlvt4v"
         },
         {
@@ -888,6 +935,7 @@
                 "Physical": "Resist",
                 "Ice": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://be11rkx2hogq"
         },
         {
@@ -905,6 +953,7 @@
                 "Physical": "Resist",
                 "Pierce": "Repel"
             },
+            "PassiveSkills": [ "Dodge Psy", "Counterstrike" ],
             "Image": "uid://bvgq6lhsgfuv0"
         },
         {
@@ -924,6 +973,7 @@
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "High Counter", "Elec Amp" ],
             "Image": "uid://coxccq80fo480"
         },
         {
@@ -943,6 +993,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Dodge Curse" ],
             "Image": "uid://blfy538wnkk4k"
         },
         {
@@ -961,6 +1012,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://cjtls0n8maokq"
         },
         {
@@ -979,6 +1031,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Bless Boost" ],
             "Image": "uid://gren8yl5xboc"
         },
         {
@@ -997,6 +1050,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Bless Boost", "Null Curse" ],
             "Image": "uid://bqitcibvesqq1"
         },
         {
@@ -1016,6 +1070,7 @@
                 "Bless": "Null",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Evade Curse" ],
             "Image": "uid://n4ohj8oo6amv"
         },
         {
@@ -1035,6 +1090,7 @@
                 "Nuclear": "Weak",
                 "Bless": "Repel"
             },
+            "PassiveSkills": [ "Fire Amp" ],
             "Image": "uid://dm1qbllynoipd"
         },
         {
@@ -1051,9 +1107,10 @@
             {
                 "Wind": "Weak",
                 "Psychic": "Resist",
-                "Bless": "Absorb",
+                "Bless": "Drain",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://woeqtjkfinui"
         },
         {
@@ -1068,10 +1125,11 @@
             "Luck": 43,
             "Resistances":
             {
-                "Electric": "Absorb",
+                "Electric": "Drain",
                 "Bless": "Repel",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "No Image"
         },
         {
@@ -1090,6 +1148,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://v6525sqnaxcj"
         },
         {
@@ -1111,6 +1170,7 @@
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Sharp Student", "Counter" ],
             "Image": "uid://becsk0m17vevp"
         },
         {
@@ -1130,6 +1190,7 @@
                 "Nuclear": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://b23ab2hq8at1b"
         },
         {
@@ -1148,6 +1209,7 @@
                 "Electric": "Null",
                 "Psychic": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://fv1ritb0na4h"
         },
         {
@@ -1166,6 +1228,7 @@
                 "Ice": "Weak",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://f0ptf28sa3s0"
         },
         {
@@ -1184,6 +1247,7 @@
                 "Bless": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Null Bless" ],
             "Image": "uid://c8etye2f0ehq"
         },
         {
@@ -1205,6 +1269,7 @@
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://dj0fc5gmq55dg"
         },
         {
@@ -1223,6 +1288,7 @@
                 "Wind": "Null",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://be7jwmhqmenqg"
         },
         {
@@ -1241,6 +1307,7 @@
                 "Electric": "Weak",
                 "Wind": "Resist"
             },
+            "PassiveSkills": [ "Ice Boost" ],
             "Image": "uid://b63au3igp171"
         },
         {
@@ -1258,6 +1325,7 @@
                 "Fire": "Weak",
                 "Wind": "Null"
             },
+            "PassiveSkills": [ "Elec Boost" ],
             "Image": "uid://c70mabhh0i8nu"
         },
         {
@@ -1273,9 +1341,10 @@
             "Resistances":
             {
                 "Electric": "Repel",
-                "Wind": "Absorb",
+                "Wind": "Drain",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://cy6ep2klaeo3w"
         },
         {
@@ -1294,6 +1363,7 @@
                 "Electric": "Weak",
                 "Wind": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://bp7aeyfibif2l"
         },
         {
@@ -1313,6 +1383,7 @@
                 "Ice": "Repel",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Dodge Phys", "Counterstrike" ],
             "Image": "uid://tmoybhjspl2u"
         },
         {
@@ -1334,6 +1405,7 @@
                 "Bless": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Counterstrike" ],
             "Image": "uid://dy0c1slragh32"
         },
         {
@@ -1351,6 +1423,7 @@
                 "Fire": "Weak",
                 "Wind": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://i6yxliwrdhur"
         },
         {
@@ -1368,6 +1441,7 @@
                 "Physical": "Resist",
                 "Pierce": "Resist"
             },
+            "PassiveSkills": [ "Sharp Student", "Counter" ],
             "Image": "uid://dj31t44n0qv33"
         },
         {
@@ -1388,6 +1462,7 @@
                 "Electric": "Null",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Apt Pupil", "High Counter" ],
             "Image": "No Image"
         },
         {
@@ -1406,6 +1481,7 @@
                 "Fire": "Resist",
                 "Ice": "Weak"
             },
+            "PassiveSkills": [ "Dodge Fire" ],
             "Image": "uid://cpffkrbk1ubd5"
         },
         {
@@ -1426,6 +1502,7 @@
                 "Nuclear": "Resist",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Dodge Elec" ],
             "Image": "uid://bqnmby8d5qsw0"
         },
         {
@@ -1444,6 +1521,7 @@
                 "Wind": "Resist",
                 "Bless": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://dxyapkcwsmx2k"
         },
         {
@@ -1458,10 +1536,11 @@
             "Luck": 7,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://2vwewpoqq3mp"
         },
         {
@@ -1480,6 +1559,7 @@
                 "Wind": "Resist",
                 "Bless": "Weak"
             },
+            "PassiveSkills": [ "Fire Boost" ],
             "Image": "uid://bx0g6icy82ghs"
         },
         {
@@ -1497,6 +1577,7 @@
                 "Electric": "Resist",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [ "Dodge Elec" ],
             "Image": "uid://csax2yhg5xv7t"
         },
         {
@@ -1514,6 +1595,7 @@
                 "Electric": "Weak",
                 "Wind": "Null"
             },
+            "PassiveSkills": [ "" ],
             "Image": "uid://cgl7s4lp3h7dx"
         },
         {
@@ -1533,6 +1615,7 @@
                 "Bless": "Null",
                 "Curse": "Repel"
             },
+            "PassiveSkills": [ "Gun Boost" ],
             "Image": "No Image"
         },
         {
@@ -1552,6 +1635,7 @@
                 "Bless": "Weak",
                 "Curse": "Repel"
             },
+            "PassiveSkills": [],
             "Image": "uid://bcig151ilmh0x"
         },
         {
@@ -1570,6 +1654,7 @@
                 "Ice": "Resist",
                 "Electric": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://bu70ddvdhuf1m"
         },
         {
@@ -1588,6 +1673,7 @@
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://dsuxypnv1ktsv"
         },
         {
@@ -1606,6 +1692,7 @@
                 "Electric": "Weak",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Bless Boost" ],
             "Image": "uid://cc3euqe4sbwgb"
         },
         {
@@ -1624,6 +1711,7 @@
                 "Electric": "Weak",
                 "Psychic": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://b56knr6datd2m"
         },
         {
@@ -1642,6 +1730,7 @@
                 "Nuclear": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Evade Phys" ],
             "Image": "uid://co3iy6fhneo0b"
         },
         {
@@ -1659,6 +1748,7 @@
                 "Ice": "Resist",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Repel Nuke" ],
             "Image": "uid://bivrmvirntmjp"
         },
         {
@@ -1677,6 +1767,7 @@
                 "Wind": "Repel",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Apt Pupil" ],
             "Image": "uid://eo5p6gblyfhy"
         },
         {
@@ -1694,6 +1785,7 @@
                 "Pierce": "Null",
                 "Fire": "Resist"
             },
+            "PassiveSkills": [ "High Counter" ],
             "Image": "uid://b8n401je7usay"
         },
         {
@@ -1708,10 +1800,11 @@
             "Luck": 9,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://bqnhp357t2g2v"
         },
         {
@@ -1731,6 +1824,7 @@
                 "Wind": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://dnh4anlw0wldr"
         },
         {
@@ -1749,6 +1843,7 @@
                 "Ice": "Resist",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Curse Boost" ],
             "Image": "uid://dolqasatfut43"
         },
         {
@@ -1764,10 +1859,11 @@
             "Resistances":
             {
                 "Fire": "Weak",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Nuclear": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Ice Boost", "Counterstrike", "Evade Fire" ],
             "Image": "uid://c6tq7svnhflvo"
         },
         {
@@ -1786,6 +1882,7 @@
                 "Psychic": "Weak",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [ "Elec Boost" ],
             "Image": "uid://dwsxs1rc2w5tw"
         },
         {
@@ -1801,10 +1898,11 @@
             "Resistances":
             {
                 "Fire": "Weak",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Bless": "Null",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Wind Amp", "Repel Fire" ],
             "Image": "uid://b0l1oay364uhg"
         },
         {
@@ -1824,6 +1922,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Dodge Bless" ],
             "Image": "uid://crglho7dgvynh"
         },
         {
@@ -1842,6 +1941,7 @@
                 "Electric": "Resist",
                 "Bless": "Weak"
             },
+            "PassiveSkills": [ "Dodge Curse" ],
             "Image": "uid://t857f8cq8n5d"
         },
         {
@@ -1860,6 +1960,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://b376lwdhulgxo"
         },
         {
@@ -1879,6 +1980,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://bka3yvxxlhb0n"
         },
         {
@@ -1898,6 +2000,7 @@
                 "Nuclear": "Repel",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Nuke Amp" ],
             "Image": "uid://jnnixjou7eeo"
         },
         {
@@ -1918,6 +2021,7 @@
                 "Nuclear": "Resist",
                 "Curse": "Repel"
             },
+            "PassiveSkills": [ "Dodge Fire" ],
             "Image": "uid://jx4wy6bom84n"
         },
         {
@@ -1936,6 +2040,7 @@
                 "Ice": "Resist",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Curse Amp" ],
             "Image": "uid://cfhp5vewxwxf8"
         },
         {
@@ -1950,11 +2055,12 @@
             "Luck": 34,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Ice": "Weak",
                 "Bless": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Nuke Amp" ],
             "Image": "uid://5xnphyfwycxf"
         },
         {
@@ -1975,6 +2081,7 @@
                 "Wind": "Repel",
                 "Bless": "Null"
             },
+            "PassiveSkills": [ "Apt Pupil", "High Counter" ],
             "Image": "uid://cu13vnhi4g7i4"
         },
         {
@@ -1994,6 +2101,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://b5jd3s6gbtf5w"
         },
         {
@@ -2013,6 +2121,7 @@
                 "Electric": "Repel",
                 "Bless": "Repel"
             },
+            "PassiveSkills": [ "Elec Amp" ],
             "Image": "uid://dquaeoeee6sd5"
         },
         {
@@ -2029,11 +2138,12 @@
             {
                 "Ice": "Null",
                 "Electric": "Repel",
-                "Psychic": "Absorb",
+                "Psychic": "Drain",
                 "Nuclear": "Weak",
                 "Bless": "Null",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "No Image"
         },
         {
@@ -2052,6 +2162,7 @@
                 "Psychic": "Null",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://xndfhyqkjj1g"
         },
         {
@@ -2072,6 +2183,7 @@
                 "Bless": "Null",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://dek65405owa27"
         },
         {
@@ -2089,6 +2201,7 @@
                 "Electric": "Weak",
                 "Psychic": "Resist"
             },
+            "PassiveSkills": [ "Dodge Elec" ],
             "Image": "uid://8kblxs0uvq2k"
         },
         {
@@ -2106,6 +2219,7 @@
                 "Fire": "Weak",
                 "Ice": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://btm2tucwqb7vw"
         },
         {
@@ -2122,8 +2236,9 @@
             {
                 "Pierce": "Resist",
                 "Electric": "Weak",
-                "Wind": "Absorb"
+                "Wind": "Drain"
             },
+            "PassiveSkills": [ "Wind Boost", "Resist Wind" ],
             "Image": "uid://c5et27moa0aot"
         },
         {
@@ -2140,9 +2255,10 @@
             {
                 "Physical": "Resist",
                 "Pierce": "Resist",
-                "Wind": "Absorb",
+                "Wind": "Drain",
                 "Psychic": "Weak"
             },
+            "PassiveSkills": [ "Resist Psy" ],
             "Image": "uid://bx7qgf7vsgmfx"
         },
         {
@@ -2160,6 +2276,7 @@
                 "Wind": "Resist",
                 "Bless": "Repel"
             },
+            "PassiveSkills": [ "Evade Elec", "Wind Amp" ],
             "Image": "uid://b5vxcll3j6pww"
         },
         {
@@ -2180,6 +2297,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://dlgfmlcqkc8wm"
         },
         {
@@ -2195,10 +2313,11 @@
             "Resistances":
             {
                 "Physical": "Resist",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Wind": "Resist",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Ice Amp", "Drain Ice" ],
             "Image": "uid://j2kh844avoss"
         },
         {
@@ -2219,6 +2338,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Repel Phys" ],
             "Image": "uid://cly6k4lh23t2j"
         },
         {
@@ -2234,10 +2354,11 @@
             "Resistances":
             {
                 "Pierce": "Resist",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Electric": "Resist",
                 "Nuclear": "Weak"
             },
+            "PassiveSkills": [ "Dodge Fire", "Null Ice" ],
             "Image": "uid://bkccppyk6yirk"
         },
         {
@@ -2257,6 +2378,7 @@
                 "Bless": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [ "Gun Amp" ],
             "Image": "uid://dwtv02xq7wvmj"
         },
         {
@@ -2276,6 +2398,7 @@
                 "Bless": "Repel",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Angelic Grace", "Repel Curse" ],
             "Image": "uid://cadxr0ow3iaa1"
         },
         {
@@ -2294,6 +2417,7 @@
                 "Ice": "Resist",
                 "Electric": "Weak"
             },
+            "PassiveSkills": [ "Sharp Student" ],
             "Image": "uid://dnwxqxw2h1g6m"
         },
         {
@@ -2312,6 +2436,7 @@
                 "Electric": "Weak",
                 "Wind": "Null"
             },
+            "PassiveSkills": [ "Nuke Boost" ],
             "Image": "uid://dgors76irfv85"
         },
         {
@@ -2329,6 +2454,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [],
             "Image": "uid://d237rj351wbqi"
         },
         {
@@ -2347,6 +2473,7 @@
                 "Bless": "Null",
                 "Curse": "Weak"
             },
+            "PassiveSkills": [ "Null Wind" ],
             "Image": "uid://je4cj174f62l"
         },
         {
@@ -2366,6 +2493,7 @@
                 "Nuclear": "Weak",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [ "Wind Amp" ],
             "Image": "uid://bri60ktcesa78"
         },
         {
@@ -2384,6 +2512,7 @@
                 "Electric": "Null",
                 "Bless": "Repel"
             },
+            "PassiveSkills": [],
             "Image": "uid://8snurh07tj1"
         },
         {
@@ -2403,6 +2532,7 @@
                 "Bless": "Null",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Resist Bless" ],
             "Image": "uid://cnpj1boy4rx8q"
         },
         {
@@ -2421,6 +2551,7 @@
                 "Bless": "Weak",
                 "Curse": "Repel"
             },
+            "PassiveSkills": [ "Curse Boost", "Evade Bless" ],
             "Image": "uid://nyko04frj626"
         },
         {
@@ -2439,6 +2570,7 @@
                 "Bless": "Weak",
                 "Curse": "Null"
             },
+            "PassiveSkills": [ "Evade Fire" ],
             "Image": "uid://cgl4jsmbcku55"
         },
         {
@@ -2457,6 +2589,7 @@
                 "Psychic": "Weak",
                 "Curse": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://cdeixlgusf5wb"
         },
         {
@@ -2473,11 +2606,12 @@
             {
                 "Pierce": "Resist",
                 "Fire": "Weak",
-                "Ice": "Absorb",
+                "Ice": "Drain",
                 "Electric": "Null",
                 "Bless": "Weak",
-                "Curse": "Absorb"
+                "Curse": "Drain"
             },
+            "PassiveSkills": [],
             "Image": "No Image"
         },
         {
@@ -2492,9 +2626,10 @@
             "Luck": 9,
             "Resistances":
             {
-                "Fire": "Absorb",
+                "Fire": "Drain",
                 "Psychic": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://dqhtkx7l770j4"
         },
         {
@@ -2512,6 +2647,7 @@
                 "Physical": "Resist",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [ "Sharp Student" ],
             "Image": "uid://dwsxs1rc2w5tw"
         },
         {
@@ -2531,6 +2667,7 @@
                 "Wind": "Resist",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://cfcmyk0714q5y"
         },
         {
@@ -2549,6 +2686,7 @@
                 "Electric": "Null",
                 "Wind": "Weak"
             },
+            "PassiveSkills": [ "Counter" ],
             "Image": "uid://bln5sq5xtdw33"
         },
         {
@@ -2565,6 +2703,7 @@
             {
                 "Electric": "Null"
             },
+            "PassiveSkills": [ "Evade Wind" ],
             "Image": "uid://bnnhpfmtlvaff"
         },
         {
@@ -2583,6 +2722,7 @@
                 "Nuclear": "Weak",
                 "Bless": "Repel"
             },
+            "PassiveSkills": [ "Null Ice" ],
             "Image": "uid://da6teofq3q3ae"
         },
         {
@@ -2601,6 +2741,7 @@
                 "Wind": "Resist",
                 "Psychic": "Weak"
             },
+            "PassiveSkills": [ "Wind Amp" ],
             "Image": "uid://cvmlffomur3sr"
         },
         {
@@ -2619,6 +2760,7 @@
                 "Ice": "Resist",
                 "Bless": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://dj7jbhqyti3ay"
         },
         {
@@ -2636,6 +2778,7 @@
                 "Fire": "Weak",
                 "Electric": "Resist"
             },
+            "PassiveSkills": [],
             "Image": "uid://c2degibtikb3a"
         },
         {
@@ -2654,6 +2797,7 @@
                 "Ice": "Resist",
                 "Wind": "Resist"
             },
+            "PassiveSkills": [ "Dodge Ice" ],
             "Image": "uid://br8fxxm32r110"
         },
         {
@@ -2671,6 +2815,7 @@
                 "Ice": "Resist",
                 "Electric": "Weak"
             },
+            "PassiveSkills": [],
             "Image": "uid://cuvlqxoawxg6m"
         },
         {
@@ -2689,6 +2834,7 @@
                 "Psychic": "Weak",
                 "Nuclear": "Resist"
             },
+            "PassiveSkills": [ "Counter" ],
             "Image": "uid://buoipkxt135wh"
         }
     ]

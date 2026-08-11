@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dlvljgcqpculv"]
+
+[ext_resource type="Script" uid="uid://dpps72cufahv1" path="res://Resources/Scripts/StatTypeFilterOption.cs" id="1_u0jvs"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_1git2"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="2_yw143"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="3_yw143"]
+[ext_resource type="Texture2D" uid="uid://5q1of6biujk5" path="res://Assets/Images/UpArrow.png" id="5_yw143"]
+
+[node name="StatTypeFilterOption" type="VBoxContainer" unique_id=1767757415 node_paths=PackedStringArray("_orderTexture", "Button", "_label")]
+theme_override_constants/separation = 5
+script = ExtResource("1_u0jvs")
+_orderTexture = NodePath("Button/NinePatchRect/MarginContainer/OrderTexture")
+Button = NodePath("Button")
+_label = NodePath("Button/NinePatchRect/MarginContainer/Label")
+
+[node name="Button" type="Button" parent="." unique_id=1468004531]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_yw143")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=853010039]
+self_modulate = Color(0.581033, 0.58103293, 0.5810329, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1git2")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=1738521621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Button/NinePatchRect/MarginContainer" unique_id=1524961599]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_yw143")
+theme_override_font_sizes/font_size = 20
+text = "All"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OrderTexture" type="TextureRect" parent="Button/NinePatchRect/MarginContainer" unique_id=1947345367]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("5_yw143")
+expand_mode = 1
+stretch_mode = 5

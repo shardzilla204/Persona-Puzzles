@@ -102,4 +102,11 @@ public partial class PrintRich : Node
 
         Print(text + skillOrbText, textColor);
     }
+
+    public static void PrintPersona(Persona persona)
+    {
+        string personaString = $"ID: {persona.ID}\nName: {persona.Name}\nSkillType: {persona.SkillType}";
+        Print(personaString, TextColor.Yellow);
+        GD.Print(); // Spacing
+    }
 }

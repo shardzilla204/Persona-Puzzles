@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dttgkutib4c7o"]
+
+[ext_resource type="Script" uid="uid://bm3rju545hefc" path="res://Resources/Scripts/FavoriteFilterContainer.cs" id="1_dpnme"]
+
+[node name="Favorite" type="VBoxContainer" unique_id=613522587 node_paths=PackedStringArray("_container")]
+script = ExtResource("1_dpnme")
+_container = NodePath("GridContainer")
+
+[node name="Label" type="Label" parent="." unique_id=530870325]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Favorite"
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1908478047]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3

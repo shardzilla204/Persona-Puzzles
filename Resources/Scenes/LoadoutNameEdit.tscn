@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://dy0e01vg2lsmn"]
+
+[ext_resource type="Script" uid="uid://dhkon6j1ttfkj" path="res://Resources/Scripts/LoadoutNameEdit.cs" id="1_8gwti"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="1_10yp4"]
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="2_8gwti"]
+[ext_resource type="FontFile" uid="uid://bvi68e5vb7ce3" path="res://Assets/Fonts/Markin-LT-Ultra-Bold.ttf" id="4_8gwti"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="5_83l5m"]
+
+[sub_resource type="FontVariation" id="FontVariation_8gwti"]
+base_font = ExtResource("4_8gwti")
+
+[node name="LoadoutNameEdit" type="Control" unique_id=1850661481 node_paths=PackedStringArray("_backdropButton", "_nameLineEdit", "_cancelButton", "_confirmButton")]
+custom_minimum_size = Vector2(500, 800)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gwti")
+_backdropButton = NodePath("BackdropButton")
+_nameLineEdit = NodePath("LoadoutNameEdit/MarginContainer/VBoxContainer/NameLineEdit")
+_cancelButton = NodePath("LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
+_confirmButton = NodePath("LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton")
+
+[node name="BackdropButton" type="Button" parent="." unique_id=893512352]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="BackdropButton" unique_id=1185861474]
+self_modulate = Color(0, 0, 0, 0.4392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8gwti")
+expand_mode = 1
+
+[node name="LoadoutNameEdit" type="NinePatchRect" parent="." unique_id=72698496]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 0
+offset_top = 500.0
+offset_right = 500.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_10yp4")
+region_rect = Rect2(0, 0, 128, 120)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadoutNameEdit" unique_id=518391176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadoutNameEdit/MarginContainer" unique_id=729587963]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="LoadoutNameEdit/MarginContainer/VBoxContainer" unique_id=506852936]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_8gwti")
+theme_override_font_sizes/font_size = 18
+text = "Enter a name for this team"
+
+[node name="Filler" type="Control" parent="LoadoutNameEdit/MarginContainer/VBoxContainer" unique_id=1468856729]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="NameLineEdit" type="LineEdit" parent="LoadoutNameEdit/MarginContainer/VBoxContainer" unique_id=123097651]
+custom_minimum_size = Vector2(425, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/selection_color = Color(0.30353206, 0.30353206, 0.30353206, 1)
+theme_override_fonts/font = ExtResource("4_8gwti")
+theme_override_font_sizes/font_size = 24
+alignment = 1
+max_length = 16
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/NameLineEdit" unique_id=525483588]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_10yp4")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CharacterCountLabel" type="Label" parent="LoadoutNameEdit/MarginContainer/VBoxContainer" unique_id=667595476]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8gwti")
+theme_override_font_sizes/font_size = 12
+text = "1 - 16 characters"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadoutNameEdit/MarginContainer/VBoxContainer" unique_id=1576748178]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1229003209]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+flat = true
+script = ExtResource("5_83l5m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" unique_id=609444007]
+self_modulate = Color(0.9, 0.225, 0.2812501, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_10yp4")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/CancelButton/NinePatchRect" unique_id=783284579]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/CancelButton/NinePatchRect/MarginContainer" unique_id=1327411239]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8gwti")
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filler" type="Control" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer" unique_id=634457015]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1011462885]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+flat = true
+script = ExtResource("5_83l5m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton" unique_id=1107006998]
+self_modulate = Color(0.41999993, 0.7, 0.27999997, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_10yp4")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton/NinePatchRect" unique_id=475457346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/HBoxContainer/ConfirmButton/NinePatchRect/MarginContainer" unique_id=1881053401]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8gwti")
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dxp2y4lclmgcj"]
+
+[ext_resource type="Script" uid="uid://86w8v0l06q6h" path="res://Resources/Scripts/VelvetTrialButtonContainer.cs" id="1_5u73y"]
+
+[node name="VelvetTrialButtonContainer" type="MarginContainer" unique_id=102776772 node_paths=PackedStringArray("_buttonContainer")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 85
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 115
+script = ExtResource("1_5u73y")
+_buttonContainer = NodePath("Control/ScrollContainer/ButtonContainer")
+
+[node name="Control" type="Control" parent="." unique_id=274089512]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=1627334555]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 600.0
+rotation = -0.08726646
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ButtonContainer" type="VBoxContainer" parent="Control/ScrollContainer" unique_id=2051081720]
+layout_mode = 2
+theme_override_constants/separation = 75
