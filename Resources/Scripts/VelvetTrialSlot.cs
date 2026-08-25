@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Godot;
 
 namespace PersonaAndPuzzles;
@@ -9,6 +10,9 @@ public partial class VelvetTrialSlot : PersonaSlot
     private Label _powerLabel;
 
     public int Power = 0;
+
+    private const float _Offset = 10;
+    private const float _Scale = 1.25f;
 
     public void IncreasePowerBySkillOrbs(int skillOrbCount)
     {
@@ -53,8 +57,8 @@ public partial class VelvetTrialSlot : PersonaSlot
         Vector2 startingPosition = _powerLabel.Position;
         Vector2 startingScale = _powerLabel.Scale;
         
-        Vector2 targetPosition = startingPosition + new Vector2(0, -10);
-        Vector2 targetScale = startingScale + new Vector2(1.25f, 1.25f);
+        Vector2 targetPosition = startingPosition + new Vector2(0, -_Offset);
+        Vector2 targetScale = startingScale + new Vector2(_Scale, _Scale);
 
         float duration = ComboLabel.TweenDuration / 2;
         Tween tween = CreateTween().SetParallel(true).SetTrans(Tween.TransitionType.Quad);
@@ -64,42 +68,42 @@ public partial class VelvetTrialSlot : PersonaSlot
         tween.TweenProperty(_powerLabel, "scale", startingScale, duration);
     }
 
-    public void TweenAttack()
+    public async Task TweenAttackAsync()
     {
         if (Power == 0) return;
 
-        TweenSelfAttack();
-        TweenPowerLabelAttack();
+        TweenAttack();
+        TweenPowerLabel();
     }
 
-    private void TweenSelfAttack()
+    private void TweenAttack()
     {
         Vector2 startingPosition = Position;
 
-        Vector2 targetPositionA = startingPosition + new Vector2(0, 10);
-        Vector2 targetPositionB = startingPosition + new Vector2(0, -10);
+        Vector2 targetPositionA = startingPosition + new Vector2(0, _Offset);
+        Vector2 targetPositionB = startingPosition + new Vector2(0, -_Offset);
 
-        int propertyTweenerCount = 3;
-        float duration = 0.5f / propertyTweenerCount;
+        const float Duration = 0.2f;
         Tween tween = CreateTween().SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(this, "position", targetPositionA, duration);
-        tween.TweenProperty(this, "position", targetPositionB, duration);
-        tween.TweenProperty(this, "position", startingPosition, duration);
+        tween.TweenProperty(this, "position", targetPositionA, Duration);
+        tween.TweenProperty(this, "position", targetPositionB, Duration);
+        tween.TweenProperty(this, "position", startingPosition, Duration);
     }
 
-    private void TweenPowerLabelAttack()
+    private void TweenPowerLabel()
     {
-        Vector2 targetPosition = new Vector2(0, -10);
-        Vector2 targetScale = new Vector2(1.25f, 1.25f);
-        Color targetModulate = Colors.White;
-        targetModulate.A = 0;
+        Vector2 startingPosition = _powerLabel.Position;
+        Vector2 startingScale = _powerLabel.Scale;
 
-        int propertyTweenerCount = 3;
-        float duration = 0.5f / propertyTweenerCount;
+        Vector2 targetPosition = new Vector2(0, -_Offset);
+        Vector2 targetScale = new Vector2(_Scale, _Scale);
+
+        const float Duration = 0.2f;
         Tween tween = CreateTween().SetParallel(true).SetTrans(Tween.TransitionType.Quad);
-        tween.TweenProperty(_powerLabel, "position", targetPosition, duration);
-        tween.TweenProperty(_powerLabel, "scale", targetScale, duration);
-        tween.TweenProperty(_powerLabel, "modulate", targetModulate, duration);
+        tween.TweenProperty(_powerLabel, "position", targetPosition, Duration);
+        tween.TweenProperty(_powerLabel, "scale", targetScale, Duration);
+        tween.Chain().TweenProperty(_powerLabel, "position", startingPosition, Duration);
+        tween.TweenProperty(_powerLabel, "scale", startingScale, Duration);
         tween.Finished += () =>
         {
             Power = 0;

@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://cn6k7obbk8cx4"]
+
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="1_a20dm"]
+[ext_resource type="Script" uid="uid://c4yhgmuj3p8m3" path="res://Resources/Scripts/VelvetTrialConfirmation.cs" id="1_jphpt"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_jphpt"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_2qf5k"]
+
+[node name="VelvetTrialConfirmation" type="ColorRect" unique_id=1090920053 node_paths=PackedStringArray("_acceptButton", "_cancelButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+script = ExtResource("1_jphpt")
+_acceptButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/AcceptButton")
+_cancelButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=278646834]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=966241185]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1823291196]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2023635361]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_2qf5k")
+theme_override_font_sizes/font_size = 50
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1420208479]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("3_2qf5k")
+theme_override_font_sizes/font_size = 20
+text = "All progress will be lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1992124734]
+custom_minimum_size = Vector2(250, 0)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="AcceptButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=739288147]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("1_a20dm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/AcceptButton" unique_id=240313194]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jphpt")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/AcceptButton/NinePatchRect" unique_id=412967671]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2qf5k")
+theme_override_font_sizes/font_size = 24
+text = "Accept"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=736572531]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("1_a20dm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" unique_id=1944517619]
+self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jphpt")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CancelButton/NinePatchRect" unique_id=1507896657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2qf5k")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1

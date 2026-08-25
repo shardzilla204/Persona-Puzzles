@@ -126,7 +126,7 @@ public partial class PersonaManager : Node
         const string AgilityKey = "Agility";
         const string LuckKey = "Luck";
 
-        GC.Dictionary<string, Variant> personaData = (GC.Dictionary<string, Variant>) PersonaAndPuzzles.LoadFile(FileName);
+        GC.Dictionary<string, Variant> personaData = PersonaAndPuzzles.LoadFile(FileName).As<GC.Dictionary<string, Variant>>();
         List<GC.Dictionary<string, Variant>> personaDictionaries = personaData[FileName].As<GC.Array<GC.Dictionary<string, Variant>>>().ToList();
         foreach (GC.Dictionary<string, Variant> personaDictionary in personaDictionaries)
         {
@@ -148,7 +148,7 @@ public partial class PersonaManager : Node
             GC.Dictionary<string, Variant> resistancesDictionary = personaDictionary[ResistancesKey].As<GC.Dictionary<string, Variant>>();
             SetResistances(persona, resistancesDictionary);
 
-            GC.Array<string> passiveSkills = personaDictionary[PassiveSkillsKey].As<GC.Array<string>>();
+            GC.Array passiveSkills = personaDictionary[PassiveSkillsKey].As<GC.Array>();
             SetPassiveSkills(persona, passiveSkills);
 
             _Personas.Add(persona);
@@ -165,7 +165,7 @@ public partial class PersonaManager : Node
         }
     }
 
-    private static void SetPassiveSkills(Persona persona, GC.Array<string> passiveSkills)
+    private static void SetPassiveSkills(Persona persona, GC.Array passiveSkills)
     {
         foreach (string passiveSkillName in passiveSkills)
         {

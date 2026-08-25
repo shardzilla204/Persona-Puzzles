@@ -34,7 +34,7 @@ public partial class Compendium : MarginContainer
         _slotContainer.MouseExited += () => _isHovered = false;
         
         Fill(PersonaManager.Personas);
-        CallDeferred("SetScrollBar"); // Starts when the compendium has finished loading
+        CallDeferred(MethodName.SetScrollBar); // Starts when the compendium has finished loading
     }
 
     // When swiping down = Move container up
@@ -92,6 +92,7 @@ public partial class Compendium : MarginContainer
 
     private void Clear()
     {
+        Slots.Clear();
         foreach (Node child in _slotContainer.GetChildren())
         {
             child.QueueFree();
@@ -152,8 +153,9 @@ public partial class Compendium : MarginContainer
         {
             if (persona == null) continue;
             PrintRich.PrintPersona(persona);
-            CompendiumSlot slot = Slots.Find(slot => slot.Persona.ID == persona.ID);
 
+            CompendiumSlot slot = FindCompendiumSlot(persona);
+            if (slot == null) continue;
             slot.ToggleUsage(true);
         }
     }
@@ -170,11 +172,6 @@ public partial class Compendium : MarginContainer
 
     public void OnCompendiumFilterConfirmed(string targetSkillType, string targetFavorite, string targetStatType)
     {
-        GD.Print("Filtering Compendium");
-        GD.Print($"Skill Type: {targetSkillType}");
-        GD.Print($"Favorite: {targetFavorite}");
-        GD.Print($"Stat Type: {targetStatType}");
-
         Clear();
         
         List<Persona> personas = [..PersonaManager.Personas];
@@ -202,12 +199,11 @@ public partial class Compendium : MarginContainer
             // 1 = State
             string[] statTypeStrings = targetStatType.Split("|");
             StatType statType = Enum.Parse<StatType>(statTypeStrings[0]);
-            bool isAscending = statTypeStrings[1] == StatTypeFilterOption.AscendingState;
+            string state = statTypeStrings[1];
+            bool isAscending = state == StatTypeFilterOption.AscendingState;
             List<Persona> statTypePersonas = GetPersonasByStatType(statType, personas, isAscending);
             personas = [..statTypePersonas];
         }
-
-        GD.Print($"Count From Filters: {personas.Count}");
 
         Fill(personas);
     }

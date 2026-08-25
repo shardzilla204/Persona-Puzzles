@@ -46,7 +46,7 @@ public partial class PersonaAndPuzzles : Node
 
 			PrintRich.PrintJSONSuccess(fileName);
 
-			GC.Dictionary<string, Variant> dictionaries = (GC.Dictionary<string, Variant>) json.Data;
+			GC.Dictionary<string, Variant> dictionaries = json.Data.As<GC.Dictionary<string, Variant>>();
 			return dictionaries;
 		}
 		catch

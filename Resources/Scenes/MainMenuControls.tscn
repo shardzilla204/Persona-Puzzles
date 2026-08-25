@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_g0jdb"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_0evc1"]
 
-[node name="MainMenuControls" type="TextureRect" unique_id=1703215953 node_paths=PackedStringArray("_velvetTrialsButton", "_personaCompendiumButton", "_personaFusionButton")]
+[node name="MainMenuControls" type="TextureRect" unique_id=1703215953 node_paths=PackedStringArray("_velvetTrialsButton", "_compendiumButton", "_fusionButton")]
 self_modulate = Color(0.35906908, 0.35906908, 0.35906908, 1)
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 12
@@ -19,8 +19,8 @@ texture = ExtResource("1_grj3y")
 expand_mode = 1
 script = ExtResource("2_0evc1")
 _velvetTrialsButton = NodePath("HBoxContainer/VelvetTrials")
-_personaCompendiumButton = NodePath("HBoxContainer/PersonaCompendium")
-_personaFusionButton = NodePath("HBoxContainer/PersonaFusion")
+_compendiumButton = NodePath("HBoxContainer/Compendium")
+_fusionButton = NodePath("HBoxContainer/Fusion")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1226340406]
 layout_mode = 1
@@ -76,7 +76,7 @@ text = "Velvet Trials"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PersonaCompendium" type="Button" parent="HBoxContainer" unique_id=1224430405]
+[node name="Compendium" type="Button" parent="HBoxContainer" unique_id=1224430405]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -85,7 +85,7 @@ toggle_mode = true
 flat = true
 script = ExtResource("3_0evc1")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PersonaCompendium" unique_id=613586265]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Compendium" unique_id=613586265]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +97,7 @@ texture = ExtResource("2_g0jdb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PersonaCompendium/TextureRect" unique_id=188558690]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Compendium/TextureRect" unique_id=188558690]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,16 +110,16 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/PersonaCompendium/TextureRect/MarginContainer" unique_id=304500518]
+[node name="Label" type="Label" parent="HBoxContainer/Compendium/TextureRect/MarginContainer" unique_id=304500518]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 12
-text = "Personas"
+text = "Compendium"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PersonaFusion" type="Button" parent="HBoxContainer" unique_id=1998398256]
+[node name="Fusion" type="Button" parent="HBoxContainer" unique_id=1998398256]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -128,7 +128,7 @@ toggle_mode = true
 flat = true
 script = ExtResource("3_0evc1")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PersonaFusion" unique_id=322566646]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Fusion" unique_id=322566646]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +140,7 @@ texture = ExtResource("2_g0jdb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PersonaFusion/TextureRect" unique_id=1454198621]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Fusion/TextureRect" unique_id=1454198621]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,7 +153,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/PersonaFusion/TextureRect/MarginContainer" unique_id=2075673918]
+[node name="Label" type="Label" parent="HBoxContainer/Fusion/TextureRect/MarginContainer" unique_id=2075673918]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://fhwwfg3fhifg"]
+
+[ext_resource type="Script" uid="uid://bo77boc1u7aym" path="res://Resources/Scripts/VelvetTrialSlotContainer.cs" id="1_77q2c"]
+[ext_resource type="PackedScene" uid="uid://djjy1hqpufkop" path="res://Resources/Scenes/VelvetTrial/VelvetTrialSlot.tscn" id="2_461ai"]
+
+[node name="VelvetTrialSlotContainer" type="HBoxContainer" unique_id=758305951]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+script = ExtResource("1_77q2c")
+metadata/_edit_group_ = true
+
+[node name="VelvetTrialSlot" parent="." unique_id=1730449436 instance=ExtResource("2_461ai")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot2" parent="." unique_id=163321960 instance=ExtResource("2_461ai")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot3" parent="." unique_id=1479147147 instance=ExtResource("2_461ai")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot4" parent="." unique_id=1618389070 instance=ExtResource("2_461ai")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot5" parent="." unique_id=5411129 instance=ExtResource("2_461ai")]
+layout_mode = 2
+
+[node name="VelvetTrialSlot6" parent="." unique_id=1939403569 instance=ExtResource("2_461ai")]
+layout_mode = 2

@@ -1,9 +1,13 @@
 using Godot;
-using System.Collections.Generic;
+using Godot.Collections;
 
 namespace PersonaAndPuzzles;
 
 public partial class VelvetTrialWave : Node
 {
-    public List<Persona> Personas = new List<Persona>();
+    public VelvetTrialWave(Array<Dictionary<string, Variant>> personaDictionaries)
+    {
+        PersonaDictionaries = personaDictionaries;
+    }
+    public Array<Dictionary<string, Variant>> PersonaDictionaries = new Array<Dictionary<string, Variant>>();
 }

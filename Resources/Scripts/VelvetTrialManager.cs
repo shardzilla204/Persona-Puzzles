@@ -1,6 +1,5 @@
 using Godot;
 using GC = Godot.Collections;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +15,7 @@ public partial class VelvetTrialManager : Node
         const string IDKey = "ID";
         const string WaveKey = "Waves";
 
-        GC.Dictionary<string, Variant> velvetTrialData = (GC.Dictionary<string, Variant>) PersonaAndPuzzles.LoadFile(FileName);
+        GC.Dictionary<string, Variant> velvetTrialData = PersonaAndPuzzles.LoadFile(FileName).As<GC.Dictionary<string, Variant>>();
         List<GC.Dictionary<string, Variant>> velvetTrialDictionaries = velvetTrialData[FileName].As<GC.Array<GC.Dictionary<string, Variant>>>().ToList();
         foreach (GC.Dictionary<string, Variant> velvetTrialDictionary in velvetTrialDictionaries)
         {
@@ -35,30 +34,9 @@ public partial class VelvetTrialManager : Node
         List<VelvetTrialWave> velvetTrialWaves = new List<VelvetTrialWave>();
         foreach (GC.Array<GC.Dictionary<string, Variant>> wave in waves)
         {
-            VelvetTrialWave velvetTrialWave = new VelvetTrialWave()
-            {
-                Personas = GetPersonas(wave)
-            };
+            VelvetTrialWave velvetTrialWave = new VelvetTrialWave(wave);
             velvetTrialWaves.Add(velvetTrialWave);
         }
         return velvetTrialWaves;
-    }
-
-    private static List<Persona> GetPersonas(GC.Array<GC.Dictionary<string, Variant>> wave)
-    {
-        const string NameKey = "Name";
-        const string LevelKey = "Level";
-
-        List<Persona> personas = new List<Persona>();
-        foreach (GC.Dictionary<string, Variant> personaDictionary in wave)
-        {
-            string personaName = personaDictionary[NameKey].As<string>();
-            int personaLevel = personaDictionary[LevelKey].As<int>();
-            Persona persona = PersonaManager.GetPersonaByName(personaName);
-            Persona personaClone = new Persona(persona);
-            PersonaManager.SetLevel(personaClone, personaLevel);
-            personas.Add(personaClone);
-        }
-        return personas;
     }
 }

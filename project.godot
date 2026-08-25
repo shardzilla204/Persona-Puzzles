@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Persona&Puzzles"
 config/description="A Puzzles & Dragons type puzzle game themed after Persona."
-config/version="0.0.7"
+config/version="0.0.9"
 config/tags=PackedStringArray("2d", "c#", "puzzle")
 run/main_scene="uid://bu33y3ibiqvpj"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")

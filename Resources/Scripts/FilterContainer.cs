@@ -95,7 +95,7 @@ public partial class FilterContainer : VBoxContainer
         filterOption.EmitSignal(FilterOption.SignalName.Selected, filterOption);
     }
 
-    public virtual void SetFilter(string filterName)
+    public virtual void EnableFilter(string filterName)
     {
         FilterOption targetOption = FilterOptions.Find(option => option.Name == filterName);
         targetOption.Filter();

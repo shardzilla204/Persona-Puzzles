@@ -1595,7 +1595,7 @@
                 "Electric": "Weak",
                 "Wind": "Null"
             },
-            "PassiveSkills": [ "" ],
+            "PassiveSkills": [],
             "Image": "uid://cgl7s4lp3h7dx"
         },
         {
@@ -2378,7 +2378,7 @@
                 "Bless": "Weak",
                 "Curse": "Resist"
             },
-            "PassiveSkills": [ "Gun Amp" ],
+            "PassiveSkills": [ ],
             "Image": "uid://dwtv02xq7wvmj"
         },
         {

@@ -61,9 +61,7 @@ public partial class CompendiumStats : TextureRect
 
         foreach (SkillType skillType in Persona.Resistances.Keys)
         {
-            GD.Print(skillType);
             Resistance resistance = Persona.Resistances[skillType];
-            GD.Print(resistance);
 
             CompendiumSkillResistance compendiumSkillResistance = GD.Load<PackedScene>(UID).Instantiate<CompendiumSkillResistance>();
             compendiumSkillResistance.Set(skillType, resistance);

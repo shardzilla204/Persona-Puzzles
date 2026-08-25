@@ -17,7 +17,6 @@ public partial class StatTypeFilterOption : FilterOption
     public override void _Ready()
     {
         base._Ready();
-
         SetOrderTexture();
     }
 

@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://ojbiqd2cianf"]
 
 [ext_resource type="Script" uid="uid://t5ge5vacyfm4" path="res://Resources/Scripts/VelvetTrialInterface.cs" id="1_c42a1"]
-[ext_resource type="Script" uid="uid://bo77boc1u7aym" path="res://Resources/Scripts/VelvetTrialSlotContainer.cs" id="2_3udrd"]
-[ext_resource type="PackedScene" uid="uid://djjy1hqpufkop" path="res://Resources/Scenes/VelvetTrial/VelvetTrialSlot.tscn" id="3_oubbd"]
+[ext_resource type="Script" uid="uid://c6t8rpl3kwmwa" path="res://Resources/Scripts/PersonaEnemyContainer.cs" id="2_er0dk"]
+[ext_resource type="PackedScene" uid="uid://fhwwfg3fhifg" path="res://Resources/Scenes/VelvetTrial/VelvetTrialSlotContainer.tscn" id="4_er0dk"]
 [ext_resource type="PackedScene" uid="uid://cf1ip2c3kpvih" path="res://Resources/Scenes/SkillOrbGrid.tscn" id="4_tvbij"]
-[ext_resource type="PackedScene" uid="uid://7683e4vgka8n" path="res://Resources/Scenes/HealthBar.tscn" id="6_wysdq"]
-[ext_resource type="PackedScene" uid="uid://mr8t4ljkmwyv" path="res://Resources/Scenes/Persona/PersonaEnemy.tscn" id="7_7bhhi"]
+[ext_resource type="PackedScene" uid="uid://np5yywsvvciv" path="res://Resources/Scenes/PlayerHealthBar.tscn" id="5_qhtww"]
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="8_fo5ni"]
-[ext_resource type="Texture2D" uid="uid://dyrnq5rigpys1" path="res://Assets/Images/Personas/Barong.png" id="9_j7dfr"]
 [ext_resource type="PackedScene" uid="uid://bax74nfykglud" path="res://Resources/Scenes/Debug.tscn" id="10_qtuq2"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="11_lr13u"]
+[ext_resource type="Texture2D" uid="uid://cr048kic4egrn" path="res://Assets/Images/Cross.png" id="11_qhtww"]
+[ext_resource type="Texture2D" uid="uid://dkntq24dqbkbj" path="res://Assets/Images/TarotCard.jpg" id="12_uyw00"]
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="13_sqd45"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="14_sqd45"]
 
-[node name="VelvetTrialInterface" type="Control" unique_id=691434485 node_paths=PackedStringArray("_skillOrbGrid", "_velvetTrialSlotContainer")]
+[node name="VelvetTrialInterface" type="Control" unique_id=34144408 node_paths=PackedStringArray("_skillOrbGrid", "_velvetTrialSlotContainer", "_personaEnemyContainer", "_playerHealthBar", "_exitButton", "_captureTexture", "_captureCount")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,120 +22,65 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_c42a1")
-_skillOrbGrid = NodePath("SkillOrbGrid")
-_velvetTrialSlotContainer = NodePath("VelvetTrialSlotContainer")
+_skillOrbGrid = NodePath("MarginContainer/VBoxContainer/SkillOrbGrid")
+_velvetTrialSlotContainer = NodePath("MarginContainer/VBoxContainer/VelvetTrialSlotContainer")
+_personaEnemyContainer = NodePath("MarginContainer/VBoxContainer/PersonaEnemyContainer")
+_playerHealthBar = NodePath("MarginContainer/VBoxContainer/PlayerHealthBar")
+_exitButton = NodePath("MarginContainer/VBoxContainer2/ExitButton")
+_captureTexture = NodePath("MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/CaptureTexture")
+_captureCount = NodePath("MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/CaptureTexture/CaptureCount")
 
-[node name="VelvetTrialSlotContainer" type="HBoxContainer" parent="." unique_id=1138181189]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2106964805]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -235.0
-offset_top = -70.0
-offset_right = 174.0
-offset_bottom = -6.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 5
-script = ExtResource("2_3udrd")
-metadata/_edit_group_ = true
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VelvetTrialSlot" parent="VelvetTrialSlotContainer" unique_id=1599700467 instance=ExtResource("3_oubbd")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2010469427]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PersonaEnemyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=113999286]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 15
+script = ExtResource("2_er0dk")
+
+[node name="VelvetTrialSlotContainer" parent="MarginContainer/VBoxContainer" unique_id=758305951 instance=ExtResource("4_er0dk")]
 layout_mode = 2
 
-[node name="VelvetTrialSlot2" parent="VelvetTrialSlotContainer" unique_id=50014439 instance=ExtResource("3_oubbd")]
+[node name="PlayerHealthBar" parent="MarginContainer/VBoxContainer" unique_id=375671256 instance=ExtResource("5_qhtww")]
 layout_mode = 2
 
-[node name="VelvetTrialSlot3" parent="VelvetTrialSlotContainer" unique_id=1234284948 instance=ExtResource("3_oubbd")]
+[node name="SkillOrbGrid" parent="MarginContainer/VBoxContainer" unique_id=1359677514 instance=ExtResource("4_tvbij")]
+custom_maximum_size = Vector2(409, 340)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Debug" parent="MarginContainer" unique_id=645808427 instance=ExtResource("10_qtuq2")]
 layout_mode = 2
 
-[node name="VelvetTrialSlot4" parent="VelvetTrialSlotContainer" unique_id=1477397240 instance=ExtResource("3_oubbd")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=1131759808]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="VelvetTrialSlot5" parent="VelvetTrialSlotContainer" unique_id=2009488440 instance=ExtResource("3_oubbd")]
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=517816699]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-
-[node name="VelvetTrialSlot6" parent="VelvetTrialSlotContainer" unique_id=2009308670 instance=ExtResource("3_oubbd")]
-layout_mode = 2
-
-[node name="PersonaReserveSlotContainer" type="Control" parent="." unique_id=165004005]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 185.0
-offset_top = -90.0
-offset_right = 249.0
-offset_bottom = 114.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_group_ = true
-
-[node name="PersonaSlot" parent="PersonaReserveSlotContainer" unique_id=499605412 instance=ExtResource("3_oubbd")]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-
-[node name="PersonaSlot2" parent="PersonaReserveSlotContainer" unique_id=493087075 instance=ExtResource("3_oubbd")]
-layout_mode = 0
-offset_top = 69.0
-offset_right = 64.0
-offset_bottom = 133.0
-
-[node name="PersonaSlot3" parent="PersonaReserveSlotContainer" unique_id=652149300 instance=ExtResource("3_oubbd")]
-layout_mode = 0
-offset_top = 138.0
-offset_right = 64.0
-offset_bottom = 202.0
-
-[node name="SkillOrbGrid" parent="." unique_id=1359677514 instance=ExtResource("4_tvbij")]
-layout_mode = 1
-offset_left = -235.0
-offset_top = 45.0
-offset_right = 174.0
-offset_bottom = 385.0
-
-[node name="HealthBar" parent="." unique_id=120400096 instance=ExtResource("6_wysdq")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 15.0
-offset_top = 405.0
-offset_right = 424.0
-offset_bottom = 435.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=113999286]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 132.0
-offset_right = 350.0
-offset_bottom = 252.0
-theme_override_constants/separation = 20
-
-[node name="PersonaEnemy" parent="HBoxContainer" unique_id=1665760837 instance=ExtResource("7_7bhhi")]
-layout_mode = 2
-
-[node name="PersonaEnemy2" parent="HBoxContainer" unique_id=816894346 instance=ExtResource("7_7bhhi")]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="." unique_id=584226354]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 0
-offset_left = 440.0
-offset_top = 357.0
-offset_right = 475.0
-offset_bottom = 392.0
+size_flags_horizontal = 8
 flat = true
+script = ExtResource("11_lr13u")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Button" unique_id=1622433821]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer2/ExitButton" unique_id=1588634426]
+self_modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,23 +93,89 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Button/NinePatchRect" unique_id=607734631]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/ExitButton/NinePatchRect" unique_id=532391061]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
-[node name="TextureRect" type="TextureRect" parent="Button/NinePatchRect/MarginContainer" unique_id=997482108]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2/ExitButton/NinePatchRect/MarginContainer" unique_id=1200490543]
 layout_mode = 2
-texture = ExtResource("9_j7dfr")
+texture = ExtResource("11_qhtww")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Debug" parent="." unique_id=645808427 instance=ExtResource("10_qtuq2")]
+[node name="CaptureCounter" type="Control" parent="MarginContainer/VBoxContainer2" unique_id=1466665150]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer2/CaptureCounter" unique_id=1757387894]
+self_modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_fo5ni")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect" unique_id=919397844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/MarginContainer" unique_id=754147967]
+layout_mode = 2
+texture = ExtResource("12_uyw00")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CaptureTexture" type="TextureRect" parent="MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect" unique_id=554864710]
+self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 9.0
+offset_bottom = 12.0
+grow_horizontal = 0
+texture = ExtResource("13_sqd45")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CaptureCount" type="Label" parent="MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/CaptureTexture" unique_id=1705813852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_sqd45")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 10
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

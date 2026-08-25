@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://np5yywsvvciv"]
+
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="1_1jpcd"]
+[ext_resource type="Script" uid="uid://dsq1hvwb1bssb" path="res://Resources/Scripts/PlayerHealthBar.cs" id="2_bgsqu"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_aqsmj"]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" unique_id=375671256 node_paths=PackedStringArray("_healthLabel")]
+custom_minimum_size = Vector2(409, 50)
+custom_maximum_size = Vector2(409, 30)
+size_flags_horizontal = 4
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("1_1jpcd")
+texture_progress = ExtResource("1_1jpcd")
+tint_under = Color(1, 0.33551362, 0.2695955, 1)
+tint_progress = Color(0.40764788, 0.7604493, 0.33371678, 1)
+script = ExtResource("2_bgsqu")
+_healthLabel = NodePath("MarginContainer/HealthLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1048364343]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HealthLabel" type="Label" parent="MarginContainer" unique_id=1941947744]
+layout_mode = 2
+theme = ExtResource("3_aqsmj")
+theme_override_font_sizes/font_size = 14
+text = "50k / 100k"
+vertical_alignment = 1

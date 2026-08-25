@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 namespace PersonaAndPuzzles;
@@ -45,7 +44,7 @@ public partial class CompendiumFilter : Control
 
         if (!string.IsNullOrEmpty(SkillType))
         {
-            _skillTypeFilters.SetFilter(SkillType);
+            _skillTypeFilters.EnableFilter(SkillType);
         }
         else
         {
@@ -54,16 +53,16 @@ public partial class CompendiumFilter : Control
 
         if (!string.IsNullOrEmpty(Favorite))
         {
-            _favoriteFilters.SetFilter(Favorite);
+            _favoriteFilters.EnableFilter(Favorite);
         }
         else
         {
             Favorite = _favoriteFilters.SelectedFilterName;
         }
 
-        if (!string.IsNullOrEmpty(StatType))
+        if (!string.IsNullOrEmpty(StatType) && StatType.Contains("|") /* If the string is 'All' */)
         {
-            _statTypeFilters.SetFilter(StatType);
+            _statTypeFilters.EnableFilter(StatType);
         }
         else
         {

@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_y1s85"]
 
 [node name="HealthBar" type="TextureProgressBar" unique_id=120400096]
+custom_minimum_size = Vector2(409, 50)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,14 +30,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=1504181719]
+[node name="HealthLabel" type="Label" parent="MarginContainer" unique_id=1504181719]
 layout_mode = 2
 theme = ExtResource("2_y1s85")
-theme_override_font_sizes/font_size = 18
-text = "50k/ 100k"
+theme_override_font_sizes/font_size = 14
+text = "50k / 100k"
 vertical_alignment = 1

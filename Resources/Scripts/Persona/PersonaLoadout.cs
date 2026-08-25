@@ -32,6 +32,7 @@ public partial class PersonaLoadout : Button
         Modulate = Colors.White.Darkened(0.25f);
 
         PersonaLoadouts personaLoadouts = GetParent().GetOwner<PersonaLoadouts>();
+        GD.Print(personaLoadouts.Name);
         personaLoadouts.ChangeLoadout(Roster);
     }
 

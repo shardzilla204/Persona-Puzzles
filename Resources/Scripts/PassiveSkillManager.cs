@@ -9,8 +9,8 @@ public partial class PassiveSkillManager : Node
 {
     public static List<PassiveSkill> PassiveSkills = new List<PassiveSkill>();
 
-    public static string[] _offensiveSkills = ["Boost", "Amp", "Apt Pupil", "Snipe", "Cripple", "Magic Ability", "Trigger Happy"];
-    public static string[] _defensiveSkills = ["Dodge", "Evade", "Sharp Student", "Angelic Grace"];
+    public static string[] _offensiveSkills = [ "Boost", "Amp", "Apt Pupil", "Snipe", "Cripple", "Magic Ability", "Trigger Happy" ];
+    public static string[] _defensiveSkills = [ "Dodge", "Evade", "Sharp Student", "Angelic Grace" ];
 
     // Keys
     private const string _NameKey = "Name";
@@ -20,7 +20,7 @@ public partial class PassiveSkillManager : Node
 
     public static void LoadPassiveSkills()
     {
-        GC.Dictionary<string, Variant> passiveSkillData = (GC.Dictionary<string, Variant>) PersonaAndPuzzles.LoadFile(_PassiveSkillFileName, "Skills");
+        GC.Dictionary<string, Variant> passiveSkillData = PersonaAndPuzzles.LoadFile(_PassiveSkillFileName, "Skills").As<GC.Dictionary<string, Variant>>();
         List<GC.Dictionary<string, Variant>> passiveSkillDictionaries = passiveSkillData[_PassiveSkillFileName].As<GC.Array<GC.Dictionary<string, Variant>>>().ToList();
         foreach (GC.Dictionary<string, Variant> passiveSkillDictionary in passiveSkillDictionaries)
         {

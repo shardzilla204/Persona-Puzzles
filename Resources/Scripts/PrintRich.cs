@@ -103,9 +103,42 @@ public partial class PrintRich : Node
         Print(text + skillOrbText, textColor);
     }
 
+    public static void PrintOrbs(List<List<SkillOrb>> columns, TextColor textColor = TextColor.Yellow)
+    {
+        foreach (List<SkillOrb> rows in columns)
+        {
+            string skillOrbText = "[";
+            foreach (SkillOrb skillOrb in rows)
+            {
+                if (skillOrb == null)
+                {
+                    GD.Print("Skill Orb is Null");
+                    continue;
+                }
+                skillOrbText += $"{skillOrb.SkillType} ";
+            }
+            skillOrbText = skillOrbText.TrimEnd();
+            skillOrbText += "]";
+
+            Print(skillOrbText, textColor);
+        }
+    }
+
     public static void PrintPersona(Persona persona)
     {
-        string personaString = $"ID: {persona.ID}\nName: {persona.Name}\nSkillType: {persona.SkillType}";
+        string personaID = $"ID: {persona.ID}\n";
+        string personaName = $"Name: {persona.Name}\n";
+        string personaSkillType = $"Skill Type: {persona.SkillType}\n";
+        string personaLevel = $"Level: {persona.Level}\n";
+
+        string personaStrength = $"Strength: {persona.Strength}\n";
+        string personaMagic = $"Magic: {persona.Magic}\n";
+        string personaEndurance = $"Endurance: {persona.Endurance}\n";
+        string personaAgility = $"Agility: {persona.Agility}\n";
+        string personaLuck = $"Luck: {persona.Luck}";
+        string personaStats = $"{personaStrength}{personaMagic}{personaEndurance}{personaAgility}{personaLuck}";
+
+        string personaString = $"{personaID}{personaName}{personaSkillType}{personaLevel}{personaStats}";
         Print(personaString, TextColor.Yellow);
         GD.Print(); // Spacing
     }

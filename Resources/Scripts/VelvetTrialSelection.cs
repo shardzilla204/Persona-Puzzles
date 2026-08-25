@@ -20,7 +20,7 @@ public partial class VelvetTrialSelection : Control
 
     public override void _Ready()
     {
-        _startButton.Pressed += OnStartButtonPressed;
+        _startButton.Pressed += StartVelvetTrial;
         
         foreach (VelvetTrialButton trialButton in _buttonContainer.Buttons)
         {
@@ -38,9 +38,8 @@ public partial class VelvetTrialSelection : Control
         _trialInfo.SetVelvetTrial(velvetTrial);
     }
 
-    private void OnStartButtonPressed()
+    private void StartVelvetTrial()
     {
-        GD.Print("Pressed");
         EmitSignal(SignalName.Started, _velvetTrial);
     }
 }

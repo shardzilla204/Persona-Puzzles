@@ -43,7 +43,7 @@ public partial class StatTypeFilterContainer : FilterContainer
         EnableDefaultFilter();
     }
 
-    public override void SetFilter(string filterName)
+    public override void EnableFilter(string filterName)
     {
         string[] filterStrings = filterName.Split("|");
         string statType = filterStrings[0];

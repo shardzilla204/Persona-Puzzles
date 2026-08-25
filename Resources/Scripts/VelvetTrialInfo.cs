@@ -1,5 +1,5 @@
 using Godot;
-using System.Collections.Generic;
+using Godot.Collections;
 
 namespace PersonaAndPuzzles;
 
@@ -22,8 +22,8 @@ public partial class VelvetTrialInfo : Container
 
     public override void _Ready()
     {
-        _previousButton.Pressed += OnPreviousButtonPressed;
-        _nextButton.Pressed += OnNextButtonPressed;
+        _previousButton.Pressed += DecreaseWaveIndex;
+        _nextButton.Pressed += IncreaseWaveIndex;
     }
 
     public void SetVelvetTrial(VelvetTrial velvetTrial)
@@ -38,15 +38,18 @@ public partial class VelvetTrialInfo : Container
         _waveCounterLabel.Text = $"Wave {waveCount}";
     }
 
-    private void SetPersonaIcons(List<Persona> personas)
+    private void SetPersonaIcons(Array<Dictionary<string, Variant>> personaDictionaries)
     {
         foreach (Node child in _personaIconContainer.GetChildren())
         {
             child.QueueFree();  
         }
 
-        foreach (Persona persona in personas)
+        const string NameKey = "Name";
+        foreach (Dictionary<string, Variant> personaDictionary in personaDictionaries)
         {
+            string personaName = personaDictionary[NameKey].As<string>();
+            Persona persona = PersonaManager.GetPersonaByName(personaName);
             VelvetTrialPersona velvetTrialPersona = GetVelvetTrialPersona(persona);
             _personaIconContainer.AddChild(velvetTrialPersona);
         }
@@ -65,10 +68,10 @@ public partial class VelvetTrialInfo : Container
     {
         VelvetTrialWave wave = _velvetTrial.Waves[_waveIndex];
         SetWaveCounterText(_waveIndex + 1);
-        SetPersonaIcons(wave.Personas);
+        SetPersonaIcons(wave.PersonaDictionaries);
     }
 
-     private void OnPreviousButtonPressed()
+     private void DecreaseWaveIndex()
     {
         _waveIndex -= 1;
 
@@ -81,7 +84,7 @@ public partial class VelvetTrialInfo : Container
         UpdateWaveInfo();
     }
 
-    private void OnNextButtonPressed()
+    private void IncreaseWaveIndex()
     {
         _waveIndex += 1;
 

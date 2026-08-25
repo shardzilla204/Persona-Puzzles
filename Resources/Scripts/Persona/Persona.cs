@@ -92,6 +92,7 @@ public class Persona
         { SkillType.Psychic, Resistance.None },
         { SkillType.Nuclear, Resistance.None },
         { SkillType.Bless, Resistance.None },
-        { SkillType.Curse, Resistance.None }
+        { SkillType.Curse, Resistance.None },
+        { SkillType.Almighty, Resistance.None }
     };
 }

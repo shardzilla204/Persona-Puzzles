@@ -28,9 +28,11 @@ public partial class TeamSlot : TextureRect
     public override void _Input(InputEvent @event)
     {
         if (!_isHovering || 
-            @event is not InputEventMouseButton eventMouseButton) return;
+            @event is not InputEventMouseButton eventMouseButton ||
+            !eventMouseButton.IsPressed()) return;
 
-        if (eventMouseButton.IsPressed() && eventMouseButton.DoubleClick)
+        // Remove persona from loadout on double click
+        if (eventMouseButton.DoubleClick)
         {
             CompendiumSlot compendiumSlot = GetCompendium().FindCompendiumSlot(Persona);
             compendiumSlot.ToggleUsage(false);
@@ -41,7 +43,8 @@ public partial class TeamSlot : TextureRect
             return;
         }
 
-        if (eventMouseButton.IsPressed() && !_isMousePressed)
+        // Show persona stats
+        if (!_isMousePressed)
         {
             _isMousePressed = true;
 
@@ -51,7 +54,7 @@ public partial class TeamSlot : TextureRect
             loadingBar.GlobalPosition = GetGlobalMousePosition() - loadingBar.Size / 2;
 
             loadingBar.Connect(LoadingBar.SignalName.Filled, 
-                Callable.From(OnLoadingBarFilled));
+                Callable.From(ShowCompendiumSlotStats));
         }
         else
         {
@@ -82,6 +85,7 @@ public partial class TeamSlot : TextureRect
         }
         else
         {
+            // Swap out old persona with new persona
             CompendiumSlot oldSlot = GetCompendium().FindCompendiumSlot(oldPersona);
             oldSlot.ToggleUsage(false);
 
@@ -105,7 +109,7 @@ public partial class TeamSlot : TextureRect
         SelfModulate = persona != null ? SkillOrbManager.GetSkillTypeColor(persona.SkillType) : Color.FromHtml("808080") /* Gray */;
     }
 
-    private void OnLoadingBarFilled()
+    private void ShowCompendiumSlotStats()
     {
         CompendiumStats compendiumStats = PackedScenes.GetCompendiumStats(Persona);
 

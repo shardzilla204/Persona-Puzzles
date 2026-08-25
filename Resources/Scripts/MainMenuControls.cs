@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 namespace PersonaAndPuzzles;
 
@@ -12,10 +11,10 @@ public partial class MainMenuControls : TextureRect
     private CustomButton _velvetTrialsButton;
 
     [Export]
-    private CustomButton _personaCompendiumButton;
+    private CustomButton _compendiumButton;
 
     [Export]
-    private CustomButton _personaFusionButton;
+    private CustomButton _fusionButton;
 
     private Control _mainMenu;
 
@@ -32,10 +31,10 @@ public partial class MainMenuControls : TextureRect
         ChangedInterface += OnChangedInterface;
 
         _velvetTrialsButton.Pressed += OnVelvetTrialsButtonPressed;
-        _personaCompendiumButton.Pressed += OnPersonaCompendiumButtonPressed;
-        _personaFusionButton.Pressed += OnPersonaFusionButtonPressed;
+        _compendiumButton.Pressed += OnCompendiumButtonPressed;
+        _fusionButton.Pressed += OnFusionButtonPressed;
 
-        CallDeferred("OnPersonaCompendiumButtonPressed");
+        CallDeferred(MethodName.OnVelvetTrialsButtonPressed);
 
         _mainMenu = GetParent<Control>().GetParent<Control>();
     }
@@ -43,15 +42,15 @@ public partial class MainMenuControls : TextureRect
     private void OnCompendiumScrollStarted()
     {
         _velvetTrialsButton.MouseFilter = MouseFilterEnum.Ignore;
-        _personaCompendiumButton.MouseFilter = MouseFilterEnum.Ignore;
-        _personaFusionButton.MouseFilter = MouseFilterEnum.Ignore;
+        _compendiumButton.MouseFilter = MouseFilterEnum.Ignore;
+        _fusionButton.MouseFilter = MouseFilterEnum.Ignore;
     }
 
     private void OnCompendiumScrollEnded()
     {
         _velvetTrialsButton.MouseFilter = MouseFilterEnum.Pass;
-        _personaCompendiumButton.MouseFilter = MouseFilterEnum.Pass;
-        _personaFusionButton.MouseFilter = MouseFilterEnum.Pass;
+        _compendiumButton.MouseFilter = MouseFilterEnum.Pass;
+        _fusionButton.MouseFilter = MouseFilterEnum.Pass;
     }
 
     private void OnVelvetTrialsButtonPressed()
@@ -61,7 +60,7 @@ public partial class MainMenuControls : TextureRect
         _mainMenu.AddChild(velvetTrialSelection);
         _mainMenu.MoveChild(velvetTrialSelection, 0);
 
-        velvetTrialSelection.Started += OnTrialStarted;
+        velvetTrialSelection.Started += ShowTrialInterface;
 
         EmitSignal(SignalName.ChangedInterface);
         Connect(SignalName.ChangedInterface, 
@@ -70,7 +69,7 @@ public partial class MainMenuControls : TextureRect
         _velvetTrialsButton.Toggle(true);
     }
 
-    private void OnPersonaCompendiumButtonPressed()
+    private void OnCompendiumButtonPressed()
     {
         const string UID = "uid://33kln8bdgqr5";
         Compendium compendium = GD.Load<PackedScene>(UID).Instantiate<Compendium>();
@@ -81,35 +80,34 @@ public partial class MainMenuControls : TextureRect
         Connect(SignalName.ChangedInterface, 
             Callable.From(compendium.QueueFree));
 
-        _personaCompendiumButton.Toggle(true);
+        _compendiumButton.Toggle(true);
     }
 
-    private void OnPersonaFusionButtonPressed()
+    private void OnFusionButtonPressed()
     {
         // const string UID = "";
 
         EmitSignal(SignalName.ChangedInterface);
         // Connect(SignalName.ChangedInterface, Callable.From(compendium.QueueFree));
-        _personaFusionButton.Toggle(true);
+        _fusionButton.Toggle(true);
     }
 
     private void OnChangedInterface()
     {
         _velvetTrialsButton.Toggle(false);
-        _personaCompendiumButton.Toggle(false);
-        _personaFusionButton.Toggle(false);
+        _compendiumButton.Toggle(false);
+        _fusionButton.Toggle(false);
 
         _mainMenu.MoveToFront();
     }
 
-    private void OnTrialStarted(VelvetTrial velvetTrial)
+    private void ShowTrialInterface(VelvetTrial velvetTrial)
     {
         _mainMenu.QueueFree();
         
-        GD.Print("Started Trial");
         const string UID = "uid://ojbiqd2cianf";
         VelvetTrialInterface velvetTrialInterface = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialInterface>();
+        velvetTrialInterface.VelvetTrial = velvetTrial;
         GetTree().Root.AddChild(velvetTrialInterface);
-
     }
 }

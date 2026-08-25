@@ -8,7 +8,8 @@
                 [
                     {
                         "Name": "Jack Frost",
-                        "Level": 15
+                        "Level": 15,
+                        "CaptureRate": 1
                     },
                     {
                         "Name": "Pyro Jack",
