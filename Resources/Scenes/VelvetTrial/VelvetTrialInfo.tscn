@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxudeeh8dvin0" path="res://Assets/Images/Personas/Black_Frost.png" id="2_jg6u1"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_cylcy"]
 [ext_resource type="Texture2D" uid="uid://dr2nvnvli6t46" path="res://Assets/Images/LeftArrow.png" id="4_qekdi"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="5_jg6u1"]
 [ext_resource type="Texture2D" uid="uid://b4b356n7alrj6" path="res://Assets/Images/RightArrow.png" id="5_m6y3x"]
 
 [node name="VelvetTrialInfo" type="VBoxContainer" unique_id=68461723 node_paths=PackedStringArray("_personaIconContainer", "_previousButton", "_nextButton", "_waveCounterLabel")]
@@ -50,11 +51,12 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="PreviousButton" type="Button" parent="WaveInfoControls" unique_id=621212887]
+[node name="PreviousButton" type="Button" parent="WaveInfoControls" unique_id=621212887 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 flat = true
 script = ExtResource("3_cylcy")
+_texture = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="WaveInfoControls/PreviousButton" unique_id=1737799486]
 layout_mode = 1
@@ -67,19 +69,29 @@ texture = ExtResource("4_qekdi")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Spacer" type="Control" parent="WaveInfoControls" unique_id=1037287902]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
 [node name="WaveCounterLabel" type="Label" parent="WaveInfoControls" unique_id=1070494904]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme = ExtResource("5_jg6u1")
 theme_override_font_sizes/font_size = 20
 text = "Wave 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextButton" type="Button" parent="WaveInfoControls" unique_id=689387265]
+[node name="Spacer2" type="Control" parent="WaveInfoControls" unique_id=1412640242]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="WaveInfoControls" unique_id=689387265 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 flat = true
 script = ExtResource("3_cylcy")
+_texture = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="WaveInfoControls/NextButton" unique_id=2002894102]
 layout_mode = 1

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://33kln8bdgqr5"]
 
 [ext_resource type="Script" uid="uid://cldutaqqhp8tw" path="res://Resources/Scripts/Compendium/Compendium.cs" id="1_5au0e"]
-[ext_resource type="PackedScene" uid="uid://cfqltojr7tu13" path="res://Resources/Scenes/Persona/PersonaTeam.tscn" id="3_i8bfj"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_2b3ee"]
+[ext_resource type="PackedScene" uid="uid://btw350rcmw0ht" path="res://Resources/Scenes/Persona/PersonaCompendiumTeam.tscn" id="2_i8bfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2ll"]
 content_margin_left = 4.0
@@ -13,7 +14,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Compendium" type="MarginContainer" unique_id=2006310776 node_paths=PackedStringArray("_personaTeam", "_slotContainer", "_scrollBar")]
+[node name="Compendium" type="MarginContainer" unique_id=2006310776 node_paths=PackedStringArray("_slotContainer", "_scrollBar", "_personaCountLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,9 +26,9 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 script = ExtResource("1_5au0e")
-_personaTeam = NodePath("VBoxContainer/MarginContainer/Control/PersonaTeam")
 _slotContainer = NodePath("VBoxContainer/Control/Node/SlotContainer")
 _scrollBar = NodePath("VBoxContainer/Control/VScrollBar")
+_personaCountLabel = NodePath("VBoxContainer/Control/PersonaCountLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=865094210]
 layout_mode = 2
@@ -67,6 +68,18 @@ mouse_default_cursor_shape = 2
 theme_override_styles/grabber = SubResource("StyleBoxFlat_xu2ll")
 max_value = 50.0
 
+[node name="PersonaCountLabel" type="RichTextLabel" parent="VBoxContainer/Control" unique_id=892409893]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_top = 175.0
+offset_right = 57.0
+offset_bottom = 198.0
+theme = ExtResource("2_2b3ee")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Testing"
+scroll_active = false
+
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=359723390]
 layout_mode = 2
 theme_override_constants/margin_left = -15
@@ -79,7 +92,7 @@ custom_maximum_size = Vector2(0, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="PersonaTeam" parent="VBoxContainer/MarginContainer/Control" unique_id=77672837 instance=ExtResource("3_i8bfj")]
+[node name="PersonaCompendiumTeam" parent="VBoxContainer/MarginContainer/Control" unique_id=77672837 instance=ExtResource("2_i8bfj")]
 layout_mode = 0
 offset_top = 71.0
 offset_bottom = 171.0

@@ -60,8 +60,8 @@ Resources/Scripts/
  Compendium.cs
  CompendiumSkillResistance.cs
  CompendiumSlot.cs
- CompendiumStat.cs
- CompendiumStats.cs
+ PersonaStat.cs
+ PersonaStats.cs
  Debug.cs
  LoadingBar.cs
  PackedScenes.cs

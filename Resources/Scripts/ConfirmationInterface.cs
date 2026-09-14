@@ -3,13 +3,16 @@ using System;
 
 namespace PersonaAndPuzzles;
 
-public partial class VelvetTrialConfirmation : ColorRect
+public partial class ConfirmationInterface : ColorRect
 {
     [Signal]
     public delegate void AcceptedEventHandler();
 
     [Signal]
     public delegate void CanceledEventHandler();
+
+    [Export]
+    private Label _warningLabel;
 
     [Export]
     private CustomButton _acceptButton;
@@ -21,6 +24,11 @@ public partial class VelvetTrialConfirmation : ColorRect
     {
         _acceptButton.Pressed += OnAcceptButtonPressed;
         _cancelButton.Pressed += OnCancelButtonPressed;
+    }
+
+    public void SetWarningText(string warning)
+    {
+        _warningLabel.Text = warning;
     }
 
     private void OnAcceptButtonPressed()

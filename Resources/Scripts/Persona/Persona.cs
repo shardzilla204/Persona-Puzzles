@@ -53,6 +53,7 @@ public class Persona
         Race = persona.Race;
         SkillType = persona.SkillType;
         Level = persona.Level;
+        Rank = persona.Rank;
 
         Strength = persona.Strength;
         Magic = persona.Magic;
@@ -71,6 +72,9 @@ public class Persona
     public Race Race;
     public SkillType SkillType;
     public int Level;
+    public int Rank;
+    public int Overclock;
+    public int Experience;
 
     public int Strength;
     public int Magic;

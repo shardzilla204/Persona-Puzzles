@@ -9,6 +9,8 @@
 [sub_resource type="FontVariation" id="FontVariation_8gwti"]
 base_font = ExtResource("4_8gwti")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8b1ht"]
+
 [node name="LoadoutNameEdit" type="Control" unique_id=1850661481 node_paths=PackedStringArray("_backdropButton", "_nameLineEdit", "_cancelButton", "_confirmButton")]
 custom_minimum_size = Vector2(500, 800)
 layout_mode = 3
@@ -93,15 +95,17 @@ layout_mode = 2
 custom_minimum_size = Vector2(425, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/selection_color = Color(0.30353206, 0.30353206, 0.30353206, 1)
+theme_override_colors/selection_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_fonts/font = ExtResource("4_8gwti")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8b1ht")
 alignment = 1
 max_length = 16
 flat = true
+select_all_on_focus = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="LoadoutNameEdit/MarginContainer/VBoxContainer/NameLineEdit" unique_id=525483588]
-self_modulate = Color(0.5, 0.5, 0.5, 1)
+self_modulate = Color(0.34033942, 0.34033927, 0.34033936, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

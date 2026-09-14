@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_qpedb"]
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_3hjtq"]
 
-[node name="CustomButton" type="Button" unique_id=739288147]
+[node name="CustomButton" type="Button" unique_id=739288147 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(50, 50)
 flat = true
 script = ExtResource("1_666e6")
+_texture = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=240313194]
 self_modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)

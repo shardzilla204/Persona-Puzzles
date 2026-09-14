@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://qicend1g781d"]
+
+[ext_resource type="Script" uid="uid://b4qxcstr57cp7" path="res://Resources/Scripts/Persona/PersonaLoadoutButton.cs" id="1_wyx7l"]
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="2_k378x"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_1sfqi"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_qq5pp"]
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="5_yetfb"]
+[ext_resource type="Texture2D" uid="uid://bv0r25v4lr3sy" path="res://Assets/Images/EditIcon.png" id="6_nnjlw"]
+[ext_resource type="PackedScene" uid="uid://bfox35ygy4i12" path="res://Resources/Scenes/Persona/PersonaTeamSlot.tscn" id="7_intei"]
+
+[node name="PersonaLoadoutButton" type="Button" unique_id=1917096243 node_paths=PackedStringArray("_teamSlotContainer", "_nameLabel", "_editNameButton")]
+custom_minimum_size = Vector2(500, 100)
+offset_right = 8.0
+offset_bottom = 100.0
+mouse_filter = 1
+script = ExtResource("1_wyx7l")
+_teamSlotContainer = NodePath("TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer")
+_nameLabel = NodePath("TextureRect/MarginContainer/VBoxContainer/HBoxContainer/NameLabel")
+_editNameButton = NodePath("TextureRect/MarginContainer/VBoxContainer/HBoxContainer/EditNameButton")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=778323365]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_k378x")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=140263674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=2001195731]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=819471461]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=15402169]
+layout_mode = 2
+text = "     "
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=745140580]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_1sfqi")
+theme_override_font_sizes/font_size = 14
+text = "Ice"
+
+[node name="EditNameButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1204810535 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("4_qq5pp")
+_texture = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/EditNameButton" unique_id=657189160]
+self_modulate = Color(0.3019608, 0.3019608, 0.3019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_yetfb")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/EditNameButton/TextureRect" unique_id=429209842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/EditNameButton/TextureRect/MarginContainer" unique_id=168593242]
+layout_mode = 2
+texture = ExtResource("6_nnjlw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersonaTeamSlotContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=407864183]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = -15
+alignment = 1
+
+[node name="PersonaTeamSlot" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=1105541662 instance=ExtResource("7_intei")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot2" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=2062121229 instance=ExtResource("7_intei")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot3" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=1712081539 instance=ExtResource("7_intei")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot4" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=2106959121 instance=ExtResource("7_intei")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot5" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=1479399538 instance=ExtResource("7_intei")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot6" parent="TextureRect/MarginContainer/VBoxContainer/PersonaTeamSlotContainer" unique_id=406857629 instance=ExtResource("7_intei")]
+layout_mode = 2

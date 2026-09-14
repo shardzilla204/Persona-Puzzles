@@ -18,9 +18,9 @@ mouse_filter = 2
 texture = ExtResource("1_grj3y")
 expand_mode = 1
 script = ExtResource("2_0evc1")
-_velvetTrialsButton = NodePath("HBoxContainer/VelvetTrials")
-_compendiumButton = NodePath("HBoxContainer/Compendium")
-_fusionButton = NodePath("HBoxContainer/Fusion")
+_velvetTrialsButton = NodePath("HBoxContainer/VelvetTrialsButton")
+_compendiumButton = NodePath("HBoxContainer/CompendiumButton")
+_fusionButton = NodePath("HBoxContainer/FusionButton")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1226340406]
 layout_mode = 1
@@ -33,7 +33,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 alignment = 1
 
-[node name="VelvetTrials" type="Button" parent="HBoxContainer" unique_id=206115502]
+[node name="VelvetTrialsButton" type="Button" parent="HBoxContainer" unique_id=206115502 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -41,8 +41,9 @@ size_flags_vertical = 4
 toggle_mode = true
 flat = true
 script = ExtResource("3_0evc1")
+_texture = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VelvetTrials" unique_id=1457374356]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VelvetTrialsButton" unique_id=1457374356]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +55,7 @@ texture = ExtResource("2_g0jdb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VelvetTrials/TextureRect" unique_id=73663407]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VelvetTrialsButton/TextureRect" unique_id=73663407]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,7 +68,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/VelvetTrials/TextureRect/MarginContainer" unique_id=357734533]
+[node name="Label" type="Label" parent="HBoxContainer/VelvetTrialsButton/TextureRect/MarginContainer" unique_id=357734533]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
@@ -76,7 +77,7 @@ text = "Velvet Trials"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Compendium" type="Button" parent="HBoxContainer" unique_id=1224430405]
+[node name="CompendiumButton" type="Button" parent="HBoxContainer" unique_id=1224430405 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,8 +85,9 @@ size_flags_vertical = 4
 toggle_mode = true
 flat = true
 script = ExtResource("3_0evc1")
+_texture = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Compendium" unique_id=613586265]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CompendiumButton" unique_id=613586265]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +99,7 @@ texture = ExtResource("2_g0jdb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Compendium/TextureRect" unique_id=188558690]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CompendiumButton/TextureRect" unique_id=188558690]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +112,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/Compendium/TextureRect/MarginContainer" unique_id=304500518]
+[node name="Label" type="Label" parent="HBoxContainer/CompendiumButton/TextureRect/MarginContainer" unique_id=304500518]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
@@ -119,7 +121,7 @@ text = "Compendium"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Fusion" type="Button" parent="HBoxContainer" unique_id=1998398256]
+[node name="FusionButton" type="Button" parent="HBoxContainer" unique_id=1998398256 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -127,8 +129,9 @@ size_flags_vertical = 4
 toggle_mode = true
 flat = true
 script = ExtResource("3_0evc1")
+_texture = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Fusion" unique_id=322566646]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/FusionButton" unique_id=322566646]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +143,7 @@ texture = ExtResource("2_g0jdb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Fusion/TextureRect" unique_id=1454198621]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/FusionButton/TextureRect" unique_id=1454198621]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,7 +156,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/Fusion/TextureRect/MarginContainer" unique_id=2075673918]
+[node name="Label" type="Label" parent="HBoxContainer/FusionButton/TextureRect/MarginContainer" unique_id=2075673918]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1

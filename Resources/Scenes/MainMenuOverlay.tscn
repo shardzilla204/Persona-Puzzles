@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cpwy53s0686qe" path="res://Resources/Scenes/MainMenuControls.tscn" id="1_rhynq"]
 [ext_resource type="PackedScene" uid="uid://uekr34vibn70" path="res://Resources/Scenes/PlayerInformation.tscn" id="2_rhynq"]
-[ext_resource type="PackedScene" uid="uid://brvlkxorlpgex" path="res://Resources/Scenes/Persona/PersonaLoadouts.tscn" id="3_sbhiw"]
 
 [node name="MainMenuOverlay" type="Control" unique_id=179463518]
 layout_mode = 3
@@ -21,7 +20,3 @@ layout_mode = 1
 custom_minimum_size = Vector2(500, 75)
 layout_mode = 1
 offset_bottom = 0.0
-
-[node name="PersonaLoadouts" parent="." unique_id=1850661481 instance=ExtResource("3_sbhiw")]
-visible = false
-layout_mode = 1

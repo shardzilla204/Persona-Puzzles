@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://cn6k7obbk8cx4"]
 
-[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="1_a20dm"]
-[ext_resource type="Script" uid="uid://c4yhgmuj3p8m3" path="res://Resources/Scripts/VelvetTrialConfirmation.cs" id="1_jphpt"]
-[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_jphpt"]
-[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_2qf5k"]
+[ext_resource type="Script" uid="uid://c4yhgmuj3p8m3" path="res://Resources/Scripts/ConfirmationInterface.cs" id="1_6xoo0"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_8qrje"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_yreh0"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="4_gqw2l"]
 
-[node name="VelvetTrialConfirmation" type="ColorRect" unique_id=1090920053 node_paths=PackedStringArray("_acceptButton", "_cancelButton")]
+[node name="ConfirmationInterface" type="ColorRect" unique_id=1090920053 node_paths=PackedStringArray("_warningLabel", "_acceptButton", "_cancelButton")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4)
-script = ExtResource("1_jphpt")
+script = ExtResource("1_6xoo0")
+_warningLabel = NodePath("MarginContainer/VBoxContainer/VBoxContainer/WarningLabel")
 _acceptButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/AcceptButton")
 _cancelButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
 
@@ -39,16 +40,16 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2023635361]
 layout_mode = 2
 size_flags_vertical = 6
-theme = ExtResource("3_2qf5k")
+theme = ExtResource("2_8qrje")
 theme_override_font_sizes/font_size = 50
 text = "Are you sure?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1420208479]
+[node name="WarningLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1420208479]
 layout_mode = 2
 size_flags_vertical = 6
-theme = ExtResource("3_2qf5k")
+theme = ExtResource("2_8qrje")
 theme_override_font_sizes/font_size = 20
 text = "All progress will be lost"
 horizontal_alignment = 1
@@ -62,11 +63,12 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="AcceptButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=739288147]
+[node name="AcceptButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=739288147 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 flat = true
-script = ExtResource("1_a20dm")
+script = ExtResource("3_yreh0")
+_texture = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/AcceptButton" unique_id=240313194]
 self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
@@ -76,7 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jphpt")
+texture = ExtResource("4_gqw2l")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -89,17 +91,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_2qf5k")
+theme = ExtResource("2_8qrje")
 theme_override_font_sizes/font_size = 24
 text = "Accept"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=736572531]
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=736572531 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 flat = true
-script = ExtResource("1_a20dm")
+script = ExtResource("3_yreh0")
+_texture = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" unique_id=1944517619]
 self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
@@ -109,7 +112,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jphpt")
+texture = ExtResource("4_gqw2l")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -122,7 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_2qf5k")
+theme = ExtResource("2_8qrje")
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 horizontal_alignment = 1

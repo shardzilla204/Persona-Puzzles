@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bgn5ylqg7sych"]
+
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_lb4u8"]
+[ext_resource type="Script" uid="uid://l4vmo4wxitt3" path="res://Resources/Scripts/PersonaEnhance.cs" id="2_navnq"]
+[ext_resource type="Texture2D" uid="uid://dk2wpe0jpwrhd" path="res://Assets/Images/Diagonal.png" id="5_e5a7d"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_1eafh"]
+[ext_resource type="PackedScene" uid="uid://bumychidhgdfu" path="res://Resources/Scenes/PersonaSlot.tscn" id="6_rrub2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h2qh"]
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrub2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjqqf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PersonaEnhance" type="TextureRect" unique_id=346973846 node_paths=PackedStringArray("_personaSlot", "_personaNameLabel", "_personaLevelLabel", "_experienceLabel", "_initialProgressBar", "_finalProgressBar", "_overclockContainer")]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(0, 100)
+offset_top = 71.0
+offset_right = 500.0
+offset_bottom = 171.0
+texture = ExtResource("1_lb4u8")
+expand_mode = 1
+script = ExtResource("2_navnq")
+_personaSlot = NodePath("MarginContainer/HBoxContainer/HBoxContainer/PersonaSlot")
+_personaNameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PersonaNameLabel")
+_personaLevelLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/PersonaLevelLabel")
+_experienceLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ExperienceLabel")
+_initialProgressBar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/FinalProgressBar/InitialProgressBar")
+_finalProgressBar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/FinalProgressBar")
+_overclockContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/OverclockContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1964202193]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=585438895]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1515716426]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PersonaSlot" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=762215622 instance=ExtResource("6_rrub2")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=432266687]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1045497868]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=524322778]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PersonaNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=741858169]
+layout_mode = 2
+theme = ExtResource("6_1eafh")
+theme_override_font_sizes/font_size = 18
+text = "Black Frost"
+
+[node name="OverclockContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=594752017]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/OverclockContainer" unique_id=631976982]
+self_modulate = Color(0.30980393, 0.29411766, 0.2784314, 1)
+custom_minimum_size = Vector2(10, 15)
+layout_mode = 2
+texture = ExtResource("5_e5a7d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/OverclockContainer" unique_id=1953481597]
+self_modulate = Color(0.30980393, 0.29411766, 0.2784314, 1)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("5_e5a7d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/OverclockContainer" unique_id=857596589]
+self_modulate = Color(0.30980393, 0.29411766, 0.2784314, 1)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("5_e5a7d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersonaLevelLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=2013212778]
+layout_mode = 2
+theme = ExtResource("6_1eafh")
+bbcode_enabled = true
+text = "Lvl. 99 / 99 [color=\"yellow\"](+1)[/color]"
+fit_content = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1852279698]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ExperienceLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1325472813]
+layout_mode = 2
+theme = ExtResource("6_1eafh")
+bbcode_enabled = true
+text = "Next Lvl. In: [color=\"yellow\"](+10,000)[/color]"
+fit_content = true
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=113094861]
+clip_children = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4h2qh")
+
+[node name="FinalProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel" unique_id=2133423919]
+self_modulate = Color(1, 0.88235295, 0.27450982, 1)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_rrub2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jjqqf")
+value = 14.0
+show_percentage = false
+
+[node name="InitialProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/FinalProgressBar" unique_id=1953097497]
+self_modulate = Color(0.9999998, 0.43237397, 0.13504481, 1)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_jjqqf")
+value = 25.0
+show_percentage = false

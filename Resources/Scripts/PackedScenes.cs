@@ -26,7 +26,7 @@ public partial class PackedScenes : Node
     {
         const string UID = "uid://bx43agqlgfr80";
         CompendiumSlot compendiumSlot = GD.Load<PackedScene>(UID).Instantiate<CompendiumSlot>();
-        compendiumSlot.Persona = persona;
+        compendiumSlot.SetPersona(persona);
 
         return compendiumSlot;
     }
@@ -53,13 +53,13 @@ public partial class PackedScenes : Node
         return loadingBar;
     }
 
-    public static CompendiumStats GetCompendiumStats(Persona persona)
+    public static PersonaStats GetPersonaStats(Persona persona)
     {
         const string UID = "uid://dos6wimuvhfa7";
-        CompendiumStats compendiumStats = GD.Load<PackedScene>(UID).Instantiate<CompendiumStats>();
-        compendiumStats.Set(persona);
+        PersonaStats personaStats = GD.Load<PackedScene>(UID).Instantiate<PersonaStats>();
+        personaStats.Set(persona);
         
-        return compendiumStats;
+        return personaStats;
     }
 
     public static FilterOption GetFilterOption<T>(FilterType filterType) where T : FilterOption
@@ -70,7 +70,6 @@ public partial class PackedScenes : Node
 
     private static string GetFilterOptionUID(FilterType filterType) => filterType switch
     {
-        FilterType.Default => "uid://b85g1ywxf10n",
         FilterType.SkillType => "uid://btfc2qh4b2ttm",
         FilterType.StatType => "uid://dlvljgcqpculv",
         _ => "uid://b85g1ywxf10n"

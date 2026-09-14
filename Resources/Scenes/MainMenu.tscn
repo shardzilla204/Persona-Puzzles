@@ -1,14 +1,34 @@
 [gd_scene format=3 uid="uid://bu33y3ibiqvpj"]
 
-[ext_resource type="PackedScene" uid="uid://debg2l6hphs1b" path="res://Resources/Scenes/MainMenuOverlay.tscn" id="1_i4ykn"]
+[ext_resource type="Script" uid="uid://b575hteb80xas" path="res://Resources/Scripts/MainMenu.cs" id="1_xu2ll"]
+[ext_resource type="PackedScene" uid="uid://cpwy53s0686qe" path="res://Resources/Scenes/MainMenuControls.tscn" id="2_84q7i"]
+[ext_resource type="PackedScene" uid="uid://uekr34vibn70" path="res://Resources/Scenes/PlayerInformation.tscn" id="3_02oxp"]
 
-[node name="MainMenu" type="Control" unique_id=179463518]
+[node name="MainMenu" type="Control" unique_id=179463518 node_paths=PackedStringArray("_mainMenuControls")]
+custom_maximum_size = Vector2(500, 800)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xu2ll")
+_mainMenuControls = NodePath("MainMenuOverlay/MainMenuControls")
 
-[node name="MainMenuOverlay" parent="." unique_id=1635594630 instance=ExtResource("1_i4ykn")]
+[node name="MainMenuOverlay" type="Control" parent="." unique_id=1635594630]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainMenuControls" parent="MainMenuOverlay" unique_id=1703215953 instance=ExtResource("2_84q7i")]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 1
+
+[node name="PlayerInformation" parent="MainMenuOverlay" unique_id=148160978 instance=ExtResource("3_02oxp")]
+custom_minimum_size = Vector2(500, 75)
+layout_mode = 1
+offset_bottom = 0.0

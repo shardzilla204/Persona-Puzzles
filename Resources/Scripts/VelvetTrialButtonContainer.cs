@@ -12,7 +12,14 @@ public partial class VelvetTrialButtonContainer : Control
 
     public override void _Ready()
     {
+        CallDeferred(MethodName.SetScrollContainerSize);
         AddVelvetTrialButtons();
+    }
+
+    private void SetScrollContainerSize()
+    {
+        ScrollContainer scrollContainer = _buttonContainer.GetParent<ScrollContainer>();
+        scrollContainer.Size = scrollContainer.GetParent<Control>().Size;
     }
 
     private void AddVelvetTrialButtons()
@@ -21,10 +28,13 @@ public partial class VelvetTrialButtonContainer : Control
         for (int i = 0; i < VelvetTrialManager.VelvetTrials.Count; i++)
         {
             VelvetTrialButton velvetTrialButton = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialButton>();
-            velvetTrialButton.Name = $"Velvet Trial {i + 1}";
+            velvetTrialButton.Name = $"Trial {i + 1}";
             velvetTrialButton.VelvetTrial = VelvetTrialManager.VelvetTrials[i];
             _buttonContainer.AddChild(velvetTrialButton);
             Buttons.Add(velvetTrialButton);
         }
+
+        // Add filler node
+        _buttonContainer.AddChild(new Control());
     }
 }

@@ -11,15 +11,17 @@ public partial class PersonaManager : Node
 {
     public const int MaxStat = 99;
     public const int MaxPassiveSkills = 3;
-    public const int MaxPersonas = 6;
-    public const int MaxPersonaReserves = 3;
+    public const int MaxTeamSlots = 6;
+    public const int MaxTeamReserves = 3;
     public const int MaxLoadouts = 10;
 
     private static List<Persona> _Personas = new List<Persona>();
     public static List<Persona> Personas = new List<Persona>();
 
-    public static PersonaRoster Roster = new PersonaRoster("Loadout 1", 0);
-    public static List<PersonaRoster> Loadouts = new List<PersonaRoster>();
+    public static PersonaLoadout Loadout = new PersonaLoadout("Loadout 1", 0);
+    public static List<PersonaLoadout> Loadouts = new List<PersonaLoadout>();
+
+    public static int MaxPersonas = 50;
 
     public static void GetRandomPersonas()
     {
@@ -27,85 +29,76 @@ public partial class PersonaManager : Node
         {
             Persona persona = GetRandomPersona();
             Personas.Add(persona);
+
+            Persona personaClone = ClonePersona(persona);
+            Personas.Add(personaClone);
         }
     }
 
-    public static void SetRandomRoster()
+    public static void SetRandomLoadout()
     {
-        for (int i = 0; i < MaxPersonas; i++)
-        {
-            Persona persona = GetRandomPersona();
-            Roster.Personas.Add(persona);
-            Personas.Add(persona);
-        }
-
-        // for (int i = 0; i < MaxPersonaReserves; i++)
-        // {
-        //     Persona persona = GetRandomPersona();
-        //     Roster.Reserves.Add(persona);
-        // }
-        
-        PersonaRoster rosterClone = new PersonaRoster(Roster);
-        Loadouts.Add(rosterClone);
-
         SetRandomLoadouts();
         SetEmptyLoadouts();
+
+        PersonaLoadout loadoutClone = new PersonaLoadout(Loadouts[0]);
+        Loadout = loadoutClone;
     }
 
     private static void SetRandomLoadouts()
     {
-        List<PersonaRoster> loadouts = new List<PersonaRoster>();
-        for (int i = 0; i < PersonaAndPuzzles.ExtraLoadouts; i++)
+        List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
+        for (int i = 0; i <= PersonaAndPuzzles.ExtraLoadouts; i++)
         {
             string name = $"Loadout {i + 1}";
-            PersonaRoster roster = new PersonaRoster(name, i);
-            for (int j = 0; j < MaxPersonas; j++)
+            PersonaLoadout loadout = new PersonaLoadout(name, i);
+            for (int j = 0; j < MaxTeamSlots; j++)
             {
-                Persona persona = GetRandomPersona();
-                roster.Personas.Add(persona);
+                RandomNumberGenerator RNG = new RandomNumberGenerator();
+                int randomNumber = RNG.RandiRange(0, Personas.Count - 1);
+                Persona persona = Personas[randomNumber];
+                while (loadout.Personas.Contains(persona))
+                {
+                    randomNumber = RNG.RandiRange(0, Personas.Count - 1);
+                    persona = Personas[randomNumber];
+                }
+                loadout.Personas.Add(persona);
             }
 
-            // for (int j = 0; j < MaxPersonaReserves; j++)
-            // {
-            //     Persona persona = GetRandomPersona();
-            //     roster.Reserves.Add(persona);
-            // }
-
-            loadouts.Add(roster);
+            loadouts.Add(loadout);
         }
         Loadouts.AddRange(loadouts);
     }
 
     private static void SetEmptyLoadouts()
     {
-        List<PersonaRoster> loadouts = new List<PersonaRoster>();
+        List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
         for (int i = Loadouts.Count; i < MaxLoadouts; i++)
         {
             string name = $"Loadout {i + 1}";
-            PersonaRoster roster = new PersonaRoster(name, i);
-            for (int j = 0; j < MaxPersonas; j++)
+            PersonaLoadout Loadout = new PersonaLoadout(name, i);
+            for (int j = 0; j < MaxTeamSlots; j++)
             {
-                roster.Personas.Add(null);
+                Loadout.Personas.Add(null);
             }
-            loadouts.Add(roster);
+            loadouts.Add(Loadout);
         }
         Loadouts.AddRange(loadouts);
     }
 
     public static void SetLoadout(Persona newPersona, int slotIndex)
     {
-        Roster.Swap(newPersona, slotIndex);
+        Loadout.Swap(newPersona, slotIndex);
 
-        PersonaRoster targetRoster = Loadouts.Find(loadout => loadout.Name == Roster.Name);
-        targetRoster.Swap(newPersona, slotIndex);
+        PersonaLoadout targetLoadout = Loadouts.Find(loadout => loadout.Name == Loadout.Name);
+        targetLoadout.Swap(newPersona, slotIndex);
     }
 
     public static void SetLoadout(Persona newPersona, string oldPersonaID)
     {
-        Roster.Swap(newPersona, oldPersonaID);
+        Loadout.Swap(newPersona, oldPersonaID);
 
-        PersonaRoster targetRoster = Loadouts.Find(loadout => loadout.Name == Roster.Name);
-        targetRoster.Swap(newPersona, oldPersonaID);
+        PersonaLoadout targetLoadout = Loadouts.Find(loadout => loadout.Name == Loadout.Name);
+        targetLoadout.Swap(newPersona, oldPersonaID);
     }
 
     public static void LoadPersonas()
@@ -118,6 +111,7 @@ public partial class PersonaManager : Node
         const string ResistancesKey = "Resistances";
         const string PassiveSkillsKey = "PassiveSkills";
         const string LevelKey = "Level";
+        const string RankKey = "Rank";
 
         // Stat keys
         const string StrengthKey = "Strength";
@@ -137,6 +131,7 @@ public partial class PersonaManager : Node
                 Race = GetRaceFromDictionary(personaDictionary),
                 SkillType = GetSkillTypeFromDictionary(personaDictionary),
                 Level = personaDictionary[LevelKey].As<int>(),
+                Rank = personaDictionary[RankKey].As<int>(),
 
                 // Stats
                 Strength = personaDictionary[StrengthKey].As<int>(),
@@ -154,6 +149,48 @@ public partial class PersonaManager : Node
             _Personas.Add(persona);
         }
     }
+
+    public static int GetOverclockCount(int rank) => rank switch
+    {
+        >= 4 and <= 6 => 2,
+        >= 7 and <= 8 => 3,
+        (>= 1 and <= 3) or _ => 1
+    };
+
+    public static int GetBonusLevels(Persona persona)
+    {
+        int bonusLevels = 0;
+        for (int i = 0; i < persona.Overclock; i++)
+        {
+            bonusLevels += 5;
+        }
+        bonusLevels += persona.Rank == 8 ? 4 : 0;
+        return bonusLevels;
+    }
+
+    public static int GetBaseMaxLevel(int rank) => rank switch
+    {
+        2 => 30,
+        3 => 40,
+        4 => 50,
+        5 => 60,
+        6 => 70,
+        7 or 8 => 80,
+        1 or _ => 20
+    };
+
+    public static int GetMaxLevel(Persona persona)
+    {
+        return GetBaseMaxLevel(persona.Rank) + GetBonusLevels(persona);
+    }
+
+    public static int GetMaterialExperience(EnhancementMaterial material) => material switch
+    {
+        EnhancementMaterial.Memory => 100,
+        EnhancementMaterial.Anecdote => 500,
+        EnhancementMaterial.Legend => 2000,
+        _ => 0
+    };
 
     private static void SetResistances(Persona persona, GC.Dictionary<string, Variant> resistances)
     {
@@ -235,6 +272,16 @@ public partial class PersonaManager : Node
         Persona persona = _Personas[randomNumber];
         Persona personaClone = new Persona(persona)
         {
+            ID = Guid.NewGuid().ToString("N"),
+            Level = PersonaAndPuzzles.OverridePersonaLevel ? persona.Level : 1
+        };
+        return personaClone;
+    }
+
+    private static Persona ClonePersona(Persona persona)
+    {
+        Persona personaClone = new Persona(persona)
+        {
             ID = Guid.NewGuid().ToString("N")
         };
         return personaClone;
@@ -276,6 +323,26 @@ public partial class PersonaManager : Node
             persona.Luck = Mathf.Max(MinStat, persona.Luck + difference);
         }
         persona.Level = targetLevel;
+    }
+
+    public static void RemovePersona(Persona targetPersona)
+    {
+        Personas.Remove(targetPersona);
+
+        int personaIndex = Loadout.Personas.FindIndex(persona => persona == targetPersona);
+        if (personaIndex != -1)
+        {
+            Loadout.Personas[personaIndex] = null;
+        }
+
+        foreach (PersonaLoadout loadout in Loadouts)
+        {
+            personaIndex = Loadout.Personas.FindIndex(persona => persona == targetPersona);
+            if (personaIndex != -1)
+            {
+                Loadout.Personas[personaIndex] = null;
+            }
+        }
     }
 }
 

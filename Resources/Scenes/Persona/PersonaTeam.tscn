@@ -6,10 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bfox35ygy4i12" path="res://Resources/Scenes/Persona/PersonaTeamSlot.tscn" id="3_h8wfi"]
 [ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="4_bv0e2"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_s76br"]
-[ext_resource type="Texture2D" uid="uid://etod8pmes88g" path="res://Assets/Images/FilterIcon.png" id="6_letal"]
 [ext_resource type="Texture2D" uid="uid://bq7je4v5emsu4" path="res://Assets/Images/DownArrow.png" id="6_s76br"]
 
-[node name="PersonaTeam" type="TextureRect" unique_id=77672837 node_paths=PackedStringArray("_personaTeamSlotContainer", "_filterButton", "_dropdownButton", "_nameLabel")]
+[node name="PersonaTeam" type="TextureRect" unique_id=77672837 node_paths=PackedStringArray("_personaTeamSlotContainer", "_dropdownButton", "_nameLabel")]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
 custom_minimum_size = Vector2(0, 100)
 offset_right = 500.0
@@ -18,7 +17,6 @@ texture = ExtResource("1_dsicr")
 expand_mode = 1
 script = ExtResource("2_bv0e2")
 _personaTeamSlotContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer")
-_filterButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton")
 _dropdownButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton")
 _nameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameLabel")
 
@@ -38,12 +36,9 @@ theme_override_constants/margin_bottom = 7
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1649150786]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1733273013]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=281014070]
@@ -62,49 +57,13 @@ theme_override_font_sizes/font_size = 14
 text = "Ice"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2101932084]
+custom_minimum_size = Vector2(443, 0)
 layout_mode = 2
 theme_override_constants/separation = 4
-
-[node name="FilterButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=366811018]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-flat = true
-script = ExtResource("4_s76br")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton" unique_id=2011421779]
-self_modulate = Color(0.5, 0.5, 0.5, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_bv0e2")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton/NinePatchRect" unique_id=421022068]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 9
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton/NinePatchRect/MarginContainer" unique_id=525707590]
-layout_mode = 2
-texture = ExtResource("6_letal")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="PersonaTeamSlotContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1491122116]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
 theme_override_constants/separation = -15
 alignment = 1
 
@@ -126,13 +85,14 @@ layout_mode = 2
 [node name="PersonaTeamSlot6" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=924750798 instance=ExtResource("3_h8wfi")]
 layout_mode = 2
 
-[node name="DropdownButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1564788903]
+[node name="DropdownButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1564788903 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 flat = true
 script = ExtResource("4_s76br")
+_texture = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton" unique_id=1927928924]
 self_modulate = Color(0.3, 0.3, 0.3, 1)

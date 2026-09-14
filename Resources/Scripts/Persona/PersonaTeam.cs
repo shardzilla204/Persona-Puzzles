@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Godot;
 
 namespace PersonaAndPuzzles;
@@ -9,32 +8,25 @@ public partial class PersonaTeam : TextureRect
     private Container _personaTeamSlotContainer;
 
     [Export]
-    private CustomButton _filterButton;
-
-    [Export]
     private CustomButton _dropdownButton;
 
     [Export]
     private Label _nameLabel;
 
-    public List<TeamSlot> TeamSlots = new List<TeamSlot>();
-    public PersonaRoster Loadout;
-
-    private string _skillTypeFilter;
-    private string _favoriteFilter;
-    private string _statTypeFilter;
-
     // When loading a loadout from a save file have the index of the loadout.
+    public override void _EnterTree()
+    {
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.PersonaReleased, 
+            Callable.From(Refresh));
+    }
+
     public override void _Ready()
     {
-        _filterButton.Pressed += OnFilterButtonPressed;
         _dropdownButton.Pressed += OnDropdownPressed;
 
-        _nameLabel.Text = PersonaManager.Roster.Name;
-        Loadout = PersonaManager.Loadouts[0];
+        _nameLabel.Text = PersonaManager.Loadout.Name;
 
-        RemoveChildren();
-        AddTeamSlots();
+        Refresh();
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
@@ -49,15 +41,14 @@ public partial class PersonaTeam : TextureRect
     private void AddTeamSlots()
     {
         const string UID = "uid://bfox35ygy4i12";
-        for (int i = 0; i < PersonaManager.Roster.Personas.Count; i++)
+        for (int i = 0; i < PersonaManager.Loadout.Personas.Count; i++)
         {
-            Persona persona = PersonaManager.Roster.Personas[i];
+            Persona persona = PersonaManager.Loadout.Personas[i];
 
             TeamSlot teamSlot = GD.Load<PackedScene>(UID).Instantiate<TeamSlot>();
             teamSlot.Index = i;
             teamSlot.SetPersona(persona);
             _personaTeamSlotContainer.AddChild(teamSlot);
-            TeamSlots.Add(teamSlot);
         }
     }
 
@@ -69,39 +60,17 @@ public partial class PersonaTeam : TextureRect
         }
     }
 
-    private void OnFilterButtonPressed()
+    protected virtual Node GetMainMenu()
     {
-        Compendium compendium = GetParent().GetOwner<Compendium>();
-        Control mainMenu = compendium.GetParent<Control>();
-
-        const string UID = "uid://c7qklaahiqwoy";
-        CompendiumFilter compendiumFilter = GD.Load<PackedScene>(UID).Instantiate<CompendiumFilter>();
-        compendiumFilter.SkillType = _skillTypeFilter;
-        compendiumFilter.Favorite = _favoriteFilter;
-        compendiumFilter.StatType = _statTypeFilter;
-        compendiumFilter.Connect(CompendiumFilter.SignalName.Confirmed, 
-            new Callable(compendium, Compendium.MethodName.OnCompendiumFilterConfirmed));
-        compendiumFilter.Connect(CompendiumFilter.SignalName.Confirmed, 
-            new Callable(this, MethodName.OnCompendiumFilterConfirmed));
-        
-        mainMenu.AddChild(compendiumFilter);
-    }
-
-    private void OnCompendiumFilterConfirmed(string targetSkillType, string targetFavorite, string targetStatType)
-    {
-        _skillTypeFilter = targetSkillType;
-        _favoriteFilter = targetFavorite;
-        _statTypeFilter = targetStatType;
+        return GetParent().GetParent();
     }
 
     private void OnDropdownPressed()
     {
-        Compendium compendium = GetParent().GetOwner<Compendium>();
-        Control mainMenu = compendium.GetParent<Control>();
+        Node mainMenu = GetMainMenu();
 
         const string UID = "uid://brvlkxorlpgex";
         PersonaLoadouts personaLoadouts = GD.Load<PackedScene>(UID).Instantiate<PersonaLoadouts>();
-        personaLoadouts.Compendium = compendium;
         personaLoadouts.Connect(PersonaLoadouts.SignalName.LoadoutSelected,
             new Callable(this, MethodName.OnLoadoutSelected));
         personaLoadouts.Connect(PersonaLoadouts.SignalName.LoadoutNamedChanged,
@@ -112,23 +81,22 @@ public partial class PersonaTeam : TextureRect
 
     private void OnLoadoutSelected(int loadoutIndex)
     {
-        Loadout = PersonaManager.Loadouts[loadoutIndex];
+        _nameLabel.Text = PersonaManager.Loadouts[loadoutIndex].Name;
 
-        _nameLabel.Text = Loadout.Name;
-
-        RemoveChildren();
-        AddTeamSlots();
+        Refresh();
     }
 
-    private void OnLoadoutNameChanged()
+    private void OnLoadoutNameChanged(int loadoutIndex, string name)
     {
-        _nameLabel.Text = Loadout.Name;
+        if (loadoutIndex != PersonaManager.Loadouts[loadoutIndex].Index) return;
+        
+        _nameLabel.Text = name;
     }
 
     private bool HasPersona(string id)
     {
         TeamSlot teamSlot = null;
-        foreach (TeamSlot slot in TeamSlots)
+        foreach (TeamSlot slot in _personaTeamSlotContainer.GetChildren())
         {
             if (slot.Persona == null || 
                 slot.Persona.ID != id) continue;
@@ -138,5 +106,11 @@ public partial class PersonaTeam : TextureRect
         }
 
         return teamSlot != null;
+    }
+
+    private void Refresh()
+    {
+        RemoveChildren();
+        AddTeamSlots();
     }
 }

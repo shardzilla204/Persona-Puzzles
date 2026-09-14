@@ -35,7 +35,7 @@ public partial class VelvetTrialInfo : Container
 
     private void SetWaveCounterText(int waveCount)
     {
-        _waveCounterLabel.Text = $"Wave {waveCount}";
+        _waveCounterLabel.Text = $"Wave {waveCount}/{_velvetTrial.Waves.Count}";
     }
 
     private void SetPersonaIcons(Array<Dictionary<string, Variant>> personaDictionaries)

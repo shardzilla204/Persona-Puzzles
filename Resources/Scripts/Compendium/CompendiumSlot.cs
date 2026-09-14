@@ -15,35 +15,39 @@ public partial class CompendiumSlot : PersonaSlot
 
     public bool IsInUse;
 
+    private LoadingBar _loadingBar;
+
     public override void _Ready()
     {
         MouseEntered += () => _isHovering = true;
         MouseExited += () => _isHovering = false;
 
-        SetPersona(Persona);
+        SetFavoriteTextureVisibility(Persona.IsFavorite);
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _Process(double delta)
     {
-        if (!_isHovering || 
-            @event is not InputEventMouseButton eventMouseButton) return;
+        if (!_isHovering) 
+        {
+            if (IsInstanceValid(_loadingBar)) _loadingBar.QueueFree();
+            return;
+        }
 
-        if (eventMouseButton.IsPressed() && !_isMousePressed)
+        bool isLeftMouseButtonPressed = Input.IsMouseButtonPressed(MouseButton.Left);
+        if (isLeftMouseButtonPressed && !_isMousePressed)
         {
             _isMousePressed = true;
 
-            LoadingBar loadingBar = PackedScenes.GetLoadingBar();
-            GetTree().Root.AddChild(loadingBar);
-
-            loadingBar.GlobalPosition = GetGlobalMousePosition() - loadingBar.Size / 2;
-
-            loadingBar.Connect(LoadingBar.SignalName.Filled, 
+            _loadingBar = PackedScenes.GetLoadingBar();
+            _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
+            _loadingBar.Connect(LoadingBar.SignalName.Filled, 
                 Callable.From(OnLoadingBarFilled));
+
+            GetTree().Root.AddChild(_loadingBar);
         }
-        else
+        else if (!isLeftMouseButtonPressed)
         {
             _isMousePressed = false;
-
             PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MouseReleased);
         }
     }
@@ -57,20 +61,24 @@ public partial class CompendiumSlot : PersonaSlot
         control.AddChild(compendiumSlot);
         SetDragPreview(control);
         compendiumSlot.Position = -compendiumSlot.Size / 2;
+
+        if (IsInstanceValid(_loadingBar)) _loadingBar.QueueFree();
         
         return this;
     }
 
     private void OnLoadingBarFilled()
     {
-        CompendiumStats compendiumStats = PackedScenes.GetCompendiumStats(Persona);
-        compendiumStats.Connect(CompendiumStats.SignalName.FavoriteButtonToggled, 
+        PersonaStats personaStats = PackedScenes.GetPersonaStats(Persona);
+        personaStats.Connect(PersonaStats.SignalName.FavoriteButtonToggled, 
             new Callable(this, MethodName.SetFavoriteTextureVisibility));
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas, 
+            Callable.From(personaStats.QueueFree));
 
         Compendium compendium = GetParent().GetOwner<Compendium>();
         Node mainMenu = compendium.GetParent();
-        mainMenu.AddChild(compendiumStats);
-        mainMenu.MoveChild(compendiumStats, 2);
+        mainMenu.AddChild(personaStats);
+        mainMenu.MoveChild(personaStats, 2);
 
         PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
     }
@@ -81,19 +89,13 @@ public partial class CompendiumSlot : PersonaSlot
 
         _personaLevelLabel.Text = $"Lvl. {persona.Level}";
     }
-
-    private void DisplayMenu()
-    {
-        
-    }
-
+    
     public void ToggleUsage(bool isInUse)
     {
         IsInUse = isInUse;
 
         float darkenedAmount = 0.4f;
         Modulate = isInUse ? Colors.White.Darkened(darkenedAmount) : Colors.White;
-        MouseDefaultCursorShape = isInUse ? CursorShape.Arrow : CursorShape.PointingHand;
     }
 
     public void SetFavoriteTextureVisibility(bool isVisible)

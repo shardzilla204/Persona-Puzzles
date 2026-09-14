@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cic8qjthqxh7j"]
+
+[ext_resource type="Texture2D" uid="uid://bx0s7j3anua3c" path="res://Assets/Images/Background.jpg" id="1_grmjh"]
+
+[node name="Background" type="TextureRect" unique_id=1411372007]
+custom_minimum_size = Vector2(1420, 800)
+anchors_preset = -1
+anchor_left = -0.92
+anchor_right = 1.9200001
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_right = -460.00006
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_grmjh")
+expand_mode = 1
+stretch_mode = 5

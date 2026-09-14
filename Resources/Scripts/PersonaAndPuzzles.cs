@@ -5,16 +5,27 @@ using GC = Godot.Collections;
 
 namespace PersonaAndPuzzles;
 
+public enum EnhancementMaterial
+{
+	Memory,
+	Anecdote,
+	Legend
+}
+
 public partial class PersonaAndPuzzles : Node
 {
-	[Export(PropertyHint.Range, "0,20,1")]
+	[Export(PropertyHint.Range, "0,25,1")]
 	private int _startingPersonaCount = 0;
 
-	[Export(PropertyHint.Range, "1,10,1")]
+	[Export(PropertyHint.Range, "0,9,1")]
 	private int _extraLoadouts = 0;
+
+	[Export]
+	private bool _overridePersonaLevel = false;
 
 	public static int StartingPersonaCount = 0;
 	public static int ExtraLoadouts = 1;
+	public static bool OverridePersonaLevel = false;
 
     public static Signals Signals = new Signals();
 
@@ -22,11 +33,12 @@ public partial class PersonaAndPuzzles : Node
     {
 		StartingPersonaCount = _startingPersonaCount;
 		ExtraLoadouts = _extraLoadouts;
+		OverridePersonaLevel = _overridePersonaLevel;
 		
 		PassiveSkillManager.LoadPassiveSkills();
         PersonaManager.LoadPersonas();
         PersonaManager.GetRandomPersonas();
-		PersonaManager.SetRandomRoster();
+		PersonaManager.SetRandomLoadout();
 		VelvetTrialManager.LoadVelvetTrials();
     }
 

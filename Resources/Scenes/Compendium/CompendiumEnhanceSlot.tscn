@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c3ax22hnrv1lm"]
+
+[ext_resource type="Texture2D" uid="uid://clsaig4l6dkad" path="res://Assets/Images/PersonaSlot.png" id="1_2u5ex"]
+[ext_resource type="Script" uid="uid://cmuwqw3j12llc" path="res://Resources/Scripts/CompendiumEnhanceSlot.cs" id="2_e2mao"]
+[ext_resource type="Texture2D" uid="uid://bthw017adsdtb" path="res://Assets/Images/PersonaSlotMask.png" id="3_aupu6"]
+[ext_resource type="Texture2D" uid="uid://67uwujgmbb74" path="res://Assets/Images/Personas/Pyro_Jack.png" id="4_mi16s"]
+[ext_resource type="Texture2D" uid="uid://cawvxxk61k81b" path="res://Assets/Images/SkillIcons/FireIcon.png" id="5_ikdiy"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_m6m53"]
+
+[node name="CompendiumEnhanceSlot" type="TextureRect" unique_id=373608827 node_paths=PackedStringArray("_personaLevelLabel", "_button", "_personaIcon", "_skillTypeIcon")]
+self_modulate = Color(0.8, 0.18039216, 0.09411765, 1)
+custom_minimum_size = Vector2(64, 64)
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_2u5ex")
+expand_mode = 1
+script = ExtResource("2_e2mao")
+_personaLevelLabel = NodePath("PersonaLevel")
+_button = NodePath("Button")
+_personaIcon = NodePath("ClipMask/MarginContainer/PersonaIcon")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+
+[node name="ClipMask" type="TextureRect" parent="." unique_id=293483026]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_aupu6")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ClipMask" unique_id=27295622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PersonaIcon" type="TextureRect" parent="ClipMask/MarginContainer" unique_id=683649579]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_mi16s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=1248597474]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("5_ikdiy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersonaLevel" type="Label" parent="." unique_id=977559334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_m6m53")
+text = "Lvl. 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=628175388]
+modulate = Color(0.75, 0.75, 0.75, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+flat = true

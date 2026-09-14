@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dxp2y4lclmgcj" path="res://Resources/Scenes/VelvetTrial/VelvetTrialButtonContainer.tscn" id="1_xrcwr"]
 [ext_resource type="PackedScene" uid="uid://bin5dngxfweb7" path="res://Resources/Scenes/VelvetTrial/VelvetTrialInfo.tscn" id="2_60qqa"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_2m28t"]
+[ext_resource type="PackedScene" uid="uid://cfqltojr7tu13" path="res://Resources/Scenes/Persona/PersonaTeam.tscn" id="4_gixlp"]
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="5_cvj57"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="7_cxl7f"]
 
-[node name="VelvetTrialSelection" type="Control" unique_id=1920682677 node_paths=PackedStringArray("_buttonContainer", "_trialInfo", "_startButton")]
+[node name="VelvetTrialSelection" type="Control" unique_id=1920682677 node_paths=PackedStringArray("_buttonContainer", "_trialInfo", "_startButton", "_errorLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +18,8 @@ grow_vertical = 2
 script = ExtResource("1_u3xfk")
 _buttonContainer = NodePath("VelvetTrialButtonContainer")
 _trialInfo = NodePath("VelvetTrialInfo")
-_startButton = NodePath("StartButton")
+_startButton = NodePath("VBoxContainer/StartButton")
+_errorLabel = NodePath("VBoxContainer/ErrorLabel")
 
 [node name="VelvetTrialButtonContainer" parent="." unique_id=154279771 instance=ExtResource("1_xrcwr")]
 layout_mode = 1
@@ -28,18 +31,29 @@ offset_top = 217.0
 offset_right = 458.0
 offset_bottom = 305.0
 
-[node name="StartButton" type="Button" parent="." unique_id=1318011976]
-custom_minimum_size = Vector2(150, 50)
+[node name="PersonaTeam" parent="." unique_id=77672837 instance=ExtResource("4_gixlp")]
+layout_mode = 0
+offset_top = 495.0
+offset_bottom = 595.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=211521975]
 layout_mode = 0
 offset_left = 177.0
-offset_top = 635.0
+offset_top = 622.5
 offset_right = 327.0
-offset_bottom = 685.0
+offset_bottom = 699.5
+theme_override_constants/separation = 5
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1318011976 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
 flat = true
 script = ExtResource("4_2m28t")
+_texture = NodePath("NinePatchRect")
 metadata/_edit_group_ = true
 
-[node name="NinePatchRect" type="NinePatchRect" parent="StartButton" unique_id=540358364]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/StartButton" unique_id=540358364]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,14 +66,31 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="Label" type="Label" parent="StartButton/NinePatchRect" unique_id=949936263]
-self_modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="VBoxContainer/StartButton/NinePatchRect" unique_id=949936263]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("7_cxl7f")
+theme_override_font_sizes/font_size = 22
 text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer" unique_id=905718128]
+layout_mode = 2
+theme = ExtResource("7_cxl7f")
+text = "Testing"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=525710155]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 96.0
+offset_right = 469.0
+offset_bottom = 140.0
+theme = ExtResource("7_cxl7f")
+theme_override_font_sizes/font_size = 36
+text = "Velvet Trials"

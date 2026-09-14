@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://btw350rcmw0ht"]
+
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_ifxaq"]
+[ext_resource type="Script" uid="uid://8xrm6ssa1vuf" path="res://Resources/Scripts/PersonaCompendiumTeam.cs" id="2_ifxaq"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="3_7xinm"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_dnvug"]
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="5_swyfm"]
+[ext_resource type="Texture2D" uid="uid://etod8pmes88g" path="res://Assets/Images/FilterIcon.png" id="6_y0m4v"]
+[ext_resource type="PackedScene" uid="uid://bfox35ygy4i12" path="res://Resources/Scenes/Persona/PersonaTeamSlot.tscn" id="7_gn3hd"]
+[ext_resource type="Texture2D" uid="uid://bq7je4v5emsu4" path="res://Assets/Images/DownArrow.png" id="8_23wjj"]
+
+[node name="PersonaCompendiumTeam" type="TextureRect" unique_id=77672837 node_paths=PackedStringArray("_filterButton", "_personaTeamSlotContainer", "_dropdownButton", "_nameLabel")]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(0, 100)
+offset_right = 500.0
+offset_bottom = 75.0
+texture = ExtResource("1_ifxaq")
+expand_mode = 1
+script = ExtResource("2_ifxaq")
+_filterButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton")
+_personaTeamSlotContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer")
+_dropdownButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton")
+_nameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1499174171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1711638446]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1733273013]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=281014070]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Spacer" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1743387725]
+layout_mode = 2
+text = "                "
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=517826325]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_7xinm")
+theme_override_font_sizes/font_size = 14
+text = "Ice"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2101932084]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FilterButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=366811018 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("4_dnvug")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton" unique_id=2011421779]
+self_modulate = Color(0.3019608, 0.3019608, 0.3019608, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_swyfm")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton/NinePatchRect" unique_id=421022068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/FilterButton/NinePatchRect/MarginContainer" unique_id=525707590]
+layout_mode = 2
+texture = ExtResource("6_y0m4v")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersonaTeamSlotContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1491122116]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = -15
+alignment = 1
+
+[node name="PersonaTeamSlot" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=1105541662 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot2" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=1479984087 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot3" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=984684210 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot4" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=380322780 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot5" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=2047490201 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="PersonaTeamSlot6" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PersonaTeamSlotContainer" unique_id=924750798 instance=ExtResource("7_gn3hd")]
+layout_mode = 2
+
+[node name="DropdownButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1564788903 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("4_dnvug")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton" unique_id=1927928924]
+self_modulate = Color(0.3, 0.3, 0.3, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_swyfm")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton/NinePatchRect" unique_id=1607997362]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/DropdownButton/NinePatchRect/MarginContainer" unique_id=800430156]
+layout_mode = 2
+texture = ExtResource("8_23wjj")
+expand_mode = 1

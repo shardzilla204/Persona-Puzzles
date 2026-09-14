@@ -12,7 +12,7 @@ public partial class PlayerHealthBar : HealthBar
         const int Multiplier = 25;
         
         int endurance = 0;
-        foreach (Persona persona in PersonaManager.Roster.Personas)
+        foreach (Persona persona in PersonaManager.Loadout.Personas)
         {
             endurance += persona.Endurance;
         }

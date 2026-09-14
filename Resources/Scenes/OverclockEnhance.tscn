@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://xm335fp66js3"]
+
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_rhb3c"]
+[ext_resource type="Script" uid="uid://dtgktkm5xqbv1" path="res://Resources/Scripts/OverclockEnhance.cs" id="2_4dedq"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_84c2n"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="4_qbjmd"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="5_6omi2"]
+
+[node name="OverclockEnhance" type="TextureRect" unique_id=1132321644 node_paths=PackedStringArray("_enhanceSlotContainer", "_overclockButton")]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(0, 150)
+texture = ExtResource("1_rhb3c")
+expand_mode = 1
+script = ExtResource("2_4dedq")
+_enhanceSlotContainer = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/EnhanceSlotContainer")
+_overclockButton = NodePath("MarginContainer/VBoxContainer/OverclockButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1526233556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2081619916]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1177993098]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=1980119392]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="EnhanceSlotContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=379587961]
+layout_mode = 2
+alignment = 1
+
+[node name="OverclockButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1436440085]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("3_84c2n")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/OverclockButton" unique_id=397700565]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_qbjmd")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/OverclockButton/NinePatchRect" unique_id=826548166]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_6omi2")
+theme_override_font_sizes/font_size = 16
+text = "Overclock"
+horizontal_alignment = 1
+vertical_alignment = 1

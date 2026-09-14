@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cp8k4cryxn2wt" path="res://Resources/Scripts/Persona/PersonaLoadouts.cs" id="1_m10ln"]
 [ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_p6hjm"]
-[ext_resource type="PackedScene" uid="uid://qicend1g781d" path="res://Resources/Scenes/Persona/PersonaLoadout.tscn" id="2_33r3u"]
+[ext_resource type="PackedScene" uid="uid://qicend1g781d" path="res://Resources/Scenes/Persona/PersonaLoadoutButton.tscn" id="2_33r3u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ciho"]
 bg_color = Color(0.4, 0.4, 0.4, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 
-[node name="PersonaLoadouts" type="Control" unique_id=1850661481 node_paths=PackedStringArray("_backdropButton", "_splitContainer", "_loadoutsContainer")]
+[node name="PersonaLoadouts" type="Control" unique_id=1850661481 node_paths=PackedStringArray("_backdropButton", "_splitContainer", "_loadoutButtonsContainer")]
 custom_minimum_size = Vector2(500, 800)
 layout_mode = 3
 anchors_preset = 15
@@ -20,7 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_m10ln")
 _backdropButton = NodePath("BackdropButton")
 _splitContainer = NodePath("VSplitContainer")
-_loadoutsContainer = NodePath("VSplitContainer/ScrollContainer/LoadoutsContainer")
+_loadoutButtonsContainer = NodePath("VSplitContainer/ScrollContainer/LoadoutsButtonsContainer")
 
 [node name="BackdropButton" type="Button" parent="." unique_id=893512352]
 custom_minimum_size = Vector2(500, 800)
@@ -76,34 +76,34 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 metadata/_edit_group_ = true
 
-[node name="LoadoutsContainer" type="VBoxContainer" parent="VSplitContainer/ScrollContainer" unique_id=1468850899]
+[node name="LoadoutsButtonsContainer" type="VBoxContainer" parent="VSplitContainer/ScrollContainer" unique_id=1468850899]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="PersonaLoadout" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=778323365 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=778323365 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout2" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=1005444362 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton2" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=1005444362 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout3" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=1859592356 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton3" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=1859592356 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout4" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=1340538227 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton4" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=1340538227 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout5" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=1261277934 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton5" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=1261277934 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout6" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=896285688 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton6" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=896285688 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout7" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=164407096 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton7" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=164407096 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout8" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=484466427 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton8" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=484466427 instance=ExtResource("2_33r3u")]
 layout_mode = 2
 
-[node name="PersonaLoadout9" parent="VSplitContainer/ScrollContainer/LoadoutsContainer" unique_id=544319373 instance=ExtResource("2_33r3u")]
+[node name="PersonaLoadoutButton9" parent="VSplitContainer/ScrollContainer/LoadoutsButtonsContainer" unique_id=544319373 instance=ExtResource("2_33r3u")]
 layout_mode = 2

@@ -19,17 +19,49 @@ public partial class TeamSlot : TextureRect
     private bool _isHovering;
     private bool _isMousePressed;
 
+    private LoadingBar _loadingBar;
+
     public override void _Ready()
     {
         MouseEntered += () => _isHovering = true;
         MouseExited += () => _isHovering = false;
+
+        MouseDefaultCursorShape = Persona == null ? CursorShape.Arrow : CursorShape.PointingHand;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!_isHovering)
+        {
+            if (Persona == null) return;
+            if (IsInstanceValid(_loadingBar)) _loadingBar.QueueFree();
+            return;
+        }
+
+        if (Input.IsMouseButtonPressed(MouseButton.Left) && !_isMousePressed)
+        {
+            _isMousePressed = true;
+
+            _loadingBar = PackedScenes.GetLoadingBar();
+            _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
+            _loadingBar.Connect(LoadingBar.SignalName.Filled, 
+                Callable.From(ShowCompendiumSlotStats));
+
+            GetTree().Root.AddChild(_loadingBar);
+        }
+        else if (!Input.IsMouseButtonPressed(MouseButton.Left))
+        {
+            _isMousePressed = false;
+            PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MouseReleased);
+        }
     }
 
     public override void _Input(InputEvent @event)
     {
         if (!_isHovering || 
             @event is not InputEventMouseButton eventMouseButton ||
-            !eventMouseButton.IsPressed()) return;
+            !eventMouseButton.IsPressed() || 
+            Persona == null) return;
 
         // Remove persona from loadout on double click
         if (eventMouseButton.DoubleClick)
@@ -41,26 +73,6 @@ public partial class TeamSlot : TextureRect
 
             PersonaManager.SetLoadout(null, Index);
             return;
-        }
-
-        // Show persona stats
-        if (!_isMousePressed)
-        {
-            _isMousePressed = true;
-
-            LoadingBar loadingBar = PackedScenes.GetLoadingBar();
-            GetTree().Root.AddChild(loadingBar);
-
-            loadingBar.GlobalPosition = GetGlobalMousePosition() - loadingBar.Size / 2;
-
-            loadingBar.Connect(LoadingBar.SignalName.Filled, 
-                Callable.From(ShowCompendiumSlotStats));
-        }
-        else
-        {
-            _isMousePressed = false;
-
-            PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MouseReleased);
         }
     }
 
@@ -111,13 +123,13 @@ public partial class TeamSlot : TextureRect
 
     private void ShowCompendiumSlotStats()
     {
-        CompendiumStats compendiumStats = PackedScenes.GetCompendiumStats(Persona);
+        PersonaStats personaStats = PackedScenes.GetPersonaStats(Persona);
 
         PersonaTeam personaTeam = GetParent().GetOwner<PersonaTeam>();
-        Compendium compendium = personaTeam.GetOwner<Compendium>();
-        Node mainMenu = compendium.GetParent();
-        mainMenu.AddChild(compendiumStats);
-        mainMenu.MoveChild(compendiumStats, 2);
+        Node owner = personaTeam.GetOwner();
+        Node mainMenu = owner.GetParent();
+        mainMenu.AddChild(personaStats);
+        mainMenu.MoveChild(personaStats, 2);
 
         PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
     }

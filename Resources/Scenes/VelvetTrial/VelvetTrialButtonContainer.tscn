@@ -11,7 +11,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 85
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 115
+theme_override_constants/margin_bottom = 300
 script = ExtResource("1_5u73y")
 _buttonContainer = NodePath("Control/ScrollContainer/ButtonContainer")
 
@@ -20,9 +20,7 @@ layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=1627334555]
 layout_mode = 0
-offset_right = 480.0
-offset_bottom = 600.0
-rotation = -0.08726646
+rotation = -0.1308997
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 

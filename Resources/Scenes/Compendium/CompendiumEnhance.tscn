@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://b7m6oh8k6x5w8"]
+
+[ext_resource type="Script" uid="uid://bervvtie2vqes" path="res://Resources/Scripts/CompendiumEnhance.cs" id="1_jjqqf"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="2_akfhd"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="3_dl2mr"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="4_dbk5s"]
+[ext_resource type="PackedScene" uid="uid://bgn5ylqg7sych" path="res://Resources/Scenes/PersonaEnhance.tscn" id="4_jjqqf"]
+
+[node name="CompendiumEnhance" type="ColorRect" unique_id=931583848 node_paths=PackedStringArray("_personaEnhance", "_backButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+script = ExtResource("1_jjqqf")
+_personaEnhance = NodePath("VBoxContainer/PersonaEnhance")
+_backButton = NodePath("VBoxContainer/MarginContainer/BackButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=865094210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = -455.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1436439438]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer" unique_id=913342404 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+flat = true
+script = ExtResource("2_akfhd")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer/BackButton" unique_id=2049147239]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dl2mr")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/BackButton/NinePatchRect" unique_id=1834031984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_dbk5s")
+theme_override_font_sizes/font_size = 16
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PersonaEnhance" parent="VBoxContainer" unique_id=346973846 instance=ExtResource("4_jjqqf")]
+layout_mode = 2

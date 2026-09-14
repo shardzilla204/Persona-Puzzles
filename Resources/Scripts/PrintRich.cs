@@ -130,6 +130,7 @@ public partial class PrintRich : Node
         string personaName = $"Name: {persona.Name}\n";
         string personaSkillType = $"Skill Type: {persona.SkillType}\n";
         string personaLevel = $"Level: {persona.Level}\n";
+        string personaRank = $"Rank: {persona.Rank}\n";
 
         string personaStrength = $"Strength: {persona.Strength}\n";
         string personaMagic = $"Magic: {persona.Magic}\n";
@@ -138,7 +139,7 @@ public partial class PrintRich : Node
         string personaLuck = $"Luck: {persona.Luck}";
         string personaStats = $"{personaStrength}{personaMagic}{personaEndurance}{personaAgility}{personaLuck}";
 
-        string personaString = $"{personaID}{personaName}{personaSkillType}{personaLevel}{personaStats}";
+        string personaString = $"{personaID}{personaName}{personaSkillType}{personaLevel}{personaRank}{personaStats}";
         Print(personaString, TextColor.Yellow);
         GD.Print(); // Spacing
     }

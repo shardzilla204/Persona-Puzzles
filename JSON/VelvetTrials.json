@@ -10,6 +10,20 @@
                         "Name": "Jack Frost",
                         "Level": 15,
                         "CaptureRate": 1
+                    }
+                ]
+            ],
+            "Experience": 10
+        },
+        {
+            "ID": 1,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Jack Frost",
+                        "Level": 15,
+                        "CaptureRate": 1
                     },
                     {
                         "Name": "Pyro Jack",
@@ -27,9 +41,11 @@
                     }
                 ]
             ]
+            ,
+            "Experience": 15
         },
         {
-            "ID": 1,
+            "ID": 2,
             "Waves":
             [
                 [
@@ -52,7 +68,116 @@
                         "Level": 30
                     }
                 ]
-            ]
+            ],
+            "Experience": 20
+        },
+        {
+            "ID": 3,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 25
+        },
+        {
+            "ID": 4,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 30
+        },
+        {
+            "ID": 5,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 35
+        },
+        {
+            "ID": 6,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 40
         }
     ]
 }

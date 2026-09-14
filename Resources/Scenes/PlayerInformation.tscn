@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://uekr34vibn70"]
 
 [ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_u701h"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_bpf78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd2a0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt4ol"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="PlayerInformation" type="TextureRect" unique_id=148160978]
+self_modulate = Color(0.36078432, 0.36078432, 0.36078432, 1)
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 10
 anchor_right = 1.0
@@ -20,19 +36,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1263780632]
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_bpf78")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1905861228]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 18
 text = "Shardzilla"
 vertical_alignment = 1
 
@@ -42,7 +58,6 @@ mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="PlayerLevel" type="Label" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1014945948]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "LVL. 99"
@@ -50,10 +65,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1441019073]
+self_modulate = Color(0.18130437, 0.77536637, 0.99999994, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_bd2a0")
+value = 13.29
 show_percentage = false
 
 [node name="PlayerStamina" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1313316140]
@@ -62,7 +80,6 @@ mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="PlayerStamina" type="Label" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1498202442]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Stamina"
@@ -70,8 +87,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1827717934]
+self_modulate = Color(1, 0.88235295, 0.27450982, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_tt4ol")
+value = 100.0
 show_percentage = false

@@ -5,15 +5,17 @@
 
 [node name="LoadingBar" type="TextureProgressBar" unique_id=736629158 node_paths=PackedStringArray("_delayTimer")]
 self_modulate = Color(0.3276, 0.78, 0.35022, 1)
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(35, 35)
+custom_maximum_size = Vector2(35, 35)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -460.0
-offset_bottom = -760.0
+offset_right = -465.0
+offset_bottom = -765.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+step = 0.5
 fill_mode = 4
 nine_patch_stretch = true
 texture_progress = ExtResource("1_vanvk")
@@ -21,5 +23,6 @@ script = ExtResource("2_vanvk")
 _delayTimer = NodePath("DelayTimer")
 
 [node name="DelayTimer" type="Timer" parent="." unique_id=1146961227]
+wait_time = 0.5
 one_shot = true
 autostart = true

@@ -24,7 +24,16 @@ public partial class LoadoutNameEdit : Control
         _nameLineEdit.TextChanged += OnTextChanged;
         _backdropButton.Pressed += QueueFree;
         _cancelButton.Pressed += QueueFree;
-        _confirmButton.Pressed += OnConfirmButtonPressed;
+        _confirmButton.Pressed += Confirm;
+
+        _nameLineEdit.GrabFocus(true);
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!Input.IsKeyPressed(Key.Enter)) return;
+        
+        Confirm();
     }
 
     public void SetText(string text)
@@ -40,7 +49,7 @@ public partial class LoadoutNameEdit : Control
         _confirmButton.Disabled = text.Length < MinLength || text.Length > MaxLength;
     }
 
-    private void OnConfirmButtonPressed()
+    private void Confirm()
     {
         string name = _nameLineEdit.Text;
         EmitSignal(SignalName.Confirmed, name);

@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://be0e0p3g5ingh"]
+
+[ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_54o6l"]
+[ext_resource type="Script" uid="uid://dq3wiplxv0g3n" path="res://Resources/Scripts/MaterialEnhance.cs" id="2_i5k0k"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_3efu6"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="5_05gva"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_7owbt"]
+
+[node name="MaterialEnhance" type="TextureRect" unique_id=1743505066 node_paths=PackedStringArray("_materialCounters", "_clearButton", "_enhanceButton")]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+custom_minimum_size = Vector2(0, 135)
+texture = ExtResource("1_54o6l")
+expand_mode = 1
+script = ExtResource("2_i5k0k")
+_materialCounters = NodePath("MarginContainer/VBoxContainer/MaterialCounters")
+_clearButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ClearButton")
+_enhanceButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/EnhanceButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=166598997]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=649870206]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MaterialCounters" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=72971415]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1198203328]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="ClearButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2120665160 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("4_3efu6")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ClearButton" unique_id=605394119]
+self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_05gva")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ClearButton/NinePatchRect" unique_id=624004036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_7owbt")
+theme_override_font_sizes/font_size = 16
+text = "Clear"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1411279863 node_paths=PackedStringArray("_texture")]
+visible = false
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("4_3efu6")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/MaxButton" unique_id=1297780412]
+self_modulate = Color(1, 0.88235295, 0.27450982, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_05gva")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MaxButton/NinePatchRect" unique_id=1253917318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_7owbt")
+theme_override_font_sizes/font_size = 16
+text = "Max"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnhanceButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=826124879 node_paths=PackedStringArray("_texture")]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+flat = true
+script = ExtResource("4_3efu6")
+_texture = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/EnhanceButton" unique_id=904766226]
+self_modulate = Color(0.41960785, 0.7019608, 0.2784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_05gva")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/EnhanceButton/NinePatchRect" unique_id=856596234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_7owbt")
+theme_override_font_sizes/font_size = 16
+text = "Enhance"
+horizontal_alignment = 1
+vertical_alignment = 1

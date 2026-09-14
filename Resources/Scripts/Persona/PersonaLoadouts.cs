@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace PersonaAndPuzzles;
@@ -8,7 +9,7 @@ public partial class PersonaLoadouts : Control
     public delegate void LoadoutSelectedEventHandler(int loadoutIndex);
 
     [Signal]
-    public delegate void LoadoutNamedChangedEventHandler();
+    public delegate void LoadoutNamedChangedEventHandler(int loadoutIndex, string name);
 
     [Export]
     private Button _backdropButton;
@@ -17,7 +18,7 @@ public partial class PersonaLoadouts : Control
     private SplitContainer _splitContainer;
 
     [Export]
-    private Container _loadoutsContainer;
+    private Container _loadoutButtonsContainer;
 
     private int _threshold = -265;
     private int _margin = 50;
@@ -36,13 +37,27 @@ public partial class PersonaLoadouts : Control
         FillLoadoutsContainer();
     }
 
-    public void ChangeLoadout(PersonaRoster roster)
+    public void ChangeLoadout(PersonaLoadout Loadout)
     {
-        Compendium.SetSlotUsage(roster); // Update the visuals first
+        Compendium compendium = FindCompendium();
+        if (compendium != null)
+        {
+            compendium.SetSlotUsage(Loadout); // Update the visuals first
+        }
 
-        PersonaManager.Roster.ChangeRoster(roster);
-        EmitSignal(SignalName.LoadoutSelected, roster.Index);
+        PersonaManager.Loadout.ChangeLoadout(Loadout);
+        EmitSignal(SignalName.LoadoutSelected, Loadout.Index);
         QueueFree();
+    }
+
+    private Compendium FindCompendium()
+    {
+        Node mainMenu = GetParent();
+        bool hasCompendiumNode = mainMenu.HasNode("Compendium");
+        if (!hasCompendiumNode) return null;
+        
+        Compendium compendium = mainMenu.GetNode<Compendium>("Compendium");
+        return compendium;
     }
 
     private void SetColor(Color color)
@@ -56,15 +71,15 @@ public partial class PersonaLoadouts : Control
         const string UID = "uid://qicend1g781d";
         for (int i = 0; i < PersonaManager.Loadouts.Count; i++)
         {
-            PersonaLoadout personaLoadout = GD.Load<PackedScene>(UID).Instantiate<PersonaLoadout>();
-            personaLoadout.Roster = PersonaManager.Loadouts[i];
-            _loadoutsContainer.AddChild(personaLoadout);
+            PersonaLoadoutButton personaLoadoutButton = GD.Load<PackedScene>(UID).Instantiate<PersonaLoadoutButton>();
+            personaLoadoutButton.SetLoadout(i);
+            _loadoutButtonsContainer.AddChild(personaLoadoutButton);
         }
     }
 
     private void ClearLoadoutsContainer()
     {
-        foreach (Node child in _loadoutsContainer.GetChildren())
+        foreach (Node child in _loadoutButtonsContainer.GetChildren())
         {
             child.QueueFree();
         }

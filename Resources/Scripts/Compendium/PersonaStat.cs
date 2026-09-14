@@ -2,7 +2,7 @@ using Godot;
 
 namespace PersonaAndPuzzles;
 
-public partial class CompendiumStat : HBoxContainer
+public partial class PersonaStat : HBoxContainer
 {
     [Export]
     private Label _statTypeLabel;

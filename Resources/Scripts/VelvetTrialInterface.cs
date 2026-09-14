@@ -87,6 +87,7 @@ public partial class VelvetTrialInterface : Control
         TakeEnemyDamage();
     }
 
+    // ? Order the damage from highest to lowest first
     // Returns a bool for if enemies are still alive
     private async Task<bool> GiveEnemiesDamageAsync()
     {
@@ -188,7 +189,7 @@ public partial class VelvetTrialInterface : Control
     private void SetSkillTypePool()
     {
         List<SkillType> skillTypes = new List<SkillType>();
-        foreach (Persona persona in PersonaManager.Roster.Personas)
+        foreach (Persona persona in PersonaManager.Loadout.Personas)
         {
             SkillType skillType = persona.SkillType;
             skillTypes.Add(skillType);
@@ -258,11 +259,13 @@ public partial class VelvetTrialInterface : Control
 
     private void ShowConfirmation()
     {
+        const string Warning = "All progress will be lost";
         const string UID = "uid://cn6k7obbk8cx4";
-        VelvetTrialConfirmation confirmation = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialConfirmation>();
-        confirmation.Accepted += ExitVelvetTrial;
-        confirmation.Canceled += () => _skillOrbGrid.IsGamePaused = false;
-        AddChild(confirmation);
+        ConfirmationInterface confirmationInterface = GD.Load<PackedScene>(UID).Instantiate<ConfirmationInterface>();
+        confirmationInterface.Accepted += ExitVelvetTrial;
+        confirmationInterface.Canceled += () => _skillOrbGrid.IsGamePaused = false;
+        confirmationInterface.SetWarningText(Warning);
+        AddChild(confirmationInterface);
 
         _skillOrbGrid.IsGamePaused = true;
     }

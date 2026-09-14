@@ -5,16 +5,16 @@ using Godot;
 
 namespace PersonaAndPuzzles;
 
-public partial class Compendium : MarginContainer
+public partial class Compendium : Control
 {
     [Export]
-    private PersonaTeam _personaTeam;
+    protected Container _slotContainer;
 
     [Export]
-    private Container _slotContainer;
+    protected VScrollBar _scrollBar;
 
     [Export]
-    private VScrollBar _scrollBar;
+    protected RichTextLabel _personaCountLabel;
 
     private bool _isHovered;
     private bool _isMousePressed;
@@ -22,7 +22,15 @@ public partial class Compendium : MarginContainer
 
     private Vector2 _mouseStartPosition;
 
-    List<CompendiumSlot> Slots = new List<CompendiumSlot>();
+    protected List<CompendiumSlot> Slots = new List<CompendiumSlot>();
+
+    public override void _EnterTree()
+    {
+        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MoveOverlay);
+
+        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.PersonaReleased, 
+            Callable.From(Refresh));
+    }
 
     public override void _Ready()
     {
@@ -33,8 +41,23 @@ public partial class Compendium : MarginContainer
         _slotContainer.MouseEntered += () => _isHovered = true;
         _slotContainer.MouseExited += () => _isHovered = false;
         
+        SetCountLabelText();
+
         Fill(PersonaManager.Personas);
         CallDeferred(MethodName.SetScrollBar); // Starts when the compendium has finished loading
+    }
+
+    private void Refresh()
+    {
+        Clear();
+        Fill(PersonaManager.Personas);
+        SetCountLabelText();
+    }
+
+    private void SetCountLabelText()
+    {
+        string personaCountText = PersonaManager.Personas.Count > PersonaManager.MaxPersonas ? $"[color='e63948']{PersonaManager.Personas.Count}[/color]" : $"{PersonaManager.Personas.Count}";
+        _personaCountLabel.Text = $"{personaCountText} / {PersonaManager.MaxPersonas}";
     }
 
     // When swiping down = Move container up
@@ -73,12 +96,12 @@ public partial class Compendium : MarginContainer
         InputScroll(eventMouseButton);
     }
     
-    private void Fill(List<Persona> personas)
+    protected virtual void Fill(List<Persona> personas)
     {
         foreach (Persona persona in personas)
         {
             CompendiumSlot compendiumSlot = PackedScenes.GetCompendiumSlot(persona);
-            if (PersonaManager.Roster.Personas.Contains(persona))
+            if (PersonaManager.Loadout.Personas.Contains(persona))
             {
                 compendiumSlot.ToggleUsage(true);
             }
@@ -141,7 +164,7 @@ public partial class Compendium : MarginContainer
         _slotContainer.Position = new Vector2(_slotContainer.Position.X, _scrollBar.Position.Y);
     }
 
-    public void SetSlotUsage(PersonaRoster roster)
+    public void SetSlotUsage(PersonaLoadout Loadout)
     {
         List<CompendiumSlot> slotsInUse = Slots.FindAll(slot => slot.IsInUse);
         foreach (CompendiumSlot slot in slotsInUse)
@@ -149,7 +172,7 @@ public partial class Compendium : MarginContainer
             slot.ToggleUsage(false);
         }
 
-        foreach (Persona persona in roster.Personas)
+        foreach (Persona persona in Loadout.Personas)
         {
             if (persona == null) continue;
             PrintRich.PrintPersona(persona);

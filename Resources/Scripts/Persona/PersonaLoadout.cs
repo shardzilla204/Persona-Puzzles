@@ -1,80 +1,43 @@
 using Godot;
+using System.Collections.Generic;
 
 namespace PersonaAndPuzzles;
 
-public partial class PersonaLoadout : Button
+public partial class PersonaLoadout : Node
 {
-    [Export]
-    private Container _teamSlotContainer;
-
-    [Export]
-    private Label _nameLabel;
-
-    [Export]
-    private CustomButton _editNameButton;
-
-    public PersonaRoster Roster = new PersonaRoster();
-
-    public override void _Ready()
+    public PersonaLoadout() {}
+    public PersonaLoadout(string name, int index)
     {
-        Pressed += OnPressed;
-
-        _editNameButton.Pressed += OnEditNameButtonPressed;
-
-        _nameLabel.Text = Roster.Name;
-
-        ClearTeamSlotContainer();
-        FillTeamSlotContainer();
+        Name = name;
+        Index = index;
     }
 
-    private void OnPressed()
+    public PersonaLoadout(PersonaLoadout Loadout)
     {
-        Modulate = Colors.White.Darkened(0.25f);
+        Name = Loadout.Name;
+        Personas.AddRange(Loadout.Personas);
+    }
+    
+    public int Index = 0;
+    public List<Persona> Personas = new List<Persona>();
+    public List<Persona> Reserves = new List<Persona>();
 
-        PersonaLoadouts personaLoadouts = GetParent().GetOwner<PersonaLoadouts>();
-        GD.Print(personaLoadouts.Name);
-        personaLoadouts.ChangeLoadout(Roster);
+    public void ChangeLoadout(PersonaLoadout Loadout)
+    {
+        Name = Loadout.Name;
+        Personas.Clear();
+        Personas.AddRange(Loadout.Personas);
     }
 
-    private void OnEditNameButtonPressed()
+    public void Swap(Persona newPersona, int slotIndex)
     {
-        PersonaLoadouts personaLoadouts = GetParent().GetOwner<PersonaLoadouts>();
-        Node mainMenu = personaLoadouts.GetParent();
-
-        const string UID = "uid://dy0e01vg2lsmn";
-        LoadoutNameEdit loadoutNameEdit = GD.Load<PackedScene>(UID).Instantiate<LoadoutNameEdit>();
-        loadoutNameEdit.SetText(Roster.Name);
-        loadoutNameEdit.Connect(LoadoutNameEdit.SignalName.Confirmed,
-            new Callable(this, MethodName.OnLoadoutNameEditConfirmed));
-
-        mainMenu.AddChild(loadoutNameEdit);
+        Personas.RemoveAt(slotIndex);
+        Personas.Insert(slotIndex, newPersona);
     }
 
-    private void FillTeamSlotContainer()
+    public void Swap(Persona newPersona, string oldPersonaID)
     {
-        const string UID = "uid://bfox35ygy4i12";
-        foreach (Persona persona in Roster.Personas)
-        {
-            TeamSlot teamSlot = GD.Load<PackedScene>(UID).Instantiate<TeamSlot>();
-            teamSlot.SetPersona(persona);
-            _teamSlotContainer.AddChild(teamSlot);
-        }
-    }
-
-    private void ClearTeamSlotContainer()
-    {
-        foreach (Node child in _teamSlotContainer.GetChildren())
-        {
-            child.QueueFree();
-        }
-    }
-
-    private void OnLoadoutNameEditConfirmed(string name)
-    {
-        Roster.Name = name;
-        _nameLabel.Text = name;
-
-        PersonaLoadouts personaLoadouts = GetParent().GetOwner<PersonaLoadouts>();
-        personaLoadouts.EmitSignal(PersonaLoadouts.SignalName.LoadoutNamedChanged);
+        int personaIndex = Personas.FindIndex(persona => persona.ID == oldPersonaID);
+        Personas[personaIndex] = newPersona;
     }
 }

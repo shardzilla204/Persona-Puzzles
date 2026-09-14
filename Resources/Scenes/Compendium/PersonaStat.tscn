@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://8kldhwqxuphj"]
 
-[ext_resource type="Script" uid="uid://bx6h70dspcjjk" path="res://Resources/Scripts/Compendium/CompendiumStat.cs" id="1_htitw"]
+[ext_resource type="Script" uid="uid://bx6h70dspcjjk" path="res://Resources/Scripts/Compendium/PersonaStat.cs" id="1_d758p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xa1n"]
 
@@ -11,8 +11,8 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="CompendiumStat" type="HBoxContainer" unique_id=885807991 node_paths=PackedStringArray("_statTypeLabel", "_statValueLabel", "_statProgressBar")]
-script = ExtResource("1_htitw")
+[node name="PersonaStat" type="HBoxContainer" unique_id=885807991 node_paths=PackedStringArray("_statTypeLabel", "_statValueLabel", "_statProgressBar")]
+script = ExtResource("1_d758p")
 _statTypeLabel = NodePath("StatTypeLabel")
 _statValueLabel = NodePath("StatValueLabel")
 _statProgressBar = NodePath("StatProgressBar")

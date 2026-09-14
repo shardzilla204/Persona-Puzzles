@@ -19,4 +19,13 @@ public partial class Signals : Node
 
     [Signal]
     public delegate void LoadingBarFillingEventHandler();
+
+    [Signal]
+    public delegate void MoveOverlayEventHandler();
+
+    [Signal]
+    public delegate void ChangedCanvasEventHandler();
+
+    [Signal]
+    public delegate void PersonaReleasedEventHandler();
 }

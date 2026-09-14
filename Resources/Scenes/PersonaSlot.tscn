@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bumychidhgdfu"]
+
+[ext_resource type="Texture2D" uid="uid://caund7id8660d" path="res://Assets/Images/TeamSlot.png" id="1_k10r3"]
+[ext_resource type="Script" uid="uid://d1s55nd7yy0mv" path="res://Resources/Scripts/Persona/PersonaSlot.cs" id="2_02sx5"]
+[ext_resource type="Texture2D" uid="uid://dass78keuatws" path="res://Assets/Images/TeamSlotMask.png" id="3_qcd6h"]
+[ext_resource type="Texture2D" uid="uid://cxudeeh8dvin0" path="res://Assets/Images/Personas/Black_Frost.png" id="4_45jwk"]
+[ext_resource type="Texture2D" uid="uid://bkmlw2i12i8u8" path="res://Assets/Images/Circle.png" id="5_vq8f5"]
+
+[node name="PersonaSlot" type="TextureRect" unique_id=762215622 node_paths=PackedStringArray("_personaIcon", "_skillTypeIcon")]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+custom_minimum_size = Vector2(100, 75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_k10r3")
+expand_mode = 1
+script = ExtResource("2_02sx5")
+_personaIcon = NodePath("Mask/PersonaIcon")
+_skillTypeIcon = NodePath("SkillTypeIcon")
+
+[node name="Mask" type="TextureRect" parent="." unique_id=914053232]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qcd6h")
+expand_mode = 1
+
+[node name="PersonaIcon" type="TextureRect" parent="Mask" unique_id=1555374907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_45jwk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillTypeIcon" type="TextureRect" parent="." unique_id=1554003992]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 2.0
+offset_right = 39.0
+offset_bottom = 17.0
+texture = ExtResource("5_vq8f5")
+expand_mode = 1
