@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://btqrxqorqxmk0" path="res://Assets/Images/Square.png" id="1_u701h"]
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="2_bpf78"]
+[ext_resource type="Script" uid="uid://m7qskafgsewv" path="res://Resources/Scripts/PlayerInformation.cs" id="2_cr387"]
+[ext_resource type="Texture2D" uid="uid://bbitcfjfagh6k" path="res://Assets/Images/KonpakuGems.jpg" id="3_v0rmu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd2a0"]
 bg_color = Color(1, 1, 1, 1)
@@ -17,7 +19,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="PlayerInformation" type="TextureRect" unique_id=148160978]
+[node name="PlayerInformation" type="TextureRect" unique_id=148160978 node_paths=PackedStringArray("_nameLabel", "_levelLabel", "_konpakuGemsLabel", "_experienceLabel", "_experienceProgressBar", "_staminaLabel", "_staminaProgressBar")]
 self_modulate = Color(0.36078432, 0.36078432, 0.36078432, 1)
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 10
@@ -25,8 +27,17 @@ anchor_right = 1.0
 offset_bottom = 50.0
 grow_horizontal = 2
 mouse_filter = 2
+theme = ExtResource("2_bpf78")
 texture = ExtResource("1_u701h")
 expand_mode = 1
+script = ExtResource("2_cr387")
+_nameLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/NameLabel")
+_levelLabel = NodePath("MarginContainer/VBoxContainer/PlayerExperience/LevelLabel")
+_konpakuGemsLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/KonpakuGemsLabel")
+_experienceLabel = NodePath("ExperienceLabel")
+_experienceProgressBar = NodePath("MarginContainer/VBoxContainer/PlayerExperience/ExperienceProgressBar")
+_staminaLabel = NodePath("StaminaLabel")
+_staminaProgressBar = NodePath("MarginContainer/VBoxContainer/PlayerStamina/StaminaProgressBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1498180578]
 layout_mode = 1
@@ -44,32 +55,54 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1263780632]
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("2_bpf78")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1905861228]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1385173452]
 layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1905861228]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "Shardzilla"
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=750826622]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="KonpakuGemsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=837112301]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "1,000,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=1176382813]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = ExtResource("3_v0rmu")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="PlayerExperience" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=78162299]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="PlayerLevel" type="Label" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1014945948]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "LVL. 99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1441019073]
-self_modulate = Color(0.18130437, 0.77536637, 0.99999994, 1)
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1014945948]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "LVL. 99"
+vertical_alignment = 1
+
+[node name="ExperienceProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=1441019073]
+self_modulate = Color(0.18130437, 0.77536637, 0.99999994, 1)
+custom_minimum_size = Vector2(420, 7.5)
+custom_maximum_size = Vector2(420, -1)
+layout_mode = 2
 size_flags_vertical = 4
-mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_bd2a0")
 value = 13.29
 show_percentage = false
@@ -79,19 +112,31 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="PlayerStamina" type="Label" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1498202442]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Stamina"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1827717934]
-self_modulate = Color(1, 0.88235295, 0.27450982, 1)
+[node name="StaminaLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1498202442]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Stamina"
+vertical_alignment = 1
+
+[node name="StaminaProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PlayerStamina" unique_id=1827717934]
+self_modulate = Color(1, 0.88235295, 0.27450982, 1)
+custom_minimum_size = Vector2(420, 7.5)
+custom_maximum_size = Vector2(420, -1)
+layout_mode = 2
 size_flags_vertical = 4
-mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_tt4ol")
 value = 100.0
 show_percentage = false
+
+[node name="ExperienceLabel" type="Label" parent="." unique_id=797049362]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+
+[node name="StaminaLabel" type="Label" parent="." unique_id=1475134814]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16

@@ -21,8 +21,10 @@ public partial class VelvetTrialSlotContainer : Container
 	private void AddVelvetTrialSlots()
 	{
 		const string UID = "uid://djjy1hqpufkop";
-		foreach (Persona persona in PersonaManager.Loadout.Personas)
+		foreach (Persona persona in PersonaManager.Instance.Loadout.Personas)
 		{
+			if (persona == null) continue;
+			
 			VelvetTrialSlot velvetTrialSlot = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialSlot>();
 			velvetTrialSlot.SetPersona(persona);
 			AddChild(velvetTrialSlot);

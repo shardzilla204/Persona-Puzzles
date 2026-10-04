@@ -9,33 +9,50 @@ namespace PersonaAndPuzzles;
 
 public partial class PersonaManager : Node
 {
+    private readonly static Lazy<PersonaManager> s_lazy = new Lazy<PersonaManager>(() => new PersonaManager());
+    public static PersonaManager Instance => s_lazy.Value;
+
+    private PersonaManager()
+    {
+        LoadPersonas();
+        GetRandomPersonas();
+		SetRandomLoadout();
+    }
+
     public const int MaxStat = 99;
     public const int MaxPassiveSkills = 3;
     public const int MaxTeamSlots = 6;
     public const int MaxTeamReserves = 3;
     public const int MaxLoadouts = 10;
 
-    private static List<Persona> _Personas = new List<Persona>();
-    public static List<Persona> Personas = new List<Persona>();
+    private List<Persona> _Personas = new List<Persona>();
+    public List<Persona> Personas = new List<Persona>();
 
-    public static PersonaLoadout Loadout = new PersonaLoadout("Loadout 1", 0);
-    public static List<PersonaLoadout> Loadouts = new List<PersonaLoadout>();
+    public PersonaLoadout Loadout = new PersonaLoadout("Loadout 1", 0);
+    public List<PersonaLoadout> Loadouts = new List<PersonaLoadout>();
 
-    public static int MaxPersonas = 50;
+    public int MaxPersonas = 50;
 
-    public static void GetRandomPersonas()
+    public string SkillTypeFilter = $"{SkillTypeFilterContainer.Filter.All}";
+    public string FavoriteFilter = $"{FavoriteFilterContainer.Filter.All}";
+    public string StatTypeFilter = $"{StatTypeFilterContainer.Filter.All}";
+
+    private void GetRandomPersonas()
     {
         for (int i = 0; i < PersonaAndPuzzles.StartingPersonaCount; i++)
         {
             Persona persona = GetRandomPersona();
             Personas.Add(persona);
 
-            Persona personaClone = ClonePersona(persona);
-            Personas.Add(personaClone);
+            for (int j = 0; j < PersonaAndPuzzles.PersonaCloneCount; j++)
+            {
+                Persona personaClone = ClonePersona(persona);
+                Personas.Add(personaClone);
+            }
         }
     }
 
-    public static void SetRandomLoadout()
+    private void SetRandomLoadout()
     {
         SetRandomLoadouts();
         SetEmptyLoadouts();
@@ -44,24 +61,43 @@ public partial class PersonaManager : Node
         Loadout = loadoutClone;
     }
 
-    private static void SetRandomLoadouts()
+    private void SetRandomLoadouts()
     {
         List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
         for (int i = 0; i <= PersonaAndPuzzles.ExtraLoadouts; i++)
         {
             string name = $"Loadout {i + 1}";
             PersonaLoadout loadout = new PersonaLoadout(name, i);
-            for (int j = 0; j < MaxTeamSlots; j++)
+            if (Personas.Count < MaxTeamSlots)
             {
-                RandomNumberGenerator RNG = new RandomNumberGenerator();
-                int randomNumber = RNG.RandiRange(0, Personas.Count - 1);
-                Persona persona = Personas[randomNumber];
-                while (loadout.Personas.Contains(persona))
+                // Add the Personas and make the remaining slots empty
+                for (int j = 0; j < Personas.Count; j++)
                 {
-                    randomNumber = RNG.RandiRange(0, Personas.Count - 1);
-                    persona = Personas[randomNumber];
+                    Persona persona = Personas[j];
+                    loadout.Personas.Add(persona);
                 }
-                loadout.Personas.Add(persona);
+
+                for (int j = Personas.Count; j < MaxTeamSlots; j++)
+                {
+                    loadout.Personas.Add(null); 
+                }
+            }
+            else
+            {
+                // Add the Personas and make sure the same Persona isn't added in
+                int maxRange = Personas.Count - 1;
+                for (int j = 0; j < MaxTeamSlots; j++)
+                {
+                    RandomNumberGenerator RNG = new RandomNumberGenerator();
+                    int randomNumber = RNG.RandiRange(0, maxRange);
+                    Persona persona = Personas[randomNumber];
+                    while (loadout.Personas.Contains(persona))
+                    {
+                        randomNumber = RNG.RandiRange(0, maxRange);
+                        persona = Personas[randomNumber];
+                    }
+                    loadout.Personas.Add(persona);
+                }
             }
 
             loadouts.Add(loadout);
@@ -69,7 +105,7 @@ public partial class PersonaManager : Node
         Loadouts.AddRange(loadouts);
     }
 
-    private static void SetEmptyLoadouts()
+    private void SetEmptyLoadouts()
     {
         List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
         for (int i = Loadouts.Count; i < MaxLoadouts; i++)
@@ -85,23 +121,15 @@ public partial class PersonaManager : Node
         Loadouts.AddRange(loadouts);
     }
 
-    public static void SetLoadout(Persona newPersona, int slotIndex)
+    public void SetLoadout(Persona newPersona, dynamic oldPersona)
     {
-        Loadout.Swap(newPersona, slotIndex);
+        Loadout.Swap(newPersona, oldPersona);
 
         PersonaLoadout targetLoadout = Loadouts.Find(loadout => loadout.Name == Loadout.Name);
-        targetLoadout.Swap(newPersona, slotIndex);
+        targetLoadout.Swap(newPersona, oldPersona);
     }
 
-    public static void SetLoadout(Persona newPersona, string oldPersonaID)
-    {
-        Loadout.Swap(newPersona, oldPersonaID);
-
-        PersonaLoadout targetLoadout = Loadouts.Find(loadout => loadout.Name == Loadout.Name);
-        targetLoadout.Swap(newPersona, oldPersonaID);
-    }
-
-    public static void LoadPersonas()
+    private void LoadPersonas()
     {
         const string FileName = "Persona";
 
@@ -150,25 +178,28 @@ public partial class PersonaManager : Node
         }
     }
 
-    public static int GetOverclockCount(int rank) => rank switch
+    public int GetOverclockCount(int rank) => rank switch
     {
         >= 4 and <= 6 => 2,
         >= 7 and <= 8 => 3,
         (>= 1 and <= 3) or _ => 1
     };
 
-    public static int GetBonusLevels(Persona persona)
+    public int GetBonusLevels(Persona persona)
     {
         int bonusLevels = 0;
         for (int i = 0; i < persona.Overclock; i++)
         {
             bonusLevels += 5;
         }
-        bonusLevels += persona.Rank == 8 ? 4 : 0;
+        if (persona.Overclock >= GetOverclockCount(persona.Rank))
+        {
+            bonusLevels += persona.Rank == 8 ? 4 : 0;
+        }
         return bonusLevels;
     }
 
-    public static int GetBaseMaxLevel(int rank) => rank switch
+    public int GetBaseMaxLevel(int rank) => rank switch
     {
         2 => 30,
         3 => 40,
@@ -179,12 +210,12 @@ public partial class PersonaManager : Node
         1 or _ => 20
     };
 
-    public static int GetMaxLevel(Persona persona)
+    public int GetMaxLevel(Persona persona)
     {
         return GetBaseMaxLevel(persona.Rank) + GetBonusLevels(persona);
     }
 
-    public static int GetMaterialExperience(EnhancementMaterial material) => material switch
+    public int GetMaterialExperience(EnhancementMaterial material) => material switch
     {
         EnhancementMaterial.Memory => 100,
         EnhancementMaterial.Anecdote => 500,
@@ -192,7 +223,7 @@ public partial class PersonaManager : Node
         _ => 0
     };
 
-    private static void SetResistances(Persona persona, GC.Dictionary<string, Variant> resistances)
+    private void SetResistances(Persona persona, GC.Dictionary<string, Variant> resistances)
     {
         foreach (string key in resistances.Keys)
         {
@@ -202,16 +233,16 @@ public partial class PersonaManager : Node
         }
     }
 
-    private static void SetPassiveSkills(Persona persona, GC.Array passiveSkills)
+    private void SetPassiveSkills(Persona persona, GC.Array passiveSkills)
     {
         foreach (string passiveSkillName in passiveSkills)
         {
-            PassiveSkill passiveSkill = PassiveSkillManager.FindPassiveSkill(passiveSkillName);
+            PassiveSkill passiveSkill = PassiveSkillManager.Instance.FindPassiveSkill(passiveSkillName);
             persona.PassiveSkills.Add(passiveSkill);
         }
     }
 
-    private static Race GetRaceFromDictionary(GC.Dictionary<string, Variant> personaDictionary)
+    private Race GetRaceFromDictionary(GC.Dictionary<string, Variant> personaDictionary)
     {
         const string RaceKey = "Race";
         string personaRace = personaDictionary[RaceKey].As<string>();
@@ -231,7 +262,7 @@ public partial class PersonaManager : Node
         }
     }
 
-    private static SkillType GetSkillTypeFromDictionary(GC.Dictionary<string, Variant> personaDictionary)
+    private SkillType GetSkillTypeFromDictionary(GC.Dictionary<string, Variant> personaDictionary)
     {
         const string SkillTypeKey = "SkillType";
         string personaSkillType = personaDictionary[SkillTypeKey].As<string>();
@@ -251,7 +282,7 @@ public partial class PersonaManager : Node
         }
     }
 
-    public static Texture2D GetPersonaImage(Persona persona)
+    public Texture2D GetPersonaImage(Persona persona)
     {
         if (string.IsNullOrEmpty(persona.Image) || persona.Image == "No Image")
         {
@@ -265,20 +296,23 @@ public partial class PersonaManager : Node
         }
     }
 
-    public static Persona GetRandomPersona()
+    public Persona GetRandomPersona()
     {
         RandomNumberGenerator RNG = new RandomNumberGenerator();
         int randomNumber = RNG.RandiRange(0, _Personas.Count - 1);
         Persona persona = _Personas[randomNumber];
         Persona personaClone = new Persona(persona)
         {
-            ID = Guid.NewGuid().ToString("N"),
-            Level = PersonaAndPuzzles.OverridePersonaLevel ? persona.Level : 1
+            ID = Guid.NewGuid().ToString("N")
         };
+
+        int targetLevel = PersonaAndPuzzles.OverridePersonaLevel ? PersonaAndPuzzles.PersonaLevel : 1;
+        SetLevel(personaClone, targetLevel);
+
         return personaClone;
     }
 
-    private static Persona ClonePersona(Persona persona)
+    private Persona ClonePersona(Persona persona)
     {
         Persona personaClone = new Persona(persona)
         {
@@ -287,22 +321,22 @@ public partial class PersonaManager : Node
         return personaClone;
     }
 
-    public static List<Persona> GetPersonasByRace(Race race)
+    public List<Persona> GetPersonasByRace(Race race)
     {
         return _Personas.FindAll(persona => persona.Race == race);
     }
 
-    public static List<Persona> GetPersonasBySkillType(SkillType skillType)
+    public List<Persona> GetPersonasBySkillType(SkillType skillType)
     {
         return _Personas.FindAll(persona => persona.SkillType == skillType);
     }
 
-    public static Persona GetPersonaByName(string personaName)
+    public Persona GetPersonaByName(string personaName)
     {
         return _Personas.Find(persona => persona.Name == personaName);
     }
 
-    public static void SetLevel(Persona persona, int targetLevel)
+    public void SetLevel(Persona persona, int targetLevel)
     {
         int difference = (targetLevel - persona.Level) / 2;
         if (difference > 0)
@@ -325,7 +359,12 @@ public partial class PersonaManager : Node
         persona.Level = targetLevel;
     }
 
-    public static void RemovePersona(Persona targetPersona)
+    public void SetStats()
+    {
+        
+    }
+
+    public void RemovePersona(Persona targetPersona)
     {
         Personas.Remove(targetPersona);
 
@@ -343,6 +382,48 @@ public partial class PersonaManager : Node
                 Loadout.Personas[personaIndex] = null;
             }
         }
+
+        Signals.Instance.EmitSignal(Signals.SignalName.PersonaRemoved);
+    }
+
+    public int GetLevels(Persona persona, int experience)
+    {
+        int levels = 0;
+        int maxExperience = GetMaxExperience(persona.Level);
+        while (experience >= maxExperience)
+        {
+            levels++;
+            experience -= maxExperience;
+            maxExperience = GetMaxExperience(persona.Level + levels);
+        }
+        return levels;
+    }
+
+    public int GetMaxExperience(int level)
+    {
+        int maxExperience = 0;
+        const int LinearGrowth = 100;
+        const float ExponentialGrowth = 0.05f;
+        for (int i = 0; i < level; i++)
+        {
+            maxExperience += LinearGrowth;
+            maxExperience += Mathf.RoundToInt(maxExperience * ExponentialGrowth);
+        }
+        return maxExperience;
+    }
+
+    public bool IsOverPersonaCount()
+    {
+        return Personas.Count > MaxPersonas;
+    }
+
+    public bool IsLoadoutEmpty()
+    {
+        foreach (Persona persona in Loadout.Personas)
+        {
+            if (persona != null) return false;
+        }
+        return true;
     }
 }
 

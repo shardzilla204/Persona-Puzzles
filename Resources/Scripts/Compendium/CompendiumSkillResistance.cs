@@ -12,7 +12,7 @@ public partial class CompendiumSkillResistance : VBoxContainer
 
     public void Set(SkillType skillType, Resistance resistance)
     {
-        Texture2D skillTexture = SkillOrbManager.GetSkillTypeTexture(skillType);
+        Texture2D skillTexture = SkillOrbManager.Instance.GetSkillTypeTexture(skillType);
         _skillTypeIcon.Texture = skillTexture;
         _resistanceLabel.Text = GetResistanceAbbreviation(resistance);
     }

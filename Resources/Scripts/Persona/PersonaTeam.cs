@@ -4,6 +4,12 @@ namespace PersonaAndPuzzles;
 
 public partial class PersonaTeam : TextureRect
 {
+    [Signal]
+    public delegate void PersonaRemovedEventHandler();
+
+    [Signal]
+    public delegate void LoadoutSelectedEventHandler();
+
     [Export]
     private Container _personaTeamSlotContainer;
 
@@ -16,7 +22,7 @@ public partial class PersonaTeam : TextureRect
     // When loading a loadout from a save file have the index of the loadout.
     public override void _EnterTree()
     {
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.PersonaReleased, 
+        Signals.Instance.Connect(Signals.SignalName.PersonaRemoved, 
             Callable.From(Refresh));
     }
 
@@ -24,7 +30,7 @@ public partial class PersonaTeam : TextureRect
     {
         _dropdownButton.Pressed += OnDropdownPressed;
 
-        _nameLabel.Text = PersonaManager.Loadout.Name;
+        _nameLabel.Text = PersonaManager.Instance.Loadout.Name;
 
         Refresh();
     }
@@ -41,15 +47,22 @@ public partial class PersonaTeam : TextureRect
     private void AddTeamSlots()
     {
         const string UID = "uid://bfox35ygy4i12";
-        for (int i = 0; i < PersonaManager.Loadout.Personas.Count; i++)
+        for (int i = 0; i < PersonaManager.Instance.Loadout.Personas.Count; i++)
         {
-            Persona persona = PersonaManager.Loadout.Personas[i];
+            Persona persona = PersonaManager.Instance.Loadout.Personas[i];
 
             TeamSlot teamSlot = GD.Load<PackedScene>(UID).Instantiate<TeamSlot>();
+            teamSlot.Connect(TeamSlot.SignalName.PersonaRemoved, 
+                Callable.From(OnPersonaRemoved));
             teamSlot.Index = i;
             teamSlot.SetPersona(persona);
             _personaTeamSlotContainer.AddChild(teamSlot);
         }
+    }
+
+    private void OnPersonaRemoved()
+    {
+        EmitSignal(SignalName.PersonaRemoved);
     }
 
     private void RemoveChildren()
@@ -81,14 +94,16 @@ public partial class PersonaTeam : TextureRect
 
     private void OnLoadoutSelected(int loadoutIndex)
     {
-        _nameLabel.Text = PersonaManager.Loadouts[loadoutIndex].Name;
+        _nameLabel.Text = PersonaManager.Instance.Loadouts[loadoutIndex].Name;
 
         Refresh();
+
+        EmitSignal(SignalName.LoadoutSelected);
     }
 
     private void OnLoadoutNameChanged(int loadoutIndex, string name)
     {
-        if (loadoutIndex != PersonaManager.Loadouts[loadoutIndex].Index) return;
+        if (loadoutIndex != PersonaManager.Instance.Loadouts[loadoutIndex].Index) return;
         
         _nameLabel.Text = name;
     }

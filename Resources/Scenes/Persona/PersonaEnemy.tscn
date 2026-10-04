@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dkntq24dqbkbj" path="res://Assets/Images/TarotCard.jpg" id="4_x7bd2"]
 
 [node name="PersonaEnemy" type="VBoxContainer" unique_id=2036343348 node_paths=PackedStringArray("_targetButton", "_targetTexture", "_personaTexture", "_cardTexture", "_healthBar")]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(125, 125)
 clip_contents = true
-offset_right = 150.0
+offset_right = 125.0
 offset_bottom = 185.0
 pivot_offset = Vector2(75, 75)
 theme_override_constants/separation = 10

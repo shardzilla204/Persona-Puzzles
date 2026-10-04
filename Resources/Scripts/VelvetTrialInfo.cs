@@ -49,7 +49,9 @@ public partial class VelvetTrialInfo : Container
         foreach (Dictionary<string, Variant> personaDictionary in personaDictionaries)
         {
             string personaName = personaDictionary[NameKey].As<string>();
-            Persona persona = PersonaManager.GetPersonaByName(personaName);
+            Persona persona = PersonaManager.Instance.GetPersonaByName(personaName);
+            if (persona == null) continue;
+            
             VelvetTrialPersona velvetTrialPersona = GetVelvetTrialPersona(persona);
             _personaIconContainer.AddChild(velvetTrialPersona);
         }

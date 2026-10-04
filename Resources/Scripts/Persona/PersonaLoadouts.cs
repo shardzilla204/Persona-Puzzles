@@ -45,7 +45,7 @@ public partial class PersonaLoadouts : Control
             compendium.SetSlotUsage(Loadout); // Update the visuals first
         }
 
-        PersonaManager.Loadout.ChangeLoadout(Loadout);
+        PersonaManager.Instance.Loadout.ChangeLoadout(Loadout);
         EmitSignal(SignalName.LoadoutSelected, Loadout.Index);
         QueueFree();
     }
@@ -69,7 +69,7 @@ public partial class PersonaLoadouts : Control
     private void FillLoadoutsContainer()
     {
         const string UID = "uid://qicend1g781d";
-        for (int i = 0; i < PersonaManager.Loadouts.Count; i++)
+        for (int i = 0; i < PersonaManager.Instance.Loadouts.Count; i++)
         {
             PersonaLoadoutButton personaLoadoutButton = GD.Load<PackedScene>(UID).Instantiate<PersonaLoadoutButton>();
             personaLoadoutButton.SetLoadout(i);

@@ -22,10 +22,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_c42a1")
-_skillOrbGrid = NodePath("MarginContainer/VBoxContainer/SkillOrbGrid")
-_velvetTrialSlotContainer = NodePath("MarginContainer/VBoxContainer/VelvetTrialSlotContainer")
-_personaEnemyContainer = NodePath("MarginContainer/VBoxContainer/PersonaEnemyContainer")
-_playerHealthBar = NodePath("MarginContainer/VBoxContainer/PlayerHealthBar")
+_skillOrbGrid = NodePath("MarginContainer/Control/SkillOrbGrid")
+_velvetTrialSlotContainer = NodePath("MarginContainer/Control/VelvetTrialSlotContainer")
+_personaEnemyContainer = NodePath("MarginContainer/Control/PersonaEnemyContainer")
+_playerHealthBar = NodePath("MarginContainer/Control/PlayerHealthBar")
 _exitButton = NodePath("MarginContainer/VBoxContainer2/ExitButton")
 _captureTexture = NodePath("MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/CaptureTexture")
 _captureCount = NodePath("MarginContainer/VBoxContainer2/CaptureCounter/NinePatchRect/CaptureTexture/CaptureCount")
@@ -37,39 +37,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2010469427]
+[node name="Control" type="Control" parent="MarginContainer" unique_id=824815399]
 layout_mode = 2
-theme_override_constants/separation = 10
+mouse_filter = 2
 
-[node name="PersonaEnemyContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=113999286]
-layout_mode = 2
+[node name="PersonaEnemyContainer" type="HBoxContainer" parent="MarginContainer/Control" unique_id=113999286]
+custom_minimum_size = Vector2(409, 0)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 130.0
+offset_right = 444.0
+offset_bottom = 315.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 15
+alignment = 1
 script = ExtResource("2_er0dk")
 
-[node name="VelvetTrialSlotContainer" parent="MarginContainer/VBoxContainer" unique_id=758305951 instance=ExtResource("4_er0dk")]
-layout_mode = 2
+[node name="VelvetTrialSlotContainer" parent="MarginContainer/Control" unique_id=758305951 instance=ExtResource("4_er0dk")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 326.0
+offset_right = 444.0
+offset_bottom = 390.0
 
-[node name="PlayerHealthBar" parent="MarginContainer/VBoxContainer" unique_id=375671256 instance=ExtResource("5_qhtww")]
-layout_mode = 2
+[node name="PlayerHealthBar" parent="MarginContainer/Control" unique_id=375671256 instance=ExtResource("5_qhtww")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 400.0
+offset_right = 444.0
+offset_bottom = 430.0
 
-[node name="SkillOrbGrid" parent="MarginContainer/VBoxContainer" unique_id=1359677514 instance=ExtResource("4_tvbij")]
+[node name="SkillOrbGrid" parent="MarginContainer/Control" unique_id=1359677514 instance=ExtResource("4_tvbij")]
 custom_maximum_size = Vector2(409, 340)
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 35.0
+offset_top = 440.0
+offset_right = 444.0
+offset_bottom = 780.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Debug" parent="MarginContainer" unique_id=645808427 instance=ExtResource("10_qtuq2")]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=1131759808]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 theme_override_constants/separation = 10
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer2" unique_id=517816699]

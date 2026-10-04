@@ -64,6 +64,11 @@ public partial class SkillOrbGrid : Control
     public override void _Ready()
     {
         CreateGrid();
+
+        MouseEntered += () =>
+        {
+            GD.Print($"Mouse Entered");  
+        };
     }
 
     public override void _Process(double delta)
@@ -106,10 +111,10 @@ public partial class SkillOrbGrid : Control
         {
             for (int j = 0; j < _rows; j++)
             {
-                SkillOrb skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                SkillOrb skillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 while (!SkillTypePool.Contains(skillOrb.SkillType))
                 {
-                    skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                    skillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 }
 
                 int loops = 0;
@@ -117,7 +122,7 @@ public partial class SkillOrbGrid : Control
                 while (hasMatch && loops < _MaxLoops)
                 {
                     loops++;
-                    skillOrb = SkillOrbManager.GetRandomSkillOrb();
+                    skillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 }
 
                 AddChild(skillOrb);
@@ -650,10 +655,10 @@ public partial class SkillOrbGrid : Control
                 SkillOrb skillOrb = _skillOrbs[i][j];
                 if (skillOrb != null) continue;
                 
-                SkillOrb randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                SkillOrb randomSkillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 while (!SkillTypePool.Contains(randomSkillOrb.SkillType))
                 {
-                    randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                    randomSkillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 }
 
                 int loops = 0;
@@ -661,7 +666,7 @@ public partial class SkillOrbGrid : Control
                 while (hasMatch && loops < _MaxLoops)
                 {
                     loops++;
-                    randomSkillOrb = SkillOrbManager.GetRandomSkillOrb();
+                    randomSkillOrb = SkillOrbManager.Instance.GetRandomSkillOrb();
                 }
 
                 randomSkillOrb.Position = GridToPixel(i, j - _refillYOffset);

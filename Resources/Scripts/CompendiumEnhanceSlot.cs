@@ -36,6 +36,6 @@ public partial class CompendiumEnhanceSlot : PersonaSlot
 
     public void Toggle(bool isToggled)
     {
-        Modulate = isToggled ? new Color("bfbfbf") : Colors.White;
+        Modulate = isToggled ? new Color("#bfbfbf") : Colors.White;
     }
 }

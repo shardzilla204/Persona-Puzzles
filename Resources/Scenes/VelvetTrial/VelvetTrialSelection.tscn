@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="5_cvj57"]
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="7_cxl7f"]
 
-[node name="VelvetTrialSelection" type="Control" unique_id=1920682677 node_paths=PackedStringArray("_buttonContainer", "_trialInfo", "_startButton", "_errorLabel")]
+[node name="VelvetTrialSelection" type="Control" unique_id=1920682677 node_paths=PackedStringArray("_buttonContainer", "_trialInfo", "_startButton", "_personaTeam", "_errorLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ script = ExtResource("1_u3xfk")
 _buttonContainer = NodePath("VelvetTrialButtonContainer")
 _trialInfo = NodePath("VelvetTrialInfo")
 _startButton = NodePath("VBoxContainer/StartButton")
+_personaTeam = NodePath("PersonaTeam")
 _errorLabel = NodePath("VBoxContainer/ErrorLabel")
 
 [node name="VelvetTrialButtonContainer" parent="." unique_id=154279771 instance=ExtResource("1_xrcwr")]
@@ -26,10 +27,10 @@ layout_mode = 1
 
 [node name="VelvetTrialInfo" parent="." unique_id=370356402 instance=ExtResource("2_60qqa")]
 layout_mode = 0
-offset_left = 288.0
-offset_top = 217.0
-offset_right = 458.0
-offset_bottom = 305.0
+offset_left = 250.0
+offset_top = 165.0
+offset_right = 498.0
+offset_bottom = 295.0
 
 [node name="PersonaTeam" parent="." unique_id=77672837 instance=ExtResource("4_gixlp")]
 layout_mode = 0
@@ -37,16 +38,22 @@ offset_top = 495.0
 offset_bottom = 595.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=211521975]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 622.5
-offset_right = 327.0
-offset_bottom = 699.5
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 222.5
+offset_bottom = 293.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1318011976 node_paths=PackedStringArray("_texture")]
 custom_minimum_size = Vector2(150, 50)
+custom_maximum_size = Vector2(150, -1)
 layout_mode = 2
+size_flags_horizontal = 4
 flat = true
 script = ExtResource("4_2m28t")
 _texture = NodePath("NinePatchRect")
@@ -82,15 +89,16 @@ vertical_alignment = 1
 [node name="ErrorLabel" type="Label" parent="VBoxContainer" unique_id=905718128]
 layout_mode = 2
 theme = ExtResource("7_cxl7f")
-text = "Testing"
+text = "At Least One Persona Is Needed"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=525710155]
 layout_mode = 0
-offset_left = 273.0
-offset_top = 96.0
-offset_right = 469.0
-offset_bottom = 140.0
+offset_left = 265.0
+offset_top = 95.0
+offset_right = 461.0
+offset_bottom = 139.0
 theme = ExtResource("7_cxl7f")
 theme_override_font_sizes/font_size = 36
 text = "Velvet Trials"

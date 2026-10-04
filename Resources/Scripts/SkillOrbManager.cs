@@ -8,7 +8,12 @@ namespace PersonaAndPuzzles;
 
 public partial class SkillOrbManager : Node
 {
-    private static GC.Dictionary<SkillType, string> _skillIconTextures = new GC.Dictionary<SkillType, string>()
+    private readonly static Lazy<SkillOrbManager> s_lazy = new Lazy<SkillOrbManager>(() => new SkillOrbManager());
+    public static SkillOrbManager Instance => s_lazy.Value;
+
+    private SkillOrbManager() {}
+
+    private GC.Dictionary<SkillType, string> _skillIconTextures = new GC.Dictionary<SkillType, string>()
     {
         { SkillType.Physical, "uid://cqni26flnijsp" },
         { SkillType.Pierce, "uid://bvu4wxouwdsy2" },
@@ -23,7 +28,7 @@ public partial class SkillOrbManager : Node
         { SkillType.Almighty, "uid://c12n424vwjulu" }
     };
 
-    private static GC.Dictionary<SkillType, string> _skillTypeHexColors = new GC.Dictionary<SkillType, string>()
+    private GC.Dictionary<SkillType, string> _skillTypeHexColors = new GC.Dictionary<SkillType, string>()
     {
         { SkillType.Physical, "#cc7e00" },
         { SkillType.Pierce, "#cc7e00" },
@@ -38,7 +43,7 @@ public partial class SkillOrbManager : Node
         { SkillType.Almighty, "#b9b9b9" }
     };
 
-    public static SkillOrb GetRandomSkillOrb()
+    public SkillOrb GetRandomSkillOrb()
     {
         RandomNumberGenerator RNG = new RandomNumberGenerator();
         SkillType skillType = (SkillType) RNG.RandiRange(0, _skillIconTextures.Count() - 1);
@@ -46,7 +51,7 @@ public partial class SkillOrbManager : Node
         return skillOrb;
     }
 
-    public static Texture2D GetSkillTypeTexture(SkillType skillType)
+    public Texture2D GetSkillTypeTexture(SkillType skillType)
     {
         try
         {
@@ -59,7 +64,7 @@ public partial class SkillOrbManager : Node
         }
     }
 
-    public static Color GetSkillTypeColor(SkillType skillType)
+    public Color GetSkillTypeColor(SkillType skillType)
     {
         try
         {

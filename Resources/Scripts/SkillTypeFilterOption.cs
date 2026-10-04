@@ -15,6 +15,6 @@ public partial class SkillTypeFilterOption : FilterOption
         base._Ready();
 
         SkillType = Enum.Parse<SkillType>(Name);
-        _skillTypeIcon.Texture = SkillOrbManager.GetSkillTypeTexture(SkillType);
+        _skillTypeIcon.Texture = SkillOrbManager.Instance.GetSkillTypeTexture(SkillType);
     }
 }

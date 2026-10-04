@@ -29,7 +29,12 @@ public partial class SkillOrb : TextureRect
 
     public override void _Ready()
     {
-        Texture = SkillOrbManager.GetSkillTypeTexture(SkillType);
+        Texture = SkillOrbManager.Instance.GetSkillTypeTexture(SkillType);
+
+        // MouseEntered += () =>
+        // {
+        //     GD.Print($"Mouse Entered");  
+        // };
     }
 
     public override void _Notification(int what)
@@ -60,6 +65,7 @@ public partial class SkillOrb : TextureRect
         Modulate = transparent;
 
         _isDragging = true;
+        GD.Print($"Dragging");
 
         return this;
     }

@@ -35,19 +35,24 @@ public partial class PersonaEnhance : Control
     [Export]
     private Container _overclockContainer;
 
-    public Persona Persona;
+    [Export]
+    private CustomButton _exitButton;
 
-    private string _skillTypeFilter;
-    private string _favoriteFilter;
-    private string _statTypeFilter;
+    public Persona Persona;
 
     public override void _Ready()
     {
         _personaSlot.SetPersona(Persona);
         _personaNameLabel.Text = $"{Persona.Name}";
+        _exitButton.Pressed += OnExitButtonPressed;
 
         Refresh();
         RefreshOverclock();
+    }
+
+    private void OnExitButtonPressed()
+    {
+        GetParent().GetOwner().QueueFree();
     }
 
     public void RefreshOverclock()
@@ -57,13 +62,13 @@ public partial class PersonaEnhance : Control
             child.QueueFree();
         }
         
-        int overclockCount = PersonaManager.GetOverclockCount(Persona.Rank);
+        int overclockCount = PersonaManager.Instance.GetOverclockCount(Persona.Rank);
         int personaOverclock = Persona.Overclock;
         const string UID = "uid://dk2wpe0jpwrhd";
         for (int i = 0; i < overclockCount; i++)
         {
             personaOverclock--;
-            Color color = personaOverclock >= 0 ? Colors.White : new Color("4f4b47") /* Grey */;
+            Color color = personaOverclock >= 0 ? Colors.White : new Color("#4f4b47");
             TextureRect overclockTextureRect = new TextureRect()
             {
                 Texture = GD.Load<Texture2D>(UID),
@@ -80,17 +85,21 @@ public partial class PersonaEnhance : Control
     {
         int totalExperience = Persona.Experience + experience;
 
-        int levels = GetLevels(totalExperience);
+        int levels = PersonaManager.Instance.GetLevels(Persona, totalExperience);
         int experienceRemainder = GetExperienceRemainder(totalExperience, levels, Persona.Level);
 
-        int maxLevel = PersonaManager.GetMaxLevel(Persona);
-        Persona.Level = Mathf.Min(Persona.Level + levels, maxLevel);
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(Persona);
+        int targetLevel = Mathf.Min(Persona.Level + levels, maxLevel);
+        PersonaManager.Instance.SetLevel(Persona, targetLevel);
 
         if (Persona.Level >= maxLevel)
         {
             Persona.Experience = 0;
 
             ConvertMaterials(experienceRemainder);
+
+            _initialProgressBar.MaxValue = 0;
+            _finalProgressBar.MaxValue = 0;
 
             SetLevelText(-1);
             SetExperienceText(-1);
@@ -99,8 +108,8 @@ public partial class PersonaEnhance : Control
             return;
         }
 
-        _initialProgressBar.MaxValue = GetMaxExperience(Persona.Level);
-        _finalProgressBar.MaxValue = GetMaxExperience(Persona.Level);
+        _initialProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
+        _finalProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
 
         Persona.Experience = experienceRemainder;
         TweenExperience(experienceRemainder);
@@ -111,83 +120,50 @@ public partial class PersonaEnhance : Control
 
     private void ConvertMaterials(int experience)
     {
-        Dictionary<EnhancementMaterial, int> _materials = new Dictionary<EnhancementMaterial, int>()
+        Dictionary<EnhancementMaterial, int> materials = new Dictionary<EnhancementMaterial, int>()
         {
             { EnhancementMaterial.Legend, 0 },
             { EnhancementMaterial.Anecdote, 0 },
             { EnhancementMaterial.Memory, 0 }
         };
 
-        foreach (EnhancementMaterial material in _materials.Keys)
+        foreach (EnhancementMaterial material in materials.Keys)
         {
             int materialCount = 0;
-            int materialExperience = PersonaManager.GetMaterialExperience(material);
+            int materialExperience = PersonaManager.Instance.GetMaterialExperience(material);
             while (experience >= materialExperience)
             {
                 materialCount++;
                 experience -= materialExperience;
             }
-            _materials[material] = materialCount;
+            materials[material] = materialCount;
         }
 
-        EmitSignal(SignalName.ConvertedMaterials, _materials);
-    }
-
-    private int GetLevels(int experience)
-    {
-        int levels = 0;
-        int maxExperience = GetMaxExperience(Persona.Level);
-        while (experience >= maxExperience)
-        {
-            levels++;
-            experience -= maxExperience;
-            maxExperience = GetMaxExperience(Persona.Level + levels);
-        }
-        return levels;
+        EmitSignal(SignalName.ConvertedMaterials, materials);
     }
 
     private int GetExperienceRemainder(int experience, int levels, int startingLevel)
     {
-        int maxExperience = GetMaxExperience(levels);
+        int maxExperience = PersonaManager.Instance.GetMaxExperience(levels);
         for (int i = 0; i <= levels; i++)
         {
             experience -= maxExperience;
-            maxExperience = GetMaxExperience(startingLevel + i);
+            maxExperience = PersonaManager.Instance.GetMaxExperience(startingLevel + i);
         }
         return experience;
     }
 
-    public int GetMaxExperience(int level)
-    {
-        int maxExperience = 0;
-        const int LinearGrowth = 100;
-        const float ExponentialGrowth = 0.05f;
-        for (int i = 0; i < level; i++)
-        {
-            maxExperience += LinearGrowth;
-            maxExperience += Mathf.RoundToInt(maxExperience * ExponentialGrowth);
-        }
-        return maxExperience;
-    }
-
     private int GetExperienceDifference()
     {
-        int maxExperience = GetMaxExperience(Persona.Level);
+        int maxExperience = PersonaManager.Instance.GetMaxExperience(Persona.Level);
         return maxExperience - Persona.Experience;
-    }
-
-    private void OnCompendiumFilterConfirmed(string targetSkillType, string targetFavorite, string targetStatType)
-    {
-        _skillTypeFilter = targetSkillType;
-        _favoriteFilter = targetFavorite;
-        _statTypeFilter = targetStatType;
     }
 
     public void SetLevelText(int levels = 0)
     {
         string levelsText = levels <= 0 ? "" : $"[color='ffe146'] (+{levels})[/color]";
 
-        int maxLevel = PersonaManager.GetMaxLevel(Persona);
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(Persona);
         _personaLevelLabel.Text = $"Lvl. {Persona.Level} / {maxLevel}{levelsText}";
     }
     
@@ -200,8 +176,8 @@ public partial class PersonaEnhance : Control
         }
 
         string totalExperienceText = totalExperience == 0 ? "" : $"[color='ffe146'](+{totalExperience:N0})[/color]";
-        int levels = GetLevels(totalExperience);
-        int maxLevels = PersonaManager.GetMaxLevel(Persona);
+        int levels = PersonaManager.Instance.GetLevels(Persona, totalExperience);
+        int maxLevels = PersonaManager.Instance.GetMaxLevel(Persona);
 
         bool isPersonaLevelMaxed = Persona.Level + levels >= maxLevels;
         EmitSignal(SignalName.PersonaLevelPreviewMaxed, isPersonaLevelMaxed);
@@ -231,11 +207,21 @@ public partial class PersonaEnhance : Control
 
     public void Refresh()
     {
+        if (Persona.Level >= PersonaManager.Instance.GetMaxLevel(Persona))
+        {
+            _initialProgressBar.MaxValue = 0;
+            _finalProgressBar.MaxValue = 0;
+
+            SetLevelText(-1);
+            SetExperienceText(-1);
+            return;
+        }
+
         _initialProgressBar.Value = Persona.Experience;
-        _initialProgressBar.MaxValue = GetMaxExperience(Persona.Level);
+        _initialProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
         
         _finalProgressBar.Value = Persona.Experience;
-        _finalProgressBar.MaxValue = GetMaxExperience(Persona.Level);
+        _finalProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
 
         SetLevelText();
         SetExperienceText();

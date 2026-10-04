@@ -5,7 +5,7 @@ namespace PersonaAndPuzzles;
 public partial class CompendiumFilter : Control
 {
     [Signal]
-    public delegate void ConfirmedEventHandler(string skillType, string favorite, string statType);
+    public delegate void ConfirmedEventHandler();
 
     [Signal]
     public delegate void UnfilteredEventHandler();
@@ -28,51 +28,47 @@ public partial class CompendiumFilter : Control
     [Export]
     private CustomButton _confirmButton;
 
-    public string SkillType;
-    public string Favorite;
-    public string StatType;
-
     public override void _Ready()
     {
         _cancelButton.Pressed += QueueFree;
         _unfilterButton.Pressed += () => EmitSignal(SignalName.Unfiltered);
         _confirmButton.Pressed += OnConfirmButtonPressed;
 
-        _skillTypeFilters.FilterSelected += (filterName) => SkillType = filterName;
-        _favoriteFilters.FilterSelected += (filterName) => Favorite = filterName;
-        _statTypeFilters.FilterSelected += (filterName) => StatType = filterName;
+        _skillTypeFilters.FilterSelected += (filterName) => PersonaManager.Instance.SkillTypeFilter = filterName;
+        _favoriteFilters.FilterSelected += (filterName) => PersonaManager.Instance.FavoriteFilter = filterName;
+        _statTypeFilters.FilterSelected += (filterName) => PersonaManager.Instance.StatTypeFilter = filterName;
 
-        if (!string.IsNullOrEmpty(SkillType))
+        if (!string.IsNullOrEmpty(PersonaManager.Instance.SkillTypeFilter))
         {
-            _skillTypeFilters.EnableFilter(SkillType);
+            _skillTypeFilters.EnableFilter(PersonaManager.Instance.SkillTypeFilter);
         }
         else
         {
-            SkillType = _skillTypeFilters.SelectedFilterName;
+            PersonaManager.Instance.SkillTypeFilter = _skillTypeFilters.SelectedFilterName;
         }
 
-        if (!string.IsNullOrEmpty(Favorite))
+        if (!string.IsNullOrEmpty(PersonaManager.Instance.FavoriteFilter))
         {
-            _favoriteFilters.EnableFilter(Favorite);
+            _favoriteFilters.EnableFilter(PersonaManager.Instance.FavoriteFilter);
         }
         else
         {
-            Favorite = _favoriteFilters.SelectedFilterName;
+            PersonaManager.Instance.FavoriteFilter = _favoriteFilters.SelectedFilterName;
         }
 
-        if (!string.IsNullOrEmpty(StatType) && StatType.Contains("|") /* If the string is 'All' */)
+        if (!string.IsNullOrEmpty(PersonaManager.Instance.StatTypeFilter) && PersonaManager.Instance.StatTypeFilter.Contains("|") /* If the string is 'All' */)
         {
-            _statTypeFilters.EnableFilter(StatType);
+            _statTypeFilters.EnableFilter(PersonaManager.Instance.StatTypeFilter);
         }
         else
         {
-            StatType = _statTypeFilters.SelectedFilterName;
+            PersonaManager.Instance.StatTypeFilter = _statTypeFilters.SelectedFilterName;
         }
     }
 
     private void OnConfirmButtonPressed()
     {
-        EmitSignal(SignalName.Confirmed, SkillType, Favorite, StatType);
+        EmitSignal(SignalName.Confirmed);
         QueueFree();
     }
 }

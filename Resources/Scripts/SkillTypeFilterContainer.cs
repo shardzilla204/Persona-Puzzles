@@ -4,7 +4,7 @@ namespace PersonaAndPuzzles;
 
 public partial class SkillTypeFilterContainer : FilterContainer
 {
-    private enum Filter
+    public enum Filter
     {
         All,
         Physical,

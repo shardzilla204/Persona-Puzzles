@@ -2,15 +2,24 @@ using Godot;
 using GC = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace PersonaAndPuzzles;
 
 public partial class PassiveSkillManager : Node
 {
-    public static List<PassiveSkill> PassiveSkills = new List<PassiveSkill>();
+    private readonly static Lazy<PassiveSkillManager> s_lazy = new Lazy<PassiveSkillManager>(() => new PassiveSkillManager());
+    public static PassiveSkillManager Instance => s_lazy.Value;
 
-    public static string[] _offensiveSkills = [ "Boost", "Amp", "Apt Pupil", "Snipe", "Cripple", "Magic Ability", "Trigger Happy" ];
-    public static string[] _defensiveSkills = [ "Dodge", "Evade", "Sharp Student", "Angelic Grace" ];
+    private PassiveSkillManager()
+    {
+        LoadPassiveSkills();
+    }
+    
+    public List<PassiveSkill> PassiveSkills = new List<PassiveSkill>();
+
+    public string[] _offensiveSkills = [ "Boost", "Amp", "Apt Pupil", "Snipe", "Cripple", "Magic Ability", "Trigger Happy" ];
+    public string[] _defensiveSkills = [ "Dodge", "Evade", "Sharp Student", "Angelic Grace" ];
 
     // Keys
     private const string _NameKey = "Name";
@@ -18,7 +27,7 @@ public partial class PassiveSkillManager : Node
 
     private const string _PassiveSkillFileName = "PassiveSkills";
 
-    public static void LoadPassiveSkills()
+    private void LoadPassiveSkills()
     {
         GC.Dictionary<string, Variant> passiveSkillData = PersonaAndPuzzles.LoadFile(_PassiveSkillFileName, "Skills").As<GC.Dictionary<string, Variant>>();
         List<GC.Dictionary<string, Variant>> passiveSkillDictionaries = passiveSkillData[_PassiveSkillFileName].As<GC.Array<GC.Dictionary<string, Variant>>>().ToList();
@@ -33,7 +42,7 @@ public partial class PassiveSkillManager : Node
         }
     }
 
-    public static List<PassiveSkill> GetOffensiveSkills(Persona persona)
+    public List<PassiveSkill> GetOffensiveSkills(Persona persona)
     {
         List<PassiveSkill> offensiveSkills = new List<PassiveSkill>();
         foreach (PassiveSkill passiveSkill in persona.PassiveSkills)
@@ -46,7 +55,7 @@ public partial class PassiveSkillManager : Node
         return offensiveSkills;
     }
 
-    public static bool CanApplyOffensiveSkill(Persona persona, PassiveSkill passiveSkill)
+    public bool CanApplyOffensiveSkill(Persona persona, PassiveSkill passiveSkill)
     {
         if (passiveSkill.Name.Contains($"{persona.SkillType}") ||
             _offensiveSkills.Any(skill => skill.Contains(passiveSkill.Name)))
@@ -57,7 +66,7 @@ public partial class PassiveSkillManager : Node
         return false;
     }
 
-    public static List<PassiveSkill> GetDefensiveSkills(Persona persona)
+    public List<PassiveSkill> GetDefensiveSkills(Persona persona)
     {
         List<PassiveSkill> defensiveSkills = new List<PassiveSkill>();
         foreach (PassiveSkill passiveSkill in persona.PassiveSkills)
@@ -70,12 +79,12 @@ public partial class PassiveSkillManager : Node
         return defensiveSkills;
     }
 
-    public static bool CanApplyDefensiveSkill(PassiveSkill passiveSkill)
+    public bool CanApplyDefensiveSkill(PassiveSkill passiveSkill)
     {
         return _defensiveSkills.Any(skill => skill.Contains(passiveSkill.Name));
     }
 
-    public static float GetOffensiveSkill(PassiveSkill passiveSkill)
+    public float GetOffensiveSkill(PassiveSkill passiveSkill)
     {
         if (passiveSkill.Name.Contains("Boost"))
         {
@@ -88,7 +97,7 @@ public partial class PassiveSkillManager : Node
         return 1f;
     }
 
-    public static float GetDefensiveSkill(PassiveSkill passiveSkill)
+    public float GetDefensiveSkill(PassiveSkill passiveSkill)
     {
         if (passiveSkill.Name.Contains("Dodge"))
         {
@@ -101,7 +110,7 @@ public partial class PassiveSkillManager : Node
         return 2f;
     }
 
-    public static PassiveSkill FindPassiveSkill(string targetPassiveSkill)
+    public PassiveSkill FindPassiveSkill(string targetPassiveSkill)
     {
         PassiveSkill passiveSkill = PassiveSkills.Find(skill => skill.Name == targetPassiveSkill);
         return passiveSkill;

@@ -39,14 +39,14 @@ public partial class PrintRich : Node
 
     public static string GetColorHex(TextColor textColor) => textColor switch
 	{
-		TextColor.Red => "B80F0A",
-		TextColor.Orange => "FC6B02",
-		TextColor.Yellow => "E9D66B",
-		TextColor.Green => "76CD26",
-		TextColor.Blue => "6495ED",
-		TextColor.Purple => "CA9BF7",
-		TextColor.Brown => "483C32",
-		_ => "FFFFFF",
+		TextColor.Red => "#B80F0A",
+		TextColor.Orange => "#FC6B02",
+		TextColor.Yellow => "#E9D66B",
+		TextColor.Green => "#76CD26",
+		TextColor.Blue => "#6495ED",
+		TextColor.Purple => "#CA9BF7",
+		TextColor.Brown => "#483C32",
+		_ => "#FFFFFF",
 	};
 
     public static void Print(string text, TextColor textColor)

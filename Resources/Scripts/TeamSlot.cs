@@ -4,6 +4,9 @@ namespace PersonaAndPuzzles;
 
 public partial class TeamSlot : TextureRect
 {
+    [Signal]
+    public delegate void PersonaRemovedEventHandler();
+
     [Export]
     private TextureRect _personaIcon;
 
@@ -18,19 +21,24 @@ public partial class TeamSlot : TextureRect
 
     private bool _isHovering;
     private bool _isMousePressed;
+    private bool _isInteractable = true;
 
     private LoadingBar _loadingBar;
 
     public override void _Ready()
     {
-        MouseEntered += () => _isHovering = true;
+        MouseEntered += OnMouseEntered;
         MouseExited += () => _isHovering = false;
 
-        MouseDefaultCursorShape = Persona == null ? CursorShape.Arrow : CursorShape.PointingHand;
+        MouseDefaultCursorShape = Persona == null || !_isInteractable ? CursorShape.Arrow : CursorShape.PointingHand;
     }
 
     public override void _Process(double delta)
     {
+        if (!_isInteractable) return;
+
+        _isMousePressed = Input.IsMouseButtonPressed(MouseButton.Left);
+
         if (!_isHovering)
         {
             if (Persona == null) return;
@@ -38,21 +46,14 @@ public partial class TeamSlot : TextureRect
             return;
         }
 
-        if (Input.IsMouseButtonPressed(MouseButton.Left) && !_isMousePressed)
+        if (!_isMousePressed && !IsInstanceValid(_loadingBar))
         {
-            _isMousePressed = true;
-
             _loadingBar = PackedScenes.GetLoadingBar();
             _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
             _loadingBar.Connect(LoadingBar.SignalName.Filled, 
                 Callable.From(ShowCompendiumSlotStats));
 
             GetTree().Root.AddChild(_loadingBar);
-        }
-        else if (!Input.IsMouseButtonPressed(MouseButton.Left))
-        {
-            _isMousePressed = false;
-            PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MouseReleased);
         }
     }
 
@@ -66,12 +67,17 @@ public partial class TeamSlot : TextureRect
         // Remove persona from loadout on double click
         if (eventMouseButton.DoubleClick)
         {
-            CompendiumSlot compendiumSlot = GetCompendium().FindCompendiumSlot(Persona);
-            compendiumSlot.ToggleUsage(false);
+            if (GetParent().GetOwner().GetOwner() is Compendium compendium)
+            {
+                CompendiumSlot compendiumSlot = compendium.FindCompendiumSlot(Persona);
+                compendiumSlot.ToggleUsage(false);
+            }
 
             SetPersona(null);
 
-            PersonaManager.SetLoadout(null, Index);
+            PersonaManager.Instance.SetLoadout(null, Index);
+
+            EmitSignal(SignalName.PersonaRemoved);
             return;
         }
     }
@@ -93,7 +99,7 @@ public partial class TeamSlot : TextureRect
 
         if (oldPersona == null)
         {
-            PersonaManager.SetLoadout(newPersona, Index);
+            PersonaManager.Instance.SetLoadout(newPersona, Index);
         }
         else
         {
@@ -101,8 +107,15 @@ public partial class TeamSlot : TextureRect
             CompendiumSlot oldSlot = GetCompendium().FindCompendiumSlot(oldPersona);
             oldSlot.ToggleUsage(false);
 
-            PersonaManager.SetLoadout(newPersona, oldPersona.ID);
+            PersonaManager.Instance.SetLoadout(newPersona, oldPersona.ID);
         }
+    }
+
+    private void OnMouseEntered()
+    {
+        if (_isMousePressed) return;
+
+        _isHovering = true;
     }
 
     public void SetPersona(Persona persona)
@@ -112,13 +125,13 @@ public partial class TeamSlot : TextureRect
         const string UID = "uid://bkmlw2i12i8u8";
         Texture2D circleTexture = GD.Load<Texture2D>(UID);
 
-        _personaIcon.Texture = persona != null ? PersonaManager.GetPersonaImage(persona) : null;
+        _personaIcon.Texture = persona != null ? PersonaManager.Instance.GetPersonaImage(persona) : null;
         _personaIcon.Visible = persona != null;
-        _skillTypeIcon.Texture = persona != null ? SkillOrbManager.GetSkillTypeTexture(persona.SkillType) : circleTexture;
+        _skillTypeIcon.Texture = persona != null ? SkillOrbManager.Instance.GetSkillTypeTexture(persona.SkillType) : circleTexture;
         _skillTypeIcon.SelfModulate = persona != null ? Color.FromHtml("ffffff") /* White */ : Color.FromHtml("666666") /* Dark Gray */;
         _skillTypeIcon.Visible = persona != null;
         _emptyIcon.Visible = persona == null;
-        SelfModulate = persona != null ? SkillOrbManager.GetSkillTypeColor(persona.SkillType) : Color.FromHtml("808080") /* Gray */;
+        SelfModulate = persona != null ? SkillOrbManager.Instance.GetSkillTypeColor(persona.SkillType) : Color.FromHtml("808080") /* Gray */;
     }
 
     private void ShowCompendiumSlotStats()
@@ -131,12 +144,17 @@ public partial class TeamSlot : TextureRect
         mainMenu.AddChild(personaStats);
         mainMenu.MoveChild(personaStats, 2);
 
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
+        Signals.Instance.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
     }
 
     private Compendium GetCompendium()
     {
         PersonaTeam personaTeam = GetParent().GetOwner<PersonaTeam>();
         return personaTeam.GetOwner<Compendium>();
-    } 
+    }
+
+    public void SetInteractable(bool isInteractable)
+    {
+        _isInteractable = isInteractable;
+    }
 }

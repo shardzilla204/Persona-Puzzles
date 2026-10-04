@@ -31,7 +31,7 @@ public partial class VelvetTrialSlot : PersonaSlot
 
     public void IncreasePowerByCombo()
     {
-        Power = Mathf.RoundToInt(Power * 1.1f);
+        Power = Mathf.CeilToInt(Power * 1.1f);
 
         TweenPowerIncrease();
         _powerLabel.Text = Power != 0 ? $"{Power}" : "";
@@ -39,7 +39,7 @@ public partial class VelvetTrialSlot : PersonaSlot
 
     private int GetPowerIncrement()
     {
-        List<PassiveSkill> offensiveSkills = PassiveSkillManager.GetOffensiveSkills(Persona);
+        List<PassiveSkill> offensiveSkills = PassiveSkillManager.Instance.GetOffensiveSkills(Persona);
         if (Persona.SkillType == SkillType.Physical || 
             Persona.SkillType == SkillType.Pierce)
         {

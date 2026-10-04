@@ -1,32 +1,34 @@
+using System.Collections.Generic;
 using Godot;
 
 namespace PersonaAndPuzzles;
 
 public partial class CompendiumEnhance : Control
 {
+    [Signal]
+    public delegate void PersonaUpdatedEventHandler();
     [Export]
     private PersonaEnhance _personaEnhance;
-
-    [Export]
-    private CustomButton _backButton;
-
-    public override void _EnterTree()
-    {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MoveOverlay);
-    }
 
     public override void _Ready()
     {
         _personaEnhance.PersonaLevelMaxed += AddOverclockEnhance;
-        _backButton.Pressed += OnBackButtonPressed;
 
-        AddMaterialEnhance();
+        if (_personaEnhance.Persona.Level >= PersonaManager.Instance.GetMaxLevel(_personaEnhance.Persona))
+        {
+            AddOverclockEnhance();
+        }
+        else
+        {
+            AddMaterialEnhance();
+        }
     }
 
     private void AddMaterialEnhance()
     {
         const string UID = "uid://be0e0p3g5ingh";
         MaterialEnhance materialEnhance = GD.Load<PackedScene>(UID).Instantiate<MaterialEnhance>();
+        materialEnhance.Persona = _personaEnhance.Persona;
         materialEnhance.Connect(MaterialEnhance.SignalName.MaterialsCleared, 
             Callable.From(OnMaterialsCleared));
         materialEnhance.Connect(MaterialEnhance.SignalName.EnhancedPersona, 
@@ -45,8 +47,11 @@ public partial class CompendiumEnhance : Control
 
     private void AddOverclockEnhance()
     {
-        int overclockCount = PersonaManager.GetOverclockCount(_personaEnhance.Persona.Rank);
-        if (_personaEnhance.Persona.Overclock >= overclockCount) return;
+        List<Persona> personas = PersonaManager.Instance.Personas.FindAll(PersonaMatch);
+
+        int overclockCount = PersonaManager.Instance.GetOverclockCount(_personaEnhance.Persona.Rank);
+        if (_personaEnhance.Persona.Overclock >= overclockCount ||
+            personas.Count <= 0) return;
 
         const string UID = "uid://xm335fp66js3";
         OverclockEnhance overclockEnhance = GD.Load<PackedScene>(UID).Instantiate<OverclockEnhance>();
@@ -57,6 +62,11 @@ public partial class CompendiumEnhance : Control
         _personaEnhance.AddSibling(overclockEnhance);
     }
 
+    private bool PersonaMatch(Persona persona)
+    {
+        return persona.Name == _personaEnhance.Persona.Name && persona.ID != _personaEnhance.Persona.ID;
+    }
+
     private void OnMaterialsCleared()
     {
         _personaEnhance.TweenExperience(0);
@@ -65,10 +75,12 @@ public partial class CompendiumEnhance : Control
 
     private void OnEnhancedPersona(int totalExperience)
     {
-        int maxLevel = PersonaManager.GetMaxLevel(_personaEnhance.Persona);
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(_personaEnhance.Persona);
         if (_personaEnhance.Persona.Level >= maxLevel) return;
         
         _personaEnhance.GiveExperience(totalExperience);
+
+        EmitSignal(SignalName.PersonaUpdated);
     }
 
     private void OnMaterialsUpdated(int totalExperience)
@@ -82,7 +94,13 @@ public partial class CompendiumEnhance : Control
         _personaEnhance.Refresh();
         _personaEnhance.RefreshOverclock();
 
-        AddMaterialEnhance();
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(_personaEnhance.Persona);
+        if (_personaEnhance.Persona.Level < maxLevel) 
+        {
+            AddMaterialEnhance();
+        }
+
+        EmitSignal(SignalName.PersonaUpdated);
     }
 
     private int GetExperience(EnhancementMaterial material) => material switch
@@ -101,15 +119,5 @@ public partial class CompendiumEnhance : Control
     public void IsPersonaMaxLevel()
     {
         
-    }
-
-    private void OnBackButtonPressed()
-    {
-        const string UID = "uid://dos6wimuvhfa7";
-        PersonaStats personaStats = GD.Load<PackedScene>(UID).Instantiate<PersonaStats>();
-        personaStats.Set(_personaEnhance.Persona);
-        GetParent().AddChild(personaStats);
-
-        QueueFree();
     }
 }

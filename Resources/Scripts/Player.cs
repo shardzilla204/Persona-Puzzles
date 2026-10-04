@@ -1,68 +1,76 @@
+using System;
 using Godot;
 using Godot.Collections;
-using System;
 
 namespace PersonaAndPuzzles;
 
 public partial class Player : Node
 {
-    public static int Stamina = 100;
-    private static int _MaxStamina = 100;
+    private static readonly Lazy<Player> s_lazy = new Lazy<Player>(() => new Player());
+    public static Player Instance => s_lazy.Value;
 
-    public static int Level = 1;
-    public static int Experience = 0;
+    private Player() {}
 
-    private static int _MaxExperience = 100;
+    public new string Name = "Shardzilla";
+    
+    public int Stamina = 100;
+    public int MaxStamina = 100;
 
-    private static Dictionary<string, int> _Materials = new Dictionary<string, int>()
+    public int Level = 1;
+    public int Experience = 0;
+    public int MaxExperience = 100;
+
+    public int KonpakuGems = 1000;
+
+    private Dictionary<string, int> _Materials = new Dictionary<string, int>()
     {
-        { $"{EnhancementMaterial.Memory}", 100 },
-        { $"{EnhancementMaterial.Anecdote}", 100 },
-        { $"{EnhancementMaterial.Legend}", 100 }
+        { $"{EnhancementMaterial.Memory}", 1000 },
+        { $"{EnhancementMaterial.Anecdote}", 1000 },
+        { $"{EnhancementMaterial.Legend}", 1000 }
     };
 
-    public static bool CanLevelUp()
+    public bool CanLevelUp()
     {
-        return Experience >= _MaxExperience;
+        return Experience >= MaxExperience;
     }
 
-    public static void LevelUp()
+    public void LevelUp()
     {
         const int LinearGrowth = 10;
         const float ExponentialGrowth = 0.1f;
 
         int levels = 0;
-        while (Experience >= _MaxExperience)
+        while (Experience >= MaxExperience)
         {
             levels++;
-            Experience -= _MaxExperience;
+            Experience -= MaxExperience;
 
-            _MaxExperience += LinearGrowth;
-            _MaxExperience = Mathf.RoundToInt(_MaxExperience * ExponentialGrowth);
+            MaxExperience += LinearGrowth;
+            MaxExperience = Mathf.RoundToInt(MaxExperience * ExponentialGrowth);
         }
 
         Level += levels;
     }
 
-    public static void Reset()
+    public void Reset()
     {
         Stamina = 100;
         Level = 1;
         Experience = 0;
     }
 
-    public static void GetStamina()
+    public void GetStamina()
     {
         // For 5 minutes (300 seconds), get 1 stamina
         const int StaminaTimeRatio = 300;
-        if (Stamina >= _MaxStamina) return;
+        if (Stamina >= MaxStamina) return;
 
         Dictionary<string, Variant> offlineData = DataManager.GetData()[DataManager.LastPlayedKey].As<Dictionary<string, Variant>>();
         Dictionary<string, int> timeDifference = GetTimeDifference(offlineData);
     }
 
     // Time Keys: (year, month, day, weekday, hour, minute, second, dst)
-    public static Dictionary<string, int> GetTimeDifference(Dictionary<string, Variant> offlineData)
+    public Dictionary<string, int> GetTimeDifference(Dictionary<string, Variant> offlineData)
     {
         return new Dictionary<string, int>()
         {
@@ -72,7 +80,7 @@ public partial class Player : Node
         };
     }
 
-    private static int CalculateTimeDifference(Dictionary<string, Variant> offlineData, string keyName)
+    private int CalculateTimeDifference(Dictionary<string, Variant> offlineData, string keyName)
     {
         const string TimeKey = "Time";
 
@@ -86,13 +94,45 @@ public partial class Player : Node
         return timeDifference;
     }
 
-    public static int GetMaterialCount(string materialName)
+    public int GetMaterialCount(string materialName)
     {
         return _Materials[materialName];
     }
 
-    public static void SetMaterialCount(string materialName, int count)
+    public void SetMaterialCount(string materialName, int count)
     {
-        _Materials[materialName] = count;
+        _Materials[materialName] = Mathf.Max(0, count);
+    }
+
+    public string GetErrorMessage(VelvetTrial velvetTrial)
+    {
+        string errorMessage = "";
+        if (velvetTrial != null)
+        {
+            if (Stamina < velvetTrial.Stamina)
+            {
+                errorMessage = "Not Enough Stamina";
+            }
+        }
+        
+        if (PersonaManager.Instance.IsOverPersonaCount())
+        {
+            errorMessage = "Too Many Personas In Compendium";
+        }
+
+        if (PersonaManager.Instance.IsLoadoutEmpty())
+        {
+            errorMessage = "At Least One Persona Is Needed";
+        }
+
+        return errorMessage;
+    }
+
+    public void ResetStats()
+    {
+        Level = 1;
+        Experience = 0;
+        MaxExperience = 100;
+        MaxStamina = 100;
     }
 }

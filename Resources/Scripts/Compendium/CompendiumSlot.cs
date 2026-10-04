@@ -19,7 +19,7 @@ public partial class CompendiumSlot : PersonaSlot
 
     public override void _Ready()
     {
-        MouseEntered += () => _isHovering = true;
+        MouseEntered += OnMouseEntered;
         MouseExited += () => _isHovering = false;
 
         SetFavoriteTextureVisibility(Persona.IsFavorite);
@@ -27,17 +27,16 @@ public partial class CompendiumSlot : PersonaSlot
 
     public override void _Process(double delta)
     {
+        _isMousePressed = Input.IsMouseButtonPressed(MouseButton.Left);
+
         if (!_isHovering) 
         {
             if (IsInstanceValid(_loadingBar)) _loadingBar.QueueFree();
             return;
         }
 
-        bool isLeftMouseButtonPressed = Input.IsMouseButtonPressed(MouseButton.Left);
-        if (isLeftMouseButtonPressed && !_isMousePressed)
+        if (!_isMousePressed && !IsInstanceValid(_loadingBar))
         {
-            _isMousePressed = true;
-
             _loadingBar = PackedScenes.GetLoadingBar();
             _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
             _loadingBar.Connect(LoadingBar.SignalName.Filled, 
@@ -45,16 +44,11 @@ public partial class CompendiumSlot : PersonaSlot
 
             GetTree().Root.AddChild(_loadingBar);
         }
-        else if (!isLeftMouseButtonPressed)
-        {
-            _isMousePressed = false;
-            PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MouseReleased);
-        }
     }
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        if (IsInUse) return default;
+        if (IsInUse || !_isHovering) return default;
 
         Control control = new Control();
         CompendiumSlot compendiumSlot = PackedScenes.GetCompendiumSlot(Persona);
@@ -67,20 +61,27 @@ public partial class CompendiumSlot : PersonaSlot
         return this;
     }
 
+    private void OnMouseEntered()
+    {
+        if (_isMousePressed) return;
+
+        _isHovering = true;
+    }
+
     private void OnLoadingBarFilled()
     {
         PersonaStats personaStats = PackedScenes.GetPersonaStats(Persona);
         personaStats.Connect(PersonaStats.SignalName.FavoriteButtonToggled, 
             new Callable(this, MethodName.SetFavoriteTextureVisibility));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas, 
-            Callable.From(personaStats.QueueFree));
 
         Compendium compendium = GetParent().GetOwner<Compendium>();
         Node mainMenu = compendium.GetParent();
         mainMenu.AddChild(personaStats);
         mainMenu.MoveChild(personaStats, 2);
 
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
+        Signals.Instance.EmitSignal(Signals.SignalName.CompendiumSlotLoaded);
+
+        MouseDefaultCursorShape = CursorShape.Arrow;
     }
 
     public override void SetPersona(Persona persona)

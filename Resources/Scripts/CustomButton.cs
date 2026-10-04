@@ -7,9 +7,9 @@ public partial class CustomButton : Button
     [Export]
     private Control _texture;
     
-    const float DarkAmount = 0.2f;
+    protected const float DarkAmount = 0.2f;
 
-    private Color _originalModulate;
+    protected Color _originalModulate;
 
     public override void _Ready()
     {
@@ -20,26 +20,31 @@ public partial class CustomButton : Button
         _originalModulate = Modulate;
 
         MouseDefaultCursorShape = CursorShape.PointingHand;
+
+        if (Disabled)
+        {
+            Modulate = _originalModulate.Darkened(DarkAmount);
+        }
     }
 
-    private void OnMouseEntered()
+    protected virtual void OnMouseEntered()
     {
         if (ButtonPressed || Disabled) return;
 
         Modulate = _originalModulate.Darkened(DarkAmount);
     }
 
-    private void OnMouseExited()
+    protected virtual void OnMouseExited()
     {
         if (ButtonPressed || Disabled) return;
 
         Modulate = _originalModulate;
     }
 
-    private void OnToggled(bool isToggled)
+    protected virtual void OnToggled(bool isToggled)
     {
-        ButtonPressed = isToggled;
         Modulate = isToggled ? _originalModulate.Darkened(DarkAmount) : _originalModulate;
+        ButtonPressed = isToggled;
     }
 
     public void Toggle(bool isToggled)

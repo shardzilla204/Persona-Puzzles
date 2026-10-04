@@ -1,3 +1,4 @@
+using System.Collections;
 using Godot;
 
 namespace PersonaAndPuzzles;
@@ -18,6 +19,9 @@ public partial class PersonaStats : TextureRect
 
     [Export]
     private Label _personaNameLabel;
+
+    [Export]
+    private Label _personaLevelLabel;
 
     [Export]
     private TextureRect _personaPortrait;
@@ -48,7 +52,7 @@ public partial class PersonaStats : TextureRect
     public override void _Ready()
     {
         _favoriteButton.Toggled += OnFavoriteButtonToggled;
-        _exitButton.Pressed += QueueFree;
+        _exitButton.Pressed += OnExitButtonPressed;
         _enhanceButton.Pressed += OnEnhanceButtonPressed;
         _releaseButton.Pressed += OnReleaseButtonPressed;
 
@@ -58,18 +62,30 @@ public partial class PersonaStats : TextureRect
 
     public void Set(Persona persona)
     {
-        Persona = persona;
-
-        _personaNameLabel.Text = persona.Name;
-        _personaPortrait.Texture = PersonaManager.GetPersonaImage(persona);
-
+        SetPersona(persona);
         FillSkillResistances();
         SetStats();
     }
 
-    private void FillSkillResistances()
+    private void OnExitButtonPressed()
     {
-        const string UID = "uid://ep7cjwts3fmn";
+        MainMenu mainMenu = GetParent<MainMenu>();
+        mainMenu.ShowPreviousCanvas();
+
+        QueueFree();
+    }
+
+    private void SetPersona(Persona persona)
+    {
+        Persona = persona;
+
+        _personaNameLabel.Text = persona.Name;
+        _personaLevelLabel.Text = $"Lvl. {persona.Level}";
+        _personaPortrait.Texture = PersonaManager.Instance.GetPersonaImage(persona);
+    }
+
+    private void FillSkillResistances()
+    { string UID = "uid://ep7cjwts3fmn";
 
         foreach (SkillType skillType in Persona.Resistances.Keys)
         {
@@ -85,6 +101,11 @@ public partial class PersonaStats : TextureRect
 
     private void SetStats()
     {
+        foreach (Node child in _statsContainer.GetChildren())
+        {
+            child.QueueFree();
+        }
+
         const string UID = "uid://8kldhwqxuphj";
 
         string[] statAbbreviations = [ "St", "Ma", "En", "Ag", "Lu" ];
@@ -111,8 +132,7 @@ public partial class PersonaStats : TextureRect
 
     private void SetFavoriteButtonModulate(bool isToggled)
     {
-        _favoriteButton.Modulate = isToggled ? new Color("ffe146") /* Gargoyle Gas - Yellow Color */ 
-            : new Color("2c2c2c"); /* Dark Gray */
+        _favoriteButton.Modulate = isToggled ? new Color("#ffe146") : new Color("#2c2c2c");
         
         _favoriteButton.ButtonPressed = isToggled;
     }
@@ -126,16 +146,22 @@ public partial class PersonaStats : TextureRect
 
     private void OnEnhanceButtonPressed()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.ChangedCanvas);
+        Signals.Instance.EmitSignal(Signals.SignalName.ChangedCanvas);
 
         const string UID = "uid://b7m6oh8k6x5w8";
         CompendiumEnhance compendiumEnhance = GD.Load<PackedScene>(UID).Instantiate<CompendiumEnhance>();
         compendiumEnhance.SetPersona(Persona);
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas, 
-            Callable.From(compendiumEnhance.QueueFree));
+        compendiumEnhance.Connect(CompendiumEnhance.SignalName.PersonaUpdated, 
+            Callable.From(OnPersonaUpdated));
         
         AddSibling(compendiumEnhance);
-        QueueFree();
+    }
+
+    private void OnPersonaUpdated()
+    {
+        SetPersona(Persona);
+        SetStats();
+        SetOverclock();
     }
 
     private void OnReleaseButtonPressed()
@@ -156,8 +182,7 @@ public partial class PersonaStats : TextureRect
         string text = $"{Persona.Name} has been released";
         PrintRich.PrintLine(text, TextColor.Yellow);
 
-        PersonaManager.RemovePersona(Persona);
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.PersonaReleased);
+        PersonaManager.Instance.RemovePersona(Persona);
         QueueFree();
     }
 
@@ -168,7 +193,7 @@ public partial class PersonaStats : TextureRect
             child.QueueFree();
         }
         
-        int overclockCount = PersonaManager.GetOverclockCount(Persona.Rank);
+        int overclockCount = PersonaManager.Instance.GetOverclockCount(Persona.Rank);
         int personaOverclock = Persona.Overclock;
         const string UID = "uid://dk2wpe0jpwrhd";
         for (int i = 0; i < overclockCount; i++)

@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://bvuid83fm3r8s"]
+
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="1_13se2"]
+[ext_resource type="Script" uid="uid://dn63d1qijnal2" path="res://Resources/Scripts/VelvetTrialResult.cs" id="1_s1y7s"]
+[ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_s1y7s"]
+[ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_2eyjc"]
+[ext_resource type="Texture2D" uid="uid://bqc624jkytiam" path="res://Assets/Images/Donut.png" id="3_854ct"]
+[ext_resource type="Texture2D" uid="uid://bbitcfjfagh6k" path="res://Assets/Images/KonpakuGems.jpg" id="4_k8j8p"]
+[ext_resource type="Texture2D" uid="uid://qhk4giif3ebr" path="res://Assets/Images/Energy.png" id="7_854ct"]
+
+[node name="VelvetTrialResult" type="ColorRect" unique_id=1090920053 node_paths=PackedStringArray("_statusLabel", "_playerExperience", "_levelLabel", "_experienceProgressBar", "_experienceGainedLabel", "_konpakuGems", "_konpakuGemsLabel", "_capturedPersonas", "_capturedPersonasContainer", "_errorLabel", "_staminaLabel", "_restartButton", "_exitButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_13se2")
+color = Color(0, 0, 0, 0.5)
+script = ExtResource("1_s1y7s")
+_statusLabel = NodePath("MarginContainer/VBoxContainer/StatusLabel")
+_playerExperience = NodePath("MarginContainer/VBoxContainer/PlayerExperience")
+_levelLabel = NodePath("MarginContainer/VBoxContainer/PlayerExperience/ExperienceProgressBar/LevelLabel")
+_experienceProgressBar = NodePath("MarginContainer/VBoxContainer/PlayerExperience/ExperienceProgressBar")
+_experienceGainedLabel = NodePath("MarginContainer/VBoxContainer/PlayerExperience/ExperienceGainedLabel")
+_konpakuGems = NodePath("MarginContainer/VBoxContainer/KonpakuGems")
+_konpakuGemsLabel = NodePath("MarginContainer/VBoxContainer/KonpakuGems/KonpakuGemsLabel")
+_capturedPersonas = NodePath("MarginContainer/VBoxContainer/CapturedPersonas")
+_capturedPersonasContainer = NodePath("MarginContainer/VBoxContainer/CapturedPersonas/CapturedPersonasContainer")
+_errorLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ErrorLabel")
+_staminaLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/StaminaLabel")
+_restartButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RestartButton")
+_exitButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ExitButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=278646834]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=966241185]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 35
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2023635361]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "You win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerExperience" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2078488614]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/separation = 5
+
+[node name="ExperienceProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=525172434]
+custom_minimum_size = Vector2(70, 70)
+custom_maximum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+value = 34.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("3_854ct")
+texture_progress = ExtResource("3_854ct")
+tint_under = Color(0.10980392, 0.12941177, 0.13333334, 1)
+tint_progress = Color(0.18130437, 0.77536637, 0.99999994, 1)
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerExperience/ExperienceProgressBar" unique_id=1800180297]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -10.5
+offset_right = 26.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExperienceGainedLabel" type="Label" parent="MarginContainer/VBoxContainer/PlayerExperience" unique_id=2118264945]
+self_modulate = Color(0.18130437, 0.77536637, 0.99999994, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "+5 EXP"
+horizontal_alignment = 1
+
+[node name="KonpakuGems" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1406310576]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=2119741367]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+texture = ExtResource("4_k8j8p")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KonpakuGemsLabel" type="Label" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=1819887813]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "+5,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CapturedPersonas" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1203098443]
+custom_minimum_size = Vector2(335, 70)
+custom_maximum_size = Vector2(335, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="CapturedPersonasContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CapturedPersonas" unique_id=539224652]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1992124734]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1978577081]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1542201979]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=153194199]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=739288147]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+script = ExtResource("3_2eyjc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RestartButton" unique_id=240313194]
+self_modulate = Color(0.47007585, 0.47007585, 0.47007585, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1y7s")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RestartButton/NinePatchRect" unique_id=412967671]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=998034478]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="StaminaLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=806279184]
+layout_mode = 2
+theme = ExtResource("1_13se2")
+theme_override_font_sizes/font_size = 16
+text = "5"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=260945844]
+self_modulate = Color(1, 0.88235295, 0.27450982, 1)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_854ct")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ErrorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=768381589]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Too Many Personas In Compendium"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=736572531]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+script = ExtResource("3_2eyjc")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ExitButton" unique_id=1944517619]
+self_modulate = Color(0.41215247, 0.41215247, 0.41215247, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1y7s")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ExitButton/NinePatchRect" unique_id=1507896657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1

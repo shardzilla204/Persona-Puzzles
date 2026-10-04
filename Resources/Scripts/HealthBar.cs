@@ -36,7 +36,10 @@ public abstract partial class HealthBar : TextureProgressBar
         Tween tween = CreateTween().SetTrans(Tween.TransitionType.Quad);
         tween.TweenProperty(this, "value", targetValue, TweenDuration);
         tween.Finished += () => Value = targetValue;
-        
+
         await ToSignal(tween, Tween.SignalName.Finished);
+
+        Value = targetValue;
+        HasDepleted();
     }
 }

@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://8kldhwqxuphj"]
 
 [ext_resource type="Script" uid="uid://bx6h70dspcjjk" path="res://Resources/Scripts/Compendium/PersonaStat.cs" id="1_d758p"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="1_dyo12"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xa1n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al12o"]
-bg_color = Color(0.72, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="PersonaStat" type="HBoxContainer" unique_id=885807991 node_paths=PackedStringArray("_statTypeLabel", "_statValueLabel", "_statProgressBar")]
+theme = ExtResource("1_dyo12")
+theme_override_constants/separation = 0
 script = ExtResource("1_d758p")
 _statTypeLabel = NodePath("StatTypeLabel")
 _statValueLabel = NodePath("StatValueLabel")
@@ -20,13 +23,17 @@ _statProgressBar = NodePath("StatProgressBar")
 [node name="StatTypeLabel" type="Label" parent="." unique_id=834342279]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "St"
 
 [node name="StatValueLabel" type="Label" parent="." unique_id=1208766929]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "50"
 
 [node name="StatProgressBar" type="ProgressBar" parent="." unique_id=803043434]
+self_modulate = Color(0.9019608, 0.22352941, 0.28235295, 1)
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 size_flags_horizontal = 3

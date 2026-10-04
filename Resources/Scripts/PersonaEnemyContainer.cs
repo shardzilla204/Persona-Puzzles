@@ -28,9 +28,9 @@ public partial class PersonaEnemyContainer : Container
             Variant captureRate = personaDictionary.TryGetValue(CaptureRateKey, out _);
 
             // Create the Persona with set level
-            Persona persona = PersonaManager.GetPersonaByName(personaName);
+            Persona persona = PersonaManager.Instance.GetPersonaByName(personaName);
             Persona personaClone = new Persona(persona);
-            PersonaManager.SetLevel(personaClone, personaLevel);
+            PersonaManager.Instance.SetLevel(personaClone, personaLevel);
 
             PersonaEnemy personaEnemy = GD.Load<PackedScene>(UID).Instantiate<PersonaEnemy>();
             personaEnemy.Persona = personaClone;
@@ -62,7 +62,7 @@ public partial class PersonaEnemyContainer : Container
     {
         foreach (Persona persona in CapturedPersona)
         {
-            PersonaManager.Personas.Add(persona);
+            PersonaManager.Instance.Personas.Add(persona);
         }
     }
 

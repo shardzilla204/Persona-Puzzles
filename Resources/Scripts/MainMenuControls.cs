@@ -20,13 +20,13 @@ public partial class MainMenuControls : TextureRect
 
     public override void _EnterTree()
     {
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumScrollStarted,
+        Signals.Instance.Connect(Signals.SignalName.CompendiumScrollStarted,
             Callable.From(OnCompendiumScrollStarted));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumScrollEnded,
+        Signals.Instance.Connect(Signals.SignalName.CompendiumScrollEnded,
             Callable.From(OnCompendiumScrollEnded));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.MoveOverlay,
+        Signals.Instance.Connect(Signals.SignalName.MoveOverlay,
             Callable.From(MoveOverlayToFront));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas,
+        Signals.Instance.Connect(Signals.SignalName.ChangedCanvas,
             Callable.From(OnChangedCanvas));
     }
 
@@ -58,13 +58,13 @@ public partial class MainMenuControls : TextureRect
 
     public void ShowVelvetTrialsCanvas()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.ChangedCanvas);
+        Signals.Instance.EmitSignal(Signals.SignalName.ChangedCanvas);
 
         const string UID = "uid://yt0i4u74spq3";
         VelvetTrialSelection velvetTrialSelection = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialSelection>();
         velvetTrialSelection.Connect(VelvetTrialSelection.SignalName.Started, 
             new Callable(this, MethodName.ShowTrialInterface));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas, 
+        Signals.Instance.Connect(Signals.SignalName.ChangedCanvas, 
             Callable.From(velvetTrialSelection.QueueFree));
 
         EmitSignal(SignalName.ButtonPressed, velvetTrialSelection, (int) CanvasType.VelvetTrials);
@@ -74,11 +74,11 @@ public partial class MainMenuControls : TextureRect
 
     public void ShowCompendiumCanvas()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.ChangedCanvas);
+        Signals.Instance.EmitSignal(Signals.SignalName.ChangedCanvas);
 
         const string UID = "uid://33kln8bdgqr5";
         Compendium compendium = GD.Load<PackedScene>(UID).Instantiate<Compendium>();
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.ChangedCanvas, 
+        Signals.Instance.Connect(Signals.SignalName.ChangedCanvas, 
             Callable.From(compendium.QueueFree));
 
         EmitSignal(SignalName.ButtonPressed, compendium, (int) CanvasType.Compendium);
@@ -88,7 +88,7 @@ public partial class MainMenuControls : TextureRect
 
     public void ShowFusionCanvas()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.ChangedCanvas);
+        Signals.Instance.EmitSignal(Signals.SignalName.ChangedCanvas);
         // const string UID = "";
 
         // Connect(SignalName.ChangedCanvas, Callable.From(compendium.QueueFree));
@@ -115,5 +115,7 @@ public partial class MainMenuControls : TextureRect
         VelvetTrialInterface velvetTrialInterface = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialInterface>();
         velvetTrialInterface.VelvetTrial = velvetTrial;
         GetTree().Root.AddChild(velvetTrialInterface);
+
+        Player.Instance.Stamina -= velvetTrial.Stamina;
     }
 }

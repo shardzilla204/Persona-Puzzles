@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dh4oubl86yeye" path="res://Resources/Scripts/MainMenuControls.cs" id="2_0evc1"]
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="2_g0jdb"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_0evc1"]
+[ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="5_t68y8"]
 
 [node name="MainMenuControls" type="TextureRect" unique_id=1703215953 node_paths=PackedStringArray("_velvetTrialsButton", "_compendiumButton", "_fusionButton")]
 self_modulate = Color(0.35906908, 0.35906908, 0.35906908, 1)
@@ -44,6 +45,7 @@ script = ExtResource("3_0evc1")
 _texture = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VelvetTrialsButton" unique_id=1457374356]
+self_modulate = Color(0.54901963, 0.54901963, 0.54901963, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,9 +71,9 @@ theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VelvetTrialsButton/TextureRect/MarginContainer" unique_id=357734533]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
+theme = ExtResource("5_t68y8")
 theme_override_font_sizes/font_size = 12
 text = "Velvet Trials"
 horizontal_alignment = 1
@@ -88,6 +90,7 @@ script = ExtResource("3_0evc1")
 _texture = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CompendiumButton" unique_id=613586265]
+self_modulate = Color(0.54901963, 0.54901963, 0.54901963, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,9 +116,9 @@ theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/CompendiumButton/TextureRect/MarginContainer" unique_id=304500518]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
+theme = ExtResource("5_t68y8")
 theme_override_font_sizes/font_size = 12
 text = "Compendium"
 horizontal_alignment = 1
@@ -132,6 +135,7 @@ script = ExtResource("3_0evc1")
 _texture = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/FusionButton" unique_id=322566646]
+self_modulate = Color(0.54901963, 0.54901963, 0.54901963, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,9 +161,9 @@ theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/FusionButton/TextureRect/MarginContainer" unique_id=2075673918]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 1
+theme = ExtResource("5_t68y8")
 theme_override_font_sizes/font_size = 12
 text = "Fusion"
 horizontal_alignment = 1

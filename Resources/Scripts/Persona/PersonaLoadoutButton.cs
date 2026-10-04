@@ -51,7 +51,7 @@ public partial class PersonaLoadoutButton : Button
 
     public void SetLoadout(int LoadoutIndex)
     {
-        _Loadout = PersonaManager.Loadouts[LoadoutIndex];
+        _Loadout = PersonaManager.Instance.Loadouts[LoadoutIndex];
     }
 
     private void FillTeamSlotContainer()
@@ -60,6 +60,7 @@ public partial class PersonaLoadoutButton : Button
         foreach (Persona persona in _Loadout.Personas)
         {
             TeamSlot teamSlot = GD.Load<PackedScene>(UID).Instantiate<TeamSlot>();
+            teamSlot.SetInteractable(false);
             teamSlot.SetPersona(persona);
             _teamSlotContainer.AddChild(teamSlot);
         }
@@ -75,12 +76,12 @@ public partial class PersonaLoadoutButton : Button
 
     private void OnLoadoutNameEditConfirmed(string name)
     {
-        if (_Loadout.Index == PersonaManager.Loadout.Index)
+        if (_Loadout.Index == PersonaManager.Instance.Loadout.Index)
         {
-            PersonaManager.Loadout.Name = name;
+            PersonaManager.Instance.Loadout.Name = name;
         }
 
-        PersonaManager.Loadouts[_Loadout.Index].Name = name;
+        PersonaManager.Instance.Loadouts[_Loadout.Index].Name = name;
 
         _nameLabel.Text = name;
 

@@ -27,7 +27,7 @@ public partial class OverclockEnhance : TextureRect
 
     private void AddEnhanceSlots()
     {
-        List<Persona> personas = PersonaManager.Personas.FindAll(persona => persona.Name == Persona.Name && persona.ID != Persona.ID);
+        List<Persona> personas = PersonaManager.Instance.Personas.FindAll(persona => persona.Name == Persona.Name && persona.ID != Persona.ID);
 
         const string UID = "uid://c3ax22hnrv1lm";
         foreach (Persona persona in personas)
@@ -53,12 +53,19 @@ public partial class OverclockEnhance : TextureRect
     {
         if (_selectedSlot == null) return;
 
-        PersonaManager.Personas.Remove(_selectedSlot.Persona);
+        PersonaManager.Instance.RemovePersona(_selectedSlot.Persona);
         _selectedSlot.QueueFree();
 
         Persona.Overclock++;
 
         EmitSignal(SignalName.Overclocked);
+
+        List<Persona> personas = PersonaManager.Instance.Personas.FindAll(persona => persona.Name == Persona.Name && persona.ID != Persona.ID);
+        
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(Persona);
+        int overclockCount = PersonaManager.Instance.GetOverclockCount(Persona.Rank);
+        if (Persona.Level > maxLevel && personas.Count > 0 && Persona.Overclock < overclockCount) return;
+
         QueueFree();
     }
 }

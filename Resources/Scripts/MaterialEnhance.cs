@@ -24,17 +24,23 @@ public partial class MaterialEnhance : TextureRect
     [Export]
     private CustomButton _enhanceButton;
 
+    [Export]
+    private CustomButton _maxButton;
+
+    public Persona Persona;
+
     private Dictionary<EnhancementMaterial, int> _materials = new Dictionary<EnhancementMaterial, int>()
     {
-        { EnhancementMaterial.Memory, 0 },
+        { EnhancementMaterial.Legend, 0 },
         { EnhancementMaterial.Anecdote, 0 },
-        { EnhancementMaterial.Legend, 0 }
+        { EnhancementMaterial.Memory, 0 }
     };
 
     public override void _Ready()
     {
         _clearButton.Pressed += OnClearButtonPressed;
         _enhanceButton.Pressed += OnEnhanceButtonPressed;
+        _maxButton.Pressed += OnMaxButtonPressed;
 
         AddMaterialCounters();
     }
@@ -52,19 +58,59 @@ public partial class MaterialEnhance : TextureRect
 
     private void OnEnhanceButtonPressed()
     {
-        int totalExperience = GetTotalExperience();
+        int totalExperience = GetTotalExperience(_materials);
         EmitSignal(SignalName.EnhancedPersona, totalExperience);
 
         foreach (EnhancementMaterialCounter materialCounter in _materialCounters.GetChildren())
         {
-            materialCounter.Reset();
-            _materials[materialCounter.Material] = 0;
-
             string materialName = $"{materialCounter.Material}";
             int materialCount = _materials[materialCounter.Material];
-            int playerMaterialCount = Player.GetMaterialCount(materialName);
+            int playerMaterialCount = Player.Instance.GetMaterialCount(materialName);
             int difference = playerMaterialCount - materialCount;
-            Player.SetMaterialCount(materialName, difference);
+            Player.Instance.SetMaterialCount(materialName, difference);
+
+            materialCounter.Reset();
+            _materials[materialCounter.Material] = 0;
+        }
+
+        foreach (EnhancementMaterialCounter materialCounter in _materialCounters.GetChildren())
+        {
+            int materialCount = Player.Instance.GetMaterialCount($"{materialCounter.Material}");
+            GD.Print($"Material Count: {materialCounter.Material} {materialCount}");
+        }
+    }
+
+    private void OnMaxButtonPressed()
+    {
+        bool isMaxed = false;
+        Dictionary<EnhancementMaterial, int> materials = new Dictionary<EnhancementMaterial, int>(_materials);
+        foreach (EnhancementMaterial material in materials.Keys)
+        {
+            int materialCount = Player.Instance.GetMaterialCount($"{material}");
+            while (++materials[material] <= materialCount || 
+                materialCount - materials[material] == 0)
+            {
+                int experience = GetTotalExperience(materials);
+                int levels = PersonaManager.Instance.GetLevels(Persona, experience);
+                if (Persona.Level + levels >= PersonaManager.Instance.GetMaxLevel(Persona))
+                {
+                    isMaxed = true;
+                    break;
+                }
+            }
+            if (isMaxed) break;
+        }
+        
+        foreach (EnhancementMaterial material in materials.Keys)
+        {
+            int amount = materials[material];
+            SetMaterialAmount(material, amount);
+        }
+
+        foreach (EnhancementMaterialCounter materialCounter in _materialCounters.GetChildren())
+        {
+            int amount = materials[materialCounter.Material];
+            materialCounter.SetAmount(amount);
         }
     }
 
@@ -96,17 +142,17 @@ public partial class MaterialEnhance : TextureRect
     {
         _materials[material] = amount;
 
-        int totalExperience = GetTotalExperience();
+        int totalExperience = GetTotalExperience(_materials);
         EmitSignal(SignalName.MaterialsUpdated, totalExperience);
     }
 
-    private int GetTotalExperience()
+    private int GetTotalExperience(Dictionary<EnhancementMaterial, int> materials)
     {
         int totalExperience = 0;
-        foreach (EnhancementMaterial material in _materials.Keys)
+        foreach (EnhancementMaterial material in materials.Keys)
         {
-            int amount = _materials[material];
-            totalExperience += PersonaManager.GetMaterialExperience(material) * amount;
+            int amount = materials[material];
+            totalExperience += PersonaManager.Instance.GetMaterialExperience(material) * amount;
         }
         return totalExperience;
     }

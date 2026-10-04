@@ -36,6 +36,8 @@ public partial class VelvetTrialInterface : Control
     public VelvetTrial VelvetTrial;
     private int _waveIndex = 0;
 
+    private bool _hasWon;
+
     public override void _EnterTree()
     {
         SetSkillTypePool();
@@ -47,7 +49,7 @@ public partial class VelvetTrialInterface : Control
         _skillOrbGrid.SkillTypeIncreasedBySkillOrbs += IncreasePowerBySkillOrbs;
         _skillOrbGrid.SkillTypeIncreasedByCombo += IncreasePowerByCombo;
         _skillOrbGrid.FinishedCombos += StartCombatAsync;
-        _playerHealthBar.Depleted += ShowLoseStatus;
+        _playerHealthBar.Depleted += ShowStatus;
         _exitButton.Pressed += ShowConfirmation;
 
         VelvetTrialWave firstWave = VelvetTrial.Waves[_waveIndex];
@@ -189,8 +191,10 @@ public partial class VelvetTrialInterface : Control
     private void SetSkillTypePool()
     {
         List<SkillType> skillTypes = new List<SkillType>();
-        foreach (Persona persona in PersonaManager.Loadout.Personas)
+        foreach (Persona persona in PersonaManager.Instance.Loadout.Personas)
         {
+            if (persona == null) continue;
+            
             SkillType skillType = persona.SkillType;
             skillTypes.Add(skillType);
         }
@@ -220,16 +224,32 @@ public partial class VelvetTrialInterface : Control
         _skillOrbGrid.SkillTypePool = distinctSkillTypes;
     }
 
+    private void GivePlayerRewards()
+    {
+        _personaEnemyContainer.GetCapturedPersonas();
+        Player.Instance.KonpakuGems += VelvetTrial.KonpakuGems;
+        GivePlayerExperience();
+    }
+
+    private void GivePlayerExperience()
+    {
+        Player.Instance.Experience += VelvetTrial.Experience;
+
+        if (!Player.Instance.CanLevelUp()) return;
+        
+        Player.Instance.LevelUp();
+    }
+
     public void NextWave()
     {
         _waveIndex++;
         if (_waveIndex >= VelvetTrial.Waves.Count)
         {
+            _hasWon = true;
             EmitSignal(SignalName.TrialCompleted);
 
-            const string WinStatus = "You Win!";
-            ShowStatus(WinStatus);
-            _personaEnemyContainer.GetCapturedPersonas();
+            GivePlayerRewards();
+            ShowStatus();
 
             return;
         }
@@ -237,22 +257,30 @@ public partial class VelvetTrialInterface : Control
         VelvetTrialWave wave = VelvetTrial.Waves[_waveIndex];
         _personaEnemyContainer.AddEnemies(wave);
     }
-
-    private void ShowLoseStatus()
-    {
-        const string LoseStatus = "You Lose!";
-        ShowStatus(LoseStatus);
-    }
     
-    private void ShowStatus(string status)
+    private void ShowStatus()
     {
-        const string UID = "uid://bvuid83fm3r8s";
-        VelvetTrialStatus velvetTrialStatus = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialStatus>();
-        velvetTrialStatus.Restarted += RestartVelvetTrial;
-        velvetTrialStatus.Exited += ExitVelvetTrial;
-        AddChild(velvetTrialStatus);
+        string status = _hasWon ? "You Win!" : "You Lose!";
+        string errorMessage = Player.Instance.GetErrorMessage(VelvetTrial);
 
-        velvetTrialStatus.SetStatusLabel(status);
+        const string UID = "uid://bvuid83fm3r8s";
+        VelvetTrialResult velvetTrialResult = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialResult>();
+        velvetTrialResult.VelvetTrial = VelvetTrial;
+        velvetTrialResult.DisableRestartButton(errorMessage);
+        velvetTrialResult.Restarted += RestartVelvetTrial;
+        velvetTrialResult.Exited += ExitVelvetTrial;
+        AddChild(velvetTrialResult);
+
+        velvetTrialResult.SetStatusLabel(status);
+        if (_hasWon)
+        {
+            velvetTrialResult.AddCapturedPersonas(_personaEnemyContainer.CapturedPersona);
+        }
+        else
+        {
+            velvetTrialResult.SetLoss();
+        }
+
         _exitButton.Visible = false;
         _skillOrbGrid.IsGamePaused = true;
     }
@@ -285,6 +313,8 @@ public partial class VelvetTrialInterface : Control
         VelvetTrialInterface velvetTrialInterface = GD.Load<PackedScene>(UID).Instantiate<VelvetTrialInterface>();
         velvetTrialInterface.VelvetTrial = VelvetTrial;
         GetTree().Root.AddChild(velvetTrialInterface);
+
+        Player.Instance.Stamina -= VelvetTrial.Stamina;
 
         QueueFree();
     }

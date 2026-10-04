@@ -26,9 +26,9 @@ public partial class Compendium : Control
 
     public override void _EnterTree()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MoveOverlay);
+        Signals.Instance.EmitSignal(Signals.SignalName.MoveOverlay);
 
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.PersonaReleased, 
+        Signals.Instance.Connect(Signals.SignalName.PersonaRemoved,
             Callable.From(Refresh));
     }
 
@@ -41,23 +41,21 @@ public partial class Compendium : Control
         _slotContainer.MouseEntered += () => _isHovered = true;
         _slotContainer.MouseExited += () => _isHovered = false;
         
+        FilterPersonas();
         SetCountLabelText();
-
-        Fill(PersonaManager.Personas);
         CallDeferred(MethodName.SetScrollBar); // Starts when the compendium has finished loading
     }
 
     private void Refresh()
     {
-        Clear();
-        Fill(PersonaManager.Personas);
+        FilterPersonas();
         SetCountLabelText();
     }
 
     private void SetCountLabelText()
     {
-        string personaCountText = PersonaManager.Personas.Count > PersonaManager.MaxPersonas ? $"[color='e63948']{PersonaManager.Personas.Count}[/color]" : $"{PersonaManager.Personas.Count}";
-        _personaCountLabel.Text = $"{personaCountText} / {PersonaManager.MaxPersonas}";
+        string personaCountText = PersonaManager.Instance.Personas.Count > PersonaManager.Instance.MaxPersonas ? $"[color='e63948']{PersonaManager.Instance.Personas.Count}[/color]" : $"{PersonaManager.Instance.Personas.Count}";
+        _personaCountLabel.Text = $"{personaCountText} / {PersonaManager.Instance.MaxPersonas}";
     }
 
     // When swiping down = Move container up
@@ -82,7 +80,7 @@ public partial class Compendium : Control
     //         _scrollBar.Value += dragValue;
     //     }
 
-    //     PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumScrollStarted);
+    //     Signals.Instance.EmitSignal(Signals.SignalName.CompendiumScrollStarted);
     // }
 
     public override void _Input(InputEvent @event)
@@ -101,7 +99,7 @@ public partial class Compendium : Control
         foreach (Persona persona in personas)
         {
             CompendiumSlot compendiumSlot = PackedScenes.GetCompendiumSlot(persona);
-            if (PersonaManager.Loadout.Personas.Contains(persona))
+            if (PersonaManager.Instance.Loadout.Personas.Contains(persona))
             {
                 compendiumSlot.ToggleUsage(true);
             }
@@ -154,7 +152,7 @@ public partial class Compendium : Control
     //     {
     //         _isMousePressed = false;
 
-    //         PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.CompendiumScrollEnded);
+    //         Signals.Instance.EmitSignal(Signals.SignalName.CompendiumScrollEnded);
     //     }
     // }
 
@@ -193,34 +191,34 @@ public partial class Compendium : Control
         return Slots.Find(slot => slot.Persona.ID == persona.ID);
     }
 
-    public void OnCompendiumFilterConfirmed(string targetSkillType, string targetFavorite, string targetStatType)
+    public void FilterPersonas()
     {
         Clear();
         
-        List<Persona> personas = [..PersonaManager.Personas];
-        if (targetSkillType != "All")
+        List<Persona> personas = [..PersonaManager.Instance.Personas];
+        if (PersonaManager.Instance.SkillTypeFilter != "All")
         {
-            SkillType skillType = Enum.Parse<SkillType>(targetSkillType);
+            SkillType skillType = Enum.Parse<SkillType>(PersonaManager.Instance.SkillTypeFilter);
             List<Persona> skillTypePersonas = personas.FindAll(persona => persona.SkillType == skillType);
             personas = [..skillTypePersonas];
         }
         
-        if (targetFavorite == "Favorite")
+        if (PersonaManager.Instance.FavoriteFilter == "Favorite")
         {
             List<Persona> favorite = personas.FindAll(persona => persona.IsFavorite == true);
             personas = [..favorite];
         }
-        else if (targetFavorite == "Unfavorite")
+        else if (PersonaManager.Instance.FavoriteFilter == "Unfavorite")
         {
             List<Persona> unfavorite = personas.FindAll(persona => persona.IsFavorite == false);
             personas = [..unfavorite];
         }
         
-        if (targetStatType != "All")
+        if (PersonaManager.Instance.StatTypeFilter != "All")
         {
             // 0 = Stat Type
             // 1 = State
-            string[] statTypeStrings = targetStatType.Split("|");
+            string[] statTypeStrings = PersonaManager.Instance.StatTypeFilter.Split("|");
             StatType statType = Enum.Parse<StatType>(statTypeStrings[0]);
             string state = statTypeStrings[1];
             bool isAscending = state == StatTypeFilterOption.AscendingState;

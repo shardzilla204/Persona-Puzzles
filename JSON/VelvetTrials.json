@@ -7,13 +7,15 @@
             [
                 [
                     {
-                        "Name": "Jack Frost",
-                        "Level": 15,
+                        "Name": "Pixie",
+                        "Level": 5,
                         "CaptureRate": 1
                     }
                 ]
             ],
-            "Experience": 10
+            "Experience": 10,
+            "Stamina": 5,
+            "KonpakuGems": 1000
         },
         {
             "ID": 1,
@@ -22,27 +24,29 @@
                 [
                     {
                         "Name": "Jack Frost",
-                        "Level": 15,
+                        "Level": 10,
                         "CaptureRate": 1
                     },
                     {
-                        "Name": "Pyro Jack",
-                        "Level": 20
+                        "Name": "Hua Po",
+                        "Level": 8
                     }
                 ],
                 [
                     {
-                        "Name": "King Frost",
-                        "Level": 25
+                        "Name": "Orobas",
+                        "Level": 13
                     },
                     {
-                        "Name": "Lilim",
-                        "Level": 23
+                        "Name": "Pyro Jack",
+                        "Level": 9
                     }
                 ]
             ]
             ,
-            "Experience": 15
+            "Experience": 15,
+            "Stamina": 5,
+            "KonpakuGems": 1500
         },
         {
             "ID": 2,
@@ -50,26 +54,28 @@
             [
                 [
                     {
-                        "Name": "Ganesha",
-                        "Level": 15
+                        "Name": "Agathion",
+                        "Level": 6
                     },
                     {
-                        "Name": "Vishnu",
-                        "Level": 15
+                        "Name": "Bicorn",
+                        "Level": 10
                     },
                     {
-                        "Name": "Garuda",
-                        "Level": 20
+                        "Name": "Yaksini",
+                        "Level": 15
                     }
                 ],
                 [
                     {
                         "Name": "Isis",
-                        "Level": 30
+                        "Level": 25
                     }
                 ]
             ],
-            "Experience": 20
+            "Experience": 20,
+            "Stamina": 5,
+            "KonpakuGems": 2000
         },
         {
             "ID": 3,
@@ -77,16 +83,26 @@
             [
                 [
                     {
-                        "Name": "Ganesha",
+                        "Name": "Obariyon",
+                        "Level": 7
+                    },
+                    {
+                        "Name": "Pixie",
                         "Level": 15
                     },
                     {
-                        "Name": "Vishnu",
+                        "Name": "Silky",
+                        "Level": 12
+                    }
+                ],
+                [
+                    {
+                        "Name": "Archangel",
                         "Level": 15
                     },
                     {
-                        "Name": "Garuda",
-                        "Level": 20
+                        "Name": "Ame-no-Uzume",
+                        "Level": 17
                     }
                 ],
                 [
@@ -96,7 +112,9 @@
                     }
                 ]
             ],
-            "Experience": 25
+            "Experience": 25,
+            "Stamina": 5,
+            "KonpakuGems": 2500
         },
         {
             "ID": 4,
@@ -104,26 +122,48 @@
             [
                 [
                     {
-                        "Name": "Ganesha",
-                        "Level": 15
+                        "Name": "Anzu",
+                        "Level": 27
                     },
                     {
-                        "Name": "Vishnu",
-                        "Level": 15
-                    },
-                    {
-                        "Name": "Garuda",
-                        "Level": 20
+                        "Name": "Shiisaa",
+                        "Level": 14
                     }
                 ],
                 [
                     {
-                        "Name": "Isis",
-                        "Level": 30
+                        "Name": "Flauros",
+                        "Level": 21
+                    },
+                    {
+                        "Name": "Leanan Sidhe",
+                        "Level": 19
+                    }
+                ],
+                [
+                    {
+                        "Name": "Kin-ki",
+                        "Level": 26
+                    },
+                    {
+                        "Name": "Slime",
+                        "Level": 12
+                    }
+                ],
+                [
+                    {
+                        "Name": "Eligor",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Angel",
+                        "Level": 10
                     }
                 ]
             ],
-            "Experience": 30
+            "Experience": 30,
+            "Stamina": 5,
+            "KonpakuGems": 5000
         },
         {
             "ID": 5,
@@ -150,7 +190,9 @@
                     }
                 ]
             ],
-            "Experience": 35
+            "Experience": 35,
+            "Stamina": 10,
+            "KonpakuGems": 7500
         },
         {
             "ID": 6,
@@ -177,7 +219,96 @@
                     }
                 ]
             ],
-            "Experience": 40
+            "Experience": 40,
+            "Stamina": 10,
+            "KonpakuGems": 10000
+        },
+        {
+            "ID": 7,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 40,
+            "Stamina": 10,
+            "KonpakuGems": 15000
+        },
+        {
+            "ID": 8,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 40,
+            "Stamina": 10,
+            "KonpakuGems": 20000
+        },
+        {
+            "ID": 9,
+            "Waves":
+            [
+                [
+                    {
+                        "Name": "Ganesha",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Vishnu",
+                        "Level": 15
+                    },
+                    {
+                        "Name": "Garuda",
+                        "Level": 20
+                    }
+                ],
+                [
+                    {
+                        "Name": "Isis",
+                        "Level": 30
+                    }
+                ]
+            ],
+            "Experience": 40,
+            "Stamina": 10,
+            "KonpakuGems": 25000
         }
     ]
 }

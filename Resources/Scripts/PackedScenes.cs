@@ -35,11 +35,11 @@ public partial class PackedScenes : Node
     {
         const string UID = "uid://cmrji3nqlmrgc";
         TextureRect dragCircle = GD.Load<PackedScene>(UID).Instantiate<TextureRect>();
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumScrollEnded, 
+        Signals.Instance.Connect(Signals.SignalName.CompendiumScrollEnded, 
             Callable.From(dragCircle.QueueFree));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.LoadingBarFilling, 
+        Signals.Instance.Connect(Signals.SignalName.LoadingBarFilling, 
             Callable.From(dragCircle.QueueFree));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumSlotLoaded, 
+        Signals.Instance.Connect(Signals.SignalName.CompendiumSlotLoaded, 
             Callable.From(dragCircle.QueueFree));
 
         return dragCircle;

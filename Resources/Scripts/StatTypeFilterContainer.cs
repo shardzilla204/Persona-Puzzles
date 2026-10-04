@@ -6,7 +6,7 @@ namespace PersonaAndPuzzles;
 
 public partial class StatTypeFilterContainer : FilterContainer
 {
-    private enum Filter
+    public enum Filter
     {
         All,
         Strength,

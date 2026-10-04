@@ -12,12 +12,11 @@ public partial class LoadingBar : TextureProgressBar
 
     private bool _hasTimeout = false;
 
-
     public override void _Ready()
     {
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.MouseReleased, 
+        Signals.Instance.Connect(Signals.SignalName.MouseReleased, 
             Callable.From(QueueFree));
-        PersonaAndPuzzles.Signals.Connect(Signals.SignalName.CompendiumScrollStarted, 
+        Signals.Instance.Connect(Signals.SignalName.CompendiumScrollStarted, 
             Callable.From(QueueFree));
 
         ValueChanged += OnValueChanged;
@@ -44,6 +43,6 @@ public partial class LoadingBar : TextureProgressBar
     private void OnTimeout()
     {
         _hasTimeout = true;
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.LoadingBarFilling);
+        Signals.Instance.EmitSignal(Signals.SignalName.LoadingBarFilling);
     }
 }

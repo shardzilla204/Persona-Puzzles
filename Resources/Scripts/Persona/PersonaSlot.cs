@@ -15,17 +15,17 @@ public partial class PersonaSlot : TextureRect
     public virtual void SetPersona(Persona persona)
     {
         Persona = persona;
-        _personaIcon.Texture = PersonaManager.GetPersonaImage(persona);
+        _personaIcon.Texture = PersonaManager.Instance.GetPersonaImage(persona);
 
         SetSkillType(persona.SkillType);
     }
 
     private void SetSkillType(SkillType skillType)
     {
-        Color skillTypeColor = SkillOrbManager.GetSkillTypeColor(skillType);
+        Color skillTypeColor = SkillOrbManager.Instance.GetSkillTypeColor(skillType);
         SelfModulate = skillTypeColor;
 
-        Texture2D skillTypeTexture = SkillOrbManager.GetSkillTypeTexture(skillType);
+        Texture2D skillTypeTexture = SkillOrbManager.Instance.GetSkillTypeTexture(skillType);
         _skillTypeIcon.Texture = skillTypeTexture;
     }
 }

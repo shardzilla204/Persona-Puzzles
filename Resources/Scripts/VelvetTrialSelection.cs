@@ -17,35 +17,31 @@ public partial class VelvetTrialSelection : Control
     private CustomButton _startButton;
 
     [Export]
+    private PersonaTeam _personaTeam;
+
+    [Export]
     private Label _errorLabel;
 
     private VelvetTrial _velvetTrial;
-    private bool _isOverMaxPersonaCount;
 
     public override void _EnterTree()
     {
-        PersonaAndPuzzles.Signals.EmitSignal(Signals.SignalName.MoveOverlay);
+        Signals.Instance.EmitSignal(Signals.SignalName.MoveOverlay);
     }
 
     public override void _Ready()
     {
-        _isOverMaxPersonaCount = PersonaManager.Personas.Count > PersonaManager.MaxPersonas;
-        
-        Color targetModulate = _isOverMaxPersonaCount ? new Color("ff5645") : new Color("68c255");
-        _startButton.SetModulate(targetModulate);
-
         _startButton.Pressed += StartVelvetTrial;
-        
-        foreach (VelvetTrialButton trialButton in _buttonContainer.Buttons)
-        {
-            trialButton.Selected += OnTrialSelected;
-        }
+        _personaTeam.PersonaRemoved += Refresh;
+        _personaTeam.LoadoutSelected += Refresh;
+        _buttonContainer.TrialSelected += OnTrialSelected;
 
-        VelvetTrialButton firstTrialButton = _buttonContainer.Buttons[0];
+        VelvetTrialButton firstTrialButton = _buttonContainer.GetFirstButton();
+        firstTrialButton.Toggle(true);
         _velvetTrial = firstTrialButton.VelvetTrial;
         _trialInfo.SetVelvetTrial(firstTrialButton.VelvetTrial);
 
-        SetErrorLabel();
+        Refresh();
     }
 
     private void OnTrialSelected(VelvetTrial velvetTrial)
@@ -56,14 +52,40 @@ public partial class VelvetTrialSelection : Control
 
     private void StartVelvetTrial()
     {
-        if (_isOverMaxPersonaCount) return;
+        string errorMessage = Player.Instance.GetErrorMessage(_velvetTrial);
+        bool isMessageEmpty = string.IsNullOrEmpty(errorMessage);
+        if (!isMessageEmpty) 
+        {
+            // Show error message
+            SetStartButton(errorMessage);
+            return;
+        }
 
         EmitSignal(SignalName.Started, _velvetTrial);
     }
 
-    private void SetErrorLabel()
+    private void SetStartButton(string errorMessage = "")
     {
-        _errorLabel.Visible = _isOverMaxPersonaCount;
-        _errorLabel.Text = "Too Many Personas In Compendium";
+        bool isMessageEmpty = string.IsNullOrEmpty(errorMessage);
+
+        Color targetModulate = isMessageEmpty ? new Color("#68c255") : new Color("#ff5645");
+        _startButton.SetModulate(targetModulate);
+        
+        _errorLabel.Visible = !isMessageEmpty;
+        _errorLabel.Text = errorMessage;
+    }
+
+    private void Refresh()
+    {
+        string errorMessage = Player.Instance.GetErrorMessage(_velvetTrial);
+        bool isMessageEmpty = string.IsNullOrEmpty(errorMessage);
+        if (!isMessageEmpty) 
+        {
+            SetStartButton(errorMessage);
+        }
+        else
+        {
+            SetStartButton(); 
+        }
     }
 }

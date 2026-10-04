@@ -40,8 +40,6 @@ public partial class EnhancementMaterialCounter : VBoxContainer
         ToggleButtons();
 
         EmitSignal(SignalName.AmountChanged, (int) Material, _amount);
-
-        SetAmountText();
     }
 
     private bool IsPersonaMaxLevel()
@@ -50,15 +48,19 @@ public partial class EnhancementMaterialCounter : VBoxContainer
         return true;
     }
 
-    private void SetAmount(int amount)
+    public void SetAmount(int amount)
     {
-        int maxCount = Player.GetMaterialCount($"{Material}");
-        _amount = Mathf.Clamp(amount, _MinCount, maxCount);
+        GD.Print($"Amount: {amount}");
+        int maxCount = Player.Instance.GetMaterialCount($"{Material}");
+        _amount = maxCount != 0 ? Mathf.Clamp(amount, _MinCount, maxCount) : 0;
+        GD.Print($"Amount After: {_amount}");
+
+        _amountLabel.Text = $"{_amount}";
     }
 
     private void ToggleButtons()
     {
-        int maxCount = Player.GetMaterialCount($"{Material}");
+        int maxCount = Player.Instance.GetMaterialCount($"{Material}");
 
         ToggleButton(_increaseButton, false);
         ToggleButton(_decreaseButton, false);
@@ -71,11 +73,6 @@ public partial class EnhancementMaterialCounter : VBoxContainer
         {
             ToggleButton(_increaseButton, true);
         }
-    }
-
-    private void SetAmountText()
-    {
-        _amountLabel.Text = $"{_amount}";
     }
 
     public void SetMaterial(EnhancementMaterial material)
@@ -97,8 +94,7 @@ public partial class EnhancementMaterialCounter : VBoxContainer
 
     public void Reset()
     {
-        _amount = 0;
-        SetAmountText();
+        SetAmount(0);
         ToggleButtons();
     }
 
@@ -111,7 +107,7 @@ public partial class EnhancementMaterialCounter : VBoxContainer
     {
         button.Disabled = isToggled;
 
-        Color targetModulate = isToggled ? new Color("bfbfbf") : Colors.White;
+        Color targetModulate = isToggled ? new Color("#bfbfbf") : Colors.White;
         button.Modulate = targetModulate;
     }
 }

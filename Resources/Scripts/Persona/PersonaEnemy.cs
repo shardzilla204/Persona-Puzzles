@@ -34,7 +34,7 @@ public partial class PersonaEnemy : Container
 
     public override void _Ready()
     {
-        _personaTexture.Texture = PersonaManager.GetPersonaImage(Persona);
+        _personaTexture.Texture = PersonaManager.Instance.GetPersonaImage(Persona);
         _cardTexture.Scale = Vector2.Zero;
         
         _targetButton.Toggled += OnTargetButtonToggled;
