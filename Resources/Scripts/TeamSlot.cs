@@ -46,7 +46,7 @@ public partial class TeamSlot : TextureRect
             return;
         }
 
-        if (!_isMousePressed && !IsInstanceValid(_loadingBar))
+        if (_isMousePressed && !IsInstanceValid(_loadingBar))
         {
             _loadingBar = PackedScenes.GetLoadingBar();
             _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
@@ -54,6 +54,10 @@ public partial class TeamSlot : TextureRect
                 Callable.From(ShowCompendiumSlotStats));
 
             GetTree().Root.AddChild(_loadingBar);
+        }
+        else if (!_isMousePressed && IsInstanceValid(_loadingBar))
+        {
+            _loadingBar.QueueFree();
         }
     }
 

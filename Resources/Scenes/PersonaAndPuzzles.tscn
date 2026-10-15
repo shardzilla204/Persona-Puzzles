@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://c6g5gvhd0csxb"]
 
 [ext_resource type="Script" uid="uid://ydxdlppjqgw2" path="res://Resources/Scripts/PersonaAndPuzzles.cs" id="1_tmg12"]
+[ext_resource type="Script" uid="uid://dscy7c1uq7m1p" path="res://Resources/Scripts/DataManager.cs" id="3_tmg12"]
+[ext_resource type="Script" uid="uid://6rbbau7mmnb" path="res://Resources/Scripts/StaminaManager.cs" id="4_5ylad"]
 [ext_resource type="Script" uid="uid://dhqhjpxig8e8y" path="res://Resources/Scripts/PrintRich.cs" id="4_6rlup"]
 
 [node name="PersonaAndPuzzles" type="Node" unique_id=111975351]
 script = ExtResource("1_tmg12")
 _startingPersonaCount = 25
-_extraLoadouts = 2
+_extraLoadouts = 9
 _personaLevel = 99
 
 [node name="PrintRich" type="Node" parent="." unique_id=1584710415]
 script = ExtResource("4_6rlup")
+
+[node name="DataManager" type="Node" parent="." unique_id=371522735]
+script = ExtResource("3_tmg12")
+
+[node name="StaminaManager" type="Node" parent="." unique_id=47402877]
+script = ExtResource("4_5ylad")

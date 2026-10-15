@@ -16,6 +16,9 @@ public enum EnhancementMaterial
 
 public partial class PersonaAndPuzzles : Node
 {
+	[Export]
+	private bool _getRandomPersonas = false;
+	
 	[Export(PropertyHint.Range, "0,25,1")]
 	private int _startingPersonaCount = 0;
 
@@ -47,6 +50,12 @@ public partial class PersonaAndPuzzles : Node
 		ExtraLoadouts = _extraLoadouts;
 		OverridePersonaLevel = _overridePersonaLevel;
 		PersonaLevel = _personaLevel;
+
+		if (_getRandomPersonas)
+		{
+			PersonaManager.Instance.AddRandomPersonas();
+			PersonaManager.Instance.SetRandomLoadout();
+		}
     }
 
     public static Variant LoadFile(string fileName, string folderName = "")
@@ -68,8 +77,11 @@ public partial class PersonaAndPuzzles : Node
 			GC.Dictionary<string, Variant> dictionaries = json.Data.As<GC.Dictionary<string, Variant>>();
 			return dictionaries;
 		}
-		catch
+		catch (Exception exception)
 		{
+			GD.PrintErr(exception);
+            GD.Print();
+			
 			string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
 			string message = $"Couldn't Parse File - {fileName}";
 			string result = "Returning Default/Null";

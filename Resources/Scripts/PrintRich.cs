@@ -1,4 +1,5 @@
 using Godot;
+using GC = Godot.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -140,7 +141,21 @@ public partial class PrintRich : Node
         string personaStats = $"{personaStrength}{personaMagic}{personaEndurance}{personaAgility}{personaLuck}";
 
         string personaString = $"{personaID}{personaName}{personaSkillType}{personaLevel}{personaRank}{personaStats}";
-        Print(personaString, TextColor.Yellow);
-        GD.Print(); // Spacing
+        PrintLine(personaString, TextColor.Yellow);
+    }
+
+    public static void PrintStamina(int staminaGained, GC.Dictionary<string, int> timeDifference)
+    {
+        int hours = timeDifference["hour"];
+        int minutes = timeDifference["minute"];
+        int seconds = timeDifference["second"];
+
+        string hourString = $"Hours: {hours}\n";
+        string minuteString = $"Minutes: {minutes}\n";
+        string secondString = $"Seconds: {seconds}";
+
+        string timeString = $"{hourString}{minuteString}{secondString}";
+        string message = $"Total Offline Time: {timeString} | Stamina Gained: {staminaGained}";
+        PrintLine(message, TextColor.Yellow);
     }
 }

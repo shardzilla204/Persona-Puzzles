@@ -5,15 +5,18 @@
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="3_84c2n"]
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="4_qbjmd"]
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="5_6omi2"]
+[ext_resource type="Texture2D" uid="uid://bbitcfjfagh6k" path="res://Assets/Images/KonpakuGems.jpg" id="6_4dedq"]
 
-[node name="OverclockEnhance" type="TextureRect" unique_id=1132321644 node_paths=PackedStringArray("_enhanceSlotContainer", "_overclockButton")]
+[node name="OverclockEnhance" type="TextureRect" unique_id=1132321644 node_paths=PackedStringArray("_enhanceSlotContainer", "_overclockButton", "_konpakuGemsLabel")]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(500, 190)
+theme = ExtResource("5_6omi2")
 texture = ExtResource("1_rhb3c")
 expand_mode = 1
 script = ExtResource("2_4dedq")
 _enhanceSlotContainer = NodePath("MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/EnhanceSlotContainer")
 _overclockButton = NodePath("MarginContainer/VBoxContainer/OverclockButton")
+_konpakuGemsLabel = NodePath("MarginContainer/VBoxContainer/KonpakuGems/KonpakuGemsLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1526233556]
 layout_mode = 1
@@ -45,6 +48,25 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 alignment = 1
 
+[node name="KonpakuGems" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=507090021]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=166343350]
+custom_minimum_size = Vector2(71, 25)
+layout_mode = 2
+texture = ExtResource("6_4dedq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KonpakuGemsLabel" type="Label" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=2037885230]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "5,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="OverclockButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1436440085]
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
@@ -74,7 +96,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_6omi2")
 theme_override_font_sizes/font_size = 16
 text = "Overclock"
 horizontal_alignment = 1

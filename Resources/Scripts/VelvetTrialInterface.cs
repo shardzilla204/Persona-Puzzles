@@ -226,7 +226,7 @@ public partial class VelvetTrialInterface : Control
 
     private void GivePlayerRewards()
     {
-        _personaEnemyContainer.GetCapturedPersonas();
+        _personaEnemyContainer.AddCapturedPersonas();
         Player.Instance.KonpakuGems += VelvetTrial.KonpakuGems;
         GivePlayerExperience();
     }

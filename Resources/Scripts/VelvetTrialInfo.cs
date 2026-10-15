@@ -49,7 +49,7 @@ public partial class VelvetTrialInfo : Container
         foreach (Dictionary<string, Variant> personaDictionary in personaDictionaries)
         {
             string personaName = personaDictionary[NameKey].As<string>();
-            Persona persona = PersonaManager.Instance.GetPersonaByName(personaName);
+            Persona persona = PersonaManager.Instance.FindPersonaByName(personaName);
             if (persona == null) continue;
             
             VelvetTrialPersona velvetTrialPersona = GetVelvetTrialPersona(persona);

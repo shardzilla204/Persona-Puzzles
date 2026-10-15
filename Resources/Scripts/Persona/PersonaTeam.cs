@@ -94,7 +94,12 @@ public partial class PersonaTeam : TextureRect
 
     private void OnLoadoutSelected(int loadoutIndex)
     {
-        _nameLabel.Text = PersonaManager.Instance.Loadouts[loadoutIndex].Name;
+        PersonaLoadout loadout = PersonaManager.Instance.Loadouts[loadoutIndex];
+        
+        string message = $"Loadout Changed To {loadout.Name} | {loadout.Index}";
+        PrintRich.PrintLine(message, TextColor.Blue);
+
+        _nameLabel.Text = loadout.Name;
 
         Refresh();
 

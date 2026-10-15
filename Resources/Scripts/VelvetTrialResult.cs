@@ -101,6 +101,7 @@ public partial class VelvetTrialResult : ColorRect
             foreach (Persona persona in capturedPersonas)
             {
                 CompendiumSlot slot = GD.Load<PackedScene>(UID).Instantiate<CompendiumSlot>();
+                slot.IsLevelVisible = false;
                 slot.SetPersona(persona);
 
                 _capturedPersonasContainer.AddChild(slot);

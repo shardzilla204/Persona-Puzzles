@@ -14,6 +14,7 @@ public partial class CompendiumSlot : PersonaSlot
     private bool _isMousePressed;
 
     public bool IsInUse;
+    public bool IsLevelVisible = true;
 
     private LoadingBar _loadingBar;
 
@@ -21,6 +22,8 @@ public partial class CompendiumSlot : PersonaSlot
     {
         MouseEntered += OnMouseEntered;
         MouseExited += () => _isHovering = false;
+
+        _personaLevelLabel.Visible = IsLevelVisible;
 
         SetFavoriteTextureVisibility(Persona.IsFavorite);
     }
@@ -35,7 +38,7 @@ public partial class CompendiumSlot : PersonaSlot
             return;
         }
 
-        if (!_isMousePressed && !IsInstanceValid(_loadingBar))
+        if (_isMousePressed && !IsInstanceValid(_loadingBar))
         {
             _loadingBar = PackedScenes.GetLoadingBar();
             _loadingBar.GlobalPosition = GetGlobalMousePosition() - _loadingBar.Size / 2;
@@ -43,6 +46,10 @@ public partial class CompendiumSlot : PersonaSlot
                 Callable.From(OnLoadingBarFilled));
 
             GetTree().Root.AddChild(_loadingBar);
+        }
+        else if (!_isMousePressed && IsInstanceValid(_loadingBar))
+        {
+            _loadingBar.QueueFree();
         }
     }
 

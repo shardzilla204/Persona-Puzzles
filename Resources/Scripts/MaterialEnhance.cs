@@ -27,6 +27,9 @@ public partial class MaterialEnhance : TextureRect
     [Export]
     private CustomButton _maxButton;
 
+    [Export]
+    private Label _konpakuGemsLabel;
+
     public Persona Persona;
 
     private Dictionary<EnhancementMaterial, int> _materials = new Dictionary<EnhancementMaterial, int>()
@@ -43,6 +46,7 @@ public partial class MaterialEnhance : TextureRect
         _maxButton.Pressed += OnMaxButtonPressed;
 
         AddMaterialCounters();
+        SetKonpakuGemsText();
     }
 
     private void OnClearButtonPressed()
@@ -54,10 +58,17 @@ public partial class MaterialEnhance : TextureRect
         }
 
         EmitSignal(SignalName.MaterialsCleared);
+
+        SetKonpakuGemsText();
     }
 
     private void OnEnhanceButtonPressed()
     {
+        int totalCost = GetTotalCost();
+        if (Player.Instance.KonpakuGems < totalCost) return;
+
+        Player.Instance.KonpakuGems -= totalCost;
+
         int totalExperience = GetTotalExperience(_materials);
         EmitSignal(SignalName.EnhancedPersona, totalExperience);
 
@@ -78,6 +89,8 @@ public partial class MaterialEnhance : TextureRect
             int materialCount = Player.Instance.GetMaterialCount($"{materialCounter.Material}");
             GD.Print($"Material Count: {materialCounter.Material} {materialCount}");
         }
+
+        SetKonpakuGemsText();
     }
 
     private void OnMaxButtonPressed()
@@ -138,12 +151,31 @@ public partial class MaterialEnhance : TextureRect
         }
     }
 
+    private void SetKonpakuGemsText()
+    {
+        int totalCost = GetTotalCost();
+        _konpakuGemsLabel.Text = $"{totalCost:N0}";
+    }
+
+    private int GetTotalCost()
+    {
+        int totalCost = 0;
+        foreach (EnhancementMaterial material in _materials.Keys)
+        {
+            int amount = _materials[material];
+            totalCost += PersonaManager.Instance.GetMaterialCost(material) * amount;
+        }
+        return totalCost;
+    }
+
     private void SetMaterialAmount(EnhancementMaterial material, int amount)
     {
         _materials[material] = amount;
 
         int totalExperience = GetTotalExperience(_materials);
         EmitSignal(SignalName.MaterialsUpdated, totalExperience);
+
+        SetKonpakuGemsText();
     }
 
     private int GetTotalExperience(Dictionary<EnhancementMaterial, int> materials)

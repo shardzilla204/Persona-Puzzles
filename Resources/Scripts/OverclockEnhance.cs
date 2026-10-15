@@ -14,6 +14,9 @@ public partial class OverclockEnhance : TextureRect
     [Export]
     private CustomButton _overclockButton;
 
+    [Export]
+    private Label _konpakuGemsLabel;
+
     public Persona Persona;
 
     private CompendiumEnhanceSlot _selectedSlot;
@@ -21,6 +24,9 @@ public partial class OverclockEnhance : TextureRect
     public override void _Ready()
     {
         _overclockButton.Pressed += OnOverclockButtonPressed;
+
+        int overclockCost = PersonaManager.Instance.GetOverclockCost(Persona.Rank);
+        _konpakuGemsLabel.Text = $"{overclockCost:N0}";
 
         AddEnhanceSlots();
     }
@@ -51,7 +57,10 @@ public partial class OverclockEnhance : TextureRect
 
     private void OnOverclockButtonPressed()
     {
-        if (_selectedSlot == null) return;
+        int overclockCost = PersonaManager.Instance.GetOverclockCost(Persona.Rank);
+
+        if (_selectedSlot == null || 
+            Player.Instance.KonpakuGems < overclockCost) return;
 
         PersonaManager.Instance.RemovePersona(_selectedSlot.Persona);
         _selectedSlot.QueueFree();
@@ -64,7 +73,9 @@ public partial class OverclockEnhance : TextureRect
         
         int maxLevel = PersonaManager.Instance.GetMaxLevel(Persona);
         int overclockCount = PersonaManager.Instance.GetOverclockCount(Persona.Rank);
-        if (Persona.Level > maxLevel && personas.Count > 0 && Persona.Overclock < overclockCount) return;
+        if (Persona.Level > maxLevel && 
+            personas.Count > 0 && 
+            Persona.Overclock < overclockCount) return;
 
         QueueFree();
     }

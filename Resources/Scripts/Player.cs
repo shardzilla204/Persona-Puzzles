@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 
@@ -21,6 +23,17 @@ public partial class Player : Node
     public int MaxExperience = 100;
 
     public int KonpakuGems = 1000;
+
+    public int LoadoutIndex;
+
+    private const string _NameKey = "Name";
+    private const string _ExperienceKey = "Experience";
+    private const string _LevelKey = "Level";
+    private const string _StaminaKey = "Stamina";
+    private const string _MaxStaminaKey = "MaxStamina";
+    private const string _KonpakuGemsKey = "KonpakuGems";
+    private const string _MaterialsKey = "Materials";
+    private const string _AmountKey = "Amount";
 
     private Dictionary<string, int> _Materials = new Dictionary<string, int>()
     {
@@ -57,41 +70,6 @@ public partial class Player : Node
         Stamina = 100;
         Level = 1;
         Experience = 0;
-    }
-
-    public void GetStamina()
-    {
-        // For 5 minutes (300 seconds), get 1 stamina
-        const int StaminaTimeRatio = 300;
-        if (Stamina >= MaxStamina) return;
-
-        Dictionary<string, Variant> offlineData = DataManager.GetData()[DataManager.LastPlayedKey].As<Dictionary<string, Variant>>();
-        Dictionary<string, int> timeDifference = GetTimeDifference(offlineData);
-    }
-
-    // Time Keys: (year, month, day, weekday, hour, minute, second, dst)
-    public Dictionary<string, int> GetTimeDifference(Dictionary<string, Variant> offlineData)
-    {
-        return new Dictionary<string, int>()
-        {
-            { "hour", CalculateTimeDifference(offlineData, "hour") },
-            { "minute", CalculateTimeDifference(offlineData, "minute") },
-            { "second", CalculateTimeDifference(offlineData, "second") },
-        };
-    }
-
-    private int CalculateTimeDifference(Dictionary<string, Variant> offlineData, string keyName)
-    {
-        const string TimeKey = "Time";
-
-        Dictionary currentTime = Time.GetDatetimeDictFromSystem();
-        Dictionary previousTime = offlineData[TimeKey].As<Dictionary>();
-
-        int current = currentTime[keyName].As<int>();
-        int previous = previousTime[keyName].As<int>();
-
-        int timeDifference = current - previous < 0 ? current : current - previous;
-        return timeDifference;
     }
 
     public int GetMaterialCount(string materialName)
@@ -134,5 +112,72 @@ public partial class Player : Node
         Experience = 0;
         MaxExperience = 100;
         MaxStamina = 100;
+    }
+
+    public Dictionary<string, Variant> GetData()
+    {
+        return new Dictionary<string, Variant>()
+        {
+            { _NameKey, Name },
+            { _ExperienceKey, Experience },
+            { _LevelKey, Level },
+            { _StaminaKey, Stamina },
+            { _MaxStaminaKey, MaxStamina },
+            { _KonpakuGemsKey, KonpakuGems },
+            { _MaterialsKey, GetMaterialsData() }
+        };
+    }
+
+    private Array<Variant> GetMaterialsData()
+    {
+        Array<Variant> materialsData = new Array<Variant>();
+        foreach (string material in _Materials.Keys)
+        {
+            Dictionary<string, Variant> materialData = new Dictionary<string, Variant>()
+            {
+                { _NameKey, material },  
+                { _AmountKey, _Materials[material] }
+            };
+            materialsData.Add(materialData);
+        }
+        return materialsData;
+    }
+
+    public async Task SetData(Dictionary<string, Variant> data)
+    {
+        try
+        {
+            Name = data[_NameKey].As<string>();
+            Experience = data[_ExperienceKey].As<int>();
+            Level = data[_LevelKey].As<int>();
+            Stamina = data[_StaminaKey].As<int>();
+            MaxStamina = data[_MaxStaminaKey].As<int>();
+            KonpakuGems = data[_KonpakuGemsKey].As<int>();
+
+            Array<Variant> materialsData = data[_MaterialsKey].As<Array<Variant>>();
+            SetMaterialsData(materialsData);
+
+            string message = "Player Data Successfully Loaded";
+            PrintRich.PrintLine(message, TextColor.Purple);
+        }
+        catch (Exception exception)
+        {
+            GD.PrintErr(exception);
+            GD.Print();
+            
+            string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
+            string message = "Player Data Couldn't Be Loaded";
+            PrintRich.PrintError(className, message);
+        }
+    }
+
+    private void SetMaterialsData(Array<Variant> materialsData)
+    {
+        foreach (Dictionary<string, Variant> materialData in materialsData)
+        {
+            string materialName = materialData[_NameKey].As<string>();
+            int materialAmount = materialData[_AmountKey].As<int>();
+            _Materials[materialName] = materialAmount;
+        }
     }
 }
