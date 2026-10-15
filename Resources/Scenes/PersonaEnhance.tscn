@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_1eafh"]
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="6_navnq"]
 [ext_resource type="PackedScene" uid="uid://bumychidhgdfu" path="res://Resources/Scenes/PersonaSlot.tscn" id="6_rrub2"]
+[ext_resource type="Texture2D" uid="uid://bbitcfjfagh6k" path="res://Assets/Images/KonpakuGems.jpg" id="6_yhpm3"]
 [ext_resource type="Texture2D" uid="uid://cr048kic4egrn" path="res://Assets/Images/Cross.png" id="7_yhpm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h2qh"]
@@ -23,12 +24,13 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="PersonaEnhance" type="TextureRect" unique_id=346973846 node_paths=PackedStringArray("_personaSlot", "_personaNameLabel", "_personaLevelLabel", "_experienceLabel", "_initialProgressBar", "_finalProgressBar", "_overclockContainer", "_exitButton")]
+[node name="PersonaEnhance" type="TextureRect" unique_id=346973846 node_paths=PackedStringArray("_personaSlot", "_personaNameLabel", "_personaLevelLabel", "_experienceLabel", "_initialProgressBar", "_finalProgressBar", "_overclockContainer", "_exitButton", "_konpakuGemsLabel")]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
 custom_minimum_size = Vector2(0, 100)
 offset_top = 71.0
 offset_right = 500.0
 offset_bottom = 171.0
+theme = ExtResource("6_1eafh")
 texture = ExtResource("1_lb4u8")
 expand_mode = 1
 script = ExtResource("2_navnq")
@@ -39,7 +41,8 @@ _experienceLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxCon
 _initialProgressBar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/FinalProgressBar/InitialProgressBar")
 _finalProgressBar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/FinalProgressBar")
 _overclockContainer = NodePath("MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/OverclockContainer")
-_exitButton = NodePath("MarginContainer/ExitButton")
+_exitButton = NodePath("MarginContainer/HBoxContainer2/ExitButton")
+_konpakuGemsLabel = NodePath("MarginContainer/HBoxContainer2/KonpakuGems/KonpakuGemsLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1964202193]
 layout_mode = 1
@@ -170,7 +173,31 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jjqqf")
 value = 25.0
 show_percentage = false
 
-[node name="ExitButton" type="Button" parent="MarginContainer" unique_id=367459714]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer" unique_id=139745419]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="KonpakuGems" type="HBoxContainer" parent="MarginContainer/HBoxContainer2" unique_id=1400890364]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/KonpakuGems" unique_id=1123566470]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+texture = ExtResource("6_yhpm3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KonpakuGemsLabel" type="Label" parent="MarginContainer/HBoxContainer2/KonpakuGems" unique_id=2034625550]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "10,000 "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer2" unique_id=367459714]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -180,7 +207,7 @@ theme_override_font_sizes/font_size = 35
 flat = true
 script = ExtResource("6_navnq")
 
-[node name="NinePatchRect" type="TextureRect" parent="MarginContainer/ExitButton" unique_id=1726476883]
+[node name="NinePatchRect" type="TextureRect" parent="MarginContainer/HBoxContainer2/ExitButton" unique_id=1726476883]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

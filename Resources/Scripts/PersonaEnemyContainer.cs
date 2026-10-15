@@ -28,7 +28,7 @@ public partial class PersonaEnemyContainer : Container
             Variant captureRate = personaDictionary.TryGetValue(CaptureRateKey, out _);
 
             // Create the Persona with set level
-            Persona persona = PersonaManager.Instance.GetPersonaByName(personaName);
+            Persona persona = PersonaManager.Instance.FindPersonaByName(personaName);
             Persona personaClone = new Persona(persona);
             PersonaManager.Instance.SetLevel(personaClone, personaLevel);
 
@@ -55,10 +55,11 @@ public partial class PersonaEnemyContainer : Container
     
     private void OnEnemyCaptured(PersonaEnemy enemy)
     {
+        enemy.Persona.Level = 1;
         CapturedPersona.Add(enemy.Persona);
     }
 
-    public void GetCapturedPersonas()
+    public void AddCapturedPersonas()
     {
         foreach (Persona persona in CapturedPersona)
         {

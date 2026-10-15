@@ -12,21 +12,21 @@ public partial class PersonaLoadout : Node
         Index = index;
     }
 
-    public PersonaLoadout(PersonaLoadout Loadout)
+    public PersonaLoadout(PersonaLoadout loadout)
     {
-        Name = Loadout.Name;
-        Personas.AddRange(Loadout.Personas);
+        Name = loadout.Name;
+        Personas.AddRange(loadout.Personas);
     }
     
     public int Index = 0;
     public List<Persona> Personas = new List<Persona>();
     public List<Persona> Reserves = new List<Persona>();
 
-    public void ChangeLoadout(PersonaLoadout Loadout)
+    public void ChangeLoadout(PersonaLoadout loadout)
     {
-        Name = Loadout.Name;
+        Name = loadout.Name;
         Personas.Clear();
-        Personas.AddRange(Loadout.Personas);
+        Personas.AddRange(loadout.Personas);
     }
 
     public void Swap(Persona newPersona, int slotIndex)

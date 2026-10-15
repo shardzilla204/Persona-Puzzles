@@ -34,7 +34,7 @@ public partial class PlayerInformation : TextureRect
         string experienceNotated = PersonaAndPuzzles.GetNotation(Player.Instance.Experience);
         string maxExperienceNotated = PersonaAndPuzzles.GetNotation(Player.Instance.MaxExperience);
         _experienceLabel.Text = $"{experienceNotated}/{maxExperienceNotated}";
-        _staminaLabel.Text = $"{Player.Instance.Stamina}/{Player.Instance.MaxStamina}";
+        SetStaminaLabelText();
 
         _experienceLabel.Visible = false;
         _staminaLabel.Visible = false;
@@ -45,11 +45,11 @@ public partial class PlayerInformation : TextureRect
         _staminaProgressBar.Value = Player.Instance.Stamina;
         _staminaProgressBar.MaxValue = Player.Instance.MaxStamina;
 
-        _experienceProgressBar.MouseEntered += OnMouseEnteredExperienceBar;
-        _experienceProgressBar.MouseExited += OnMouseExitedExperienceBar;
+        _experienceProgressBar.MouseEntered += ShowExperience;
+        _experienceProgressBar.MouseExited += HideExperience;
 
-        _staminaProgressBar.MouseEntered += OnMouseEnteredStaminaBar;
-        _staminaProgressBar.MouseExited += OnMouseExitedStaminaBar;
+        _staminaProgressBar.MouseEntered += ShowStamina;
+        _staminaProgressBar.MouseExited += HideStamina;
     }
 
     public override void _Process(double delta)
@@ -65,27 +65,49 @@ public partial class PlayerInformation : TextureRect
         }
     }
 
-    private void OnMouseEnteredExperienceBar()
+    private void ShowExperience()
     {
         _experienceLabel.Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Hidden;
     }
 
-    private void OnMouseExitedExperienceBar()
+    private void HideExperience()
     {
         _experienceLabel.Visible = false;
         Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
-    private void OnMouseEnteredStaminaBar()
+    private void ShowStamina()
     {
+        SetStaminaLabelText();
+
+        Timer timer = new Timer()
+        {
+            WaitTime = 1,
+            Autostart = true
+        };
+        timer.Connect(Timer.SignalName.Timeout, 
+            Callable.From(SetStaminaLabelText));
+        _staminaProgressBar.Connect(Control.SignalName.MouseExited, 
+            Callable.From(timer.QueueFree));
+        _staminaLabel.AddChild(timer);
+
         _staminaLabel.Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Hidden;
     }
 
-    private void OnMouseExitedStaminaBar()
+    private void HideStamina()
     {
         _staminaLabel.Visible = false;
         Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+
+    private void SetStaminaLabelText()
+    {
+        string timeFormatted = StaminaManager.Instance.GetTimeFormatted();
+        string text = $"{Player.Instance.Stamina}/{Player.Instance.MaxStamina}";
+
+        text += StaminaManager.Instance.IsStaminaFull() ? "" : $" ({timeFormatted})";
+        _staminaLabel.Text = $"{text}";
     }
 }

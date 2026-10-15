@@ -37,26 +37,29 @@ public partial class PersonaLoadouts : Control
         FillLoadoutsContainer();
     }
 
-    public void ChangeLoadout(PersonaLoadout Loadout)
+    public void ChangeLoadout(PersonaLoadout loadout)
     {
         Compendium compendium = FindCompendium();
         if (compendium != null)
         {
-            compendium.SetSlotUsage(Loadout); // Update the visuals first
+            compendium.SetSlotUsage(loadout); // Update the visuals first
         }
 
-        PersonaManager.Instance.Loadout.ChangeLoadout(Loadout);
-        EmitSignal(SignalName.LoadoutSelected, Loadout.Index);
+        PersonaManager.Instance.Loadout.ChangeLoadout(loadout);
+        PersonaManager.Instance.LoadoutIndex = loadout.Index;
+        EmitSignal(SignalName.LoadoutSelected, loadout.Index);
+
         QueueFree();
     }
 
     private Compendium FindCompendium()
     {
+        const string CompendiumKey = "Compendium";
         Node mainMenu = GetParent();
-        bool hasCompendiumNode = mainMenu.HasNode("Compendium");
+        bool hasCompendiumNode = mainMenu.HasNode(CompendiumKey);
         if (!hasCompendiumNode) return null;
         
-        Compendium compendium = mainMenu.GetNode<Compendium>("Compendium");
+        Compendium compendium = mainMenu.GetNode<Compendium>(CompendiumKey);
         return compendium;
     }
 

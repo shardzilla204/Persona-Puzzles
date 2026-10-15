@@ -11,7 +11,7 @@ public partial class PlayerHealthBar : HealthBar
 
     private void SetMaxHealth()
     {
-        const int Multiplier = 1;
+        const int Multiplier = 5;
         
         int endurance = 0;
         foreach (Persona persona in PersonaManager.Instance.Loadout.Personas)

@@ -38,6 +38,9 @@ public partial class PersonaEnhance : Control
     [Export]
     private CustomButton _exitButton;
 
+    [Export]
+    private Label _konpakuGemsLabel;
+
     public Persona Persona;
 
     public override void _Ready()
@@ -46,6 +49,7 @@ public partial class PersonaEnhance : Control
         _personaNameLabel.Text = $"{Persona.Name}";
         _exitButton.Pressed += OnExitButtonPressed;
 
+        SetKonpakuGemsText();
         Refresh();
         RefreshOverclock();
     }
@@ -94,28 +98,22 @@ public partial class PersonaEnhance : Control
 
         if (Persona.Level >= maxLevel)
         {
-            Persona.Experience = 0;
-
+            PersonaMaxLevel();
             ConvertMaterials(experienceRemainder);
-
-            _initialProgressBar.MaxValue = 0;
-            _finalProgressBar.MaxValue = 0;
-
-            SetLevelText(-1);
-            SetExperienceText(-1);
             
+            Persona.Experience = 0;
             EmitSignal(SignalName.PersonaLevelMaxed);
             return;
         }
 
-        _initialProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
-        _finalProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
+        SetProgressBarsMaxValues();
 
         Persona.Experience = experienceRemainder;
         TweenExperience(experienceRemainder);
 
         SetLevelText();
         SetExperienceText();
+        SetKonpakuGemsText();
     }
 
     private void ConvertMaterials(int experience)
@@ -190,6 +188,11 @@ public partial class PersonaEnhance : Control
         SetLevelText(levels);
     }
 
+    public void SetKonpakuGemsText()
+    {
+        _konpakuGemsLabel.Text = $"{Player.Instance.KonpakuGems:N0}";
+    }
+
     public void TweenExperience(int experience)
     {
         const float Duration = 0.25f;
@@ -207,23 +210,35 @@ public partial class PersonaEnhance : Control
 
     public void Refresh()
     {
-        if (Persona.Level >= PersonaManager.Instance.GetMaxLevel(Persona))
+        int maxLevel = PersonaManager.Instance.GetMaxLevel(Persona);
+        if (Persona.Level >= maxLevel)
         {
-            _initialProgressBar.MaxValue = 0;
-            _finalProgressBar.MaxValue = 0;
-
-            SetLevelText(-1);
-            SetExperienceText(-1);
+            PersonaMaxLevel();
             return;
         }
 
         _initialProgressBar.Value = Persona.Experience;
-        _initialProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
-        
         _finalProgressBar.Value = Persona.Experience;
-        _finalProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
+
+        SetProgressBarsMaxValues();
 
         SetLevelText();
         SetExperienceText();
+        SetKonpakuGemsText();
+    }
+
+    private void PersonaMaxLevel()
+    {
+        _initialProgressBar.MaxValue = 0;
+        _finalProgressBar.MaxValue = 0;
+
+        SetLevelText(-1);
+        SetExperienceText(-1);
+    }
+
+    private void SetProgressBarsMaxValues()
+    {
+        _initialProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
+        _finalProgressBar.MaxValue = PersonaManager.Instance.GetMaxExperience(Persona.Level);
     }
 }

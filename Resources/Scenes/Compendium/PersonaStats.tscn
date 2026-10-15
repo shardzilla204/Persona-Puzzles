@@ -22,7 +22,7 @@ expand_mode = 1
 script = ExtResource("2_iv287")
 _personaNameLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/PersonaNameLabel")
 _personaLevelLabel = NodePath("MarginContainer/VBoxContainer/PersonaLevelLabel")
-_personaPortrait = NodePath("MarginContainer/PersonaPortrait")
+_personaPortrait = NodePath("MarginContainer/Wrapper/PersonaPortrait")
 _skillResistancesContainer = NodePath("MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/SkillResistancesContainer")
 _statsContainer = NodePath("MarginContainer/VBoxContainer/StatsContainer")
 _favoriteButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/FavoriteButton")
@@ -43,9 +43,16 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PersonaPortrait" type="TextureRect" parent="MarginContainer" unique_id=975222888]
-custom_minimum_size = Vector2(250, 250)
+[node name="Wrapper" type="Control" parent="MarginContainer" unique_id=1603391662]
 layout_mode = 2
+
+[node name="PersonaPortrait" type="TextureRect" parent="MarginContainer/Wrapper" unique_id=975222888]
+custom_minimum_size = Vector2(470, 500)
+layout_mode = 0
+offset_top = 95.0
+offset_right = 470.0
+offset_bottom = 595.0
+size_flags_vertical = 4
 texture = ExtResource("3_yfcaw")
 expand_mode = 1
 stretch_mode = 5

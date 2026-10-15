@@ -5,10 +5,12 @@
 [ext_resource type="Script" uid="uid://cijn35oblwq0p" path="res://Resources/Scripts/CustomButton.cs" id="4_3efu6"]
 [ext_resource type="Texture2D" uid="uid://dbm6x3kxhwopb" path="res://Assets/Images/BezeledSquare.png" id="5_05gva"]
 [ext_resource type="Theme" uid="uid://bjrc5vlajre5y" path="res://Resources/TextTheme.tres" id="6_7owbt"]
+[ext_resource type="Texture2D" uid="uid://bbitcfjfagh6k" path="res://Assets/Images/KonpakuGems.jpg" id="6_54o6l"]
 
-[node name="MaterialEnhance" type="TextureRect" unique_id=1743505066 node_paths=PackedStringArray("_materialCounters", "_clearButton", "_enhanceButton", "_maxButton")]
+[node name="MaterialEnhance" type="TextureRect" unique_id=1743505066 node_paths=PackedStringArray("_materialCounters", "_clearButton", "_enhanceButton", "_maxButton", "_konpakuGemsLabel")]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
-custom_minimum_size = Vector2(0, 135)
+custom_minimum_size = Vector2(0, 185)
+theme = ExtResource("6_7owbt")
 texture = ExtResource("1_54o6l")
 expand_mode = 1
 script = ExtResource("2_i5k0k")
@@ -16,6 +18,7 @@ _materialCounters = NodePath("MarginContainer/VBoxContainer/MaterialCounters")
 _clearButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ClearButton")
 _enhanceButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/EnhanceButton")
 _maxButton = NodePath("MarginContainer/VBoxContainer/HBoxContainer/MaxButton")
+_konpakuGemsLabel = NodePath("MarginContainer/VBoxContainer/KonpakuGems/KonpakuGemsLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=166598997]
 layout_mode = 1
@@ -37,6 +40,25 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
+
+[node name="KonpakuGems" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=512739116]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=1363877140]
+custom_minimum_size = Vector2(71, 25)
+layout_mode = 2
+texture = ExtResource("6_54o6l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KonpakuGemsLabel" type="Label" parent="MarginContainer/VBoxContainer/KonpakuGems" unique_id=1327620703]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "5,000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1198203328]
 layout_mode = 2

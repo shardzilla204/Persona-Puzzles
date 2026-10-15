@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace PersonaAndPuzzles;
 
@@ -15,8 +16,7 @@ public partial class PersonaManager : Node
     private PersonaManager()
     {
         LoadPersonas();
-        GetRandomPersonas();
-		SetRandomLoadout();
+        AddEmptyLoadouts();
     }
 
     public const int MaxStat = 99;
@@ -25,11 +25,21 @@ public partial class PersonaManager : Node
     public const int MaxTeamReserves = 3;
     public const int MaxLoadouts = 10;
 
+    private const string _NameKey = "Name";
+    private const string _IDKey = "ID";
+    private const string _LevelKey = "Level";
+    private const string _OverclockKey = "Overclock";
+    private const string _ExperienceKey = "Experience";
+    private const string _IsFavoriteKey = "IsFavorite";
+    private const string _PersonasKey = "Personas";
+    private const string _LoadoutIndexKey = "Index";
+
     private List<Persona> _Personas = new List<Persona>();
     public List<Persona> Personas = new List<Persona>();
 
     public PersonaLoadout Loadout = new PersonaLoadout("Loadout 1", 0);
     public List<PersonaLoadout> Loadouts = new List<PersonaLoadout>();
+    public int LoadoutIndex = 0;
 
     public int MaxPersonas = 50;
 
@@ -37,8 +47,11 @@ public partial class PersonaManager : Node
     public string FavoriteFilter = $"{FavoriteFilterContainer.Filter.All}";
     public string StatTypeFilter = $"{StatTypeFilterContainer.Filter.All}";
 
-    private void GetRandomPersonas()
+    public void AddRandomPersonas()
     {
+        string message = "Adding Personas...";
+        PrintRich.PrintLine(message, TextColor.Blue);
+
         for (int i = 0; i < PersonaAndPuzzles.StartingPersonaCount; i++)
         {
             Persona persona = GetRandomPersona();
@@ -52,35 +65,32 @@ public partial class PersonaManager : Node
         }
     }
 
-    private void SetRandomLoadout()
+    public void SetRandomLoadout()
     {
-        SetRandomLoadouts();
-        SetEmptyLoadouts();
+        AddRandomLoadouts();
 
-        PersonaLoadout loadoutClone = new PersonaLoadout(Loadouts[0]);
-        Loadout = loadoutClone;
+        Loadout = CloneLoadout(0);
     }
 
-    private void SetRandomLoadouts()
+    private void AddRandomLoadouts()
     {
-        List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
+        string message = "Adding Loadouts...";
+        PrintRich.PrintLine(message, TextColor.Blue);
+
         for (int i = 0; i <= PersonaAndPuzzles.ExtraLoadouts; i++)
         {
+            PersonaLoadout loadout = Loadouts[i];
             string name = $"Loadout {i + 1}";
-            PersonaLoadout loadout = new PersonaLoadout(name, i);
+            loadout.Name = name;
+
             if (Personas.Count < MaxTeamSlots)
             {
-                // Add the Personas and make the remaining slots empty
                 for (int j = 0; j < Personas.Count; j++)
                 {
                     Persona persona = Personas[j];
-                    loadout.Personas.Add(persona);
+                    loadout.Personas[j] = persona;
                 }
-
-                for (int j = Personas.Count; j < MaxTeamSlots; j++)
-                {
-                    loadout.Personas.Add(null); 
-                }
+                break;
             }
             else
             {
@@ -96,18 +106,14 @@ public partial class PersonaManager : Node
                         randomNumber = RNG.RandiRange(0, maxRange);
                         persona = Personas[randomNumber];
                     }
-                    loadout.Personas.Add(persona);
+                    loadout.Personas[j] = persona;
                 }
             }
-
-            loadouts.Add(loadout);
         }
-        Loadouts.AddRange(loadouts);
     }
 
-    private void SetEmptyLoadouts()
+    public void AddEmptyLoadouts()
     {
-        List<PersonaLoadout> loadouts = new List<PersonaLoadout>();
         for (int i = Loadouts.Count; i < MaxLoadouts; i++)
         {
             string name = $"Loadout {i + 1}";
@@ -116,9 +122,8 @@ public partial class PersonaManager : Node
             {
                 Loadout.Personas.Add(null);
             }
-            loadouts.Add(Loadout);
+            Loadouts.Add(Loadout);
         }
-        Loadouts.AddRange(loadouts);
     }
 
     public void SetLoadout(Persona newPersona, dynamic oldPersona)
@@ -223,6 +228,25 @@ public partial class PersonaManager : Node
         _ => 0
     };
 
+    public int GetMaterialCost(EnhancementMaterial material) => material switch
+    {
+        EnhancementMaterial.Memory => 25,
+        EnhancementMaterial.Anecdote => 150,
+        EnhancementMaterial.Legend => 500,
+        _ => 0  
+    };
+
+    public int GetOverclockCost(int rank) => rank switch
+    {
+        1 => 1000,
+        2 => 1500,
+        3 or 4 => 2000,
+        5 or 6 => 4000,
+        7 => 6000,
+        8 => 10000,
+        _ => 0
+    };
+
     private void SetResistances(Persona persona, GC.Dictionary<string, Variant> resistances)
     {
         foreach (string key in resistances.Keys)
@@ -251,8 +275,11 @@ public partial class PersonaManager : Node
             Enum.Parse<Race>(personaRace);
             return Enum.Parse<Race>(personaDictionary[RaceKey].As<string>());
         }
-        catch
+        catch (Exception exception)
         {
+            GD.PrintErr(exception);
+            GD.Print();
+
             string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
 			string message = $"Couldn't Parse Race - {personaRace}";
 			string result = "Returning Race.Fool";
@@ -271,8 +298,11 @@ public partial class PersonaManager : Node
             Enum.Parse<SkillType>(personaSkillType);
             return Enum.Parse<SkillType>(personaDictionary[SkillTypeKey].As<string>());
         }
-        catch
+        catch (Exception exception)
         {
+            GD.PrintErr(exception);
+            GD.Print();
+
             string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
 			string message = $"Couldn't Parse SkillType - {personaSkillType}";
 			string result = "Returning SkillType.None";
@@ -301,10 +331,7 @@ public partial class PersonaManager : Node
         RandomNumberGenerator RNG = new RandomNumberGenerator();
         int randomNumber = RNG.RandiRange(0, _Personas.Count - 1);
         Persona persona = _Personas[randomNumber];
-        Persona personaClone = new Persona(persona)
-        {
-            ID = Guid.NewGuid().ToString("N")
-        };
+        Persona personaClone = ClonePersona(persona);
 
         int targetLevel = PersonaAndPuzzles.OverridePersonaLevel ? PersonaAndPuzzles.PersonaLevel : 1;
         SetLevel(personaClone, targetLevel);
@@ -314,26 +341,37 @@ public partial class PersonaManager : Node
 
     private Persona ClonePersona(Persona persona)
     {
+        if (persona == null) 
+        {
+            GD.PrintErr("Couldn't Clone Persona | Returning null");
+            return null;
+        }
+
         Persona personaClone = new Persona(persona)
         {
-            ID = Guid.NewGuid().ToString("N")
+            ID = $"{Guid.NewGuid():N}"
         };
         return personaClone;
     }
 
-    public List<Persona> GetPersonasByRace(Race race)
+    public List<Persona> FindPersonasByRace(Race race)
     {
         return _Personas.FindAll(persona => persona.Race == race);
     }
 
-    public List<Persona> GetPersonasBySkillType(SkillType skillType)
+    public List<Persona> FindPersonasBySkillType(SkillType skillType)
     {
         return _Personas.FindAll(persona => persona.SkillType == skillType);
     }
 
-    public Persona GetPersonaByName(string personaName)
+    public Persona FindPersonaByName(string personaName)
     {
         return _Personas.Find(persona => persona.Name == personaName);
+    }
+
+    public Persona FindPersonaByID(string personaID)
+    {
+        return Personas.Find(persona => persona.ID == personaID);
     }
 
     public void SetLevel(Persona persona, int targetLevel)
@@ -357,11 +395,6 @@ public partial class PersonaManager : Node
             persona.Luck = Mathf.Max(MinStat, persona.Luck + difference);
         }
         persona.Level = targetLevel;
-    }
-
-    public void SetStats()
-    {
-        
     }
 
     public void RemovePersona(Persona targetPersona)
@@ -424,6 +457,148 @@ public partial class PersonaManager : Node
             if (persona != null) return false;
         }
         return true;
+    }
+
+    public GC.Array<Variant> GetPersonasData()
+    {
+        string loadMessage = $"Saving {Personas.Count} Personas...";
+        PrintRich.PrintLine(loadMessage, TextColor.Blue);
+
+        GC.Array<Variant> personasData = new GC.Array<Variant>();
+        foreach (Persona persona in Personas)
+        {
+            GC.Dictionary<string, Variant> personaData = new GC.Dictionary<string, Variant>()
+            {
+                { _NameKey, persona.Name },
+                { _IDKey, persona.ID },
+                { _LevelKey, persona.Level },
+                { _ExperienceKey, persona.Experience },
+                { _OverclockKey, persona.Overclock },
+                { _IsFavoriteKey, persona.IsFavorite }
+            };
+            personasData.Add(personaData);
+        }
+        return personasData;
+    }
+
+    public GC.Array<Variant> GetLoadoutsData()
+    {
+        GC.Array<Variant> loadoutsData = new GC.Array<Variant>();
+        for (int i = 0; i < Loadouts.Count; i++)
+        {
+            PersonaLoadout loadout = Loadouts[i];
+            GC.Dictionary<string, Variant> loadoutData = new GC.Dictionary<string, Variant>()
+            {
+                { _NameKey, loadout.Name },
+                { _LoadoutIndexKey, loadout.Index },
+                { _PersonasKey, GetPersonasData(loadout) }
+            };
+            loadoutsData.Add(loadoutData);
+        }
+        return loadoutsData;
+    }
+
+    private GC.Array<string> GetPersonasData(PersonaLoadout loadout)
+    {
+        GC.Array<string> personasData = new GC.Array<string>();
+        foreach (Persona persona in loadout.Personas)
+        {
+            string id = persona == null ? "" : persona.ID;
+            personasData.Add(id);
+        }
+        return personasData;
+    }
+
+    public async Task SetPersonasData(GC.Array<Variant> personasData)
+    {
+        try
+        {
+            string loadMessage = $"Loading {personasData.Count} Personas...";
+            PrintRich.PrintLine(loadMessage, TextColor.Blue);
+
+            foreach (GC.Dictionary<string, Variant> personaData in personasData)
+            {
+                string personaName = personaData[_NameKey].As<string>();
+                Persona persona = FindPersonaByName(personaName);
+
+                // Create a clone to prevent mutation
+                Persona personaClone = new Persona(persona);
+
+                string id = personaData[_IDKey].As<string>();
+                personaClone.ID = id;
+
+                int experience = personaData[_ExperienceKey].As<int>();
+                personaClone.Experience = experience;
+
+                int level = personaData[_LevelKey].As<int>();
+                SetLevel(personaClone, level);
+
+                int overclock = personaData[_OverclockKey].As<int>();
+                personaClone.Overclock = overclock;
+
+                bool isFavorite = personaData[_IsFavoriteKey].As<bool>();
+                personaClone.IsFavorite = isFavorite;
+
+                Personas.Add(personaClone);
+            }
+
+            string message = "Personas Data Successfully Loaded";
+            PrintRich.PrintLine(message, TextColor.Purple);
+        }
+        catch (Exception exception)
+        {
+            GD.PrintErr(exception);
+            GD.Print();
+
+            string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
+            string message = "Personas Data Couldn't Be Loaded";
+            PrintRich.PrintError(className, message);
+        }
+    }
+
+    public async Task SetLoadoutsData(int loadoutIndex, GC.Array<Variant> loadoutsData)
+    {
+        try
+        { 
+            LoadoutIndex = loadoutIndex;
+
+            for (int i = 0; i < loadoutsData.Count; i++)
+            {
+                GC.Dictionary<string, Variant> loadoutData = loadoutsData[i].As<GC.Dictionary<string, Variant>>();
+                string name = loadoutData[_NameKey].As<string>();
+                int index = loadoutData[_LoadoutIndexKey].As<int>();
+                PersonaLoadout loadout = Loadouts[i];
+                loadout.Name = name;
+                loadout.Index = index;
+                
+                GC.Array<string> personaIDs = loadoutData[_PersonasKey].As<GC.Array<string>>();
+                for (int j = 0; j < personaIDs.Count; j++)
+                {
+                    string personaID = personaIDs[j];
+                    Persona persona = FindPersonaByID(personaID);
+                    loadout.Personas[j] = persona;
+                }
+            }
+
+            Loadout = CloneLoadout(LoadoutIndex);
+
+            string message = "Loadouts Data Successfully Loaded";
+            PrintRich.PrintLine(message, TextColor.Purple);
+        }
+        catch (Exception exception)
+        {
+            GD.PrintErr(exception);
+            GD.Print();
+
+            string className = MethodBase.GetCurrentMethod().DeclaringType.Name;
+            string message = "Loadouts Data Couldn't Be Loaded";
+            PrintRich.PrintError(className, message);
+        }
+    }
+
+    private PersonaLoadout CloneLoadout(int index)
+    {
+        return new PersonaLoadout(Loadouts[index]);
     }
 }
 
